@@ -1,0 +1,36 @@
+﻿Meeting Agenda
+
+Date: 2014-03-18
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+Discuss game ideas and concepts to get a clear picture of what kind of game we want to create.
+
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ Not applicable this is our first meeting.
+
+3. Discussion items (35 min) 
+We all agreed that we should create a 2D desktop application.
+We then discussed ideas of different game genres. 
+
+
+Different ideas we had were:
+A turn based game based on the popular boardgame
+An action based game with elements from bomberman and Dota
+A puzzle game based on the fact that you can change places with yourself and an object.
+A puzzle game where you would put down blocks to make a path for a ball.
+
+
+The discussion were centered around pros and cons of the different games.
+
+4. Outcomes and assignments (5 min) 
+We haven’t decided which game to choose, until next meeting we should all think about these options and decided what we want to do.
+
+5. Wrap up 
+Next meeting we should decide what kind of game we want to create.
+
+Next meeting will be held Wednesday 19/3.
