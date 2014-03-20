@@ -1,0 +1,83 @@
+﻿Meeting Agenda
+
+Date: 2014-03-20
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min)
+Go even more into detail about gameplay elements to make it possible to use notes from this meeting to write use cases.
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+We’ve all had our first supervised meeting and discussed some details with our supervisor.
+
+3. Discussion items (35 min) 
+
+Discussion of different playable characters and their different primary and secondary abilities. All heroes should have a primary and secondary ability and those abilities should complement each other. Each hero should have a “theme” to it. Should there be different limits to different heroes, for example one heroes max speed is 75% of another heroes max speed.
+
+
+Discussion about win criterias in a game. Could be that a player dies a specified number of times, a player takes control of all the towers or a player has access to towers for a long period of time. How should we make the GUI very clearly indicate who is winning if there are a lot of win conditions? There should either be a specified time limit to a game or some sort of sudden death, a game should not be able to continue indefinitely.
+
+
+A player should be able to take control of towers and gain different perks from them. Some or all towers could have some sort of offensive capability when controlled by a player. If a player loses a tower should the player lose the given perks? A player should have a starting tower that is more important than the others.
+
+
+Discussion about what kind of different blocks there should be in the game
+
+
+________________
+
+4. Outcomes and assignments (5 min) 
+
+Preliminary hero powers and abilities.
+
+
+Name
+	Speed
+	Primary hero power
+	Secondary hero power
+	Bomber
+	100%
+	Put bomb
+	Detonate own bombs
+	Mage
+	100%
+	Ranged “fireball”
+	Ranged stun
+	Brute
+	75%
+	Hit ground in front and create explosion
+	Move a block or bomb
+	Enforcer
+	100%
+	Magnet bomb that follows player
+	Ranged slow
+	
+
+
+Decided tower perks:
+* More charges on a heroes primary power
+* The character is faster
+* The characters explosions reach longer
+
+
+Decided win conditions:
+* Each time a player dies the scale tips in the other teams favour.
+* If a player controls at least one tower they should get points for that
+
+
+Decided blocks:
+* Indestructible/Immovable blocks
+* Destructible/Immovable blocks
+* Indestructible/movable blocks that move when hit by an explosion
+* Harder destructible/immovable blocks that take a specified amount of explosions until they are destroyed
+
+
+
+5. Wrap up 
+
+Everyone should write use cases and almost all use cases should be done by Monday.
+ 
+
+Next meeting will be  Monday 24/3
