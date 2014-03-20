@@ -1,0 +1,39 @@
+﻿Meeting Agenda
+
+Date: 2014-03-19
+
+Facilitator: Anton Freudenthaler
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+Discuss game ideas and concepts to get a clear picture of what kind of game we want to create.
+
+2. Reports
+Everyone has thought about the game ideas we had last meeting and prepared arguments for the different games.
+
+3. Discussion items (35 min) 
+
+We discussed which game we wanted to create.
+
+We discussed gameplay elements and general look and feel. Some essential use cases have also been started, such as player move and player action. 
+
+4. Outcomes and assignments (5 min) 
+We decided that we would go with the Bomberman idea with some adjustments to make it unique. 
+
+
+We decided that the standard playmode is 1vs1 with objectives you can capture. 
+
+It was decided that we should use a 2D-view but draw the sprites in such a way that you get a 3D feel to it.
+
+Mattias should create our git repo and setup the initial project
+
+
+All of us should, after our supervisor meeting, create use cases for our game.
+
+
+5. Wrap up 
+Prioritized unsolved things are hero powers, code structure and use cases.
+ 
+
+Next meeting will be Thursday 20/2 11:00 - 12:00
