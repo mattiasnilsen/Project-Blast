@@ -1,0 +1,53 @@
+﻿Meeting Agenda
+
+Date: 2014­03­24
+
+Facilitator: Alex Tao
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+
+Decide classes and inferfaces, create an UML, discuss a strategy for how to implement our 
+
+ideas in an effective way.
+
+2. Reports (15 min) 
+
+We have written most of the use cases. We have also created an static template graphic for the 
+
+character.
+
+3. Discussion items (35 min) 
+
+We discussed and planned different classes and inferfaces that should be implemented first as 
+
+a ground for our game. We also discussed which classes should be seperate or be the same.
+
+To make sure everyone is at the same page about the coding, we also discussed how we 
+
+should implement some classes to make them work best together with everything else.
+
+How should effects like slow/stun be implemented, should the speed of the player be modified 
+
+directly or should the player check whether he has an effect or not every time the method move 
+
+is called?
+
+4. Outcomes and assignments (5 min) 
+
+It is decided that we should have four interfaces which will be the root for all objects in the game: 
+
+Destructable, Drawable, Moveable, Effectable.
+
+The objects will implement these interfaces depending on which function it will have. 
+
+We should all think through and come up with more classes that might be needed and we will 
+
+then discuss them for our next meeting. We should also try to make the UML diagram as 
+
+complete as possible.
+
+5. Wrap up 
+
+Our next meeting will be Thursday 27/03.
