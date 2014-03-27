@@ -13,19 +13,17 @@ public class MovableEntity extends Entity implements Movable {
 		super(x, y, sprite);
 	}
 
-
 	private int speed = 4;
-	private int x,y;
 	
 	public void move(int dx, int dy) {
-		place(x+dx,y+dy);
+		place(getX() + dx, getY() + dy);
 		
 	}
 
 	
 	public void place(int x, int y) {
-		this.x = x;
-		this.y = y;
+		setX(x);
+		setY(y);
 	}
 
 
