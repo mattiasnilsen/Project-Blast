@@ -2,10 +2,11 @@ package projectblast;
 
 import org.newdawn.slick.Image;
 
-//TODO extends movableEntity
-public abstract class Hero {
-	private Image sprite;
-	private int x,y;
+public abstract class Hero extends MovableEntity{
+
+    public Hero(int x, int y, Image sprite) {
+        super(x, y, sprite);
+    }
 
 	public abstract void primaryAbility();
 		
