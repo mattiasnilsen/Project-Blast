@@ -3,9 +3,9 @@ package projectblast;
 /**
  * 
  * @author franton
- *	An interface for all Moveable things in projectblast.
+ *	An interface for all Movable things in Project Blast.
  */
-public interface Moveable {
+public interface Movable {
 	
 	public void move(int dx, int dy);
 	
