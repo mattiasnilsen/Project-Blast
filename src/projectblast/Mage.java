@@ -9,8 +9,8 @@ import org.newdawn.slick.Image;
  */
 public class Mage extends Hero {
 
-	public Mage(int x, int y, Image sprite, Animation[] animations) {
-		super(x, y, sprite, animations);
+	public Mage(int x, int y, Image sprite, int speed, Animation[] animations) {
+		super(x, y, sprite, speed, animations);
 	}
 
 	@Override

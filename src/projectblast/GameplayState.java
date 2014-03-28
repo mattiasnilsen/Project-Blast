@@ -36,7 +36,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	
     	animations[0] = new Animation(images, 1000);
         try {
-			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), animations);
+			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), 4, animations);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
