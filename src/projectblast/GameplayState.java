@@ -18,6 +18,8 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
+    private Hero hero;
+	
     public GameplayState() {
         hero = new Bomber(200, 200, null);
     }
@@ -47,7 +49,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int iDontKnowWhatThisDoes)
 			throws SlickException {
-		// TODO Auto-generated method stub
+		//TODO remove hardcoding
+		hero.update();
 		
 	}
 
@@ -62,21 +65,18 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	BasicCommand bCommand = (BasicCommand)command;
     
     	if(bCommand.getName().equals("up")) {
-    		hero.move(0, -hero.getSpeed());
+    		hero.startMove(Movable.Direction.NORTH);
     	} else if(bCommand.getName().equals("down")) {
-    		hero.move(0, hero.getSpeed());
+    		hero.startMove(Movable.Direction.SOUTH);
     	} else if(bCommand.getName().equals("left")) {
-    		hero.move(-hero.getSpeed(), 0);
+    		hero.startMove(Movable.Direction.WEST);
     	} else if(bCommand.getName().equals("right")) {
-    		hero.move(hero.getSpeed(), 0);
+    		hero.startMove(Movable.Direction.EAST);
     	}
     }
 
     @Override
     public void controlReleased(Command command) {
-        // TODO Auto-generated method stub
-        
+    	hero.stopMove();
     }
-
-    private Hero hero;
 }
