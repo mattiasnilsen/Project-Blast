@@ -12,11 +12,12 @@ public class BlastGame extends StateBasedGame{
 	public BlastGame(String name) {
 		super(name);
 	}
+	
+	
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
 	    addState(new GameplayState());
-	    enterState(0);
 	}
 
 }
