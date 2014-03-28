@@ -14,7 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 /**
  * @author Axel Savén Östebo
- *
+ * revised by Mattias Nilsen
  */
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
@@ -28,7 +28,11 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	    
 	    InputProvider provider = new InputProvider(gc.getInput());
 	    provider.addListener(this);
-	    provider.bindCommand(new KeyControl(Input.KEY_W), new BasicCommand("run"));
+	    provider.bindCommand(new KeyControl(Input.KEY_W), new BasicCommand("up"));
+	    provider.bindCommand(new KeyControl(Input.KEY_S), new BasicCommand("down"));
+	    provider.bindCommand(new KeyControl(Input.KEY_A), new BasicCommand("left"));
+	    provider.bindCommand(new KeyControl(Input.KEY_D), new BasicCommand("right"));
+	    
 		
 	}
 
@@ -55,7 +59,17 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 
     @Override
     public void controlPressed(Command command) {
-        hero.move(10, 10);
+    	BasicCommand bCommand = (BasicCommand)command;
+    
+    	if(bCommand.getName().equals("up")) {
+    		hero.move(0, -hero.getSpeed());
+    	} else if(bCommand.getName().equals("down")) {
+    		hero.move(0, hero.getSpeed());
+    	} else if(bCommand.getName().equals("left")) {
+    		hero.move(-hero.getSpeed(), 0);
+    	} else if(bCommand.getName().equals("right")) {
+    		hero.move(hero.getSpeed(), 0);
+    	}
     }
 
     @Override
