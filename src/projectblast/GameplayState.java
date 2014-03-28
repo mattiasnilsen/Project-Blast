@@ -47,7 +47,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame game, int iDontKnowWhatThisDoes)
+	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
 		//TODO remove hardcoding
 		hero.update();
