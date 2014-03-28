@@ -1,6 +1,7 @@
 package projectblast;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 /**
@@ -24,6 +25,11 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	public MovableEntity(int x, int y, Image sprite, Animation[] animations){
 		this(x,y,sprite);
 		this.animations = animations;
+	}
+	
+	@Override
+	public void draw(Graphics g){
+		g.drawAnimation(animations[0], getX(), getY());
 	}
 
 	

@@ -20,6 +20,7 @@ public class Entity implements Drawable {
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(sprite, x, y);
+		
 	    //g.setColor(Color.white);
 	   // g.drawString("HERO", x, y);
 	   

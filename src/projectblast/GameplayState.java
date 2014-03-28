@@ -1,5 +1,6 @@
 package projectblast;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -21,8 +22,21 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 
 	private Hero hero;
     public GameplayState()  {
+    	Animation[] animations = new Animation[4];
+    	Image[] images = new Image[4];
+    	try {
+			images[0] = new Image("/data/image/SnowmanHeroDown.png");
+			images[1] = new Image("/data/image/SnowmanHeroRight.png");
+			images[2] = new Image("/data/image/SnowmanHeroUp.png");
+			images[3] = new Image("/data/image/SnowmanHeroLeft.png");
+		} catch (SlickException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+    	animations[0] = new Animation(images, 1000);
         try {
-			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), null);
+			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), animations);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
