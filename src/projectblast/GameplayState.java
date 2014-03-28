@@ -2,6 +2,7 @@ package projectblast;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.command.BasicCommand;
@@ -18,8 +19,13 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
-    public GameplayState() {
-        hero = new Bomber(200, 200, null);
+    public GameplayState()  {
+        try {
+			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), null);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
 	@Override

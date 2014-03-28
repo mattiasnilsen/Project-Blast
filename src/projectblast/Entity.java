@@ -1,11 +1,13 @@
 package projectblast;
 
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 public class Entity implements Drawable {
 	private Image sprite;
+	
 	private int x,y;
 
 	public Entity(int x, int y, Image sprite) {
@@ -13,12 +15,14 @@ public class Entity implements Drawable {
 		this.y = y;
 		this.sprite = sprite;
 	}
+	
 
 	@Override
 	public void draw(Graphics g) {
-		//g.drawImage(sprite, x, y);
-	    g.setColor(Color.white);
-	    g.drawString("HERO", x, y);
+		g.drawImage(sprite, x, y);
+	    //g.setColor(Color.white);
+	   // g.drawString("HERO", x, y);
+	   
 	}
 
 	public Image getSprite() {

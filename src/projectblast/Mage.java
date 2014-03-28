@@ -1,5 +1,6 @@
 package projectblast;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 /**
  * 
@@ -8,8 +9,8 @@ import org.newdawn.slick.Image;
  */
 public class Mage extends Hero {
 
-	public Mage(int x, int y, Image sprite) {
-		super(x, y, sprite);
+	public Mage(int x, int y, Image sprite, Animation[] animations) {
+		super(x, y, sprite, animations);
 	}
 
 	@Override
