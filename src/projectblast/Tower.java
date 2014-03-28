@@ -4,9 +4,8 @@ import org.newdawn.slick.Image;
 
 
 public class Tower extends Entity implements Destructible{
-	Image damagedTower; 		//add image
-	Image gravelyDamagedTower;	//add image
-	Image neutralTower; 		//add image
+	private Image damagedTower; 		//add image
+	private Image gravelyDamagedTower;	//add image
 	int health = 3;
 	
 	
@@ -27,7 +26,9 @@ public class Tower extends Entity implements Destructible{
 		else if(health == 1){
 		this.setSprite(gravelyDamagedTower);	
 		}else if(health == 0){
-		this.setSprite(neutralTower);
+		this.setSprite(this.getSprite());
+		//Tell team to remove it from its list and change its color to neutral
+		//Perhaps use a propertyChangeListener?
 		}
 
 	}

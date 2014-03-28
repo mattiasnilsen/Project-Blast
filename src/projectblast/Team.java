@@ -8,41 +8,45 @@ public class Team {
 	
 	//TODO change colors of heroes and towers
 	
-	String teamName;
-	int score;
-	ArrayList<Hero> heroList = new ArrayList<Hero>();
-	ArrayList<Tower> towerList = new ArrayList<Tower>();
-	Color teamColor;
+	private String teamName;
+	private int score;
+	private ArrayList<Player> playerList = new ArrayList<Player>();
+	private ArrayList<Tower> towerList = new ArrayList<Tower>();
+	private Color teamColor;
+	private int colorRed = teamColor.getRed();
+	private int colorGreen = teamColor.getGreen();
+	private int colorBlue = teamColor.getBlue();
 	
 	//Möjligen byta ut hero mot Player.
 	
-	public Team(String teamName, Tower startingTower, Color teamColor,Hero hero1){
+	public Team(String teamName, Tower startingTower, Color teamColor,Player player1){
 		this.teamName = teamName;	
-		heroList.add(hero1);
+		playerList.add(player1);
 		this.teamColor = teamColor;
 		
-		for(int i = 0; i<heroList.size(); i++){
-		heroList.get(i).getSprite().setImageColor(teamColor.getRed(), this.teamColor.getGreen(), teamColor.getBlue());
+		for(int i = 0; i<playerList.size(); i++){
+		playerList.get(i).getHero().getSprite().setImageColor(colorRed, colorGreen, colorBlue);
 		}
 		
 		towerList.add(startingTower);
-		towerList.get(0).getSprite().setImageColor(teamColor.getRed(), teamColor.getGreen(), teamColor.getBlue());
+		towerList.get(0).getSprite().setImageColor(colorRed, colorGreen, colorBlue);
 	}
 	
-	public Team(String teamName, Tower startingTower, Color teamColor,Hero hero1, Hero hero2){
-		this(teamName, startingTower, teamColor, hero1);
-		heroList.add(hero2);
+	public Team(String teamName, Tower startingTower, Color teamColor,Player player1, Player player2){
+		this(teamName, startingTower, teamColor, player1);
+		playerList.add(player2);
 	}
 	
 
 	public void capturedTower(Tower tower){
+		tower.getSprite().setImageColor(colorRed, colorGreen, colorBlue);
 		towerList.add(tower);
 		addScore(10);
-		//Change color of that tower
 	}
 	
 	public void lostTower(Tower tower){
 		towerList.remove(tower);
+		
 	}
 	
 	public void addScore(int score){
