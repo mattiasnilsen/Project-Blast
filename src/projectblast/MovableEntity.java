@@ -46,6 +46,13 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 		setY(y);
 	}
 
+	public Direction getDirection() {
+		return moveDirection;
+	}
+	
+	public void setDirection(Direction moveDirection) {
+		this.moveDirection = moveDirection;
+	}
 
 	public int getSpeed() {
 		return speed;
