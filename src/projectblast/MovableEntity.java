@@ -17,13 +17,14 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	private Animation[] animations;
 
 	
-	public MovableEntity(int x, int y, Image sprite) {
+	public MovableEntity(int x, int y, Image sprite, int speed) {
 		super(x, y, sprite);
+		this.speed = speed;
 	}
 
 	
-	public MovableEntity(int x, int y, Image sprite, Animation[] animations){
-		this(x,y,sprite);
+	public MovableEntity(int x, int y, Image sprite, int speed, Animation[] animations){
+		this(x,y,sprite, speed);
 		this.animations = animations;
 	}
 	

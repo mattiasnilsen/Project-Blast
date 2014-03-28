@@ -6,8 +6,8 @@ import org.newdawn.slick.Image;
 public class Fireball extends Explosive {
 	
 	
-	public Fireball(int x, int y, Image sprite, Animation[] animations, Direction direction, Hero owner) {
-		super(x, y, sprite, animations, owner);
+	public Fireball(int x, int y, Image sprite, int speed, Animation[] animations, Direction direction, Hero owner) {
+		super(x, y, sprite, speed, animations, owner);
 		this.move(direction);
 		
 	}
