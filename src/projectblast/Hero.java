@@ -5,8 +5,12 @@ import org.newdawn.slick.Image;
 
 public abstract class Hero extends MovableEntity{
 
+	int power;
+	int bombCount;
+	
     public Hero(int x, int y, Image sprite, int speed, Animation[] animations) {
         super(x, y, sprite, speed, animations);
+
     }
 
 	public abstract void primaryAbility();
