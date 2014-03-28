@@ -30,7 +30,9 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	
 	@Override
 	public void draw(Graphics g){
+		
 		g.drawAnimation(animations[0], getX(), getY());
+		
 	}
 
 	

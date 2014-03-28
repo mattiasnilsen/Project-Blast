@@ -56,6 +56,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	    provider.bindCommand(new KeyControl(Input.KEY_S), new BasicCommand("down"));
 	    provider.bindCommand(new KeyControl(Input.KEY_A), new BasicCommand("left"));
 	    provider.bindCommand(new KeyControl(Input.KEY_D), new BasicCommand("right"));
+	    provider.bindCommand(new KeyControl(Input.KEY_Q), new BasicCommand("primary"));
 	    
 		
 	}
@@ -85,7 +86,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     @Override
     public void controlPressed(Command command) {
     	BasicCommand bCommand = (BasicCommand)command;
-    
+    	//TODO Change to switch case.
     	if(bCommand.getName().equals("up")) {
     		hero.startMove(Movable.Direction.NORTH);
     	} else if(bCommand.getName().equals("down")) {
@@ -94,6 +95,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     		hero.startMove(Movable.Direction.WEST);
     	} else if(bCommand.getName().equals("right")) {
     		hero.startMove(Movable.Direction.EAST);
+    	} else if(bCommand.getName().equals("primary")){
+    		hero.primaryAbility();
     	}
     }
 
