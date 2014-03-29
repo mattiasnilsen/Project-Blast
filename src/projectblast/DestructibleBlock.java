@@ -49,4 +49,10 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 		
 	}
 
+    @Override
+    public void startMove() {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
