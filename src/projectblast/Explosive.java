@@ -7,8 +7,8 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	private Hero owner;
 	
 	
-	public Explosive(int x, int y, Image sprite, int speed, Animation[] animations, Hero owner) {
-		super(x, y, sprite, speed, animations);
+	public Explosive(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Hero owner) {
+		super(x, y, sprite, speed, direction, animations);
 		this.owner = owner;
 		
 	}

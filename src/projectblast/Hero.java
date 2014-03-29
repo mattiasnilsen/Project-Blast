@@ -13,8 +13,8 @@ public abstract class Hero extends MovableEntity{
 	private int bombCount;
 	private List<Explosive> explosives = new ArrayList<Explosive>();
 	
-    public Hero(int x, int y, Image sprite, int speed, Animation[] animations) {
-        super(x, y, sprite, speed, animations);
+    public Hero(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations) {
+        super(x, y, sprite, speed, direction, animations);
         bombPower = 1;
         bombCount = 1;
     }
