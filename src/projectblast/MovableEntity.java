@@ -67,6 +67,10 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 		this.direction = direction;
 		moving = true;
 	}
+	@Override
+	public void startMove() {
+	    moving = true;
+	}
 
 	@Override
 	public void stopMove() {

@@ -36,6 +36,7 @@ public interface Movable {
 	public void move(int dx, int dy);
 	
 	public void startMove(Direction direction);
+	public void startMove();
 	
 	public void stopMove();
 	
