@@ -9,12 +9,14 @@ import org.newdawn.slick.Image;
 
 public abstract class Hero extends MovableEntity{
 
-	private int power;
+	private int bombPower;
 	private int bombCount;
 	private List<Explosive> explosives = new ArrayList<Explosive>();
 	
     public Hero(int x, int y, Image sprite, int speed, Animation[] animations) {
         super(x, y, sprite, speed, animations);
+        bombPower = 1;
+        bombCount = 1;
     }
     
     public void addExplosive(Explosive explosive) {
