@@ -10,8 +10,8 @@ import org.newdawn.slick.Image;
  */
 public class Bomber extends Hero {
 
-    public Bomber(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations) {
-        super(x, y, sprite, speed, direction, animations);
+    public Bomber(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
+        super(x, y, sprite, speed, direction, animations, team);
     }
 
     @Override

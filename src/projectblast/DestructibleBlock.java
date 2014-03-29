@@ -1,7 +1,10 @@
 package projectblast;
 
 import org.newdawn.slick.Image;
-
+/**
+ *
+ * @author Alex Tao
+ */
 public class DestructibleBlock extends Block implements Destructible, Movable{
 
 	private Image destroyedSprite; //Create a sprite for a destroyed block.

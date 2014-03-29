@@ -25,6 +25,10 @@ public class Entity implements Drawable {
 	   // g.drawString("HERO", x, y);
 	   
 	}
+	
+	public void draw(Graphics g, Color teamColor) {
+		g.drawImage(sprite, x, y, teamColor);
+	}
 
 	public Image getSprite() {
 		return sprite;
@@ -55,5 +59,7 @@ public class Entity implements Drawable {
 	public int getY() {
 	    return y;
 	}
+
+
 
 }

@@ -1,5 +1,9 @@
 package projectblast;
-
+/**
+ * 
+ * @author Alex
+ *
+ */
 public class Player {
 
 	private int score;

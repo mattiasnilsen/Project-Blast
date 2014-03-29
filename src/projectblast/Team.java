@@ -1,9 +1,13 @@
 package projectblast;
 
-import java.awt.Color;
+import org.newdawn.slick.Color;
 import java.awt.List;
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author Alex Tao
+ *
+ */
 public class Team {
 	
 	//TODO change colors of heroes and towers
@@ -13,23 +17,17 @@ public class Team {
 	private ArrayList<Player> playerList = new ArrayList<Player>();
 	private ArrayList<Tower> towerList = new ArrayList<Tower>();
 	private Color teamColor;
-	private int colorRed = teamColor.getRed();
-	private int colorGreen = teamColor.getGreen();
-	private int colorBlue = teamColor.getBlue();
-	
-	//Möjligen byta ut hero mot Player.
+
+	public Team(String teamName, Color teamColor){
+		this.teamName = teamName;
+		this.teamColor = teamColor;
+	}
 	
 	public Team(String teamName, Tower startingTower, Color teamColor,Player player1){
-		this.teamName = teamName;	
+		this(teamName, teamColor);
 		playerList.add(player1);
-		this.teamColor = teamColor;
-		
-		for(int i = 0; i<playerList.size(); i++){
-		playerList.get(i).getHero().getSprite().setImageColor(colorRed, colorGreen, colorBlue);
-		}
 		
 		towerList.add(startingTower);
-		towerList.get(0).getSprite().setImageColor(colorRed, colorGreen, colorBlue);
 	}
 	
 	public Team(String teamName, Tower startingTower, Color teamColor,Player player1, Player player2){
@@ -39,7 +37,6 @@ public class Team {
 	
 
 	public void capturedTower(Tower tower){
-		tower.getSprite().setImageColor(colorRed, colorGreen, colorBlue);
 		towerList.add(tower);
 		addScore(10);
 	}
@@ -54,6 +51,10 @@ public class Team {
 	}
 	public int getScore(){
 		return score;
+	}
+	
+	public Color getColor(){
+		return teamColor;
 	}
 	
 	@Override

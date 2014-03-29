@@ -1,6 +1,7 @@
 package projectblast;
 
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -32,6 +33,13 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	public void draw(Graphics g){
 		g.drawAnimation(animations[0], getX(), getY());
 	}
+	
+	@Override
+	public void draw(Graphics g, Color teamColor) {
+		g.drawAnimation(animations[0], getX(), getY(), teamColor);
+	}
+	
+
 	@Override
 	public void move(int dx, int dy) {
 		place(getX() + dx, getY() + dy);
@@ -86,4 +94,5 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 			move(direction);
 		}
 	}
+
 }

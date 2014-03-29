@@ -1,5 +1,7 @@
 package projectblast;
 
+
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -29,6 +31,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 			images[1] = new Image("/data/image/SnowmanHeroRight.png");
 			images[2] = new Image("/data/image/SnowmanHeroUp.png");
 			images[3] = new Image("/data/image/SnowmanHeroLeft.png");
+			
 		} catch (SlickException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -36,7 +39,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	
     	animations[0] = new Animation(images, 1000);
         try {
-			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), 4, Movable.Direction.EAST, animations);
+			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,7 +68,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
 		// TODO Remove hardcoding
-	    hero.draw(g);
+	    hero.draw(g, Color.red);
+	    
 		
 	}
 

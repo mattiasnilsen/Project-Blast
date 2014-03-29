@@ -1,8 +1,10 @@
 package projectblast;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -12,8 +14,9 @@ public abstract class Hero extends MovableEntity{
 	private int bombPower;
 	private int bombCount;
 	private List<Explosive> explosives = new ArrayList<Explosive>();
+	private Team team;
 	
-    public Hero(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations) {
+    public Hero(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
         super(x, y, sprite, speed, direction, animations);
         bombPower = 1;
         bombCount = 1;
@@ -42,7 +45,18 @@ public abstract class Hero extends MovableEntity{
     		explosive.draw(g);
     	}
     }
+    @Override
+    public void draw(Graphics g, Color teamColor){
+    	super.draw(g, teamColor);
+    	for(Explosive explosive : explosives) {
+    		explosive.draw(g);
+    	}
+    }
+
     
+    public Team getTeam(){
+    	return team;
+    }
 	public abstract void primaryAbility();
 		
 	public abstract void secondaryAbility();

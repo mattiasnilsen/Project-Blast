@@ -1,7 +1,11 @@
 package projectblast;
 
 import org.newdawn.slick.Image;
-
+/**
+ * 
+ * @author Alex
+ *
+ */
 
 public class Tower extends Entity implements Destructible{
 	private Image damagedTower; 		//add image
