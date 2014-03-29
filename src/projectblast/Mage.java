@@ -27,7 +27,7 @@ public class Mage extends Hero {
     	
     	animations[0] = new Animation(images, 1000);
 		try {
-			addExplosive(new Fireball(getX(), getY(), new Image("/data/image/SnowballDown.png"), 8, animations, Direction.SOUTH, this ));
+			addExplosive(new Fireball(getX(), getY(), new Image("/data/image/SnowballDown.png"), 8, animations, getDirection(), this ));
 		} catch (SlickException e) {
 			
 			e.printStackTrace();

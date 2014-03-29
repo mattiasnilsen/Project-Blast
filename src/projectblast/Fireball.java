@@ -8,6 +8,7 @@ public class Fireball extends Explosive {
 	
 	public Fireball(int x, int y, Image sprite, int speed, Animation[] animations, Direction direction, Hero owner) {
 		super(x, y, sprite, speed, direction, animations, owner);
+		startMove();
 	}
 
 	@Override
