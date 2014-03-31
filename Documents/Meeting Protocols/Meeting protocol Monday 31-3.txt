@@ -1,0 +1,43 @@
+﻿Meeting Agenda
+
+Date: 31/3
+
+Facilitator: Anton Freudenthaler
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+
+
+Talk about what to be done until next time and what we have done, also discuss any problems we have come across.
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+We have implemented the first prototype of our game. We have implemented several classes. None of them are complete but together they can show a hero which can be moved and use a primary ability. 
+There’s a lot of unsolved issues. We have different (and sometimes no) opinions on how the different classes should relate to each other. 
+
+
+
+3. Discussion items (35 min) 
+We discussed the relations between the classes.
+ 
+We discussed how the constructors for different classes should look like, right now it seems like our constructors are way to complex, which makes the new objects too static.
+
+
+We also discussed how to change color of the sprite, should we make another draw() method or should we change the color of the sprite at the initialization of the game?  
+
+
+We also discussed what should be done till next time, how should we implement the movement system?
+
+
+How will we implement the MVC design model?
+
+4. Outcomes and assignments (5 min) 
+We have decided to change color of the sprite at the initial startup. The assignment for this would be to make sure we can find a method to do this. 
+We have to take even more time to plan how to build our game. 
+Till next time we should have implemented the movement system. 
+We have to reconstruct our code and separate View, Model and Controller.
+ 
+  
+5. Wrap up 
+
+Next meeting on Thursday 03/04.
