@@ -1,6 +1,8 @@
 package projectblast;
 
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -23,7 +25,12 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
 	private Hero hero;
+	private BlastModel model;
     public GameplayState()  {
+    	 ArrayList<Player> players = new ArrayList();
+         players.add(new Player(hero));
+         
+         model = new BlastModel(players);
     	Animation[] animations = new Animation[4];
     	Image[] images = new Image[4];
     	try {
@@ -44,7 +51,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+        
+       
     
 
     }

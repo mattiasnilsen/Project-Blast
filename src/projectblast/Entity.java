@@ -14,6 +14,8 @@ public class Entity implements Drawable {
 		this.x = x;
 		this.y = y;
 		this.sprite = sprite;
+		BlastModel.addEntity(this);
+		
 	}
 	
 
