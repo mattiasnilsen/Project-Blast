@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="22" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ColourScheme" tilewidth="32" tileheight="32">
+  <image source="../../../../../../files/Downloads/ColourScheme.png" width="128" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="type" value="box"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="type" value="tower"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="22">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA82VUQ7EIAhE0d7/zvvVLJm8AWu72U5ioKHICIgjIsbL11XMhfUETn4zvjwH6NVZhtEPiJGX+uneI5jfL0D8iAf5ufypn8uji0157fLkbJlf11O0R64Z1U1r1eVDbRNsiik+zp/OTz2o56v46Z70XfVMxY146n+0N+mr/MiW8+Ik8V+dfyqPqKF1o7N0/Lq56e5vBz2X3o87/Kpar/i7+eL8Ar4pHoH45Vp13KpYXXy1Uz+5+Vfxc7Gq+5v53OmjzO8KKL905qxrX+zyc3Mr16ObKyuzx808ra9D9b5o71fzsLozLuapz0aGkZ1fljv5y/YdUP5IdjbFU/lblcfif6S/EVfe6H+tD/yderjADQAA
+  </data>
+ </layer>
+</map>
