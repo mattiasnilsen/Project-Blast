@@ -14,7 +14,7 @@ public class Fireball extends Explosive {
 	@Override
 	public void destroy() {
 		explode();
-		//remove object
+		BlastModel.removeEntity(this); //Fungerar men är inte att rekommendera ^^
 	}
 
 }

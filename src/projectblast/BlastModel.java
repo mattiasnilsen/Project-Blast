@@ -58,9 +58,14 @@ public class BlastModel implements IBlastModel {
 	
 	public static void addEntity(Entity e){
 		entities.add(e);
+		System.out.println("");
 		for(Entity a : entities){
-			System.out.print(a.toString());
+			System.out.println(a.toString());
 		}
+	}
+	
+	public static void removeEntity(Entity e){
+		entities.remove(e);
 	}
 
 }
