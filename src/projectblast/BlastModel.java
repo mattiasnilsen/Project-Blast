@@ -55,7 +55,5 @@ public class BlastModel implements IBlastModel {
 		
 		return entities;
 	}
-	
-	
 
 }

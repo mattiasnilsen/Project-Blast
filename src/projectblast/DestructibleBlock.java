@@ -58,4 +58,10 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
         
     }
 
+	@Override
+	public void stopMove(Direction direction) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

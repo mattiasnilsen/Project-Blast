@@ -10,7 +10,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 public abstract class Hero extends MovableEntity{
-
+	
 	private int bombPower;
 	private int bombCount;
 	private List<Explosive> explosives = new ArrayList<Explosive>();

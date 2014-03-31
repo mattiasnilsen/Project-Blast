@@ -106,6 +106,16 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 
     @Override
     public void controlReleased(Command command) {
-    	hero.stopMove();
+    	BasicCommand bCommand = (BasicCommand)command;
+    	//TODO Change to switch case.
+    	if(bCommand.getName().equals("up")) {
+    		hero.stopMove(Movable.Direction.NORTH);
+    	} else if(bCommand.getName().equals("down")) {
+    		hero.stopMove(Movable.Direction.SOUTH);
+    	} else if(bCommand.getName().equals("left")) {
+    		hero.stopMove(Movable.Direction.WEST);
+    	} else if(bCommand.getName().equals("right")) {
+    		hero.stopMove(Movable.Direction.EAST);
+    	} 
     }
 }
