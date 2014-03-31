@@ -12,7 +12,7 @@ public class Mage extends Hero {
 	public Mage(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
 		super(x, y, sprite, speed, direction, animations, team);
 	}
-
+	private Fireball lastFireBall;
 	@Override
 	public void primaryAbility() {
 		Animation[] animations = new Animation[4];
@@ -27,7 +27,8 @@ public class Mage extends Hero {
     	
     	animations[0] = new Animation(images, 1000);
 		try {
-			addExplosive(new Fireball(getX(), getY(), new Image("/data/image/SnowballDown.png"), 8, animations, getDirection(), this ));
+			lastFireBall = new Fireball(getX(), getY(), new Image("/data/image/SnowballDown.png"), 8, animations, getDirection(), this);
+			addExplosive(lastFireBall);
 		} catch (SlickException e) {
 			
 			e.printStackTrace();
@@ -38,7 +39,8 @@ public class Mage extends Hero {
 
 	@Override
 	public void secondaryAbility() {
-		// TODO Auto-generated method stub
+		removeExplosive(lastFireBall); //sluta rita ut
+		lastFireBall.destroy();
 		
 	}
 

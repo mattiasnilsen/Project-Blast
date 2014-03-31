@@ -68,6 +68,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	    provider.bindCommand(new KeyControl(Input.KEY_A), new BasicCommand("left"));
 	    provider.bindCommand(new KeyControl(Input.KEY_D), new BasicCommand("right"));
 	    provider.bindCommand(new KeyControl(Input.KEY_Q), new BasicCommand("primary"));
+	    provider.bindCommand(new KeyControl(Input.KEY_E), new BasicCommand("secondary"));
 	    
 		
 	}
@@ -109,6 +110,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     		hero.startMove(Movable.Direction.EAST);
     	} else if(bCommand.getName().equals("primary")){
     		hero.primaryAbility();
+    	} else if(bCommand.getName().equals("secondary")){
+    		hero.secondaryAbility();
     	}
     }
 
