@@ -2,6 +2,7 @@ package projectblast;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
@@ -17,15 +18,20 @@ import org.newdawn.slick.command.InputProviderListener;
 import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * @author Axel Savén Östebo
  * revised by Mattias Nilsen
+ * revised by Axel Savén Östebo - Added entity drawing using Maps
  */
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
 	private Hero hero;
 	private BlastModel model;
+	
+	private List<Entity> entities;
+	
     public GameplayState()  {
     	 ArrayList<Player> players = new ArrayList();
          players.add(new Player(hero));
@@ -52,7 +58,14 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 			e.printStackTrace();
 		}
         
-       
+        MapReader m;
+		try {
+			m = new MapReader(new TiledMap("data/map/Map.tmx"));
+			entities = m.createEntities();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     
 
     }
@@ -76,8 +89,14 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
 		// TODO Remove hardcoding
-	    hero.draw(g, Color.red);
 	    
+		//Draw all entities
+	    for (Entity e: entities){
+	    	e.draw(g);
+	    }
+	    
+	    //Draw the hero
+	    hero.draw(g, Color.red);
 		
 	}
 

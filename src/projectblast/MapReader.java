@@ -3,6 +3,8 @@ package projectblast;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
@@ -28,15 +30,30 @@ public class MapReader {
 				if (!"air".equals(prop)){
 					if ("block".equals(prop)){
 						//TODO fix sprite here
-						list.add(new SolidBlock(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,null));
+						try {
+							list.add(new SolidBlock(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,
+									new Image("data/image/BlockRed.png")));
+						} catch (SlickException e) {
+							e.printStackTrace();
+						}
 					}
 					if ("box".equals(prop)){
 						//TODO fix sprite here
-						list.add(new DestructibleBlock(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,null));
+						try {
+							list.add(new DestructibleBlock(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,
+									new Image("data/image/BlockGreen.png")));
+						} catch (SlickException e) {
+							e.printStackTrace();
+						}
 					}
 					if ("tower".equals(prop)){
 						//TODO fix sprite here
-						list.add(new Tower(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,null));
+						try {
+							list.add(new Tower(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,
+									new Image("data/image/Tower.png")));
+						} catch (SlickException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}
