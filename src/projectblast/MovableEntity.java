@@ -74,6 +74,8 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	public void startMove(Direction direction) {
 		this.direction = direction;
 		moving = true;
+		
+		
 	}
 	@Override
 	public void startMove() {
@@ -83,6 +85,12 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	@Override
 	public void stopMove() {
 		moving = false;
+	}
+	
+	public void stopMove(Direction direction) {
+		if(this.direction == direction){
+			moving = false;
+		}
 	}
 	
 	public boolean isMoving() {
