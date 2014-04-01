@@ -17,8 +17,11 @@ public class BlastView implements IBlastView {
 	
 	private IBlastModel model;
 	
+	public BlastView(IBlastModel model){
+		this.model = model;
+	}
 	public void render(Graphics g) {
-			model = new BlastModel(); //Ska antagligen få BlastModel från Control
+			
     
 			//Draw all entities
 		    for (Entity e: model.getEntities()){

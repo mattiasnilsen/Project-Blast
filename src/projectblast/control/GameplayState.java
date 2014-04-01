@@ -46,7 +46,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	
     public GameplayState()  {
     	model = new BlastModel(); //Ska antagligen hämta en Model och View på ngt sätt.
-    	view  = new BlastView();
+    	view  = new BlastView(model);
     }
     
 	@Override
