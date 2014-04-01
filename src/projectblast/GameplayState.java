@@ -2,6 +2,7 @@ package projectblast;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.newdawn.slick.Color;
@@ -28,46 +29,13 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
-	private Hero hero;
-	private BlastModel model;
 	
-	private List<Entity> entities;
+	private BlastModel model;
+	private BlastView view;
 	
     public GameplayState()  {
-    	 ArrayList<Player> players = new ArrayList();
-         players.add(new Player(hero));
-         
-         model = new BlastModel(players);
-    	Animation[] animations = new Animation[4];
-    	Image[] images = new Image[4];
-    	try {
-			images[0] = new Image("/data/image/SnowmanHeroDown.png");
-			images[1] = new Image("/data/image/SnowmanHeroRight.png");
-			images[2] = new Image("/data/image/SnowmanHeroUp.png");
-			images[3] = new Image("/data/image/SnowmanHeroLeft.png");
-			
-		} catch (SlickException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-    	
-    	animations[0] = new Animation(images, 1000);
-        try {
-			hero = new Mage(200, 200, new Image("/data/image/SnowmanHeroDown.png"), 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red));
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        MapReader m;
-		try {
-			entities = MapReader.createEntities(new TiledMap("data/map/Map.tmx"));
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    
-
+    	model = new BlastModel();
+    	view  = new BlastView();
     }
     
 	@Override
@@ -89,28 +57,14 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
-		// TODO Remove hardcoding
-	    
-		//Draw all entities
-	    for (Entity e: entities){
-	    	e.draw(g);
-	    }
-	    
-	    //Draw the hero
-	    hero.draw(g, Color.red);
-	    
-	    //Draw the test
-	    g.setColor(Color.red);
-	    g.drawString("" + isFree(hero.getCollisionBox()), hero.getX(), hero.getY() + 32);
+		view.render(gc, game, g);
 		
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
-		//TODO remove hardcoding
-		hero.update();
-		Rectangle test = new Rectangle(hero.getX() + hero.getDirection().getX(),hero.getY() + hero.getDirection().getY(),32,32);
+		model.update();
 		
 	}
 
