@@ -110,4 +110,10 @@ public class BlastModel implements IBlastModel {
 		}
 	}
 
+	@Override
+	public void stop(int playerID) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

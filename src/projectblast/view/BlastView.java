@@ -10,7 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import projectblast.model.Entity;
 
 
-public class BlastView {
+public class BlastView implements IBlastView {
 	
 	
 	/*public void render(GameContainer gc, StateBasedGame game, Graphics g)

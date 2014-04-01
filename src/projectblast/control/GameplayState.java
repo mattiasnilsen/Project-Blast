@@ -25,9 +25,11 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.BlastModel;
 import projectblast.model.Entity;
+import projectblast.model.IBlastModel;
 import projectblast.model.Movable;
 import projectblast.model.Movable.Direction;
 import projectblast.view.BlastView;
+import projectblast.view.IBlastView;
 
 
 
@@ -39,8 +41,8 @@ import projectblast.view.BlastView;
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
 	
-	private BlastModel model;
-	private BlastView view;
+	private IBlastModel model;
+	private IBlastView view;
 	
     public GameplayState()  {
     	model = new BlastModel();
@@ -96,35 +98,62 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 
     @Override
     public void controlPressed(Command command) {
-    	/*BasicCommand bCommand = (BasicCommand)command;
-    	//TODO Change to switch case.
-    	if(bCommand.getName().equals("up")) {
-    		hero.startMove(Movable.Direction.NORTH);
-    	} else if(bCommand.getName().equals("down")) {
-    		hero.startMove(Movable.Direction.SOUTH);
-    	} else if(bCommand.getName().equals("left")) {
-    		hero.startMove(Movable.Direction.WEST);
-    	} else if(bCommand.getName().equals("right")) {
-    		hero.startMove(Movable.Direction.EAST);
-    	} else if(bCommand.getName().equals("primary")){
-    		hero.primaryAbility();
-    	} else if(bCommand.getName().equals("secondary")){
-    		hero.secondaryAbility();
-    	}*/
+    	BasicCommand bCommand = (BasicCommand)command;
+    	switch(bCommand.getName()){
+    		case "up":
+    			model.up(1);
+    			break;
+    		case "down":
+    			model.down(1);
+    			break;
+    		case "left":
+    			model.left(1);
+    			break;
+    		case "right":
+    			model.right(1);
+    			break;
+    		case "primary":
+    			model.primary(1);
+    			break;
+    		case "secondary":
+    			model.secondary(1);
+    			break;
+    		default:
+    			break;
+    			
+    			
+    			
+    	}
+    	
+    	
     }
 
     @Override
     public void controlReleased(Command command) {
-    	/*BasicCommand bCommand = (BasicCommand)command;
-    	//TODO Change to switch case.
-    	if(bCommand.getName().equals("up")) {
-    		hero.stopMove(Movable.Direction.NORTH);
-    	} else if(bCommand.getName().equals("down")) {
-    		hero.stopMove(Movable.Direction.SOUTH);
-    	} else if(bCommand.getName().equals("left")) {
-    		hero.stopMove(Movable.Direction.WEST);
-    	} else if(bCommand.getName().equals("right")) {
-    		hero.stopMove(Movable.Direction.EAST);
-    	} */
+    	BasicCommand bCommand = (BasicCommand)command;
+    	switch(bCommand.getName()){
+			case "up":
+				
+				
+			case "down":
+				
+				
+			case "left":
+				
+				
+			case "right":
+				
+				model.stop(1);
+				break;
+			case "primary":
+				
+				break;
+			case "secondary":
+				
+				break;
+			default:
+				break;
+
+    	}
     }
 }

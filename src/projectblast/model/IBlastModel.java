@@ -12,6 +12,8 @@ public interface IBlastModel {
 	void primary(int playerID);
 	void secondary(int playerID);
 	
+	void stop(int playerID);
+	
 	/**
 	 * @return an unsorted list of entities.
 	 */
