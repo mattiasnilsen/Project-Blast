@@ -4,16 +4,23 @@ package projectblast;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Rectangle;
 
 public class Entity implements Drawable {
 	private Image sprite;
+	private final Rectangle collisionBox;
 	
 	private int x,y;
 
-	public Entity(int x, int y, Image sprite) {
+	public Entity(int x, int y, Image sprite, Rectangle box) {
 		this.x = x;
 		this.y = y;
 		this.sprite = sprite;
+		this.collisionBox = box;
+	}
+	
+	public Entity(int x, int y, Image sprite){
+		this(x,y,sprite,new Rectangle(x,y,32,32));
 	}
 	
 
@@ -58,6 +65,10 @@ public class Entity implements Drawable {
 	
 	public int getY() {
 	    return y;
+	}
+
+	public Rectangle getCollisionBox() {
+		return collisionBox;
 	}
 
 
