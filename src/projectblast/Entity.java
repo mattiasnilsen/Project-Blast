@@ -17,8 +17,6 @@ public class Entity implements Drawable {
 		this.y = y;
 		this.sprite = sprite;
 		this.collisionBox = box;
-		BlastModel.addEntity(this); //Fungerar men ar ej att rekommendera ^^
-		
 	}
 	
 	public Entity(int x, int y, Image sprite){
