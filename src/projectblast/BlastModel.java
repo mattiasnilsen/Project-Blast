@@ -8,11 +8,11 @@ import projectblast.Movable.Direction;
 
 public class BlastModel implements IBlastModel {
 	
-	private static List<Entity> entities;
-	private ArrayList<Player> players;
+	private List<Entity> entities;
+	private List<Player> players;
 	
 	public BlastModel(ArrayList<Player> players){
-		entities = new LinkedList();
+		entities = new LinkedList<Entity>();
 		this.players = players;  
 	}
 	@Override
@@ -52,19 +52,14 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public List<Entity> getEntities() {
-		
 		return entities;
 	}
 	
-	public static void addEntity(Entity e){
+	public void addEntity(Entity e){
 		entities.add(e);
-		System.out.println("");
-		for(Entity a : entities){
-			System.out.println(a.toString());
-		}
 	}
 	
-	public static void removeEntity(Entity e){
+	public void removeEntity(Entity e){
 		entities.remove(e);
 	}
 
