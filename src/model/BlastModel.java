@@ -101,7 +101,7 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	
-	public void update(GameContainer gc, StateBasedGame game)
+	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
 		//TODO remove hardcoding
 		for (Player p: players){

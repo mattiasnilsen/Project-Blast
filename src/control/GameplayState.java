@@ -72,7 +72,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
-		model.update();
+		model.update(GameContainer gc, StateBasedGame game, int delta);
 		
 	}
 
