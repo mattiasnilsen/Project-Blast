@@ -1,6 +1,8 @@
-package projectblast.model;
+package projectblast.control;
 
 import org.newdawn.slick.AppGameContainer;
+
+import projectblast.model.Constants;
 
 public class Main {
 	public static void main(String args[]) {
