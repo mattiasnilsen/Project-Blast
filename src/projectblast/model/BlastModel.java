@@ -61,25 +61,25 @@ public class BlastModel implements IBlastModel {
 	}
 	@Override
 	public void left(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.WEST);
+		players.get(playerID-1).getHero().startMove(Direction.WEST);
 
 	}
 
 	@Override
 	public void right(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.EAST);
+		players.get(playerID-1).getHero().startMove(Direction.EAST);
 
 	}
 
 	@Override
 	public void up(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.NORTH);
+		players.get(playerID-1).getHero().startMove(Direction.NORTH);
 
 	}
 
 	@Override
 	public void down(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.SOUTH);
+		players.get(playerID-1).getHero().startMove(Direction.SOUTH);
 
 	}
 
@@ -117,7 +117,7 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void stop(int playerID) {
-		// TODO Auto-generated method stub
+		players.get(playerID-1).getHero().stopMove();
 		
 	}
 	
