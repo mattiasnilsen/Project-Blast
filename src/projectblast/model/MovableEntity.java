@@ -1,4 +1,4 @@
-package model;
+package projectblast.model;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;

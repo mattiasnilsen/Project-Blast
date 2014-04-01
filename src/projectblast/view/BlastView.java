@@ -1,6 +1,5 @@
-package view;
+package projectblast.view;
 
-import model.Entity;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -8,11 +7,13 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import projectblast.model.Entity;
+
 
 public class BlastView {
 	
 	
-	public void render(GameContainer gc, StateBasedGame game, Graphics g)
+	/*public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
 			// TODO Remove hardcoding
     
@@ -29,6 +30,6 @@ public class BlastView {
 		    g.drawString("" + isFree(hero.getCollisionBox()), hero.getX(), hero.getY() + 32);
 			
 		
-	}
+	}*/
 }
 

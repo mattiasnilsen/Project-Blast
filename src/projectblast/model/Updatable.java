@@ -1,4 +1,4 @@
-package model;
+package projectblast.model;
 /**
  * Common interface for all updatable classes in project blast.
  * @author Mattias Nilsen

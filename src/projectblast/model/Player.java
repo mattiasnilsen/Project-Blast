@@ -1,4 +1,4 @@
-package model;
+package projectblast.model;
 /**
  * 
  * @author Alex

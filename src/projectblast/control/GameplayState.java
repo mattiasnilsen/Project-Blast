@@ -1,14 +1,10 @@
-package control;
+package projectblast.control;
 
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.BlastModel;
-import model.Entity;
-import model.Movable;
-import model.Movable.Direction;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
@@ -27,8 +23,13 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
+import projectblast.model.BlastModel;
+import projectblast.model.Entity;
+import projectblast.model.Movable;
+import projectblast.model.Movable.Direction;
+import projectblast.view.BlastView;
 
-import view.BlastView;
+
 
 /**
  * @author Axel Savén Östebo
@@ -65,24 +66,24 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
-		view.render(gc, game, g);
+		//view.render(gc, game, g);
 		
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
-		model.update(GameContainer gc, StateBasedGame game, int delta);
+		//model.update(GameContainer gc, StateBasedGame game, int delta);
 		
 	}
 
 	public boolean isFree(Rectangle r){
 		
-		for (Entity e: entities){
+		/*for (Entity e: entities){
 	    	if (e.getCollisionBox().intersects(r)){
 	    		return false;
 	    	}
-	    }
+	    }*/
 		return true;
 	}
 	
@@ -95,7 +96,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 
     @Override
     public void controlPressed(Command command) {
-    	BasicCommand bCommand = (BasicCommand)command;
+    	/*BasicCommand bCommand = (BasicCommand)command;
     	//TODO Change to switch case.
     	if(bCommand.getName().equals("up")) {
     		hero.startMove(Movable.Direction.NORTH);
@@ -109,12 +110,12 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     		hero.primaryAbility();
     	} else if(bCommand.getName().equals("secondary")){
     		hero.secondaryAbility();
-    	}
+    	}*/
     }
 
     @Override
     public void controlReleased(Command command) {
-    	BasicCommand bCommand = (BasicCommand)command;
+    	/*BasicCommand bCommand = (BasicCommand)command;
     	//TODO Change to switch case.
     	if(bCommand.getName().equals("up")) {
     		hero.stopMove(Movable.Direction.NORTH);
@@ -124,6 +125,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     		hero.stopMove(Movable.Direction.WEST);
     	} else if(bCommand.getName().equals("right")) {
     		hero.stopMove(Movable.Direction.EAST);
-    	} 
+    	} */
     }
 }
