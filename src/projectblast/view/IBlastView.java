@@ -4,5 +4,5 @@ import org.newdawn.slick.Graphics;
 
 public interface IBlastView {
 
-	void render(Graphics g);
+	public void render(Graphics g);
 }

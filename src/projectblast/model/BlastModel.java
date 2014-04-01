@@ -107,7 +107,7 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	
-	public void update(){
+	public void update(GameContainer gc, StateBasedGame game, int delta){
 		//TODO remove hardcoding
 		for (Player p: players){
 			p.getHero().update();
@@ -128,6 +128,11 @@ public class BlastModel implements IBlastModel {
 	    	}
 	    }
 		return true;
+	}
+
+	@Override
+	public List<Player> getPlayers() {
+		return players;
 	}
 
 }

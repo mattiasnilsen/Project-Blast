@@ -17,10 +17,11 @@ public interface IBlastModel {
 	
 	void stop(int playerID);
 	
-	void update();
+	void update(GameContainer gc, StateBasedGame game, int delta);
 	
 	/**
 	 * @return an unsorted list of entities.
 	 */
 	List<Entity> getEntities();
+	List<Player> getPlayers();
 }

@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import projectblast.model.BlastModel;
 import projectblast.model.Entity;
 import projectblast.model.IBlastModel;
+import projectblast.model.Player;
 
 
 
@@ -25,13 +26,15 @@ public class BlastView implements IBlastView {
 		    	e.draw(g);
 		    }
 		    
+		    //Draw all heroes
+		    //TODO WARNING! Import for our own package model!
+		    for (Player p: model.getPlayers()){
+		    	p.getHero().draw(g);
+		    }
 		    
-		    
-		    /*
-		    //Draw the test
-		    g.setColor(Color.red);
-		    g.drawString("" + isFree(hero.getCollisionBox()), hero.getX(), hero.getY() + 32);
-			*/
+		    //Draw debug text
+		    g.setColor(Color.yellow);
+		    g.drawString("Entities: " + model.getEntities().size() + " Players: " + model.getPlayers().size(), 0, 0);
 		
 	}
 }
