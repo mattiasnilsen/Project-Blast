@@ -61,8 +61,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
         
         MapReader m;
 		try {
-			m = new MapReader(new TiledMap("data/map/Map.tmx"));
-			entities = m.createEntities();
+			entities = MapReader.createEntities(new TiledMap("data/map/Map.tmx"));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -13,13 +13,8 @@ import org.newdawn.slick.tiled.TiledMap;
  *
  */
 public class MapReader {
-	private TiledMap map;
 	
-	MapReader(TiledMap map){
-		this.map = map;
-	}
-	
-	public List<Entity> createEntities(){
+	public static List<Entity> createEntities(TiledMap map){
 		List<Entity> list = new LinkedList<Entity>();
 		
 		//Step through the map and read property values
