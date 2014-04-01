@@ -29,7 +29,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	private IBlastView view;
 	
     public GameplayState()  {
-    	model = new BlastModel(); //TODO Ska antagligen hämta en Model och View på ngt sätt.
+    	model = new BlastModel(); //TODO Ska antagligen hämta en Model och View på något sätt.
     	view  = new BlastView(model);
     }
     
@@ -107,12 +107,15 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	switch(bCommand.getName()){
 			case "up":
 				
+				model.stop(1);
 				break;
 			case "down":
 				
+				model.stop(1);
 				break;
 			case "left":
 				
+				model.stop(1);
 				break;
 			case "right":
 				

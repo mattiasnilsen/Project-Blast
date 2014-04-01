@@ -36,22 +36,6 @@ public class BlastModel implements IBlastModel {
 			e.printStackTrace();
 		}
 		
-		Animation[] animations = new Animation[4];
-    	Image[] images = new Image[4];
-    	try {
-			images[0] = new Image("/data/image/SnowmanHeroDown.png");
-			images[1] = new Image("/data/image/SnowmanHeroRight.png");
-			images[2] = new Image("/data/image/SnowmanHeroUp.png");
-			images[3] = new Image("/data/image/SnowmanHeroLeft.png");
-			
-		} catch (SlickException ex) {
-			// TODO Auto-generated catch block
-			ex.printStackTrace();
-		}
-    	
-    	animations[0] = new Animation(images, 1000);
-        Hero hero = new Mage(200, 200, images[0], 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red));
-		players.add(new Player(hero));
 		System.out.println(players.get(0));
 		
 		for(Player p: players){

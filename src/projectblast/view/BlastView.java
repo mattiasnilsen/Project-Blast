@@ -30,7 +30,6 @@ public class BlastView implements IBlastView {
 		    }
 		    
 		    //Draw all heroes
-		    //TODO WARNING! Import for our own package model!
 		    for (Player p: model.getPlayers()){
 		    	p.getHero().draw(g);
 		    }
