@@ -2,6 +2,9 @@ package projectblast.model;
 
 import java.util.List;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.state.StateBasedGame;
+
 public interface IBlastModel {
 	
 	void left(int playerID);
@@ -13,6 +16,8 @@ public interface IBlastModel {
 	void secondary(int playerID);
 	
 	void stop(int playerID);
+	
+	void update();
 	
 	/**
 	 * @return an unsorted list of entities.

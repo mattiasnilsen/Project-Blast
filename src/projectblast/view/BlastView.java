@@ -7,29 +7,32 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import projectblast.model.BlastModel;
 import projectblast.model.Entity;
+import projectblast.model.IBlastModel;
+
 
 
 public class BlastView implements IBlastView {
 	
+	private IBlastModel model;
 	
-	/*public void render(GameContainer gc, StateBasedGame game, Graphics g)
-			throws SlickException {
-			// TODO Remove hardcoding
+	public void render(Graphics g) {
+			model = new BlastModel(); //Ska antagligen få BlastModel från Control
     
 			//Draw all entities
-		    for (Entity e: entities){
+		    for (Entity e: model.getEntities()){
 		    	e.draw(g);
 		    }
 		    
-		    //Draw the hero
-		    hero.draw(g, Color.red);
 		    
+		    
+		    /*
 		    //Draw the test
 		    g.setColor(Color.red);
 		    g.drawString("" + isFree(hero.getCollisionBox()), hero.getX(), hero.getY() + 32);
-			
+			*/
 		
-	}*/
+	}
 }
 

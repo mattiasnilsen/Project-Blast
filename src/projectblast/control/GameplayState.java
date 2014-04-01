@@ -45,7 +45,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	private IBlastView view;
 	
     public GameplayState()  {
-    	model = new BlastModel();
+    	model = new BlastModel(); //Ska antagligen hämta en Model och View på ngt sätt.
     	view  = new BlastView();
     }
     
@@ -68,26 +68,18 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
-		//view.render(gc, game, g);
+		view.render(g);
 		
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
-		//model.update(GameContainer gc, StateBasedGame game, int delta);
+		model.update();
 		
 	}
 
-	public boolean isFree(Rectangle r){
-		
-		/*for (Entity e: entities){
-	    	if (e.getCollisionBox().intersects(r)){
-	    		return false;
-	    	}
-	    }*/
-		return true;
-	}
+	
 	
 	
 	@Override

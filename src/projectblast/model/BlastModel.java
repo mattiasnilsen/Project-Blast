@@ -102,8 +102,7 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	
-	public void update(GameContainer gc, StateBasedGame game, int delta)
-			throws SlickException {
+	public void update(){
 		//TODO remove hardcoding
 		for (Player p: players){
 			p.getHero().update();
@@ -114,6 +113,16 @@ public class BlastModel implements IBlastModel {
 	public void stop(int playerID) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public boolean isFree(Rectangle r){
+		
+		for (Entity e: entities){
+	    	if (e.getCollisionBox().intersects(r)){
+	    		return false;
+	    	}
+	    }
+		return true;
 	}
 
 }
