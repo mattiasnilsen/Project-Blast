@@ -23,18 +23,19 @@ public class BlastModel implements IBlastModel {
 	private List<Entity> entities;
 	private List<Player> players;
 	
-	public BlastModel(){
-		this(new LinkedList<Player>(), null);
+	public BlastModel(){ //Ska bytas ut mot BlastFactory??
+		this(new LinkedList<Player>());
 	}
 	
-	public BlastModel(List<Player> players, Hero hero){
-		
+	public BlastModel(List<Player> players){
+		this.players = players;  
+		this.entities = new LinkedList<Entity>();
 		try {
-			entities = MapReader.createEntities(new TiledMap("data/map/Map.tmx"));
+			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		this.players = players;  
+		
 		Animation[] animations = new Animation[4];
     	Image[] images = new Image[4];
     	try {
@@ -49,9 +50,13 @@ public class BlastModel implements IBlastModel {
 		}
     	
     	animations[0] = new Animation(images, 1000);
-        hero = new Mage(200, 200, images[0], 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red));
-		
+        Hero hero = new Mage(200, 200, images[0], 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red));
 		players.add(new Player(hero));
+		
+		for(Player p: players){
+			entities.add(p.getHero());
+		}
+		
 	}
 	@Override
 	public void left(int playerID) {
