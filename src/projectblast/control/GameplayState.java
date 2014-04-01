@@ -1,16 +1,7 @@
 package projectblast.control;
 
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.command.BasicCommand;
@@ -18,20 +9,13 @@ import org.newdawn.slick.command.Command;
 import org.newdawn.slick.command.InputProvider;
 import org.newdawn.slick.command.InputProviderListener;
 import org.newdawn.slick.command.KeyControl;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Entity;
 import projectblast.model.IBlastModel;
-import projectblast.model.Movable;
-import projectblast.model.Movable.Direction;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
-
-
 
 /**
  * @author Axel Savén Östebo
@@ -46,7 +30,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	
     public GameplayState()  {
     	model = new BlastModel(); //TODO Ska antagligen hämta en Model och View på ngt sätt.
-    	view  = new BlastView();
+    	view  = new BlastView(model);
     }
     
 	@Override
@@ -112,8 +96,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     		default:
     			break;
     			
-    			
-    			
     	}
     	
     	
@@ -125,13 +107,13 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	switch(bCommand.getName()){
 			case "up":
 				
-				
+				break;
 			case "down":
 				
-				
+				break;
 			case "left":
 				
-				
+				break;
 			case "right":
 				
 				model.stop(1);

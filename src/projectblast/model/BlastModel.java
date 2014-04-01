@@ -52,6 +52,7 @@ public class BlastModel implements IBlastModel {
     	animations[0] = new Animation(images, 1000);
         Hero hero = new Mage(200, 200, images[0], 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red));
 		players.add(new Player(hero));
+		System.out.println(players.get(0));
 		
 		for(Player p: players){
 			entities.add(p.getHero());
@@ -60,25 +61,25 @@ public class BlastModel implements IBlastModel {
 	}
 	@Override
 	public void left(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.WEST);
+		players.get(playerID-1).getHero().startMove(Direction.WEST);
 
 	}
 
 	@Override
 	public void right(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.EAST);
+		players.get(playerID-1).getHero().startMove(Direction.EAST);
 
 	}
 
 	@Override
 	public void up(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.NORTH);
+		players.get(playerID-1).getHero().startMove(Direction.NORTH);
 
 	}
 
 	@Override
 	public void down(int playerID) {
-		players.get(playerID-1).getHero().move(Direction.SOUTH);
+		players.get(playerID-1).getHero().startMove(Direction.SOUTH);
 
 	}
 
@@ -116,7 +117,7 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void stop(int playerID) {
-		// TODO Auto-generated method stub
+		players.get(playerID-1).getHero().stopMove();
 		
 	}
 	
