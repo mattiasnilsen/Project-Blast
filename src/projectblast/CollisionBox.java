@@ -24,6 +24,7 @@ public class CollisionBox {
 		if (b == null){
 			return false;
 		} else {
+			//TODO THIS DOES NOT WORK CORRECTLY!!!
 			return (x > b.getX() && x < b.getX()+b.getWidth()) && (y > b.getY() && y < b.getY()+b.getHeight());
 		}
 	}

@@ -12,7 +12,7 @@ public class BlastModel implements IBlastModel {
 	private ArrayList<Player> players;
 	
 	public BlastModel(ArrayList<Player> players){
-		entities = new LinkedList();
+		entities = new LinkedList<Entity>();
 		this.players = players;  
 	}
 	@Override

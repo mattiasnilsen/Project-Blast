@@ -4,6 +4,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Rectangle;
 
 /**
  * 
@@ -48,6 +49,8 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	public void place(int x, int y) {
 		setX(x);
 		setY(y);
+		getCollisionBox().setX(x);
+		getCollisionBox().setY(y);
 	}
 	public Direction getDirection() {
 		return direction;

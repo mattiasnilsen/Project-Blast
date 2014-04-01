@@ -16,6 +16,7 @@ import org.newdawn.slick.command.Command;
 import org.newdawn.slick.command.InputProvider;
 import org.newdawn.slick.command.InputProviderListener;
 import org.newdawn.slick.command.KeyControl;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
@@ -98,6 +99,10 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	    
 	    //Draw the hero
 	    hero.draw(g, Color.red);
+	    
+	    //Draw the test
+	    g.setColor(Color.red);
+	    g.drawString("" + isFree(hero.getCollisionBox()), hero.getX(), hero.getY() + 32);
 		
 	}
 
@@ -106,9 +111,21 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 			throws SlickException {
 		//TODO remove hardcoding
 		hero.update();
+		Rectangle test = new Rectangle(hero.getX() + hero.getDirection().getX(),hero.getY() + hero.getDirection().getY(),32,32);
 		
 	}
 
+	public boolean isFree(Rectangle r){
+		
+		for (Entity e: entities){
+	    	if (e.getCollisionBox().intersects(r)){
+	    		return false;
+	    	}
+	    }
+		return true;
+	}
+	
+	
 	@Override
 	public int getID() {
 		//This is the identifier ID for the gameplay state
