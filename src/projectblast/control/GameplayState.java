@@ -38,17 +38,27 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public void init(GameContainer gc, StateBasedGame game)
 			throws SlickException {
-	    
+		
+	    //Bind keys to commands
 	    InputProvider provider = new InputProvider(gc.getInput());
 	    provider.addListener(this);
-	    provider.bindCommand(new KeyControl(Input.KEY_W), new BasicCommand("up"));
-	    provider.bindCommand(new KeyControl(Input.KEY_S), new BasicCommand("down"));
-	    provider.bindCommand(new KeyControl(Input.KEY_A), new BasicCommand("left"));
-	    provider.bindCommand(new KeyControl(Input.KEY_D), new BasicCommand("right"));
-	    provider.bindCommand(new KeyControl(Input.KEY_Q), new BasicCommand("primary"));
-	    provider.bindCommand(new KeyControl(Input.KEY_E), new BasicCommand("secondary"));
 	    
-		
+	    //Player 1 controls
+	    provider.bindCommand(new KeyControl(Input.KEY_W), new BasicCommand("1up"));
+	    provider.bindCommand(new KeyControl(Input.KEY_S), new BasicCommand("1down"));
+	    provider.bindCommand(new KeyControl(Input.KEY_A), new BasicCommand("1left"));
+	    provider.bindCommand(new KeyControl(Input.KEY_D), new BasicCommand("1right"));
+	    provider.bindCommand(new KeyControl(Input.KEY_Q), new BasicCommand("1primary"));
+	    provider.bindCommand(new KeyControl(Input.KEY_E), new BasicCommand("1secondary"));
+	    
+	    //Player 2 controls
+	    provider.bindCommand(new KeyControl(Input.KEY_UP), new BasicCommand("2up"));
+	    provider.bindCommand(new KeyControl(Input.KEY_DOWN), new BasicCommand("2down"));
+	    provider.bindCommand(new KeyControl(Input.KEY_LEFT), new BasicCommand("2left"));
+	    provider.bindCommand(new KeyControl(Input.KEY_RIGHT), new BasicCommand("2right"));
+	    provider.bindCommand(new KeyControl(Input.KEY_1), new BasicCommand("2primary"));
+	    provider.bindCommand(new KeyControl(Input.KEY_2), new BasicCommand("2secondary"));
+	    
 	}
 
 	@Override
@@ -76,24 +86,29 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     @Override
     public void controlPressed(Command command) {
     	BasicCommand bCommand = (BasicCommand)command;
-    	switch(bCommand.getName()){
+    	
+    	//Split the command name into a number and a name
+    	int playerID = Integer.parseInt("" + bCommand.getName().charAt(0));
+    	String com   = bCommand.getName().substring(1);
+    	
+    	switch(com){
     		case "up":
-    			model.up(1);
+    			model.up(playerID);
     			break;
     		case "down":
-    			model.down(1);
+    			model.down(playerID);
     			break;
     		case "left":
-    			model.left(1);
+    			model.left(playerID);
     			break;
     		case "right":
-    			model.right(1);
+    			model.right(playerID);
     			break;
     		case "primary":
-    			model.primary(1);
+    			model.primary(playerID);
     			break;
     		case "secondary":
-    			model.secondary(1);
+    			model.secondary(playerID);
     			break;
     		default:
     			break;
@@ -106,22 +121,27 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     @Override
     public void controlReleased(Command command) {
     	BasicCommand bCommand = (BasicCommand)command;
-    	switch(bCommand.getName()){
+    	
+    	//Split the command name into a number and a name
+    	int playerID = Integer.parseInt("" + bCommand.getName().charAt(0));
+    	String com   = "" + bCommand.getName().substring(1);
+    	
+    	switch(com){
 			case "up":
 				
-				model.stop(1);
+				model.stop(playerID);
 				break;
 			case "down":
 				
-				model.stop(1);
+				model.stop(playerID);
 				break;
 			case "left":
 				
-				model.stop(1);
+				model.stop(playerID);
 				break;
 			case "right":
 				
-				model.stop(1);
+				model.stop(playerID);
 				break;
 			case "primary":
 				

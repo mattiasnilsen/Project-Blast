@@ -17,13 +17,16 @@ import projectblast.view.IBlastView;
  *
  */
 public final class SimulatedOptions {
+	private static IBlastModel model = null;
+	private static IBlastView view = null;
 
 	/**
 	 * Returns a simulated list of players. This will later be done by the users before matches.
 	 * @return List
 	 */
-	public static List<Player> getSimulatedPlayerList(){
+	private static List<Player> getSimulatedPlayerList(){
 		List<Player> p = new LinkedList<Player>();
+		
 		
 		Animation[] animations = new Animation[4];
     	Image[] images = new Image[4];
@@ -51,14 +54,20 @@ public final class SimulatedOptions {
 	 * @return Model
 	 */
 	public static IBlastModel getSimulatedModel(){
-		return new BlastModel(getSimulatedPlayerList());
+		if (model == null){
+			model = new BlastModel(getSimulatedPlayerList());
+		}
+		return model;
 	}
 	/**
 	 * Returns a simulated view as a temporary source
 	 * @return View
 	 */
 	public static IBlastView getSimulatedView(){
-		return new BlastView(getSimulatedModel());
+		if (view == null){
+			view = new BlastView(getSimulatedModel());
+		}
+		return view;
 	}
 
 }
