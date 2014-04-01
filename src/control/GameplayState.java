@@ -1,9 +1,14 @@
-package projectblast;
+package control;
 
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import model.BlastModel;
+import model.Entity;
+import model.Movable;
+import model.Movable.Direction;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
@@ -21,6 +26,9 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
+
+
+import view.BlastView;
 
 /**
  * @author Axel Savén Östebo

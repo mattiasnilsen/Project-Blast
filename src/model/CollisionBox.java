@@ -1,4 +1,4 @@
-package projectblast;
+package model;
 
 /**
  * @author Axel Savén Östebo

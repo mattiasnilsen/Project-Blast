@@ -1,4 +1,4 @@
-package projectblast;
+package model;
 
 import java.util.List;
 

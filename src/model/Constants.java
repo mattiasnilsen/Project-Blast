@@ -1,4 +1,4 @@
-package projectblast;
+package model;
 
 public final class Constants {
 	public static final int GAME_WIDTH  = 1280;

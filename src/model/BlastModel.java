@@ -1,8 +1,10 @@
-package projectblast;
+package model;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import model.Movable.Direction;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
@@ -14,7 +16,6 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-import projectblast.Movable.Direction;
 
 public class BlastModel implements IBlastModel {
 	

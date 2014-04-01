@@ -1,4 +1,4 @@
-package projectblast;
+package model;
 
 
 import org.newdawn.slick.Color;
@@ -29,7 +29,7 @@ public class Entity implements Drawable {
 		g.drawImage(sprite, x, y);
 		
 	    //g.setColor(Color.white);
-	   // g.drawString("HERO", x, y);
+	    //g.drawString("HERO", x, y);
 	   
 	}
 	
