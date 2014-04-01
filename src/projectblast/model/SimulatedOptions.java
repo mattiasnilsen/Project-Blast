@@ -1,4 +1,4 @@
-package projectblast;
+package projectblast.model;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,13 +8,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import projectblast.model.BlastModel;
-import projectblast.model.Bomber;
-import projectblast.model.IBlastModel;
-import projectblast.model.Mage;
-import projectblast.model.Movable;
-import projectblast.model.Player;
-import projectblast.model.Team;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
 

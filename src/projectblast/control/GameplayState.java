@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.BlastModel;
 import projectblast.model.IBlastModel;
+import projectblast.model.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
 
@@ -29,8 +30,9 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	private IBlastView view;
 	
     public GameplayState()  {
-    	model = new BlastModel(); //TODO Ska antagligen hämta en Model och View på något sätt.
-    	view  = new BlastView(model);
+    	//TODO Remove simulation when options menu is complete
+    	model = SimulatedOptions.getSimulatedModel();
+    	view  = SimulatedOptions.getSimulatedView();
     }
     
 	@Override
