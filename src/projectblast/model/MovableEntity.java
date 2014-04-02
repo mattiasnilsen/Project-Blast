@@ -107,7 +107,7 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	@Override
 	public void update() {
 		if(isMoving()) {
-			move(direction);
+			move(direction,speed);
 		}
 	}
 

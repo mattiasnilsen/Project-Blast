@@ -104,6 +104,25 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		if (i.isKeyDown(Input.KEY_E)){
 			model.secondary(1);
 		}
+		
+		if (i.isKeyDown(Input.KEY_UP)){
+			model.movePlayer(2,Direction.NORTH);
+		}
+		if (i.isKeyDown(Input.KEY_DOWN)){
+			model.movePlayer(2,Direction.SOUTH);
+		}
+		if (i.isKeyDown(Input.KEY_LEFT)){
+			model.movePlayer(2,Direction.WEST);
+		}
+		if (i.isKeyDown(Input.KEY_RIGHT)){
+			model.movePlayer(2,Direction.EAST);
+		}
+		if (i.isKeyDown(Input.KEY_1)){
+			model.primary(2);
+		}
+		if (i.isKeyDown(Input.KEY_2)){
+			model.secondary(2);
+		}
 	}
 	
     @Override //TODO This method is now unused
