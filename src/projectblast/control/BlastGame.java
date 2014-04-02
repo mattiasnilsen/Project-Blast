@@ -1,6 +1,7 @@
 package projectblast.control;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 
@@ -10,6 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  */
 public class BlastGame extends StateBasedGame{
+	private BasicGameState titleState, settingsState, gameplayState;
 
 	public BlastGame(String name) {
 		super(name);
@@ -19,7 +21,9 @@ public class BlastGame extends StateBasedGame{
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-	    addState(new GameplayState());
+		gameplayState = new GameplayState();
+	    addState(gameplayState);
+	    enterState(gameplayState.getID());
 	}
 
 }

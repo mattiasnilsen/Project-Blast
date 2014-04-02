@@ -80,7 +80,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public int getID() {
 		//This is the identifier ID for the gameplay state
-		return 1;
+		return 2;
 	}
 
     @Override
