@@ -3,6 +3,8 @@ package projectblast.model;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+
+import projectblast.control.GameplayState;
 /**
  * 
  * @author franton
@@ -14,7 +16,7 @@ public class Mage extends Hero {
 	}
 	private Fireball lastFireBall;
 	@Override
-	public void primaryAbility() {
+	public Explosive primaryAbility() {
 		Animation[] animations = new Animation[4];
     	Image[] images = new Image[1];
     	try {
@@ -33,7 +35,11 @@ public class Mage extends Hero {
 			
 			e.printStackTrace();
 		}
-		//remove bombcount
+		
+		//TODO remove bombcount?
+		
+		
+		return lastFireBall;
 		
 	}
 

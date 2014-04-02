@@ -14,20 +14,20 @@ import org.newdawn.slick.geom.Rectangle;
 
 public class MovableEntity extends Entity implements Movable, Updatable {
 
-	private int speed = 4;
+	private int speed;
 	private Direction direction;
 	private boolean moving;
 	private Animation[] animations;
 
 	
-	public MovableEntity(int x, int y, Image sprite, int speed, Direction direction) {
-		super(x, y, sprite);
+	public MovableEntity(int x, int y, Image sprite, int speed, Direction direction, Rectangle box) {
+		super(x, y, sprite, box);
 		this.speed = speed;
 		this.direction = direction;
 	}
 
-	public MovableEntity(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations){
-		this(x,y,sprite, speed, direction);
+	public MovableEntity(int x, int y, Image sprite, int speed, Direction direction, Rectangle box, Animation[] animations){
+		this(x,y,sprite, speed, direction, box);
 		this.animations = animations;
 	}
 	@Override
@@ -70,7 +70,12 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 
 	@Override
 	public void move(Direction direction) {
-		place(getX() + (getSpeed() * direction.getX()), getY() + (getSpeed() * direction.getY()));
+		place(getX() + (direction.getX()), getY() + (direction.getY()));
+	}
+	
+	
+	public void move(Direction direction, int speed) {
+		place(getX() + (speed * direction.getX()), getY() + (speed * direction.getY()));
 	}
 
 	@Override

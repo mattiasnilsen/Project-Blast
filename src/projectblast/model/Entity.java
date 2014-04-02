@@ -19,10 +19,6 @@ public class Entity implements Drawable {
 		this.collisionBox = box;
 	}
 	
-	public Entity(int x, int y, Image sprite){
-		this(x,y,sprite,new Rectangle(x,y,32,32));
-	}
-	
 
 	@Override
 	public void draw(Graphics g) {

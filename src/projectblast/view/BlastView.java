@@ -5,6 +5,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.BlastModel;
@@ -32,6 +33,12 @@ public class BlastView implements IBlastView {
 		    //Draw all heroes
 		    for (Player p: model.getPlayers()){
 		    	p.getHero().draw(g);
+		    	
+		    	//TODO Remove this debug drawing of collision box
+		    	Rectangle r = p.getHero().getCollisionBox();
+		    	g.setColor(Color.cyan);
+		    	g.drawRect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
+		    	
 		    }
 		    
 		    //Draw debug text

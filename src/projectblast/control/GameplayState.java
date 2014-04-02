@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.BlastModel;
 import projectblast.model.IBlastModel;
+import projectblast.model.Movable.Direction;
 import projectblast.model.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
@@ -41,7 +42,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		
 	    //Bind keys to commands
 	    InputProvider provider = new InputProvider(gc.getInput());
-	    provider.addListener(this);
+	    //TODO Enable again....    provider.addListener(this);
 	    
 	    //Player 1 controls
 	    provider.bindCommand(new KeyControl(Input.KEY_W), new BasicCommand("1up"));
@@ -72,6 +73,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
 		model.update(gc, game, delta);
+		handleInput(gc.getInput());
 	}
 
 	
@@ -83,7 +85,28 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		return 2;
 	}
 
-    @Override
+	public void handleInput(Input i){
+		if (i.isKeyDown(Input.KEY_W)){
+			model.movePlayer(1,Direction.NORTH);
+		}
+		if (i.isKeyDown(Input.KEY_S)){
+			model.movePlayer(1,Direction.SOUTH);
+		}
+		if (i.isKeyDown(Input.KEY_A)){
+			model.movePlayer(1,Direction.WEST);
+		}
+		if (i.isKeyDown(Input.KEY_D)){
+			model.movePlayer(1,Direction.EAST);
+		}
+		if (i.isKeyDown(Input.KEY_Q)){
+			model.primary(1);
+		}
+		if (i.isKeyDown(Input.KEY_E)){
+			model.secondary(1);
+		}
+	}
+	
+    @Override //TODO This method is now unused
     public void controlPressed(Command command) {
     	BasicCommand bCommand = (BasicCommand)command;
     	
@@ -93,16 +116,16 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	
     	switch(com){
     		case "up":
-    			model.up(playerID);
+    			model.movePlayer(1,Direction.NORTH);
     			break;
     		case "down":
-    			model.down(playerID);
+    			model.movePlayer(1,Direction.SOUTH);
     			break;
     		case "left":
-    			model.left(playerID);
+    			model.movePlayer(1,Direction.WEST);
     			break;
     		case "right":
-    			model.right(playerID);
+    			model.movePlayer(1,Direction.EAST);
     			break;
     		case "primary":
     			model.primary(playerID);

@@ -8,6 +8,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Rectangle;
 
 public abstract class Hero extends MovableEntity{
 	
@@ -17,7 +18,7 @@ public abstract class Hero extends MovableEntity{
 	private Team team;
 	
     public Hero(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
-        super(x, y, sprite, speed, direction, animations);
+        super(x, y, sprite, speed, direction, new Rectangle(x,y,16,28), animations);
         bombPower = 1;
         bombCount = 1;
     }
@@ -57,7 +58,7 @@ public abstract class Hero extends MovableEntity{
     public Team getTeam(){
     	return team;
     }
-	public abstract void primaryAbility();
+	public abstract Explosive primaryAbility();
 		
 	public abstract void secondaryAbility();
 }

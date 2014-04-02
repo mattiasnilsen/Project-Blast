@@ -27,6 +27,7 @@ public class BlastModel implements IBlastModel {
 		this(new LinkedList<Player>());
 	}
 	
+	
 	public BlastModel(List<Player> players){
 		this.players = players;  
 		this.entities = new LinkedList<Entity>();
@@ -43,29 +44,22 @@ public class BlastModel implements IBlastModel {
 		}
 		
 	}
+	
+	
 	@Override
-	public void left(int playerID) {
-		players.get(playerID-1).getHero().startMove(Direction.WEST);
+	public void movePlayer(int playerID, Direction dir) {
+		Hero hero = players.get(playerID-1).getHero();
+		int distance = hero.getSpeed();
+		
+		hero.setDirection(dir);
+		
+		while (distance > 0 && isFree(hero.getCollisionBox(),hero.getDirection())){
+			hero.move(dir);
+			distance--;
+		}
 
 	}
 
-	@Override
-	public void right(int playerID) {
-		players.get(playerID-1).getHero().startMove(Direction.EAST);
-
-	}
-
-	@Override
-	public void up(int playerID) {
-		players.get(playerID-1).getHero().startMove(Direction.NORTH);
-
-	}
-
-	@Override
-	public void down(int playerID) {
-		players.get(playerID-1).getHero().startMove(Direction.SOUTH);
-
-	}
 
 	@Override
 	public void primary(int playerID) {
@@ -107,12 +101,18 @@ public class BlastModel implements IBlastModel {
 	
 	public boolean isFree(Rectangle r){
 		
+		
 		for (Entity e: entities){
-	    	if (e.getCollisionBox().intersects(r)){
+			//TODO remove this instanceof - It is only here to prevent collision with itself
+	    	if (!(e instanceof Hero) && e.getCollisionBox().intersects(r)){
 	    		return false;
 	    	}
 	    }
 		return true;
+	}
+	
+	public boolean isFree(Rectangle r, Direction d){
+		return isFree(new Rectangle(r.getX() + d.getX(),r.getY() + d.getY(),r.getWidth(),r.getHeight()));
 	}
 
 	@Override

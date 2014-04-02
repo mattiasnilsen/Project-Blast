@@ -1,6 +1,7 @@
 package projectblast.model;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Rectangle;
 /**
  * 
  * @author Alex
@@ -14,7 +15,7 @@ public class Tower extends Entity implements Destructible{
 	
 	
 	public Tower(int x, int y, Image sprite) {
-		super(x, y, sprite);
+		super(x, y, sprite, new Rectangle(x,y,24,32));
 		// TODO Auto-generated constructor stub
 	}
 
