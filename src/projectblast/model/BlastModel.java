@@ -106,8 +106,6 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	public boolean isFree(Rectangle r){
-		
-		
 		for (Entity e: entities){
 			//TODO remove this instanceof - It is only here to prevent collision with itself
 	    	if (!(e instanceof Hero) && e.getCollisionBox().intersects(r)){
@@ -117,38 +115,68 @@ public class BlastModel implements IBlastModel {
 		return true;
 	}
 	
+	public Entity getBlocker(Rectangle r){
+		for (Entity e: entities){
+	    	if (e.getCollisionBox().intersects(r)){
+	    		return e;
+	    	}
+	    }
+		return null;
+	}
+	
 	public boolean isFree(Rectangle r, Direction d){
 		return isFree(new Rectangle(r.getX() + d.getX(),r.getY() + d.getY(),r.getWidth(),r.getHeight()));
 	}
 
 	
 	public List<Explosion> createExplosion(int x, int y, int power){
+		
 		List<Explosion> l = new ArrayList<Explosion>();
-		Image sprite = null;
-		Rectangle c = new Rectangle(x,y,Constants.TILE_SIZE,Constants.TILE_SIZE);
+		Image sprite = null, center = null;
 		try {
 			sprite = new Image("data/image/Explosion.png");
+			center = new Image("data/image/ExplosionCenter.png");
 		} catch (SlickException e) {
 			e.printStackTrace();
+			System.out.println("Something went wrong! Could not find Explosion.png!");
 		}
-		int dist = power - 1;
-		Rectangle r = new Rectangle(x + Constants.TILE_SIZE,y,Constants.TILE_SIZE,Constants.TILE_SIZE);
-		//Right
-		while (dist > 0 && isFree(c)){
-			
-			
-			c.setX(c.getX() + Constants.TILE_SIZE);
-			dist--;
+		if (sprite == null || center == null){
+			System.out.println("NULL!!! NULL IN THE EXPLOSION MAKING!!!");
+			System.exit(0);
 		}
-		Direction d;
 		
-		l.add(new Explosion(x,y,sprite,power));
-		Position p;
+		//Add the center one
+		l.add(new Explosion(x,y,center));
 		
+		Rectangle r = new Rectangle(x, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
+		Direction[] d = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
+		for (int i = 0; i < 4; i++){
+			int dist = 1;
+			Rectangle check = new Rectangle(x + d[i].getX() * Constants.TILE_SIZE, 
+					y + d[i].getY() * Constants.TILE_SIZE,Constants.TILE_SIZE,Constants.TILE_SIZE);
+			while (dist <= power){
+				Entity e = getBlocker(check);
+				if (e instanceof Destructible){
+					((Destructible) e).destroy();
+					System.out.println("Destroyed that one!");
+					break;
+				} else if (e instanceof Block){
+					System.out.println("Hit a block!");
+					break;
+				}
+				
+				l.add(new Explosion(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE,sprite));
+					
+				check.setX(x + d[i].getX() * dist * Constants.TILE_SIZE);
+				check.setY(y + d[i].getY() * dist * Constants.TILE_SIZE);
+				dist++;
+			}
+		}
 		
+		System.out.println("Wow! That explosion covers " + l.size() + " blocks!");
+		
+		entities.addAll(l);
 		return l;
-		
-		
 	}
 	
 

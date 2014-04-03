@@ -17,6 +17,11 @@ public class Entity implements Drawable {
 		this.y = y;
 		this.sprite = sprite;
 		this.collisionBox = box;
+		//TODO Remove this hack
+		if (box.getWidth() == 32){
+			box.setWidth(31);
+			box.setHeight(31);
+		}
 	}
 	
 

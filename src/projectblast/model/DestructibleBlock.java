@@ -1,6 +1,7 @@
 package projectblast.model;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 /**
  *
  * @author Alex Tao
@@ -11,7 +12,11 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 	
 	public DestructibleBlock(int x, int y, Image sprite) {
 		super(x, y, sprite);
-
+		try {
+			destroyedSprite = new Image("data/image/BlockGreenBroken.png");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

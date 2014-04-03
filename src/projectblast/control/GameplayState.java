@@ -13,6 +13,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.BlastModel;
+import projectblast.model.Constants;
 import projectblast.model.IBlastModel;
 import projectblast.model.Movable.Direction;
 import projectblast.model.SimulatedOptions;
@@ -59,7 +60,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	    provider.bindCommand(new KeyControl(Input.KEY_RIGHT), new BasicCommand("2right"));
 	    provider.bindCommand(new KeyControl(Input.KEY_1), new BasicCommand("2primary"));
 	    provider.bindCommand(new KeyControl(Input.KEY_2), new BasicCommand("2secondary"));
-	    
 	}
 
 	@Override
@@ -98,10 +98,10 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		if (i.isKeyDown(Input.KEY_D)){
 			model.movePlayer(1,Direction.EAST);
 		}
-		if (i.isKeyDown(Input.KEY_Q)){
+		if (i.isKeyPressed(Input.KEY_Q)){
 			model.primary(1);
 		}
-		if (i.isKeyDown(Input.KEY_E)){
+		if (i.isKeyPressed(Input.KEY_E)){
 			model.secondary(1);
 		}
 		
@@ -117,11 +117,16 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		if (i.isKeyDown(Input.KEY_RIGHT)){
 			model.movePlayer(2,Direction.EAST);
 		}
-		if (i.isKeyDown(Input.KEY_1)){
+		if (i.isKeyPressed(Input.KEY_1)){
 			model.primary(2);
 		}
-		if (i.isKeyDown(Input.KEY_2)){
+		if (i.isKeyPressed(Input.KEY_2)){
 			model.secondary(2);
+		}
+		
+		
+		if (i.isKeyPressed(Input.KEY_T)){
+			model.createExplosion(Constants.TILE_SIZE * 8,Constants.TILE_SIZE * 8,4);
 		}
 	}
 	

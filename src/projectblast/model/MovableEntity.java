@@ -49,8 +49,8 @@ public class MovableEntity extends Entity implements Movable, Updatable {
 	public void place(int x, int y) {
 		setX(x);
 		setY(y);
-		getCollisionBox().setX(x);
-		getCollisionBox().setY(y);
+		getCollisionBox().setX(x + Constants.TILE_SIZE/2 - getCollisionBox().getWidth() / 2);
+		getCollisionBox().setY(y + Constants.TILE_SIZE/2 - getCollisionBox().getHeight() / 2);
 	}
 	public Direction getDirection() {
 		return direction;
