@@ -13,7 +13,8 @@ public interface Movable {
 		NORTH(0, -1),
 		SOUTH(0, 1),
 		WEST(-1, 0),
-		EAST(1, 0);
+		EAST(1, 0),
+		NONE(0,0);
 		
 		private int x;
 		private int y;
@@ -29,6 +30,40 @@ public interface Movable {
 		
 		public int getY() {
 			return y;
+		}
+		
+		public Direction clockwise(){
+			if (this.equals(EAST)){
+				return NORTH;
+			}
+			if (this.equals(NORTH)){
+				return WEST;
+			}
+			if (this.equals(WEST)){
+				return SOUTH;
+			}
+			if (this.equals(SOUTH)){
+				return EAST;
+			}
+			
+			return this;
+		}
+		
+		public Direction opposite(){
+			if (this.equals(EAST)){
+				return WEST;
+			}
+			if (this.equals(WEST)){
+				return EAST;
+			}
+			if (this.equals(WEST)){
+				return SOUTH;
+			}
+			if (this.equals(SOUTH)){
+				return EAST;
+			}
+			
+			return this;
 		}
 	}
 	/**

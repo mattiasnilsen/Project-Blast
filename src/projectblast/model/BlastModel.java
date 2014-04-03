@@ -77,6 +77,11 @@ public class BlastModel implements IBlastModel {
 		return entities;
 	}
 	
+	@Override
+	public List<Player> getPlayers() {
+		return players;
+	}
+	
 	public void addEntity(Entity e){
 		entities.add(e);
 	}
@@ -84,6 +89,7 @@ public class BlastModel implements IBlastModel {
 	public void removeEntity(Entity e){
 		entities.remove(e);
 	}
+	
 	
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
@@ -115,9 +121,35 @@ public class BlastModel implements IBlastModel {
 		return isFree(new Rectangle(r.getX() + d.getX(),r.getY() + d.getY(),r.getWidth(),r.getHeight()));
 	}
 
-	@Override
-	public List<Player> getPlayers() {
-		return players;
+	
+	public List<Explosion> createExplosion(int x, int y, int power){
+		List<Explosion> l = new ArrayList<Explosion>();
+		Image sprite = null;
+		Rectangle c = new Rectangle(x,y,Constants.TILE_SIZE,Constants.TILE_SIZE);
+		try {
+			sprite = new Image("data/image/Explosion.png");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+		int dist = power - 1;
+		Rectangle r = new Rectangle(x + Constants.TILE_SIZE,y,Constants.TILE_SIZE,Constants.TILE_SIZE);
+		//Right
+		while (dist > 0 && isFree(c)){
+			
+			
+			c.setX(c.getX() + Constants.TILE_SIZE);
+			dist--;
+		}
+		Direction d;
+		
+		l.add(new Explosion(x,y,sprite,power));
+		Position p;
+		
+		
+		return l;
+		
+		
 	}
+	
 
 }
