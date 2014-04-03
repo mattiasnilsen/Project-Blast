@@ -45,7 +45,7 @@ public class Mage extends Hero {
 
 	@Override
 	public void secondaryAbility() {
-		removeExplosive(lastFireBall); //sluta rita ut
+		removeExplosive(lastFireBall); //sluta rita uu
 		lastFireBall.destroy();
 		
 	}
