@@ -1,0 +1,46 @@
+Meeting Agenda
+
+Date: 3/4
+
+Facilitator: Alex Tao
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+The objective of this meeting is to discuss what we should do next and resolve any questions that showed up during the week. 
+
+
+2. Reports (15 min) 
+The collision box is now implemented and we also support two players in the game. 
+An “automaticly” generated map has been implemented. 
+
+
+3. Discussion items (35 min) 
+
+How should the explosion be implemented?
+
+What else should be implemented until next time?
+
+Movement, how should it work? 
+
+Should we use sprite-sheets instead of loading in each sprite seperately?
+
+4. Outcomes and assignments (5 min) 
+
+The model should handle the explosion and check whether the explosion should expand in that direction or not depending on whether it “collides” with something “collidable”. 
+The model should handle all collision and do different things depending on which objects that collides. 
+
+The direction of the movement should be decided by the most recent button pressed. All movement buttons pressed should be saved and be sorted by how recent it was pressed down, and the movement of the hero should be working according to that. 
+
+Axel will work on implementing the explosions.
+
+Alex will work on making the projectiles and explosives snapping on to the grid and take a look at the teams.
+
+Anton will work on the view, implementing the animation and connecting the sprites to each object.
+
+Mattias will work on improving the movement mechanics.
+
+5. Wrap up 
+
+Until next meeting we should have been working with these things, if we find a problem, we will resolve it then. The next meeting will be Monday 2014-04-07.
+
