@@ -1,0 +1,19 @@
+MageUp /data/images/SnowmanHeroUp.png
+MageDown /data/images/SnowmanHeroDown.png
+MageLeft /data/images/SnowmanHeroLeft.png
+MageRight /data/images/SnowmanHeroRight.png
+
+FireballUp /data/images/SnowballUp.png
+FireballDown /data/images/SnowballDown.png
+FireballLeft /data/images/SnowballLeft.png
+FireballRight /data/images/SnowballRight.png
+
+BombUp /data/images/Bomb.png
+BombDown /data/images/Bomb.png
+BombLeft /data/images/Bomb.png
+BombRight /data/images/Bomb.png
+
+Tower /data/images/Tower.png
+SolidBlock /data/images/BlockRed.png
+DestructibleBlock /data/images/BlockGreen.png
+

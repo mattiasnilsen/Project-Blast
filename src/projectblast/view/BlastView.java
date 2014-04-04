@@ -18,10 +18,14 @@ import projectblast.model.Player;
 public class BlastView implements IBlastView {
 	
 	private IBlastModel model;
+	private ImageDatabase images;
 	
 	public BlastView(IBlastModel model){
 		this.model = model;
+		this.images = new ImageDatabase();
 	}
+
+	
 	public void render(Graphics g) {
 			
     

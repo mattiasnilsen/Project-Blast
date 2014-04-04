@@ -13,6 +13,7 @@ public class Bomber extends Hero {
 
     public Bomber(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
         super(x, y, sprite, speed, direction, animations, team);
+        setName("Bomber");
     }
 
     @Override

@@ -15,7 +15,9 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	}
 	
 	
-	
+	public Hero getOwner(){
+		return owner;
+	}
 	
 	
 	public void explode(){

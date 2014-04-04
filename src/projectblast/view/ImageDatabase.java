@@ -1,5 +1,11 @@
 package projectblast.view;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
@@ -17,40 +23,58 @@ import projectblast.model.Movable.Direction;
  */
 public class ImageDatabase {
 	
-	public ImageDatabase(String textInput){
+	private Map<String, String> images = new HashMap<String, String>();
+	public ImageDatabase(){
 		
 		init();
 	}
 	
 	private void init() {
-		
+		Scanner reader = null;
+		try {
+			reader = new Scanner(new File("/data/image/images.txt"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		while(reader.hasNext()){
+			String key = reader.next();
+			String path = reader.next();
+			images.put(key, path);
+		}
 		
 	}
 	
 	public Renderable getRenderable(Entity entity){
-		String name = "hej";
-				//TODO entity.getName();
+		String name = entity.getName();
 		
-		Renderable tmp;
+		Renderable tmp = null;
 		switch (name){
-			case "Mage":
-				Mage mage = (Mage) entity;
-				tmp = getMageAnimation(mage);
-				break;
-			case "Bomber":
-				Bomber bomber = (Bomber) entity;
-				tmp = getBomberAnimation(bomber);
+			case "Mage": case "Bomber":
+				Hero hero = (Hero) entity;
+				tmp = getHeroAnimation(hero);
 			case "Tower":
 				Tower tower = (Tower) entity;
 				tmp = getTowerImage(tower);
 				break;
-			case "Fireball":
-				Fireball fireball = (Fireball) entity;
-				tmp = getFireballImage(fireball);
+			case "Fireball": case "Bomb":
+				Explosive explosive = (Explosive) entity;
+				tmp = getExplosiveAnimation(explosive);
+				break;
+			case "SolidBlock":
+				SolidBlock solidBlock = (SolidBlock) entity;
+				tmp = getSolidBlockImage(solidBlock);
+				break;
+			case "DestructibleBlock":
+				DestructibleBlock destructibleBlock = (DestructibleBlock) entity;
+				tmp = getDestructibleBlockImage(destructibleBlock);
 				break;
 				
 			default:
-				tmp = null; //TODO default renderable!
+			try {
+				tmp = new Image("/data/image/Error.png");
+			} catch (SlickException e) {
+				e.printStackTrace();
+			} 
 				break;
 
 				
@@ -62,59 +86,87 @@ public class ImageDatabase {
 		return tmp;
 	}
 
-	private Animation getMageAnimation(Mage mage) {
-		Direction direction = mage.getDirection();
-		Color TeamColor = mage.getTeam().getColor();
-		Animation animation = null; //TODO default animation!
+	private Image getSolidBlockImage(SolidBlock solidBlock) {
+		String key = solidBlock.getName();
 		Image image = null;
-		try{
-			if(direction.equals(Direction.EAST)){
-				image = new Image("/data/image/SnowmanHeroRight.png");
-			}else if(direction.equals(Direction.NORTH)){
-				image = new Image("/data/image/SnowmanHeroUp.png");
-			}else if(direction.equals(Direction.SOUTH)){
-				image = new Image("/data/image/SnowmanHeroDown.png");
-			}else if(direction.equals(Direction.WEST)){
-				image = new Image("/data/image/SnowmanHeroLeft.png");	
-			} 
-		}catch (SlickException e) {
+		try {
+			 image = new Image(images.get(key));
+		} catch (SlickException e) {	
 			e.printStackTrace();
 		}
-		image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
-		animation = new Animation(new SpriteSheet(image, 32, 32), 1000);
-		return animation;
+		return image;
 	}
 	
-	private Animation getBomberAnimation(Bomber bomber) {
-		Direction direction = bomber.getDirection();
-		Color TeamColor = bomber.getTeam().getColor();
-		Animation animation = null; //TODO default animation!
+	private Image getDestructibleBlockImage(DestructibleBlock destructibleBlock) {
+		String key = destructibleBlock.getName();
 		Image image = null;
-		try{
-			if(direction.equals(Direction.EAST)){
-				image = new Image("/data/image/SnowmanHeroRight.png");
-			}else if(direction.equals(Direction.NORTH)){
-				image = new Image("/data/image/SnowmanHeroUp.png");
-			}else if(direction.equals(Direction.SOUTH)){
-				image = new Image("/data/image/SnowmanHeroDown.png");
-			}else if(direction.equals(Direction.WEST)){
-				image = new Image("/data/image/SnowmanHeroLeft.png");	
-			} 
-		}catch (SlickException e) {
+		try {
+			 image = new Image(images.get(key));
+		} catch (SlickException e) {	
 			e.printStackTrace();
 		}
-		image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
-		animation = new Animation(new SpriteSheet(image, 32, 32), 1000);
-		return animation;
+		return image;
 	}
 
-	private Image getFireballImage(Fireball fireball) {
-		
-		return null;
+	private Animation getExplosiveAnimation(Explosive explosive) {
+		Direction direction = explosive.getDirection();
+		Color TeamColor = explosive.getOwner().getTeam().getColor();
+		String key = explosive.getName();
+
+			if(direction.equals(Direction.EAST)){
+				key += "Right";
+			}else if(direction.equals(Direction.NORTH)){
+				key += "Up";
+			}else if(direction.equals(Direction.SOUTH)){
+				key += "Down";
+			}else if(direction.equals(Direction.WEST)){
+				key += "Left";
+			} 
+		Image image = null;
+		try {
+			image = new Image(images.get(key));
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}	
+		image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
+		 
+		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
+
+	private Animation getHeroAnimation(Hero hero) {
+		Direction direction = hero.getDirection();
+		Color TeamColor = hero.getTeam().getColor();
+		String key = hero.getName();
+
+			if(direction.equals(Direction.EAST)){
+				key += "Right";
+			}else if(direction.equals(Direction.NORTH)){
+				key += "Up";
+			}else if(direction.equals(Direction.SOUTH)){
+				key += "Down";
+			}else if(direction.equals(Direction.WEST)){
+				key += "Left";
+			} 
+		Image image = null;
+		try {
+			image = new Image(images.get(key));
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}	
+		image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
+		 
+		return new Animation(new SpriteSheet(image, 32, 32), 1000);
+	}
+	
 
 	private Image getTowerImage(Tower tower) {
-		
-		return null;
+		String key = tower.getName();
+		Image image = null;
+		try {
+			 image = new Image(images.get(key));
+		} catch (SlickException e) {	
+			e.printStackTrace();
+		}
+		return image;
 	}
 }
