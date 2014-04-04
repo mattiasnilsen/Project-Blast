@@ -23,10 +23,16 @@ public class BlastView implements IBlastView {
 	public BlastView(IBlastModel model){
 		this.model = model;
 		this.images = new ImageDatabase();
+		
 	}
 
-	
 	public void render(Graphics g) {
+		 for (Entity e: model.getEntities()){
+		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); //Rendrar segt... men det funkar... 
+		    }
+	}
+	
+	public void rendery(Graphics g) {
 			
     
 			//Draw all entities

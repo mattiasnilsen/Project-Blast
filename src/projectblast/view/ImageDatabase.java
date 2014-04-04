@@ -23,9 +23,9 @@ import projectblast.model.Movable.Direction;
  */
 public class ImageDatabase {
 	
-	private Map<String, String> images = new HashMap<String, String>();
+	private Map<String, Image> images;
 	public ImageDatabase(){
-		
+		this.images = new HashMap<String, Image>();
 		init();
 	}
 	
@@ -38,20 +38,27 @@ public class ImageDatabase {
 		}
 		while(reader.hasNext()){
 			String key = reader.next();
-			String path = reader.next();
-			images.put(key, path);
+			Image value = null;
+			try {
+				value = new Image(reader.next());
+			} catch (SlickException e) {
+			
+				e.printStackTrace();
+			}
+			images.put(key, value);
 		}
 		
 	}
 	
-	public Renderable getRenderable(Entity entity){
+	public Animation getAnimation(Entity entity){
 		String name = entity.getName();
 		
-		Renderable tmp = null;
+		Animation tmp = null;
 		switch (name){
 			case "Mage": case "Bomber":
 				Hero hero = (Hero) entity;
 				tmp = getHeroAnimation(hero);
+				break;
 			case "Tower":
 				Tower tower = (Tower) entity;
 				tmp = getTowerImage(tower);
@@ -71,7 +78,7 @@ public class ImageDatabase {
 				
 			default:
 			try {
-				tmp = new Image("data/image/Error.png");
+				tmp = new Animation(new SpriteSheet("data/image/Error.png", 32, 32), 1000);
 			} catch (SlickException e) {
 				e.printStackTrace();
 			} 
@@ -86,31 +93,23 @@ public class ImageDatabase {
 		return tmp;
 	}
 
-	private Image getSolidBlockImage(SolidBlock solidBlock) {
+	private Animation getSolidBlockImage(SolidBlock solidBlock) {
 		String key = solidBlock.getName();
-		Image image = null;
-		try {
-			 image = new Image(images.get(key));
-		} catch (SlickException e) {	
-			e.printStackTrace();
-		}
-		return image;
+		Image image = images.get(key);
+		
+		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 	
-	private Image getDestructibleBlockImage(DestructibleBlock destructibleBlock) {
+	private Animation getDestructibleBlockImage(DestructibleBlock destructibleBlock) {
 		String key = destructibleBlock.getName();
-		Image image = null;
-		try {
-			 image = new Image(images.get(key));
-		} catch (SlickException e) {	
-			e.printStackTrace();
-		}
-		return image;
+		Image image = images.get(key);
+		
+		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 
 	private Animation getExplosiveAnimation(Explosive explosive) {
 		Direction direction = explosive.getDirection();
-		Color TeamColor = explosive.getOwner().getTeam().getColor();
+		//Color TeamColor = explosive.getOwner().getTeam().getColor();
 		String key = explosive.getName();
 
 			if(direction.equals(Direction.EAST)){
@@ -122,20 +121,15 @@ public class ImageDatabase {
 			}else if(direction.equals(Direction.WEST)){
 				key += "Left";
 			} 
-		Image image = null;
-		try {
-			image = new Image(images.get(key));
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}	
-		image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
+			Image image = images.get(key);
+		//image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
 		 
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 
 	private Animation getHeroAnimation(Hero hero) {
 		Direction direction = hero.getDirection();
-		Color TeamColor = hero.getTeam().getColor();
+		//Color TeamColor = hero.getTeam().getColor();
 		String key = hero.getName();
 
 			if(direction.equals(Direction.EAST)){
@@ -147,26 +141,16 @@ public class ImageDatabase {
 			}else if(direction.equals(Direction.WEST)){
 				key += "Left";
 			} 
-		Image image = null;
-		try {
-			image = new Image(images.get(key));
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}	
-		image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
+			Image image = images.get(key);
+		//image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
 		 
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 	
 
-	private Image getTowerImage(Tower tower) {
+	private Animation getTowerImage(Tower tower) {
 		String key = tower.getName();
-		Image image = null;
-		try {
-			 image = new Image(images.get(key));
-		} catch (SlickException e) {	
-			e.printStackTrace();
-		}
-		return image;
+		Image image = images.get(key);
+		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 }

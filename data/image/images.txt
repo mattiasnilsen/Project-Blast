@@ -1,19 +1,24 @@
-MageUp data/images/SnowmanHeroUp.png
-MageDown data/images/SnowmanHeroDown.png
-MageLeft data/images/SnowmanHeroLeft.png
-MageRight data/images/SnowmanHeroRight.png
+MageUp data/image/SnowmanHeroUp.png
+MageDown data/image/SnowmanHeroDown.png
+MageLeft data/image/SnowmanHeroLeft.png
+MageRight data/image/SnowmanHeroRight.png
 
-FireballUp data/images/SnowballUp.png
-FireballDown data/images/SnowballDown.png
-FireballLeft data/images/SnowballLeft.png
-FireballRight data/images/SnowballRight.png
+BomberUp data/image/SnowmanHeroUp.png
+BomberDown data/image/SnowmanHeroDown.png
+BomberLeft data/image/SnowmanHeroLeft.png
+BomberRight data/image/SnowmanHeroRight.png
 
-BombUp data/images/Bomb.png
-BombDown data/images/Bomb.png
-BombLeft data/images/Bomb.png
-BombRight data/images/Bomb.png
+FireballUp data/image/SnowballUp.png
+FireballDown data/image/SnowballDown.png
+FireballLeft data/image/SnowballLeft.png
+FireballRight data/image/SnowballRight.png
 
-Tower data/images/Tower.png
-SolidBlock data/images/BlockRed.png
-DestructibleBlock data/images/BlockGreen.png
+BombUp data/image/Bomb.png
+BombDown data/image/Bomb.png
+BombLeft data/image/Bomb.png
+BombRight data/image/Bomb.png
+
+Tower data/image/Tower.png
+SolidBlock data/image/BlockRed.png
+DestructibleBlock data/image/BlockGreen.png
 
