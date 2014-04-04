@@ -142,11 +142,13 @@ public class ImageDatabase {
 		}else if(direction.equals(Direction.WEST)){
 			key += "Left";
 		} 
-		Image image = images.get(key); 
+		Image image = images.get(key);
+		
 		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		//Animation uses an images imageColor when drawing apparently
 		Image[] test = new Image[1];
-		test[0] = image;
+		test[0] = image.getSubImage(0, 0, 32, 32);
+		test[0].setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		 return new Animation(test, 1000);
 		// For some reason Animation doesn't use spriteSheets imageColor when drawing
 		//SpriteSheet spriteSheet = new SpriteSheet(image, 32, 32);
