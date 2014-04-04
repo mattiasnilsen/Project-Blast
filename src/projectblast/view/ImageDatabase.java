@@ -32,7 +32,7 @@ public class ImageDatabase {
 	private void init() {
 		Scanner reader = null;
 		try {
-			reader = new Scanner(new File("/data/image/images.txt"));
+			reader = new Scanner(new File("data/image/images.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -71,7 +71,7 @@ public class ImageDatabase {
 				
 			default:
 			try {
-				tmp = new Image("/data/image/Error.png");
+				tmp = new Image("data/image/Error.png");
 			} catch (SlickException e) {
 				e.printStackTrace();
 			} 
