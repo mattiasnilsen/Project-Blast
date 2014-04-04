@@ -17,6 +17,7 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
+		setName("DestructibleBlock");
 	}
 
 	@Override

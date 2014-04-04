@@ -11,12 +11,14 @@ public class Entity implements Drawable {
 	private final Rectangle collisionBox;
 	
 	private int x,y;
+	private String name = "Entity";
 
 	public Entity(int x, int y, Image sprite, Rectangle box) {
 		this.x = x;
 		this.y = y;
 		this.sprite = sprite;
 		this.collisionBox = box;
+		
 		//TODO Remove this hack
 		if (box.getWidth() == 32){
 			box.setWidth(31);
@@ -70,6 +72,14 @@ public class Entity implements Drawable {
 
 	public Rectangle getCollisionBox() {
 		return collisionBox;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public String getName(){
+		return name;
 	}
 
 

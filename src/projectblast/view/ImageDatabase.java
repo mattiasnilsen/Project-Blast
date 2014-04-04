@@ -10,7 +10,11 @@ import org.newdawn.slick.SpriteSheet;
 import projectblast.model.*;
 import projectblast.model.Movable.Direction;
 
-
+/**
+ * 
+ * @author A.Freudenthaler
+ *
+ */
 public class ImageDatabase {
 	
 	public ImageDatabase(String textInput){

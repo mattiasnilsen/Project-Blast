@@ -13,6 +13,7 @@ import projectblast.control.GameplayState;
 public class Mage extends Hero {
 	public Mage(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
 		super(x, y, sprite, speed, direction, animations, team);
+		setName("Mage");
 	}
 	private Fireball lastFireball;
 	@Override
