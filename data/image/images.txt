@@ -8,6 +8,16 @@ BomberDown data/image/SnowmanHeroDown.png
 BomberLeft data/image/SnowmanHeroLeft.png
 BomberRight data/image/SnowmanHeroRight.png
 
+BruteUp data/image/SnowmanHeroUp.png
+BruteDown data/image/SnowmanHeroDown.png
+BruteLeft data/image/SnowmanHeroLeft.png
+BruteRight data/image/SnowmanHeroRight.png
+
+EnforcerUp data/image/SnowmanHeroUp.png
+EnforcerDown data/image/SnowmanHeroDown.png
+EnforcerLeft data/image/SnowmanHeroLeft.png
+EnforcerRight data/image/SnowmanHeroRight.png
+
 FireballUp data/image/SnowballUp.png
 FireballDown data/image/SnowballDown.png
 FireballLeft data/image/SnowballLeft.png

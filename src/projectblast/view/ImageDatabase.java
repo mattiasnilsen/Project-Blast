@@ -18,7 +18,7 @@ import projectblast.model.Movable.Direction;
 
 /**
  * 
- * @author A.Freudenthaler
+ * @author Anton Freudenthaler
  *
  */
 public class ImageDatabase {
@@ -42,7 +42,6 @@ public class ImageDatabase {
 			try {
 				value = new Image(reader.next());
 			} catch (SlickException e) {
-			
 				e.printStackTrace();
 			}
 			images.put(key, value);
