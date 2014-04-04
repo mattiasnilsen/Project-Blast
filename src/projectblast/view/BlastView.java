@@ -13,8 +13,11 @@ import projectblast.model.Entity;
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
 
-
-
+/**
+ * 
+ * @author A.Freudenthaler
+ *
+ */
 public class BlastView implements IBlastView {
 	
 	private IBlastModel model;
@@ -27,8 +30,9 @@ public class BlastView implements IBlastView {
 	}
 
 	public void render(Graphics g) {
+		//Draw all entities
 		 for (Entity e: model.getEntities()){
-		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); //Rendrar segt... men det funkar... 
+		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
 		    }
 	}
 	
@@ -42,6 +46,7 @@ public class BlastView implements IBlastView {
 		    
 		    //Draw all heroes
 		    for (Player p: model.getPlayers()){
+		    	
 		    	p.getHero().draw(g);
 		    	
 		    	//TODO Remove this debug drawing of collision box

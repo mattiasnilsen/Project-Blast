@@ -21,6 +21,7 @@ public abstract class Hero extends MovableEntity{
         super(x, y, sprite, speed, direction, new Rectangle(x,y,24,30), animations);
         bombPower = 1;
         bombCount = 1;
+        this.team = team;
     }
     
     public void addExplosive(Explosive explosive) {

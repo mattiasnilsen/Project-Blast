@@ -109,42 +109,50 @@ public class ImageDatabase {
 
 	private Animation getExplosiveAnimation(Explosive explosive) {
 		Direction direction = explosive.getDirection();
-		//Color TeamColor = explosive.getOwner().getTeam().getColor();
+		//Color teamColor = explosive.getOwner().getTeam().getColor();
 		String key = explosive.getName();
 
-			if(direction.equals(Direction.EAST)){
-				key += "Right";
-			}else if(direction.equals(Direction.NORTH)){
-				key += "Up";
-			}else if(direction.equals(Direction.SOUTH)){
-				key += "Down";
-			}else if(direction.equals(Direction.WEST)){
-				key += "Left";
-			} 
-			Image image = images.get(key);
-		//image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
+		if(direction.equals(Direction.EAST)){
+			key += "Right";
+		}else if(direction.equals(Direction.NORTH)){
+			key += "Up";
+		}else if(direction.equals(Direction.SOUTH)){
+			key += "Down";
+		}else if(direction.equals(Direction.WEST)){
+			key += "Left";
+		} 
+		Image image = images.get(key);
+		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 
 	private Animation getHeroAnimation(Hero hero) {
 		Direction direction = hero.getDirection();
-		//Color TeamColor = hero.getTeam().getColor();
+		
+		Color teamColor = hero.getTeam().getColor();
 		String key = hero.getName();
 
-			if(direction.equals(Direction.EAST)){
-				key += "Right";
-			}else if(direction.equals(Direction.NORTH)){
-				key += "Up";
-			}else if(direction.equals(Direction.SOUTH)){
-				key += "Down";
-			}else if(direction.equals(Direction.WEST)){
-				key += "Left";
-			} 
-			Image image = images.get(key);
-		//image.setImageColor(TeamColor.r, TeamColor.g, TeamColor.b);
-		 
-		return new Animation(new SpriteSheet(image, 32, 32), 1000);
+		if(direction.equals(Direction.EAST)){
+			key += "Right";
+		}else if(direction.equals(Direction.NORTH)){
+			key += "Up";
+		}else if(direction.equals(Direction.SOUTH)){
+			key += "Down";
+		}else if(direction.equals(Direction.WEST)){
+			key += "Left";
+		} 
+		Image image = images.get(key); 
+		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
+		//Animation uses an images imageColor when drawing apparently
+		Image[] test = new Image[1];
+		test[0] = image;
+		 return new Animation(test, 1000);
+		// For some reason Animation doesn't use spriteSheets imageColor when drawing
+		//SpriteSheet spriteSheet = new SpriteSheet(image, 32, 32);
+		//spriteSheet.setImageColor(teamColor.r , teamColor.g, teamColor.b);
+		
+		//return new Animation(spriteSheet, 1000);
 	}
 	
 
