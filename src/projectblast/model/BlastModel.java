@@ -63,7 +63,7 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void primary(int playerID) {
-		players.get(playerID-1).getHero().primaryAbility();
+		entities.add(players.get(playerID-1).getHero().primaryAbility());
 
 	}
 

@@ -9,7 +9,6 @@ import java.util.Scanner;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Renderable;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -74,6 +73,10 @@ public class ImageDatabase {
 				DestructibleBlock destructibleBlock = (DestructibleBlock) entity;
 				tmp = getDestructibleBlockImage(destructibleBlock);
 				break;
+			case "Explosion":
+				Explosion explosion = (Explosion) entity;
+				tmp = getExplosionImage(explosion);
+				break;
 				
 			default:
 			try {
@@ -90,6 +93,13 @@ public class ImageDatabase {
 		
 		
 		return tmp;
+	}
+
+	private Animation getExplosionImage(Explosion explosion) {
+		String key = explosion.getName();
+		Image image = images.get(key);
+		
+		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 
 	private Animation getSolidBlockImage(SolidBlock solidBlock) {
