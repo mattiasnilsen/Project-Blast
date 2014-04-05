@@ -33,7 +33,7 @@ public class BlastModel implements IBlastModel {
 	public BlastModel(List<Player> players){
 		this.players = players;  
 		this.entities = new LinkedList<Entity>();
-		this.explosives = new LinkedList<Explosive>();
+		this.explosives = new ArrayList<Explosive>();
 		try {
 			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
 		} catch (SlickException e) {
@@ -103,12 +103,18 @@ public class BlastModel implements IBlastModel {
 		for(Entity e: entities){
 			e.update();
 		}
+		List<Explosive> tmp = new ArrayList<Explosive>();
 		for(Explosive ex: explosives){
-			if(!isFree(ex.getCollisionBox())){
+			
+			if(willCollide(ex)){
 				removeEntity(ex);
-				addEntity(ex.explode());
+				Explosion t = ex.explode();
+				entities.addAll(createExplosion(t.getX(), t.getY(), 3));
+				tmp.add(ex);
+				
 			}
 		}
+		explosives.removeAll(tmp);
 		
 	}
 
@@ -116,6 +122,17 @@ public class BlastModel implements IBlastModel {
 	public void stop(int playerID) {
 		players.get(playerID-1).getHero().stopMove();
 		
+	}
+	
+	public boolean willCollide(Entity entity){
+		for(Entity e: entities){
+			if(e.getName() != entity.getName()){ // TODO proper equals method
+				if(entity.getCollisionBox().intersects(e.getCollisionBox())){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public boolean isFree(Rectangle r){
