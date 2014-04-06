@@ -21,6 +21,7 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	
 	
 	public Explosion explode(){
+		
 		return new Explosion(getX(), getY(), null);
 		
 	}

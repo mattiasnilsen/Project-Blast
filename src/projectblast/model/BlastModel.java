@@ -104,7 +104,8 @@ public class BlastModel implements IBlastModel {
 			e.update();
 		}
 		List<Explosive> tmp = new ArrayList<Explosive>();
-		//Gäller inte detta endast för fireball?
+		
+		/**
 		for(Explosive ex: explosives){
 			
 			if(willCollide(ex)){
@@ -113,6 +114,26 @@ public class BlastModel implements IBlastModel {
 				entities.addAll(createExplosion(t.getX(), t.getY(), 3));
 				tmp.add(ex);
 				
+			}
+		}
+		**/
+		
+		//HARD CODED "fix" for fireball, should make a better code later.
+		for(Explosive ex: explosives){
+			
+			if(willCollide(ex)){
+				//Checks whether the fireballs CollisionBox will intersect with the Owners.
+				if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
+					removeEntity(ex);
+					Explosion t = ex.explode();
+					entities.addAll(createExplosion(t.getX(), t.getY(), 3));
+					tmp.add(ex);
+
+				}else{
+					//If it collides this will be typed out.
+				System.out.println("I hit myself with a my own fireball");
+			
+				}
 			}
 		}
 		explosives.removeAll(tmp);
