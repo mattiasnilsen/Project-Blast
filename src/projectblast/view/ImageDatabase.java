@@ -114,13 +114,13 @@ public class ImageDatabase {
 
 		if(direction.equals(Direction.EAST)){
 			key += "Right";
-		}else if(direction.equals(Direction.NORTH)){
-			key += "Up";
-		}else if(direction.equals(Direction.SOUTH)){
+		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
+            key += "Up";
+        }else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
 			key += "Down";
 		}else if(direction.equals(Direction.WEST)){
 			key += "Left";
-		} 
+		}
 		Image image = images.get(key);
 		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
@@ -135,14 +135,19 @@ public class ImageDatabase {
 
 		if(direction.equals(Direction.EAST)){
 			key += "Right";
-		}else if(direction.equals(Direction.NORTH)){
+		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
 			key += "Up";
-		}else if(direction.equals(Direction.SOUTH)){
+		}else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
 			key += "Down";
 		}else if(direction.equals(Direction.WEST)){
 			key += "Left";
-		} 
+		}
 		Image image = images.get(key);
+		
+		if(image == null) {
+		    //TODO fix properly
+		    image = images.get(key + "Up");
+		}
 		
 		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		//Animation uses an images imageColor when drawing apparently
