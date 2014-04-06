@@ -1,5 +1,10 @@
 package projectblast.control;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -27,39 +32,67 @@ import projectblast.view.IBlastView;
  */
 public class GameplayState extends BasicGameState implements InputProviderListener {
 
-	
+    public enum Keys {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        PRIMARY,
+        SECONDARY,
+    }
+    
 	private IBlastModel model;
 	private IBlastView view;
+	
+	private List<List<String>> keysPressed;
+	
+	InputProvider provider;
 	
     public GameplayState()  {
     	//TODO Remove simulation when options menu is complete
     	model = SimulatedOptions.getSimulatedModel();
     	view  = SimulatedOptions.getSimulatedView();
+    	
+    	keysPressed = new ArrayList<List<String>>();
+    	for(int i = 0; i < 3; ++i) {//TODO Change 3 to number of players + 1.
+    	    keysPressed.add(new ArrayList<String>());
+    	}
     }
+    	
     
 	@Override
 	public void init(GameContainer gc, StateBasedGame game)
 			throws SlickException {
 		
 	    //Bind keys to commands
-	    InputProvider provider = new InputProvider(gc.getInput());
-	    //TODO Enable again....    provider.addListener(this);
+	    provider = new InputProvider(gc.getInput());
+	    provider.addListener(this);
 	    
-	    //Player 1 controls
-	    provider.bindCommand(new KeyControl(Input.KEY_W), new BasicCommand("1up"));
-	    provider.bindCommand(new KeyControl(Input.KEY_S), new BasicCommand("1down"));
-	    provider.bindCommand(new KeyControl(Input.KEY_A), new BasicCommand("1left"));
-	    provider.bindCommand(new KeyControl(Input.KEY_D), new BasicCommand("1right"));
-	    provider.bindCommand(new KeyControl(Input.KEY_Q), new BasicCommand("1primary"));
-	    provider.bindCommand(new KeyControl(Input.KEY_E), new BasicCommand("1secondary"));
+	    //TODO get this input from options set by the players.
+	    List<Map<Keys, Integer>> playerKeys = new ArrayList<Map<Keys, Integer>>();
+	    Map<Keys, Integer> keys = new HashMap<Keys, Integer>();
+	    keys.put(Keys.UP, Input.KEY_W);
+	    keys.put(Keys.DOWN, Input.KEY_S);
+	    keys.put(Keys.LEFT, Input.KEY_A);
+	    keys.put(Keys.RIGHT, Input.KEY_D);
+	    keys.put(Keys.PRIMARY, Input.KEY_Q);
+	    keys.put(Keys.SECONDARY, Input.KEY_E);
 	    
-	    //Player 2 controls
-	    provider.bindCommand(new KeyControl(Input.KEY_UP), new BasicCommand("2up"));
-	    provider.bindCommand(new KeyControl(Input.KEY_DOWN), new BasicCommand("2down"));
-	    provider.bindCommand(new KeyControl(Input.KEY_LEFT), new BasicCommand("2left"));
-	    provider.bindCommand(new KeyControl(Input.KEY_RIGHT), new BasicCommand("2right"));
-	    provider.bindCommand(new KeyControl(Input.KEY_1), new BasicCommand("2primary"));
-	    provider.bindCommand(new KeyControl(Input.KEY_2), new BasicCommand("2secondary"));
+	    playerKeys.add(keys);
+	    keys = new HashMap<Keys, Integer>();
+	    
+	    keys.put(Keys.UP, Input.KEY_UP);
+        keys.put(Keys.DOWN, Input.KEY_DOWN);
+        keys.put(Keys.LEFT, Input.KEY_LEFT);
+        keys.put(Keys.RIGHT, Input.KEY_RIGHT);
+        keys.put(Keys.PRIMARY, Input.KEY_1);
+        keys.put(Keys.SECONDARY, Input.KEY_2);
+        playerKeys.add(keys);
+        
+	    setKeyBindings(playerKeys);
+	    
+	    //TODO remove test key in release version.
+	    provider.bindCommand(new KeyControl(Input.KEY_T), new BasicCommand("TEST"));
 	}
 
 	@Override
@@ -72,11 +105,50 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
+	    
 		model.update(gc, game, delta);
-		handleInput(gc.getInput());
+		
+		for(int playerID = 1; playerID < keysPressed.size(); ++playerID) {
+		    List<String> keys = keysPressed.get(playerID);
+		    if(!keys.isEmpty()) {
+		        List<Direction> directions = new ArrayList<Direction>();
+		        int totalX = 0;
+		        int totalY = 0;
+		        for(String inputCommand : keys) {
+		            Direction dir = getDirection(inputCommand);
+		            totalX += dir.getX();
+		            totalY += dir.getY();
+		        }
+		        Direction direction = Direction.getDirection(totalX, totalY);
+		        model.movePlayer(playerID, direction);
+		    }
+		}
+	}
+	
+	public void setKeyBindings(List<Map<Keys, Integer>> keys) {
+	    for(int i = 0; i < keys.size(); ++i) {
+	       int playerID = i + 1;
+	       for(Map.Entry<Keys, Integer> entry : keys.get(i).entrySet()) {
+	           provider.bindCommand(new KeyControl(entry.getValue()), new BasicCommand(playerID + entry.getKey().toString()));
+	       }
+	    }
 	}
 
-	
+	private Direction getDirection(String inputCommand) {
+	    Keys key = Keys.valueOf(inputCommand);
+	    switch(key) {
+	    case UP:
+	        return Direction.NORTH;
+	    case DOWN:
+	        return Direction.SOUTH;
+	    case LEFT:
+	        return Direction.WEST;
+	    case RIGHT:
+	        return Direction.EAST;   
+	    default:
+	        return Direction.NONE;
+	    }
+	}
 	
 	
 	@Override
@@ -84,7 +156,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		//This is the identifier ID for the gameplay state
 		return 2;
 	}
-
+	/* TODO Unused code remove if determined to not use
 	public void handleInput(Input i){
 		if (i.isKeyDown(Input.KEY_W)){
 			model.movePlayer(1,Direction.NORTH);
@@ -128,41 +200,32 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		if (i.isKeyPressed(Input.KEY_T)){
 			model.createExplosion(Constants.TILE_SIZE * 8,Constants.TILE_SIZE * 8,4);
 		}
-	}
+	}*/
 	
-    @Override //TODO This method is now unused
+    @Override
     public void controlPressed(Command command) {
     	BasicCommand bCommand = (BasicCommand)command;
+    	
+    	//TODO remove code in release version.
+    	if(bCommand.getName().equals("TEST")) {
+    	    model.createExplosion(Constants.TILE_SIZE * 8,Constants.TILE_SIZE * 8,4);
+    	    return;
+    	}
     	
     	//Split the command name into a number and a name
     	int playerID = Integer.parseInt("" + bCommand.getName().charAt(0));
     	String com   = bCommand.getName().substring(1);
     	
-    	switch(com){
-    		case "up":
-    			model.movePlayer(1,Direction.NORTH);
-    			break;
-    		case "down":
-    			model.movePlayer(1,Direction.SOUTH);
-    			break;
-    		case "left":
-    			model.movePlayer(1,Direction.WEST);
-    			break;
-    		case "right":
-    			model.movePlayer(1,Direction.EAST);
-    			break;
-    		case "primary":
-    			model.primary(playerID);
-    			break;
-    		case "secondary":
-    			model.secondary(playerID);
-    			break;
-    		default:
-    			break;
-    			
+    	if(playerID > keysPressed.size() - 1) {
+    	    return; //TODO Proper exception handling.
     	}
-    	
-    	
+    	if(com.equals(Keys.PRIMARY.toString())) {
+    	    model.primary(playerID);
+    	} else if(com.equals(Keys.SECONDARY.toString())) {
+    	    model.secondary(playerID);
+    	} else { //Movement key.
+    	    keysPressed.get(playerID).add(com);
+    	}
     }
 
     @Override
@@ -173,32 +236,10 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	int playerID = Integer.parseInt("" + bCommand.getName().charAt(0));
     	String com   = "" + bCommand.getName().substring(1);
     	
-    	switch(com){
-			case "up":
-				
-				model.stop(playerID);
-				break;
-			case "down":
-				
-				model.stop(playerID);
-				break;
-			case "left":
-				
-				model.stop(playerID);
-				break;
-			case "right":
-				
-				model.stop(playerID);
-				break;
-			case "primary":
-				
-				break;
-			case "secondary":
-				
-				break;
-			default:
-				break;
-
-    	}
+        if(playerID > keysPressed.size() - 1) {
+            return; //TODO Proper exception handling.
+        }
+        
+        keysPressed.get(playerID).remove(com);
     }
 }
