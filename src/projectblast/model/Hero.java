@@ -14,6 +14,7 @@ public abstract class Hero extends MovableEntity{
 	
 	private int bombPower;
 	private int bombCount;
+	private Direction direction;
 
 	private Team team;
 	
@@ -22,6 +23,7 @@ public abstract class Hero extends MovableEntity{
         bombPower = 1;
         bombCount = 1;
         this.team = team;
+        this.direction = direction;
     }
     
     
@@ -30,6 +32,20 @@ public abstract class Hero extends MovableEntity{
     public void update() {
     	
     }
+    
+    public int snapXToGrid(int x){
+    	int xToGrid = Math.round(x/32.0f)*32;
+    	return xToGrid;
+    	}
+    	
+    
+    public int snapYToGrid(int y){
+    int yToGrid = Math.round(y/32.0f)*32;;
+ 
+    		return yToGrid;
+
+    }
+    
     
     @Override
     public void draw(Graphics g) {

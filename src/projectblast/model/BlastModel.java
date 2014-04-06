@@ -104,6 +104,7 @@ public class BlastModel implements IBlastModel {
 			e.update();
 		}
 		List<Explosive> tmp = new ArrayList<Explosive>();
+		//Gäller inte detta endast för fireball?
 		for(Explosive ex: explosives){
 			
 			if(willCollide(ex)){
@@ -127,11 +128,12 @@ public class BlastModel implements IBlastModel {
 	public boolean willCollide(Entity entity){
 		for(Entity e: entities){
 			if(e.getName() != entity.getName()){ // TODO proper equals method
-				if(entity.getCollisionBox().intersects(e.getCollisionBox())){
+				if(entity.getCollisionBox().intersects(e.getCollisionBox())){					
 					return true;
 				}
 			}
 		}
+		
 		return false;
 	}
 	
@@ -159,8 +161,23 @@ public class BlastModel implements IBlastModel {
 		return isFree(new Rectangle(r.getX() + d.getX(),r.getY() + d.getY(),r.getWidth(),r.getHeight()));
 	}
 
+	private int snapYToGrid(int y){
+		int yToGrid;
+		yToGrid = (y/32)*32;
+		return yToGrid;
+		
+	}
+	private int snapXToGrid(int x){
+		int xToGrid;
+		xToGrid = (x/32)*32;
+		return xToGrid;
+		
+	}
 	
 	public List<Explosion> createExplosion(int x, int y, int power){
+		
+		x = snapXToGrid(x);
+		y = snapYToGrid(y);
 		
 		List<Explosion> l = new ArrayList<Explosion>();
 		Image sprite = null, center = null;
@@ -201,7 +218,9 @@ public class BlastModel implements IBlastModel {
 				check.setX(x + d[i].getX() * dist * Constants.TILE_SIZE);
 				check.setY(y + d[i].getY() * dist * Constants.TILE_SIZE);
 				dist++;
+				
 			}
+
 		}
 		
 		System.out.println("Wow! That explosion covers " + l.size() + " blocks!");

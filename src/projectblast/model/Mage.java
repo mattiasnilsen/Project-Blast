@@ -23,7 +23,7 @@ public class Mage extends Hero {
 		//TODO remove bombcount?
 		
 		
-		return new Fireball(getX() + getDirection().getX()*32, getY() + getDirection().getY()*32, null, 4, null, getDirection(), this);
+		return new Fireball(snapXToGrid(getX()) + getDirection().getX()*32, snapYToGrid(getY()) + getDirection().getY()*32, null, 4, null, getDirection(), this);
 		
 	}
 
