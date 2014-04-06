@@ -12,7 +12,7 @@ import org.newdawn.slick.geom.Rectangle;
  * revised by Mattias Nilsen
  */
 
-public class MovableEntity extends Entity implements Movable, Updatable {
+public class MovableEntity extends Entity implements Movable {
 
 	private int speed;
 	private Direction direction;

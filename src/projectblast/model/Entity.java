@@ -6,7 +6,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
-public class Entity implements Drawable {
+public class Entity implements Drawable, Updatable{
 	private Image sprite;
 	private final Rectangle collisionBox;
 	
@@ -80,6 +80,13 @@ public class Entity implements Drawable {
 	
 	public String getName(){
 		return name;
+	}
+
+
+	@Override
+	public void update() {
+		
+		
 	}
 
 

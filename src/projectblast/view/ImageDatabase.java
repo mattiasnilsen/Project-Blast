@@ -9,7 +9,6 @@ import java.util.Scanner;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Renderable;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -74,6 +73,10 @@ public class ImageDatabase {
 				DestructibleBlock destructibleBlock = (DestructibleBlock) entity;
 				tmp = getDestructibleBlockImage(destructibleBlock);
 				break;
+			case "Explosion":
+				Explosion explosion = (Explosion) entity;
+				tmp = getExplosionImage(explosion);
+				break;
 				
 			default:
 			try {
@@ -90,6 +93,13 @@ public class ImageDatabase {
 		
 		
 		return tmp;
+	}
+
+	private Animation getExplosionImage(Explosion explosion) {
+		String key = explosion.getName();
+		Image image = images.get(key);
+		
+		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 
 	private Animation getSolidBlockImage(SolidBlock solidBlock) {
@@ -113,13 +123,13 @@ public class ImageDatabase {
 
 		if(direction.equals(Direction.EAST)){
 			key += "Right";
-		}else if(direction.equals(Direction.NORTH)){
-			key += "Up";
-		}else if(direction.equals(Direction.SOUTH)){
+		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
+            key += "Up";
+        }else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
 			key += "Down";
 		}else if(direction.equals(Direction.WEST)){
 			key += "Left";
-		} 
+		}
 		Image image = images.get(key);
 		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
@@ -134,14 +144,19 @@ public class ImageDatabase {
 
 		if(direction.equals(Direction.EAST)){
 			key += "Right";
-		}else if(direction.equals(Direction.NORTH)){
+		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
 			key += "Up";
-		}else if(direction.equals(Direction.SOUTH)){
+		}else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
 			key += "Down";
 		}else if(direction.equals(Direction.WEST)){
 			key += "Left";
-		} 
+		}
 		Image image = images.get(key);
+		
+		if(image == null) {
+		    //TODO fix properly
+		    image = images.get(key + "Up");
+		}
 		
 		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		//Animation uses an images imageColor when drawing apparently
