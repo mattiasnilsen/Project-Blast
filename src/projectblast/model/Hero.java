@@ -14,7 +14,8 @@ public abstract class Hero extends MovableEntity{
 	
 	private int bombPower;
 	private int bombCount;
-	private List<Explosive> explosives = new ArrayList<Explosive>();
+	private Direction direction;
+
 	private Team team;
 	
     public Hero(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
@@ -22,37 +23,37 @@ public abstract class Hero extends MovableEntity{
         bombPower = 1;
         bombCount = 1;
         this.team = team;
+        this.direction = direction;
     }
     
-    public void addExplosive(Explosive explosive) {
-    	explosives.add(explosive);
-    }
     
-    public void removeExplosive(Explosive explosive) {
-    	explosives.remove(explosive);
-    }
 
     @Override
     public void update() {
-    	super.update();
-    	for(Explosive explosive : explosives) {
-    		explosive.update();
-    	}
+    	
     }
+    
+    public int snapXToGrid(int x){
+    	int xToGrid = Math.round(x/32.0f)*32;
+    	return xToGrid;
+    	}
+    	
+    
+    public int snapYToGrid(int y){
+    int yToGrid = Math.round(y/32.0f)*32;;
+ 
+    		return yToGrid;
+
+    }
+    
     
     @Override
     public void draw(Graphics g) {
-    	super.draw(g);
-    	for(Explosive explosive : explosives) {
-    		explosive.draw(g);
-    	}
+    	
     }
     @Override
     public void draw(Graphics g, Color teamColor){
-    	super.draw(g, teamColor);
-    	for(Explosive explosive : explosives) {
-    		explosive.draw(g);
-    	}
+    	
     }
 
     
