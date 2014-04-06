@@ -16,6 +16,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
+import projectblast.view.Jukebox;
 
 
 public class BlastModel implements IBlastModel {
@@ -130,6 +131,7 @@ public class BlastModel implements IBlastModel {
 
 	
 	public List<Explosion> createExplosion(int x, int y, int power){
+		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 1);
 		
 		List<Explosion> l = new ArrayList<Explosion>();
 		Image sprite = null, center = null;
