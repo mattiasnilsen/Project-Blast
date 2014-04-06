@@ -208,7 +208,7 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	public List<Explosion> createExplosion(int x, int y, int power){
-		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 1);
+		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
 		
 		x = snapXToGrid(x);
 		y = snapYToGrid(y);
@@ -223,14 +223,12 @@ public class BlastModel implements IBlastModel {
 			System.out.println("Something went wrong! Could not find Explosion.png!");
 		}
 		if (sprite == null || center == null){
-			System.out.println("NULL!!! NULL IN THE EXPLOSION MAKING!!!");
-			System.exit(0);
+			throw new NullPointerException("Created explosion did not get sprites!");
 		}
 		
 		//Add the center one
 		l.add(new Explosion(x,y,center));
 		
-		Rectangle r = new Rectangle(x, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
 		Direction[] d = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
 		for (int i = 0; i < 4; i++){
 			int dist = 1;
