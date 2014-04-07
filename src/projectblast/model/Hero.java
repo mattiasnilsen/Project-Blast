@@ -45,16 +45,6 @@ public abstract class Hero extends MovableEntity{
     		return yToGrid;
 
     }
-    
-    
-    @Override
-    public void draw(Graphics g) {
-    	
-    }
-    @Override
-    public void draw(Graphics g, Color teamColor){
-    	
-    }
 
     
     public Team getTeam(){

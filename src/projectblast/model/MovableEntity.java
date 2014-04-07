@@ -30,16 +30,6 @@ public class MovableEntity extends Entity implements Movable {
 		this(x,y,sprite, speed, direction, box);
 		this.animations = animations;
 	}
-	@Override
-	public void draw(Graphics g){
-		g.drawAnimation(animations[0], getX(), getY());
-	}
-	
-	@Override
-	public void draw(Graphics g, Color teamColor) {
-		g.drawAnimation(animations[0], getX(), getY(), teamColor);
-	}
-	
 
 	@Override
 	public void move(int dx, int dy) {

@@ -43,31 +43,5 @@ public class BlastView implements IBlastView {
 			 }
 		 }
 	}
-	
-	public void rendery(Graphics g) {
-			
-    
-			//Draw all entities
-		    for (Entity e: model.getEntities()){
-		    	e.draw(g);
-		    }
-		    
-		    //Draw all heroes
-		    for (Player p: model.getPlayers()){
-		    	
-		    	p.getHero().draw(g);
-		    	
-		    	//TODO Remove this debug drawing of collision box
-		    	Rectangle r = p.getHero().getCollisionBox();
-		    	g.setColor(Color.cyan);
-		    	g.drawRect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
-		    	
-		    }
-		    
-		    //Draw debug text
-		    g.setColor(Color.yellow);
-		    g.drawString("Entities: " + model.getEntities().size() + " Players: " + model.getPlayers().size(), 0, 0);
-		
-	}
 }
 

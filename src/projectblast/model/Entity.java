@@ -6,7 +6,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
-public class Entity implements Drawable, Updatable{
+public class Entity implements Updatable{
 	private Image sprite;
 	private final Rectangle collisionBox;
 	
@@ -24,20 +24,6 @@ public class Entity implements Drawable, Updatable{
 			box.setWidth(31);
 			box.setHeight(31);
 		}
-	}
-	
-
-	@Override
-	public void draw(Graphics g) {
-		g.drawImage(sprite, x, y);
-		
-	    //g.setColor(Color.white);
-	    //g.drawString("HERO", x, y);
-	   
-	}
-	
-	public void draw(Graphics g, Color teamColor) {
-		g.drawImage(sprite, x, y, teamColor);
 	}
 
 	public Image getSprite() {
