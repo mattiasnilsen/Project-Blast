@@ -135,22 +135,30 @@ public class BlastModel implements IBlastModel {
 			
 			if(willCollide(ex)){
 				//Checks whether the fireballs CollisionBox will intersect with the Owners.
-				if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
-					removeEntity(ex);
-					Explosion t = ex.explode();
-					entities.addAll(createExplosion(t.getX(), t.getY(), 3));
-					tmp.add(ex);
-
-				}else{
+				//if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
+					try{
+					Explosion t = ex.destroy();
+						if(!t.equals(null))
+							removeEntity(ex);
+							entities.addAll(createExplosion(t.getX(), t.getY(), 3));
+							tmp.add(ex);
+						}
+					catch(NullPointerException e){
+						
+					}
+			//	}else{
 					//If it collides this will be typed out.
-				System.out.println("I hit myself with a my own fireball");
+			//	System.out.println("I hit myself with a my own fireball");
 			
-				}
+				
+	
 			}
 		}
-		explosives.removeAll(tmp);
-		
+		explosives.removeAll(tmp);	
 	}
+	
+		
+	
 
 	@Override
 	public void stop(int playerID) {
@@ -196,13 +204,13 @@ public class BlastModel implements IBlastModel {
 
 	private int snapYToGrid(int y){
 		int yToGrid;
-		yToGrid = (y/32)*32;
+		yToGrid = (int)Math.round(y/32.0)*32;
 		return yToGrid;
 		
 	}
 	private int snapXToGrid(int x){
 		int xToGrid;
-		xToGrid = (x/32)*32;
+		xToGrid = (int)Math.round(x/32.0)*32;
 		return xToGrid;
 		
 	}

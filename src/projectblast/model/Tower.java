@@ -24,7 +24,7 @@ public class Tower extends Entity implements Destructible{
 	//Code to change color on sprite and give it to other team
 	}
 	@Override
-	public void destroy() {
+	public Explosion destroy() {
 		if(health == 2){
 		this.setSprite(damagedTower);
 		}
@@ -35,6 +35,6 @@ public class Tower extends Entity implements Destructible{
 		//Tell team to remove it from its list and change its color to neutral
 		//Perhaps use a propertyChangeListener?
 		}
-
+		return null;
 	}
 }

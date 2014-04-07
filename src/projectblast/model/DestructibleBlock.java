@@ -21,8 +21,9 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 	}
 
 	@Override
-	public void destroy() {
+	public Explosion destroy() {
 	this.setSprite(destroyedSprite);
+	return null;
 	//Tell parent to remove this block.
 	}
 

@@ -18,13 +18,11 @@ public class Fireball extends Explosive {
 	}
 
 	@Override
-	public void destroy() {
+	public Explosion destroy() {
 		if(owner.getCollisionBox().intersects(this.getCollisionBox())|| this.getCollisionBox().intersects(owner.getCollisionBox())){
-			System.out.println("Jag dör!");
-			//Please do not explode.
-			//explode();
+			throw new NullPointerException("Fireball hit its owner");
 		}else{
-		//explode();
+			return explode();
 		}
 		}
 

@@ -5,5 +5,5 @@ package projectblast.model;
  */
 public interface Destructible {
 
-	public void destroy();
+	public Explosion destroy();
 }

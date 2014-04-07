@@ -12,7 +12,8 @@ public class Bomb extends Explosive {
 	}
 
 	@Override
-	public void destroy() {
+	public Explosion destroy() {
+		return null;
 		
 	}
 
