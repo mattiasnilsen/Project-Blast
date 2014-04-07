@@ -15,7 +15,7 @@ public class Tower extends Entity implements Destructible{
 	
 	
 	public Tower(int x, int y, Image sprite) {
-		super(x, y, sprite, new Rectangle(x,y,24,32));
+		super(x, y, sprite, new Rectangle(x+1,y+1,24,30));
 		setName("Tower");
 	}
 

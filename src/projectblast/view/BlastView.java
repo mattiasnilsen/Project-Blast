@@ -33,7 +33,8 @@ public class BlastView implements IBlastView {
 		//Draw all entities
 		 for (Entity e: model.getEntities()){
 		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
-		    }
+		    	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
+		 }
 	}
 	
 	public void rendery(Graphics g) {
