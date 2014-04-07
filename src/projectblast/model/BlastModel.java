@@ -177,6 +177,10 @@ public class BlastModel implements IBlastModel {
 		return isFree(entity,entity.getDirection(),entity.getSpeed());
 	}
 	
+	public boolean isFree(Entity entity){
+		return isFree(entity,Direction.NONE, 0);
+	}
+	
 	public boolean isFree(Entity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
