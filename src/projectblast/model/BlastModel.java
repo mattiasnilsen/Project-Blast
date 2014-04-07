@@ -65,12 +65,12 @@ public class BlastModel implements IBlastModel {
 		}
 		
 		while(distance > 0) {
-		    if(isFree(hero.getCollisionBox(), hero.getDirection())) {
+		    if(isFree(hero, hero.getDirection(), 1)) {
                 hero.move(dir);
             } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
-		        if(isFree(hero.getCollisionBox(), Direction.getDirection(dir.getX(), 0))) {
+		        if(isFree(hero, Direction.getDirection(dir.getX(), 0), 1)) {
 		            hero.move(Direction.getDirection(dir.getX(), 0));
-		        } else if(isFree(hero.getCollisionBox(), Direction.getDirection(0, dir.getY()))) {
+		        } else if(isFree(hero, Direction.getDirection(0, dir.getY()), 1)) {
                     hero.move(Direction.getDirection(0, dir.getY()));
                 }
 		    } 
