@@ -7,5 +7,5 @@ public final class Constants {
 	public static final int FRAMERATE      = 60;
 	
 	//Amount of frames explosions stay on screen
-	public static final int EXPLOSION_TIME = 60;
+	public static final int EXPLOSION_TIME = 30;
 }

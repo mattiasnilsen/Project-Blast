@@ -37,11 +37,6 @@ public class BlastView implements IBlastView {
 		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
 		    	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
 		 }
-		 for (ExplosionCore c: model.getExplosions()){
-			 for (Explosion q: c.getParts()){
-				 g.drawAnimation(images.getAnimation(q),q.getX(),q.getY());
-			 }
-		 }
 	}
 }
 

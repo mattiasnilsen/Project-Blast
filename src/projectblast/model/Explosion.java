@@ -1,5 +1,4 @@
 package projectblast.model;
-import java.util.List;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
@@ -9,7 +8,6 @@ import org.newdawn.slick.geom.Rectangle;
 public class Explosion extends Entity {
 
 	private int life = 60;
-	private List<Explosion> parts;
 	private int x;
 	private int y;
 	

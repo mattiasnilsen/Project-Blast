@@ -120,6 +120,13 @@ public class BlastModel implements IBlastModel {
 		for(Entity e: entities){
 			e.update();
 		}
+		
+		for (ExplosionCore c: explosions){
+			c.tick();
+			if (c.isDead()){
+				entities.removeAll(c.getParts());
+			}
+		}
 		List<Explosive> tmp = new ArrayList<Explosive>();
 		
 		/**
@@ -258,6 +265,8 @@ public class BlastModel implements IBlastModel {
 		
 		ExplosionCore core = new ExplosionCore(l,Constants.EXPLOSION_TIME);
 		
+		explosions.add(core);
+		entities.addAll(l);
 		
 		return core;
 	}

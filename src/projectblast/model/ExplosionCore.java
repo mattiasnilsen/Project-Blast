@@ -19,7 +19,7 @@ public class ExplosionCore{
 	}
 	
 	public boolean isDead(){
-		return lifetime <= 0;
+		return lifetime < 0;
 	}
 	
 	public List<Explosion> getParts(){
