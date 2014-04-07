@@ -133,6 +133,7 @@ public class ImageDatabase {
 		Image image = images.get(key);
 		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
+		System.out.println("Key: " + key);
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 

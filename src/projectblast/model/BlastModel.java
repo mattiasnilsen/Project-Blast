@@ -7,9 +7,7 @@ import java.util.List;
 
 
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
@@ -140,7 +138,7 @@ public class BlastModel implements IBlastModel {
 		//HARD CODED "fix" for fireball, should make a better code later.
 		for(Explosive ex: explosives){
 			
-			if(isFree(ex)){
+			if(!isFree(ex)){
 				//Checks whether the fireballs CollisionBox will intersect with the Owners.
 				//if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
 					try{
@@ -192,6 +190,7 @@ public class BlastModel implements IBlastModel {
 	    	}
 	    	
 	    }
+		
 		return true;
 	}
 	
@@ -204,30 +203,16 @@ public class BlastModel implements IBlastModel {
 		return null;
 	}
 	
-	/*
-	public boolean isFree(Rectangle r, Direction d){
-		return isFree(new Rectangle(r.getX() + d.getX(),r.getY() + d.getY(),r.getWidth(),r.getHeight()));
-	}
-	*/
-	
-	private int snapYToGrid(int y){
-		int yToGrid;
-		yToGrid = (int)Math.round(y/32.0)*32;
-		return yToGrid;
-		
-	}
-	private int snapXToGrid(int x){
-		int xToGrid;
-		xToGrid = (int)Math.round(x/32.0)*32;
-		return xToGrid;
+	private int snapToGrid(int i){
+		return (int)Math.round(i/32.0)*32;
 		
 	}
 	
 	public ExplosionCore createExplosion(int x, int y, int power){
 		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
 		
-		x = snapXToGrid(x);
-		y = snapYToGrid(y);
+		x = snapToGrid(x);
+		y = snapToGrid(y);
 		
 		List<Explosion> l = new ArrayList<Explosion>();
 		Image sprite = null, center = null;
