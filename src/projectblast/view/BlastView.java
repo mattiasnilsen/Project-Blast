@@ -10,6 +10,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.BlastModel;
 import projectblast.model.Entity;
+import projectblast.model.Explosion;
+import projectblast.model.ExplosionCore;
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
 
@@ -34,6 +36,11 @@ public class BlastView implements IBlastView {
 		 for (Entity e: model.getEntities()){
 		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
 		    	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
+		 }
+		 for (ExplosionCore c: model.getExplosions()){
+			 for (Explosion q: c.getParts()){
+				 g.drawAnimation(images.getAnimation(q),q.getX(),q.getY());
+			 }
 		 }
 	}
 	

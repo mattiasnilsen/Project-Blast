@@ -25,6 +25,7 @@ public class BlastModel implements IBlastModel {
 	private List<Entity> entities;
 	private List<Player> players;
 	private List<Explosive> explosives;
+	private List<ExplosionCore> explosions;
 	
 	public BlastModel(){ //Ska bytas ut mot BlastFactory??
 		this(new LinkedList<Player>());
@@ -33,8 +34,10 @@ public class BlastModel implements IBlastModel {
 	
 	public BlastModel(List<Player> players){
 		this.players = players;  
-		this.entities = new LinkedList<Entity>();
+		this.entities = new ArrayList<Entity>();
 		this.explosives = new ArrayList<Explosive>();
+		this.explosions = new ArrayList<ExplosionCore>();
+		
 		try {
 			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
 		} catch (SlickException e) {
@@ -100,6 +103,10 @@ public class BlastModel implements IBlastModel {
 		return players;
 	}
 	
+	public List<ExplosionCore> getExplosions() {
+		return explosions;
+	}
+	
 	public void addEntity(Entity e){
 		entities.add(e);
 	}
@@ -140,7 +147,7 @@ public class BlastModel implements IBlastModel {
 					Explosion t = ex.destroy();
 						if(!t.equals(null))
 							removeEntity(ex);
-							entities.addAll(createExplosion(t.getX(), t.getY(), 3));
+							createExplosion(t.getX(), t.getY(), 3);
 							tmp.add(ex);
 						}
 					catch(NullPointerException e){
@@ -215,7 +222,7 @@ public class BlastModel implements IBlastModel {
 		
 	}
 	
-	public List<Explosion> createExplosion(int x, int y, int power){
+	public ExplosionCore createExplosion(int x, int y, int power){
 		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
 		
 		x = snapXToGrid(x);
@@ -263,10 +270,10 @@ public class BlastModel implements IBlastModel {
 
 		}
 		
-		System.out.println("Wow! That explosion covers " + l.size() + " blocks!");
+		ExplosionCore core = new ExplosionCore(l,Constants.EXPLOSION_TIME);
 		
-		entities.addAll(l);
-		return l;
+		
+		return core;
 	}
 	
 

@@ -18,11 +18,12 @@ public interface IBlastModel {
 	
 	void update(GameContainer gc, StateBasedGame game, int delta);
 	
-	public List<Explosion> createExplosion(int x, int y, int power);
+	public ExplosionCore createExplosion(int x, int y, int power);
 	
 	/**
 	 * @return an unsorted list of entities.
 	 */
 	List<Entity> getEntities();
 	List<Player> getPlayers();
+	List<ExplosionCore> getExplosions();
 }
