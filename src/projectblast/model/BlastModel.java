@@ -140,7 +140,7 @@ public class BlastModel implements IBlastModel {
 		//HARD CODED "fix" for fireball, should make a better code later.
 		for(Explosive ex: explosives){
 			
-			if(willCollide(ex)){
+			if(isFree(ex)){
 				//Checks whether the fireballs CollisionBox will intersect with the Owners.
 				//if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
 					try{
@@ -173,22 +173,17 @@ public class BlastModel implements IBlastModel {
 		
 	}
 	
-	public boolean willCollide(Entity entity){
-		for(Entity e: entities){
-			if(e.getName() != entity.getName()){ // TODO proper equals method
-				if(entity.getCollisionBox().intersects(e.getCollisionBox())){					
-					return true;
-				}
-			}
-		}
-		
-		return false;
+	public boolean isFree(MovableEntity entity){
+		return isFree(entity,entity.getDirection(),entity.getSpeed());
 	}
 	
-	public boolean isFree(Rectangle r){
+	public boolean isFree(Entity entity, Direction dir, int length){
+		Rectangle c = entity.getCollisionBox();
+		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
+		
 		for (Entity e: entities){
 			//TODO remove this instanceof - It is only here to prevent collision with itself
-	    	if (!(e instanceof Hero) && e.getCollisionBox().intersects(r) ){
+	    	if (!(e.getName().equals(entity.getName())) && e.getCollisionBox().intersects(testBox) ){
 	    		return false;
 	    	}
 	    	
@@ -205,10 +200,12 @@ public class BlastModel implements IBlastModel {
 		return null;
 	}
 	
+	/*
 	public boolean isFree(Rectangle r, Direction d){
 		return isFree(new Rectangle(r.getX() + d.getX(),r.getY() + d.getY(),r.getWidth(),r.getHeight()));
 	}
-
+	*/
+	
 	private int snapYToGrid(int y){
 		int yToGrid;
 		yToGrid = (int)Math.round(y/32.0)*32;
