@@ -1,0 +1,37 @@
+﻿Meeting Agenda
+
+Date: 2014-04-07
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+Sort out current bugs. Discuss collision. 
+
+2. Reports (15 min)
+All objects on the screen are entities and currently all entities have collision boxes that prevents any object from going through them. However some entities like, explosions, Heroes and towers should be able to go through certain objects. Movement possibly need to be done in a better way since if the hero should be able to move diagonally we need to divide the speed by the square root of 2 and that’s not possible since we are only working with whole numbers in the code.
+An ImageDatabase has been implemented to handle which sprites and animations are assigned to which class.
+Functionality for the explosions and how they should snap to the grid has also been implemented.
+Although we have a functioning MVC system, there are still some part of the code that needs cleaning up.
+
+3. Discussion items (35 min) 
+We discussed and looked into the collision method in BlastModel and a few bugs with explosion.
+Should we implement stuns, towers, boxes till next week?
+
+
+4. Outcomes and assignments (5 min) 
+Solved the bug with the explosions, perhaps only temporarily.
+
+
+Tuesday 08/04: 
+We should make the state diagrams.
+Until next meeting
+Implement the primary ability for the bomber.
+Implement some functionality for the towers.
+
+
+
+5. Wrap up 
+
+Next meeting on Thursday 10/4
