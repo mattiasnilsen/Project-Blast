@@ -222,20 +222,9 @@ public class BlastModel implements IBlastModel {
 		y = snapToGrid(y);
 		
 		List<Explosion> l = new ArrayList<Explosion>();
-		Image sprite = null, center = null;
-		try {
-			sprite = new Image("data/image/Explosion.png");
-			center = new Image("data/image/ExplosionCenter.png");
-		} catch (SlickException e) {
-			e.printStackTrace();
-			System.out.println("Something went wrong! Could not find Explosion.png!");
-		}
-		if (sprite == null || center == null){
-			throw new NullPointerException("Created explosion did not get sprites!");
-		}
-		
+
 		//Add the center one
-		l.add(new Explosion(new Position(x, y), center));
+		l.add(new Explosion(new Position(x, y)));
 		
 		Direction[] d = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
 		for (int i = 0; i < 4; i++){
@@ -253,7 +242,7 @@ public class BlastModel implements IBlastModel {
 					break;
 				}
 				
-				l.add(new Explosion(new Position(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE), sprite));
+				l.add(new Explosion(new Position(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE)));
 					
 				check.setX(x + d[i].getX() * dist * Constants.TILE_SIZE);
 				check.setY(y + d[i].getY() * dist * Constants.TILE_SIZE);

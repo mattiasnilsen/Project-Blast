@@ -1,6 +1,5 @@
 package projectblast.model;
 
-
 /**
  *
  * @author Alex Tao

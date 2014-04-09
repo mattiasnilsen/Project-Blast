@@ -22,9 +22,6 @@ public class MovableEntity extends Entity implements Movable {
 		this.direction = direction;
 	}
 
-	public MovableEntity(Position position, int speed, Direction direction, Rectangle box){
-		this(position, speed, direction, box);
-	}
 
 	@Override
 	public void move(int dx, int dy) {
