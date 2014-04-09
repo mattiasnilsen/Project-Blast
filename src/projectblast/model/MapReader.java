@@ -21,20 +21,20 @@ public class MapReader {
 				//Fetch tile id and get its type, with air as default
 				String prop = map.getTileProperty(map.getTileId(x, y, 0), "type", "air");
 				if (!"air".equals(prop)){
-					if ("block".equals(prop)){
-						list.add(new SolidBlock(new Position(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE)));
-					}
-					if ("box".equals(prop)){
-						list.add(new DestructibleBlock(new Position(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE)));
-					}
-					if ("tower".equals(prop)){
-							list.add(new Tower(new Position(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE)));
+					switch(prop) {
+					case "block":
+						list.add(new SolidBlock(new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
+						break;
+					case "box":
+						list.add(new SolidBlock(new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
+						break;
+					case "tower":
+						list.add(new Tower(new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
+						break;
 					}
 				}
 			}
 		}
-		
 		return list;
 	}
-
 }
