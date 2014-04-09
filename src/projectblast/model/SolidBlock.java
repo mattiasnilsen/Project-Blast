@@ -7,8 +7,8 @@ import org.newdawn.slick.Image;
  */
 public class SolidBlock extends Block{
 	
-	public SolidBlock(int x, int y, Image sprite) {
-		super(x, y, sprite);
+	public SolidBlock(Position position, Image sprite) {
+		super(position, sprite);
 		setName("SolidBlock");
 	}
 

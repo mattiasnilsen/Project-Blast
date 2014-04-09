@@ -18,8 +18,8 @@ public abstract class Hero extends MovableEntity{
 
 	private Team team;
 	
-    public Hero(int x, int y, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
-        super(x, y, sprite, speed, direction, new Rectangle(x,y,24,30), animations);
+    public Hero(Position position, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
+        super(position, sprite, speed, direction, new Rectangle(position.getX(), position.getY(), 24, 30), animations);
         bombPower = 1;
         bombCount = 1;
         this.team = team;

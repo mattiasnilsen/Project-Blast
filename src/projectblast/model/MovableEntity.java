@@ -20,14 +20,14 @@ public class MovableEntity extends Entity implements Movable {
 	private Animation[] animations;
 
 	
-	public MovableEntity(int x, int y, Image sprite, int speed, Direction direction, Rectangle box) {
-		super(x, y, sprite, box);
+	public MovableEntity(Position position, Image sprite, int speed, Direction direction, Rectangle box) {
+		super(position, sprite, box);
 		this.speed = speed;
 		this.direction = direction;
 	}
 
-	public MovableEntity(int x, int y, Image sprite, int speed, Direction direction, Rectangle box, Animation[] animations){
-		this(x,y,sprite, speed, direction, box);
+	public MovableEntity(Position position, Image sprite, int speed, Direction direction, Rectangle box, Animation[] animations){
+		this(position,sprite, speed, direction, box);
 		this.animations = animations;
 	}
 

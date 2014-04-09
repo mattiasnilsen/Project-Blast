@@ -10,8 +10,8 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 
 	private Image destroyedSprite; //Create a sprite for a destroyed block.
 	
-	public DestructibleBlock(int x, int y, Image sprite) {
-		super(x, y, sprite);
+	public DestructibleBlock(Position position, Image sprite) {
+		super(position, sprite);
 		try {
 			destroyedSprite = new Image("data/image/BlockGreenBroken.png");
 		} catch (SlickException e) {

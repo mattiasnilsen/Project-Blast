@@ -9,8 +9,8 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public abstract class Block extends Entity{
 	
-	public Block(int x, int y, Image sprite){
-		super(x,y,sprite,new Rectangle(x+1,y+1,30,30));
+	public Block(Position position, Image sprite){
+		super(position, sprite, new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));
 	}
 
 }

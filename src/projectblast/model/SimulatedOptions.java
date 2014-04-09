@@ -43,8 +43,8 @@ public final class SimulatedOptions {
     	
     	animations[0] = new Animation(images, 1000);
     	
-		p.add(new Player(new Mage(200, 200, images[0], 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red))));
-		p.add(new Player(new Bomber(100, 400, images[0], 4, Movable.Direction.WEST, animations, new Team("fire", Color.blue))));
+		p.add(new Player(new Mage(new Position(200, 200), images[0], 4, Movable.Direction.EAST, animations, new Team("bomb", Color.red))));
+		p.add(new Player(new Bomber(new Position(100, 400), images[0], 4, Movable.Direction.WEST, animations, new Team("fire", Color.blue))));
 		
 		
 		return p;

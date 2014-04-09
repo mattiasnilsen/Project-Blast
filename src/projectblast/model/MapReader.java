@@ -26,7 +26,7 @@ public class MapReader {
 					if ("block".equals(prop)){
 						//TODO fix sprite here
 						try {
-							list.add(new SolidBlock(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,
+							list.add(new SolidBlock(new Position(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE),
 									new Image("data/image/BlockRed.png")));
 						} catch (SlickException e) {
 							e.printStackTrace();
@@ -35,7 +35,7 @@ public class MapReader {
 					if ("box".equals(prop)){
 						//TODO fix sprite here
 						try {
-							list.add(new DestructibleBlock(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,
+							list.add(new DestructibleBlock(new Position(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE),
 									new Image("data/image/BlockGreen.png")));
 						} catch (SlickException e) {
 							e.printStackTrace();
@@ -44,7 +44,7 @@ public class MapReader {
 					if ("tower".equals(prop)){
 						//TODO fix sprite here
 						try {
-							list.add(new Tower(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE,
+							list.add(new Tower(new Position(x*Constants.TILE_SIZE,y*Constants.TILE_SIZE),
 									new Image("data/image/Tower.png")));
 						} catch (SlickException e) {
 							e.printStackTrace();

@@ -235,7 +235,7 @@ public class BlastModel implements IBlastModel {
 		}
 		
 		//Add the center one
-		l.add(new Explosion(x,y,center));
+		l.add(new Explosion(new Position(x, y), center));
 		
 		Direction[] d = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
 		for (int i = 0; i < 4; i++){
@@ -253,7 +253,7 @@ public class BlastModel implements IBlastModel {
 					break;
 				}
 				
-				l.add(new Explosion(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE,sprite));
+				l.add(new Explosion(new Position(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE), sprite));
 					
 				check.setX(x + d[i].getX() * dist * Constants.TILE_SIZE);
 				check.setY(y + d[i].getY() * dist * Constants.TILE_SIZE);

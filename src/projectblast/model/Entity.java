@@ -10,12 +10,11 @@ public class Entity implements Updatable{
 	private Image sprite;
 	private final Rectangle collisionBox;
 	
-	private int x,y;
+	private Position position;
 	private String name = "Entity";
 
-	public Entity(int x, int y, Image sprite, Rectangle box) {
-		this.x = x;
-		this.y = y;
+	public Entity(Position position, Image sprite, Rectangle box) {
+		this.position = position;
 		this.sprite = sprite;
 		this.collisionBox = box;
 		
@@ -37,23 +36,23 @@ public class Entity implements Updatable{
 	public boolean isOnGrid(){
 		//TODO Remove hard code
 		final int GRID = 32;
-		return (x%GRID == 0 && y%GRID == 0);
+		return (position.getX() % GRID == 0 && position.getY() % GRID == 0);
 	}
 	
 	public void setX(int x) {
-	    this.x = x;
+	    position.setX(x);
 	}
 	
 	public int getX() {
-	    return x;
+	    return position.getX();
 	}
 	
 	public void setY(int y) {
-	    this.y = y;
+	    position.setY(y);
 	}
 	
 	public int getY() {
-	    return y;
+	    return position.getY();
 	}
 
 	public Rectangle getCollisionBox() {
