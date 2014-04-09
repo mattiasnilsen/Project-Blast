@@ -1,9 +1,6 @@
 package projectblast.model;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
 /**
@@ -17,18 +14,16 @@ public class MovableEntity extends Entity implements Movable {
 	private int speed;
 	private Direction direction;
 	private boolean moving;
-	private Animation[] animations;
 
 	
-	public MovableEntity(Position position, Image sprite, int speed, Direction direction, Rectangle box) {
-		super(position, sprite, box);
+	public MovableEntity(Position position, int speed, Direction direction, Rectangle box) {
+		super(position, box);
 		this.speed = speed;
 		this.direction = direction;
 	}
 
-	public MovableEntity(Position position, Image sprite, int speed, Direction direction, Rectangle box, Animation[] animations){
-		this(position,sprite, speed, direction, box);
-		this.animations = animations;
+	public MovableEntity(Position position, int speed, Direction direction, Rectangle box){
+		this(position, speed, direction, box);
 	}
 
 	@Override
