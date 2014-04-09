@@ -2,20 +2,17 @@ package projectblast.model;
 
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
 public class Entity implements Updatable{
-	private Image sprite;
+	
 	private final Rectangle collisionBox;
 	
 	private Position position;
 	private String name = "Entity";
 
-	public Entity(Position position, Image sprite, Rectangle box) {
+	public Entity(Position position,  Rectangle box) {
 		this.position = position;
-		this.sprite = sprite;
 		this.collisionBox = box;
 		
 		//TODO Remove this hack
@@ -25,13 +22,6 @@ public class Entity implements Updatable{
 		}
 	}
 
-	public Image getSprite() {
-		return sprite;
-	}
-
-	public void setSprite(Image sprite) {
-		this.sprite = sprite;
-	}
 	
 	public boolean isOnGrid(){
 		//TODO Remove hard code
