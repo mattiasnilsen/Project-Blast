@@ -1,6 +1,5 @@
 package projectblast.model;
 
-import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 
 
@@ -9,8 +8,8 @@ public class Explosion extends Entity {
 
 	private int life = 60;
 	
-	public Explosion(Position position, Image sprite) {
-		super(position, sprite, new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));
+	public Explosion(Position position) {
+		super(position,  new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));
 		setName("Explosion");
 	}
 

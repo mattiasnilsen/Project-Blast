@@ -1,7 +1,6 @@
 package projectblast.model;
 
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Image;
+
 /**
  * 
  * @author A.Freudenthaler
@@ -10,8 +9,8 @@ import org.newdawn.slick.Image;
 public class Fireball extends Explosive {
 	private Hero owner;
 	
-	public Fireball(Position position, Image sprite, int speed, Animation[] animations, Direction direction, Hero owner) {
-		super(position, sprite, speed, direction, animations, owner);
+	public Fireball(Position position,  int speed,  Direction direction, Hero owner) {
+		super(position,  speed, direction,  owner);
 		startMove();
 		setName("Fireball");
 		this.owner = owner;

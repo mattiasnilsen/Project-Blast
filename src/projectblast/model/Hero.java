@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Animation;
+
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
+
 import org.newdawn.slick.geom.Rectangle;
 
 public abstract class Hero extends MovableEntity{
@@ -18,8 +18,8 @@ public abstract class Hero extends MovableEntity{
 
 	private Team team;
 	
-    public Hero(Position position, Image sprite, int speed, Direction direction, Animation[] animations, Team team) {
-        super(position, sprite, speed, direction, new Rectangle(position.getX(), position.getY(), 24, 30), animations);
+    public Hero(Position position, int speed, Direction direction,  Team team) {
+        super(position, speed, direction, new Rectangle(position.getX(), position.getY(), 24, 30));
         bombPower = 1;
         bombCount = 1;
         this.team = team;

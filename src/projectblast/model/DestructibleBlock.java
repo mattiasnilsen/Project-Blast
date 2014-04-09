@@ -1,28 +1,23 @@
 package projectblast.model;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+
 /**
  *
  * @author Alex Tao
  */
 public class DestructibleBlock extends Block implements Destructible, Movable{
 
-	private Image destroyedSprite; //Create a sprite for a destroyed block.
+
 	
-	public DestructibleBlock(Position position, Image sprite) {
-		super(position, sprite);
-		try {
-			destroyedSprite = new Image("data/image/BlockGreenBroken.png");
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+	public DestructibleBlock(Position position) {
+		super(position);
+
 		setName("DestructibleBlock");
 	}
 
 	@Override
 	public Explosion destroy() {
-	this.setSprite(destroyedSprite);
+
 	return null;
 	//Tell parent to remove this block.
 	}
