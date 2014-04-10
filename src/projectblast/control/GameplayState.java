@@ -21,6 +21,7 @@ import projectblast.model.BlastModel;
 import projectblast.model.Constants;
 import projectblast.model.IBlastModel;
 import projectblast.model.Movable.Direction;
+import projectblast.model.Position;
 import projectblast.model.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
@@ -208,7 +209,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	
     	//TODO remove code in release version.
     	if(bCommand.getName().equals("TEST")) {
-    	    model.createExplosion(Constants.TILE_SIZE * 8,Constants.TILE_SIZE * 8,4);
+    	    model.createExplosion(new Position(Constants.TILE_SIZE * 8,Constants.TILE_SIZE * 8),4);
     	    return;
     	}
     	

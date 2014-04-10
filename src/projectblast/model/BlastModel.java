@@ -161,7 +161,7 @@ public class BlastModel implements IBlastModel {
 				//if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
 					
 				removeEntity(ex);
-				createExplosion(ex.getX(), ex.getY(), 3);
+				createExplosion(ex.getPosition(), 3);
 				tmp.add(ex);
 	
 			}
@@ -215,27 +215,29 @@ public class BlastModel implements IBlastModel {
 		
 	}
 	
-	public ExplosionCore createExplosion(int x, int y, int power){
+	public ExplosionCore createExplosion(Position p, int power){
 		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
 		
-		x = snapToGrid(x);
-		y = snapToGrid(y);
+		p.setX(snapToGrid(p.getX()));
+		p.setY(snapToGrid(p.getY()));
 		
 		List<Explosion> l = new ArrayList<Explosion>();
 
 		//Add the center one
-		l.add(new Explosion(new Position(x, y)));
+		l.add(new Explosion(p));
 		
 		Direction[] d = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
 		for (int i = 0; i < 4; i++){
-			int dist = 1;
-			Rectangle check = new Rectangle(x + d[i].getX() * Constants.TILE_SIZE, 
-					y + d[i].getY() * Constants.TILE_SIZE,Constants.TILE_SIZE,Constants.TILE_SIZE);
+			int dist = 0;
+			Rectangle check = new Rectangle(p.getX()+2, p.getY()+2, Constants.TILE_SIZE-4,Constants.TILE_SIZE-4);
 			while (dist <= power){
+				check.setX(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE);
+				check.setY(p.getY() + d[i].getY() * dist * Constants.TILE_SIZE);
+				
 				Entity e = getBlocker(check);
 				if (e instanceof Destructible){
 					((Destructible) e).destroy();
-					l.add(new Explosion(new Position(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE)));
+					l.add(new Explosion(new Position(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE,p.getY() + d[i].getY() * dist * Constants.TILE_SIZE)));
 					break;
 				} else if (e instanceof Block){
 					break;
@@ -244,10 +246,9 @@ public class BlastModel implements IBlastModel {
 					break;
 				}
 				
-				l.add(new Explosion(new Position(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE)));
+				l.add(new Explosion(new Position(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE,p.getY() + d[i].getY() * dist * Constants.TILE_SIZE)));
 					
-				check.setX(x + d[i].getX() * dist * Constants.TILE_SIZE);
-				check.setY(y + d[i].getY() * dist * Constants.TILE_SIZE);
+				
 				dist++;
 				
 			}

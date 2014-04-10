@@ -18,8 +18,6 @@ public abstract class Hero extends MovableEntity{
         this.team = team;
         this.direction = direction;
     }
-    
-    
 
     @Override
     public void update() {
@@ -37,12 +35,11 @@ public abstract class Hero extends MovableEntity{
     public int getBombCount(){
     	return bombCount;
     }
-    	
-
     
     public Team getTeam(){
     	return team;
     }
+    
 	public abstract Explosive primaryAbility();
 		
 	public abstract void secondaryAbility();

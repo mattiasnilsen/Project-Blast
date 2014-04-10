@@ -39,6 +39,18 @@ public abstract class Entity implements Updatable{
 	public int getY() {
 	    return position.getY();
 	}
+	
+	public Position getPosition(){
+		return position;
+	}
+	
+	public void setPosition(Position p){
+		setPosition(p.getX(),p.getY());
+	}
+	
+	public void setPosition(int x, int y){
+		position = new Position(x,y);
+	}
 
 	public Rectangle getCollisionBox() {
 		return collisionBox;
