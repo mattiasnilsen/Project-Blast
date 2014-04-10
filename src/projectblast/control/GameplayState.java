@@ -55,7 +55,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     	view  = SimulatedOptions.getSimulatedView();
     	
     	keysPressed = new ArrayList<List<String>>();
-    	for(int i = 0; i < 3; ++i) {//TODO Change 3 to number of players + 1.
+    	for(int i = 0; i <= model.getPlayers().size(); ++i) {
     	    keysPressed.add(new ArrayList<String>());
     	}
     }
@@ -157,51 +157,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		//This is the identifier ID for the gameplay state
 		return 2;
 	}
-	/* TODO Unused code remove if determined to not use
-	public void handleInput(Input i){
-		if (i.isKeyDown(Input.KEY_W)){
-			model.movePlayer(1,Direction.NORTH);
-		}
-		if (i.isKeyDown(Input.KEY_S)){
-			model.movePlayer(1,Direction.SOUTH);
-		}
-		if (i.isKeyDown(Input.KEY_A)){
-			model.movePlayer(1,Direction.WEST);
-		}
-		if (i.isKeyDown(Input.KEY_D)){
-			model.movePlayer(1,Direction.EAST);
-		}
-		if (i.isKeyPressed(Input.KEY_Q)){
-			model.primary(1);
-		}
-		if (i.isKeyPressed(Input.KEY_E)){
-			model.secondary(1);
-		}
-		
-		if (i.isKeyDown(Input.KEY_UP)){
-			model.movePlayer(2,Direction.NORTH);
-		}
-		if (i.isKeyDown(Input.KEY_DOWN)){
-			model.movePlayer(2,Direction.SOUTH);
-		}
-		if (i.isKeyDown(Input.KEY_LEFT)){
-			model.movePlayer(2,Direction.WEST);
-		}
-		if (i.isKeyDown(Input.KEY_RIGHT)){
-			model.movePlayer(2,Direction.EAST);
-		}
-		if (i.isKeyPressed(Input.KEY_1)){
-			model.primary(2);
-		}
-		if (i.isKeyPressed(Input.KEY_2)){
-			model.secondary(2);
-		}
-		
-		
-		if (i.isKeyPressed(Input.KEY_T)){
-			model.createExplosion(Constants.TILE_SIZE * 8,Constants.TILE_SIZE * 8,4);
-		}
-	}*/
 	
     @Override
     public void controlPressed(Command command) {

@@ -63,6 +63,8 @@ public abstract class Entity implements Updatable{
 	public String getName(){
 		return name;
 	}
+	
+	
 
 
 }
