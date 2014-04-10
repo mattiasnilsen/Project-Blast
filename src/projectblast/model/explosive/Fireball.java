@@ -1,8 +1,6 @@
 package projectblast.model.explosive;
 
-import projectblast.model.Movable;
 import projectblast.model.Position;
-import projectblast.model.Movable.Direction;
 import projectblast.model.hero.Hero;
 
 
@@ -23,11 +21,7 @@ public class Fireball extends Explosive {
 
 	@Override
 	public void destroy() {
-		if(this.getCollisionBox().intersects(owner.getCollisionBox())){
-			throw new NullPointerException("Fireball hit its owner");
-		}else{
-			isDestroyed = true;
-		}
+		isDestroyed = true;
 	}
 
 	public boolean isDestroyed() {
