@@ -18,7 +18,7 @@ public class Fireball extends Explosive {
 
 	@Override
 	public void destroy() {
-		if(owner.getCollisionBox().intersects(this.getCollisionBox())){
+		if(this.getCollisionBox().intersects(owner.getCollisionBox())){
 			throw new NullPointerException("Fireball hit its owner");
 		}else{
 			isDestroyed = true;

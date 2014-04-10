@@ -117,9 +117,20 @@ public class BlastModel implements IBlastModel {
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
 		//TODO remove hardcoding
+		
+		//List of entities to throw away later
+		List<Entity> trashCan = new LinkedList<Entity>();
 		for(Entity e: entities){
 			e.update();
+			if (e instanceof Destructible){
+				Destructible d = (Destructible)e;
+				if (d.isDestroyed()){
+					trashCan.add(e);
+				}
+			}
 		}
+		//Throw the destroyed entities away
+		entities.removeAll(trashCan);
 		
 		for (ExplosionCore c: explosions){
 			c.tick();
@@ -224,10 +235,12 @@ public class BlastModel implements IBlastModel {
 				Entity e = getBlocker(check);
 				if (e instanceof Destructible){
 					((Destructible) e).destroy();
-					System.out.println("Destroyed that one!");
+					l.add(new Explosion(new Position(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE)));
 					break;
 				} else if (e instanceof Block){
-					System.out.println("Hit a block!");
+					break;
+				} else if (e instanceof Tower){
+					((Tower) e).takeDamage();
 					break;
 				}
 				

@@ -6,4 +6,6 @@ package projectblast.model;
 public interface Destructible {
 
 	public void destroy();
+	
+	public boolean isDestroyed();
 }

@@ -8,7 +8,7 @@ import org.newdawn.slick.geom.Rectangle;
  *
  */
 
-public class Tower extends Entity implements Destructible{
+public class Tower extends Entity{
 	private final int MAX_HEALTH = 3;
 	int health = MAX_HEALTH;
 	private Team owner;
@@ -36,9 +36,6 @@ public class Tower extends Entity implements Destructible{
 		if (health > 0){
 			health--;
 		}
-		if (health == 0){
-			destroy();
-		}
 	}
 	
 	public Team getOwner(){
@@ -49,10 +46,6 @@ public class Tower extends Entity implements Destructible{
 		return health;
 	}
 	
-	@Override
-	public void destroy() {
-		
-	}
 
 
 	@Override
