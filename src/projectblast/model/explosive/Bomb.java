@@ -1,4 +1,9 @@
-package projectblast.model;
+package projectblast.model.explosive;
+
+import projectblast.model.Movable;
+import projectblast.model.Position;
+import projectblast.model.Movable.Direction;
+import projectblast.model.hero.Hero;
 
 
 public class Bomb extends Explosive {

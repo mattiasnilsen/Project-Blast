@@ -1,4 +1,11 @@
-package projectblast.model;
+package projectblast.model.hero;
+
+import projectblast.model.Movable;
+import projectblast.model.Position;
+import projectblast.model.Team;
+import projectblast.model.Movable.Direction;
+import projectblast.model.explosive.Bomb;
+import projectblast.model.explosive.Explosive;
 
 
 

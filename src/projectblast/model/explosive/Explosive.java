@@ -1,6 +1,13 @@
-package projectblast.model;
+package projectblast.model.explosive;
 
 import org.newdawn.slick.geom.Rectangle;
+
+import projectblast.model.Destructible;
+import projectblast.model.Movable;
+import projectblast.model.MovableEntity;
+import projectblast.model.Position;
+import projectblast.model.Movable.Direction;
+import projectblast.model.hero.Hero;
 
 public abstract class Explosive extends MovableEntity implements Destructible {
 	private Hero owner;

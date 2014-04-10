@@ -1,8 +1,14 @@
-package projectblast.model;
+package projectblast.model.hero;
 
 
 
 import projectblast.control.GameplayState;
+import projectblast.model.Movable;
+import projectblast.model.Position;
+import projectblast.model.Team;
+import projectblast.model.Movable.Direction;
+import projectblast.model.explosive.Explosive;
+import projectblast.model.explosive.Fireball;
 /**
  * 
  * @author franton
