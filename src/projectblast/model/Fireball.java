@@ -2,7 +2,6 @@ package projectblast.model;
 
 
 /**
- * 
  * @author A.Freudenthaler
  *
  */

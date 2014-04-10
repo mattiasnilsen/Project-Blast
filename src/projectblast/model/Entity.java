@@ -16,11 +16,12 @@ public abstract class Entity implements Updatable{
 		this.collisionBox = box;
 	}
 
-	
+	/**
+	 * Checks if this entity is on the grid. It is if x and y are both divisible by grid size.
+	 * @return
+	 */
 	public boolean isOnGrid(){
-		//TODO Remove hard code
-		final int GRID = 32;
-		return (position.getX() % GRID == 0 && position.getY() % GRID == 0);
+		return (position.getX() % Constants.TILE_SIZE == 0 && position.getY() % Constants.TILE_SIZE == 0);
 	}
 	
 	public void setX(int x) {
