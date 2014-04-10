@@ -1,0 +1,36 @@
+﻿Meeting Agenda
+
+Date: 2013-04-10
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ We have implemented some more functionality, blocks can now be destroyed and tower have gotten some more functionaltiy.  We have also removed all traces of view related stuff from the model. 
+
+3. Discussion items (35 min) 
+How to handle sounds, if sounds are a part of the view how can model tell the view that a sound should be played while still preserving the mvc model?
+
+
+Which design patterns should we include and use? And when should we start making testing the code? Which design patterns have we used so far?
+
+
+How should we handle that some objects should be able to move through certain objects in certain states?
+
+
+
+4. Outcomes and assignments (5 min) 
+
+Entity should provide 2 new methods that subclasses can override.
+The first method should take an entity as a parameter and return true or false whether the entity parameter are allowed to move through this object
+The second method should be called when an object takes damage from an explosion and return true or false whether the explosion are allowed to continue forward or not.
+
+Mattias should continue with the implementation of tower functionality.
+Axel will focus on making explosions work properly.
+Alex will give the a shot at sorting the list of entities that the view gets from the model.
+Anton will implement functionality for the bomber her
