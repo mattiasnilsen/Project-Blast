@@ -6,11 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -24,6 +26,7 @@ public class BlastModel implements IBlastModel {
 	private List<Player> players;
 	private List<Explosive> explosives;
 	private List<ExplosionCore> explosions;
+	private List<Tower> towers;
 	
 	public BlastModel(){ //Ska bytas ut mot BlastFactory??
 		this(new LinkedList<Player>());
@@ -35,6 +38,7 @@ public class BlastModel implements IBlastModel {
 		this.entities = new ArrayList<Entity>();
 		this.explosives = new ArrayList<Explosive>();
 		this.explosions = new ArrayList<ExplosionCore>();
+		this.towers = new ArrayList<Tower>();
 		
 		try {
 			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
@@ -46,6 +50,12 @@ public class BlastModel implements IBlastModel {
 		
 		for(Player p: players){
 			entities.add(p.getHero());
+		}
+		
+		for(Entity e : entities) {
+			if(e.getName().equals("Tower")) {
+				towers.add((Tower)e);
+			}
 		}
 		
 	}
@@ -169,8 +179,27 @@ public class BlastModel implements IBlastModel {
 		explosives.removeAll(tmp);	
 	}
 	
-		
+	private void handleTowers() {
+		for(Tower tower : towers) {
+			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
+			for(int i = 0; i < directions.length; ++i) {
+				int power = tower.getPower();
+				for(int j = 1; j <= power; ++j) {
+					int x = tower.getX() + (directions[i].getX() * power * Constants.TILE_SIZE);
+					int y = tower.getY() + (directions[i].getY() * power * Constants.TILE_SIZE);
+					Rectangle check = new Rectangle(x, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
+					Entity e = getClosestIntersectingEntity(check);
+					if(e != null && e instanceof Hero) { //TODO instanceof == bad? Maybe change.
+						
+					}
+				}
+			}
+		}
+	}
 	
+	private void handleTowerFire(Tower tower) {
+		
+	}
 
 	@Override
 	public void stop(int playerID) {
@@ -208,6 +237,25 @@ public class BlastModel implements IBlastModel {
 	    	}
 	    }
 		return null;
+	}
+	
+	private Entity getClosestIntersectingEntity(Rectangle rectangle) {
+		List<Entity> intersectingEntitys = new ArrayList<Entity>();
+		for(Entity entity : entities) {
+			if(entity.getCollisionBox().intersects(rectangle)) {
+				intersectingEntitys.add(entity);
+			}
+		}
+		double smallestDistance = Double.MAX_VALUE;
+		Entity ent = null;
+		Vector2f rectLocation = rectangle.getLocation();
+		for(Entity entity : intersectingEntitys) {
+			if(smallestDistance > rectLocation.distance(entity.getCollisionBox().getLocation())) {
+				smallestDistance =  rectLocation.distance(entity.getCollisionBox().getLocation());
+				ent = entity;
+			}
+		}
+		return ent;
 	}
 	
 	private int snapToGrid(int i){
