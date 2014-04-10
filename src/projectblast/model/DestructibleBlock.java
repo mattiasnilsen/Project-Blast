@@ -5,9 +5,8 @@ package projectblast.model;
  * @author Alex Tao
  */
 public class DestructibleBlock extends Block implements Destructible, Movable{
+	private boolean isDestroyed;
 
-
-	
 	public DestructibleBlock(Position position) {
 		super(position);
 
@@ -15,10 +14,8 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 	}
 
 	@Override
-	public Explosion destroy() {
-
-	return null;
-	//Tell parent to remove this block.
+	public void destroy() {
+		isDestroyed = true;
 	}
 
 	@Override
@@ -63,6 +60,17 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 	public void stopMove(Direction direction) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isDestroyed() {
+		return isDestroyed;
 	}
 
 }

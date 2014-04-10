@@ -4,7 +4,7 @@ package projectblast.model;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
-public class Entity implements Updatable{
+public abstract class Entity implements Updatable{
 	
 	private final Rectangle collisionBox;
 	
@@ -14,19 +14,14 @@ public class Entity implements Updatable{
 	public Entity(Position position,  Rectangle box) {
 		this.position = position;
 		this.collisionBox = box;
-		
-		//TODO Remove this hack
-		if (box.getWidth() == 32){
-			box.setWidth(31);
-			box.setHeight(31);
-		}
 	}
 
-	
+	/**
+	 * Checks if this entity is on the grid. It is if x and y are both divisible by grid size.
+	 * @return
+	 */
 	public boolean isOnGrid(){
-		//TODO Remove hard code
-		final int GRID = 32;
-		return (position.getX() % GRID == 0 && position.getY() % GRID == 0);
+		return (position.getX() % Constants.TILE_SIZE == 0 && position.getY() % Constants.TILE_SIZE == 0);
 	}
 	
 	public void setX(int x) {
@@ -56,14 +51,6 @@ public class Entity implements Updatable{
 	public String getName(){
 		return name;
 	}
-
-
-	@Override
-	public void update() {
-		
-		
-	}
-
 
 
 }

@@ -1,9 +1,0 @@
-*.class
-.classpath
-
-# Package Files #
-*.jar
-*.war
-*.ear
-/bin
-/lib

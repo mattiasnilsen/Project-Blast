@@ -1,13 +1,6 @@
 package projectblast.model;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.newdawn.slick.Color;
-
-import org.newdawn.slick.Graphics;
-
 import org.newdawn.slick.geom.Rectangle;
 
 public abstract class Hero extends MovableEntity{
@@ -33,18 +26,18 @@ public abstract class Hero extends MovableEntity{
     	
     }
     
-    public int snapXToGrid(int x){
-    	int xToGrid = Math.round(x/32.0f)*32;
-    	return xToGrid;
-    	}
-    	
-    
-    public int snapYToGrid(int y){
-    int yToGrid = Math.round(y/32.0f)*32;;
- 
-    		return yToGrid;
-
+    public int snapToGrid(int coordinate){
+    	return (int)Math.round(coordinate/(double)Constants.TILE_SIZE)*Constants.TILE_SIZE;
     }
+    
+    public int getPower(){
+    	return bombPower;
+    }
+    
+    public int getBombCount(){
+    	return bombCount;
+    }
+    	
 
     
     public Team getTeam(){

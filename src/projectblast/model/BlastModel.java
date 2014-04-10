@@ -127,9 +127,20 @@ public class BlastModel implements IBlastModel {
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
 		//TODO remove hardcoding
+		
+		//List of entities to throw away later
+		List<Entity> trashCan = new LinkedList<Entity>();
 		for(Entity e: entities){
 			e.update();
+			if (e instanceof Destructible){
+				Destructible d = (Destructible)e;
+				if (d.isDestroyed()){
+					trashCan.add(e);
+				}
+			}
 		}
+		//Throw the destroyed entities away
+		entities.removeAll(trashCan);
 		
 		for (ExplosionCore c: explosions){
 			c.tick();
@@ -158,21 +169,10 @@ public class BlastModel implements IBlastModel {
 			if(!isFree(ex)){
 				//Checks whether the fireballs CollisionBox will intersect with the Owners.
 				//if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
-					try{
-					Explosion t = ex.destroy();
-						if(!t.equals(null))
-							removeEntity(ex);
-							createExplosion(t.getX(), t.getY(), 3);
-							tmp.add(ex);
-						}
-					catch(NullPointerException e){
-						
-					}
-			//	}else{
-					//If it collides this will be typed out.
-			//	System.out.println("I hit myself with a my own fireball");
-			
-				
+					
+				removeEntity(ex);
+				createExplosion(ex.getX(), ex.getY(), 3);
+				tmp.add(ex);
 	
 			}
 		}
@@ -283,10 +283,12 @@ public class BlastModel implements IBlastModel {
 				Entity e = getBlocker(check);
 				if (e instanceof Destructible){
 					((Destructible) e).destroy();
-					System.out.println("Destroyed that one!");
+					l.add(new Explosion(new Position(x + d[i].getX() * dist * Constants.TILE_SIZE,y + d[i].getY() * dist * Constants.TILE_SIZE)));
 					break;
 				} else if (e instanceof Block){
-					System.out.println("Hit a block!");
+					break;
+				} else if (e instanceof Tower){
+					((Tower) e).takeDamage();
 					break;
 				}
 				

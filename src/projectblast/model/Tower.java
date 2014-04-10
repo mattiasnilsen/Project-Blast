@@ -1,5 +1,6 @@
 package projectblast.model;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
@@ -9,12 +10,10 @@ import projectblast.model.Movable.Direction;
  * revised by Mattias Nilsen
  */
 
-public class Tower extends Entity implements Destructible {
+public class Tower extends Entity {
 	private static final int STARTING_HEALTH = 3;
 	private int health;
 	private int power;
-	private int turningTime; //The time it takes for the turret to turn 90 degrees in milliseconds.
-	private Direction turretDirection;
 	private Team owner;
 	
 	public Tower(Position position) {
@@ -24,7 +23,6 @@ public class Tower extends Entity implements Destructible {
 		health = STARTING_HEALTH;
 		owner = null;
 		power = 4;
-		
 	}
 	
 	public int getPower() {
@@ -47,17 +45,24 @@ public class Tower extends Entity implements Destructible {
 		return owner;
 	}
 
+	/**
+	 * Capture the tower in the name of the team
+	 * @param team - Team who takes this tower
+	 */
 	public void capture(Team team){
-		health = STARTING_HEALTH;
 		owner = team;
+		health = STARTING_HEALTH;
 	}
-	@Override
-	public Explosion destroy() {
-		if(health > 0 ) {
+	
+	/**
+	 * Make tower defences take damage
+	 */
+	public void takeDamage(){
+		if (health > 0){
 			health--;
 		}
-		return null;
 	}
+	
 	@Override
 	public void update() {
 		
