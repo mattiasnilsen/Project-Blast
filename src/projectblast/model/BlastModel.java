@@ -170,20 +170,18 @@ public class BlastModel implements IBlastModel {
 		
 		//HARD CODED "fix" for fireball, should make a better code later.
 		for(Explosive ex: explosives){
-			
+			if(!isFree(ex)){
+				//Checks whether the fireballs CollisionBox will intersect with the Owners.
+				if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox()) || !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
+					ex.setLife(0);
+				}
+			}
 			if(ex.shouldExplode()){ 
 				removeEntity(ex);
 				createExplosion(ex.getPosition(), ex.getPower());
 				tmp.add(ex);
-			}else if(!isFree(ex)){
-				//Checks whether the fireballs CollisionBox will intersect with the Owners.
-				if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox()) || !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
-					
-				removeEntity(ex);
-				createExplosion(ex.getPosition(), ex.getPower());
-				tmp.add(ex);
-				}
-			}
+			} 
+			
 		}
 		explosives.removeAll(tmp);	
 	}
