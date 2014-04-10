@@ -36,9 +36,9 @@ public class Jukebox {
 			this.musicFile = s;
 		}
 		
-		public Sound getMusic(){
+		public Music getMusic(){
 			try {
-				return new Sound(folder + musicFile);
+				return new Music(folder + musicFile);
 			} catch (SlickException e) {
 				e.printStackTrace();
 				return null;
