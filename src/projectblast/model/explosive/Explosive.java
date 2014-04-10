@@ -12,6 +12,7 @@ import projectblast.model.hero.Hero;
 public abstract class Explosive extends MovableEntity implements Destructible {
 	private Hero owner;
 	private int power;
+	private int life = 1; //Fix til fireball uses same system;
 	
 	public Explosive(Position position,  int speed, Direction direction, Hero owner) {
 		super(position,  speed, direction, new Rectangle(position.getX(), position.getY(), 28, 28));
@@ -25,10 +26,18 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	}
 	
 	
-	public void explode(){
-		//TODO Remove this method or make it do something
+	public boolean shouldExplode(){
+		return life <= 0;
 	}
-
+	
+	public void setLife(int life){
+		this.life = life;
+	}
+	
+	public int getLife(){
+		return life;
+	}
+	
 	public int getPower() {
 		return power;
 	}

@@ -54,10 +54,13 @@ public class BlastModel implements IBlastModel {
 			entities.add(p.getHero());
 		}
 		
+		
+		
 		for(Entity e : entities) {
 			if(e.getName().equals("Tower")) {
 				towers.add((Tower)e);
 			}
+			
 		}
 		
 	}
@@ -168,7 +171,11 @@ public class BlastModel implements IBlastModel {
 		//HARD CODED "fix" for fireball, should make a better code later.
 		for(Explosive ex: explosives){
 			
-			if(!isFree(ex)){
+			if(ex.shouldExplode()){ 
+				removeEntity(ex);
+				createExplosion(ex.getPosition(), ex.getPower());
+				tmp.add(ex);
+			}else if(!isFree(ex)){
 				//Checks whether the fireballs CollisionBox will intersect with the Owners.
 				if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox()) || !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
 					

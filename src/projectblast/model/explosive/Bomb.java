@@ -13,6 +13,7 @@ public class Bomb extends Explosive {
 			 Hero owner) {
 		super(position, speed, direction, owner);
 		setName("Bomb");
+		setLife(120);
 	}
 
 	@Override
@@ -22,6 +23,12 @@ public class Bomb extends Explosive {
 	
 	public boolean isDestroyed(){
 		return isDestroyed;
+	}
+	
+	
+	
+	public void update(){
+		setLife(getLife()- 1);
 	}
 
 }
