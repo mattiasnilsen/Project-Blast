@@ -4,7 +4,7 @@ package projectblast.model;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
-public class Entity implements Updatable{
+public abstract class Entity implements Updatable{
 	
 	private final Rectangle collisionBox;
 	
@@ -50,14 +50,6 @@ public class Entity implements Updatable{
 	public String getName(){
 		return name;
 	}
-
-
-	@Override
-	public void update() {
-		
-		
-	}
-
 
 
 }

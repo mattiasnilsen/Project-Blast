@@ -6,8 +6,6 @@ package projectblast.model;
  */
 public class DestructibleBlock extends Block implements Destructible, Movable{
 
-
-	
 	public DestructibleBlock(Position position) {
 		super(position);
 
@@ -61,6 +59,12 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 
 	@Override
 	public void stopMove(Direction direction) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -25,4 +25,11 @@ public class Tower extends Entity implements Destructible{
 
 		return null;
 	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

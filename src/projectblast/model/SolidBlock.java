@@ -11,4 +11,10 @@ public class SolidBlock extends Block{
 		setName("SolidBlock");
 	}
 
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
