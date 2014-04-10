@@ -8,6 +8,7 @@ package projectblast.model;
  */
 public class Fireball extends Explosive {
 	private Hero owner;
+	private boolean isDestroyed;
 	
 	public Fireball(Position position,  int speed,  Direction direction, Hero owner) {
 		super(position,  speed, direction,  owner);
@@ -17,12 +18,16 @@ public class Fireball extends Explosive {
 	}
 
 	@Override
-	public Explosion destroy() {
-		if(owner.getCollisionBox().intersects(this.getCollisionBox())|| this.getCollisionBox().intersects(owner.getCollisionBox())){
+	public void destroy() {
+		if(owner.getCollisionBox().intersects(this.getCollisionBox())){
 			throw new NullPointerException("Fireball hit its owner");
 		}else{
-			return explode();
+			isDestroyed = true;
 		}
-		}
+	}
+
+	public boolean isDestroyed() {
+		return isDestroyed;
+	}
 
 }

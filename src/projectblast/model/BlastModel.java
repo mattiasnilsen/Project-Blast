@@ -148,21 +148,10 @@ public class BlastModel implements IBlastModel {
 			if(!isFree(ex)){
 				//Checks whether the fireballs CollisionBox will intersect with the Owners.
 				//if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox())|| !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
-					try{
-					Explosion t = ex.destroy();
-						if(!t.equals(null))
-							removeEntity(ex);
-							createExplosion(t.getX(), t.getY(), 3);
-							tmp.add(ex);
-						}
-					catch(NullPointerException e){
-						
-					}
-			//	}else{
-					//If it collides this will be typed out.
-			//	System.out.println("I hit myself with a my own fireball");
-			
-				
+					
+				removeEntity(ex);
+				createExplosion(ex.getX(), ex.getY(), 3);
+				tmp.add(ex);
 	
 			}
 		}
