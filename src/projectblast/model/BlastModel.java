@@ -17,6 +17,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
+import projectblast.model.explosive.Explosive;
+import projectblast.model.hero.Hero;
 import projectblast.view.Jukebox;
 
 

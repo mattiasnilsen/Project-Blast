@@ -1,4 +1,7 @@
 package projectblast.model;
+
+import projectblast.model.hero.Hero;
+
 /**
  * 
  * @author Alex
