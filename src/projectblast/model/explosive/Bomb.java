@@ -17,6 +17,7 @@ public class Bomb extends Explosive {
 
 	@Override
 	public void destroy() {
+		setLife(0);
 		isDestroyed = true;	
 	}
 	

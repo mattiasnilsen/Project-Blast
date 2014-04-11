@@ -25,7 +25,9 @@ public class Explosion extends Entity {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		// TODO Auto-generated method stub
+		if(entity instanceof Destructible){
+			((Destructible) entity).destroy();
+		}
 		return true;
 	}
 	
