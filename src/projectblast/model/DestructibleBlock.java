@@ -73,4 +73,10 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 		return isDestroyed;
 	}
 
+	@Override
+	public boolean allowPassage(Entity entity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

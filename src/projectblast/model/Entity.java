@@ -56,6 +56,10 @@ public abstract class Entity implements Updatable{
 		return collisionBox;
 	}
 	
+	public abstract boolean allowPassage(Entity entity);
+		
+	
+	
 	public void setName(Id name){
 		this.name = name;
 	}

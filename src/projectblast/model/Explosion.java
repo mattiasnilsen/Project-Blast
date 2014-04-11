@@ -21,5 +21,12 @@ public class Explosion extends Entity {
 	public boolean isDead(){
 		return life <= 0;
 	}
+
+
+	@Override
+	public boolean allowPassage(Entity entity) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 }

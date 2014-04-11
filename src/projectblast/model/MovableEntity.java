@@ -93,4 +93,10 @@ public class MovableEntity extends Entity implements Movable {
 		}
 	}
 
+
+	
+	public boolean allowPassage(Entity entity){
+		return false;
+	}
+
 }

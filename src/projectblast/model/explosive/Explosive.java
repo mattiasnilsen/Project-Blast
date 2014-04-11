@@ -3,6 +3,7 @@ package projectblast.model.explosive;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Destructible;
+import projectblast.model.Entity;
 import projectblast.model.Movable;
 import projectblast.model.MovableEntity;
 import projectblast.model.Position;
@@ -44,6 +45,15 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 
 	public void setPower(int power) {
 		this.power = power;
+	}
+	
+	public boolean allowPassage(Entity entity){
+		
+		if(owner == entity){
+			return true;
+		}
+		
+		return false;
 	}
 
 }

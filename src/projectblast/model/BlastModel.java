@@ -155,18 +155,6 @@ public class BlastModel implements IBlastModel {
 		}
 		List<Explosive> tmp = new ArrayList<Explosive>();
 		
-		/**
-		for(Explosive ex: explosives){
-			
-			if(willCollide(ex)){
-				removeEntity(ex);
-				Explosion t = ex.explode();
-				entities.addAll(createExplosion(t.getX(), t.getY(), 3));
-				tmp.add(ex);
-				
-			}
-		}
-		**/
 		
 		//HARD CODED "fix" for fireball, should make a better code later.
 		for(Explosive ex: explosives){
@@ -210,6 +198,7 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void stop(int playerID) {
+		
 		players.get(playerID-1).getHero().stopMove();
 		
 	}
@@ -228,7 +217,7 @@ public class BlastModel implements IBlastModel {
 		
 		for (Entity e: entities){
 			//TODO remove this instanceof - It is only here to prevent collision with itself
-	    	if (!(e.getName().equals(entity.getName())) && e.getCollisionBox().intersects(testBox) ){
+	    	if (!(e.getName().equals(entity.getName())) && e.getCollisionBox().intersects(testBox) && !(e.allowPassage(entity)) ){
 	    		return false;
 	    	}
 	    	

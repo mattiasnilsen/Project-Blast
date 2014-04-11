@@ -27,10 +27,7 @@ public abstract class Hero extends MovableEntity{
         this.direction = direction;
     }
 
-    @Override
-    public void update() {
-    	
-    }
+    
     
     public int snapToGrid(int coordinate){
     	return (int)Math.round(coordinate/(double)Constants.TILE_SIZE)*Constants.TILE_SIZE;

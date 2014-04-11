@@ -67,4 +67,10 @@ public class Tower extends Entity {
 	public void update() {
 		
 	}
+
+	@Override
+	public boolean allowPassage(Entity entity) {
+		
+		return false;
+	}
 }
