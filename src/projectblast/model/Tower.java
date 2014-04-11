@@ -4,6 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
+import projectblast.model.hero.Hero;
 /**
  * 
  * @author Alex
@@ -21,7 +22,7 @@ public class Tower extends Entity {
 		
 		setName(Id.TOWER);
 		health = STARTING_HEALTH;
-		owner = null;
+		owner = Team.getNeutralTeam();
 		power = 4;
 	}
 	
@@ -50,6 +51,10 @@ public class Tower extends Entity {
 	 * @param team - Team who takes this tower
 	 */
 	public void capture(Team team){
+		if(owner == team) {
+			return;
+		}
+		System.out.println("Tower captured");
 		owner = team;
 		health = STARTING_HEALTH;
 	}
@@ -58,6 +63,7 @@ public class Tower extends Entity {
 	 * Make tower defences take damage
 	 */
 	public void takeDamage(){
+		System.out.println("Tower taking damage");
 		if (health > 0){
 			health--;
 		}
@@ -70,7 +76,10 @@ public class Tower extends Entity {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		
-		return false;
+		if(entity instanceof Hero && (((Hero)entity).getTeam() == owner) || health == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

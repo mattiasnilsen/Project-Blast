@@ -86,9 +86,14 @@ public class BlastModel implements IBlastModel {
 		        } else if(isFree(hero, Direction.getDirection(0, dir.getY()), 1)) {
                     hero.move(Direction.getDirection(0, dir.getY()));
                 }
-		    } 
+		    }
             distance--;
 		}
+	    Entity entity = getIntersectingEntity(hero.getCollisionBox());
+	    if(entity instanceof Tower) {
+	    	Tower tower = (Tower)entity;
+	    	tower.capture(hero.getTeam());
+	    }
 	}
 
 
