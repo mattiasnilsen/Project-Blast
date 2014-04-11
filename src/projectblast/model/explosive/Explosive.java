@@ -49,7 +49,7 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	
 	public boolean allowPassage(Entity entity){
 		
-		if(owner == entity){
+		if(owner == entity && owner.getCollisionBox().intersects(getCollisionBox())){
 			return true;
 		}
 		

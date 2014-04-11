@@ -27,7 +27,7 @@ public class Bomber extends Hero {
     public Explosive primaryAbility() {
   
 		
-        return new Bomb(new Position(snapToGrid(getX()) + getDirection().getX()*64, snapToGrid(getY()) + getDirection().getY()*64)  ,0 ,Direction.NORTH ,this);
+        return new Bomb(new Position(snapToGrid(getX()) + getDirection().getX()*0, snapToGrid(getY()) + getDirection().getY()*0)  ,0 ,Direction.NORTH ,this);
 
     }
 
