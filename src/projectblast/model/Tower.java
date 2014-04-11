@@ -19,7 +19,7 @@ public class Tower extends Entity {
 	public Tower(Position position) {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
 		
-		setName("Tower");
+		setName(Id.TOWER);
 		health = STARTING_HEALTH;
 		owner = null;
 		power = 4;

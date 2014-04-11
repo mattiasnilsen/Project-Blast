@@ -10,7 +10,7 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 	public DestructibleBlock(Position position) {
 		super(position);
 
-		setName("DestructibleBlock");
+		setName(Id.DESTRUCTIBLEBLOCK);
 	}
 
 	@Override

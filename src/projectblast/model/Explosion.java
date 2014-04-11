@@ -10,7 +10,7 @@ public class Explosion extends Entity {
 	
 	public Explosion(Position position) {
 		super(position,  new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));
-		setName("Explosion");
+		setName(Id.EXPLOSION);
 	}
 
 	

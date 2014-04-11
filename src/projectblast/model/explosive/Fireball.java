@@ -1,5 +1,6 @@
 package projectblast.model.explosive;
 
+import projectblast.model.Id;
 import projectblast.model.Position;
 import projectblast.model.hero.Hero;
 
@@ -14,7 +15,7 @@ public class Fireball extends Explosive {
 	public Fireball(Position position,  int speed,  Direction direction, Hero owner) {
 		super(position,  speed, direction,  owner);
 		startMove();
-		setName("Fireball");
+		setName(Id.FIREBALL);
 		
 	}
 

@@ -51,31 +51,32 @@ public class ImageDatabase {
 	}
 	
 	public Animation getAnimation(Entity entity){
-		String name = entity.getName();
+		
+		String name = entity.getName().toString();
 		
 		Animation tmp = null;
 		switch (name){
-			case "Mage": case "Bomber":
+			case "MAGE": case "BOMBER":
 				Hero hero = (Hero) entity;
 				tmp = getHeroAnimation(hero);
 				break;
-			case "Tower":
+			case "TOWER":
 				Tower tower = (Tower) entity;
 				tmp = getTowerImage(tower);
 				break;
-			case "Fireball": case "Bomb":
+			case "FIREBALL": case "BOMB":
 				Explosive explosive = (Explosive) entity;
 				tmp = getExplosiveAnimation(explosive);
 				break;
-			case "SolidBlock":
+			case "SOLIDBLOCK":
 				SolidBlock solidBlock = (SolidBlock) entity;
 				tmp = getSolidBlockImage(solidBlock);
 				break;
-			case "DestructibleBlock":
+			case "DESTRUCTIBLEBLOCK":
 				DestructibleBlock destructibleBlock = (DestructibleBlock) entity;
 				tmp = getDestructibleBlockImage(destructibleBlock);
 				break;
-			case "Explosion":
+			case "EXPLOSION":
 				Explosion explosion = (Explosion) entity;
 				tmp = getExplosionImage(explosion);
 				break;
@@ -98,21 +99,21 @@ public class ImageDatabase {
 	}
 
 	private Animation getExplosionImage(Explosion explosion) {
-		String key = explosion.getName();
+		String key = explosion.getName().toString();
 		Image image = images.get(key);
 		
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 
 	private Animation getSolidBlockImage(SolidBlock solidBlock) {
-		String key = solidBlock.getName();
+		String key = solidBlock.getName().toString();
 		Image image = images.get(key);
 		
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}
 	
 	private Animation getDestructibleBlockImage(DestructibleBlock destructibleBlock) {
-		String key = destructibleBlock.getName();
+		String key = destructibleBlock.getName().toString();
 		Image image = images.get(key);
 		
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
@@ -121,7 +122,7 @@ public class ImageDatabase {
 	private Animation getExplosiveAnimation(Explosive explosive) {
 		Direction direction = explosive.getDirection();
 		//Color teamColor = explosive.getOwner().getTeam().getColor();
-		String key = explosive.getName();
+		String key = explosive.getName().toString();
 
 		if(direction.equals(Direction.EAST)){
 			key += "Right";
@@ -143,7 +144,7 @@ public class ImageDatabase {
 		Direction direction = hero.getDirection();
 		
 		Color teamColor = hero.getTeam().getColor();
-		String key = hero.getName();
+		String key = hero.getName().toString();
 
 		if(direction.equals(Direction.EAST)){
 			key += "Right";
@@ -176,7 +177,7 @@ public class ImageDatabase {
 	
 
 	private Animation getTowerImage(Tower tower) {
-		String key = tower.getName();
+		String key = tower.getName().toString();
 		Image image = images.get(key);
 		return new Animation(new SpriteSheet(image, 32, 32), 1000);
 	}

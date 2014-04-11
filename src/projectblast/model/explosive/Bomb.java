@@ -1,9 +1,8 @@
 package projectblast.model.explosive;
 
-import projectblast.model.Movable;
-import projectblast.model.Position;
-import projectblast.model.Movable.Direction;
-import projectblast.model.hero.Hero;
+import projectblast.model.*;
+import projectblast.model.hero.*;
+
 
 
 public class Bomb extends Explosive {
@@ -12,7 +11,7 @@ public class Bomb extends Explosive {
 	public Bomb(Position position, int speed, Direction direction,
 			 Hero owner) {
 		super(position, speed, direction, owner);
-		setName("Bomb");
+		setName(Id.BOMB);
 		setLife(120);
 	}
 

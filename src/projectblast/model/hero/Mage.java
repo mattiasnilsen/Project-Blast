@@ -3,6 +3,7 @@ package projectblast.model.hero;
 
 
 import projectblast.control.GameplayState;
+import projectblast.model.Id;
 import projectblast.model.Movable;
 import projectblast.model.Position;
 import projectblast.model.Team;
@@ -17,7 +18,7 @@ import projectblast.model.explosive.Fireball;
 public class Mage extends Hero {
 	public Mage(Position position,  int speed, Direction direction, Team team) {
 		super(position, speed, direction,  team);
-		setName("Mage");
+		setName(Id.MAGE);
 	}
 
 	@Override

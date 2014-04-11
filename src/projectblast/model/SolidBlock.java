@@ -8,7 +8,7 @@ public class SolidBlock extends Block{
 	
 	public SolidBlock(Position position) {
 		super(position);
-		setName("SolidBlock");
+		setName(Id.SOLIDBLOCK);
 	}
 
 	@Override

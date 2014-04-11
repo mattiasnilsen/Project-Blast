@@ -9,7 +9,7 @@ public abstract class Entity implements Updatable{
 	private final Rectangle collisionBox;
 	
 	private Position position;
-	private String name = "Entity";
+	private Id name;
 
 	public Entity(Position position,  Rectangle box) {
 		this.position = position;
@@ -56,11 +56,11 @@ public abstract class Entity implements Updatable{
 		return collisionBox;
 	}
 	
-	public void setName(String name){
+	public void setName(Id name){
 		this.name = name;
 	}
 	
-	public String getName(){
+	public Id getName(){
 		return name;
 	}
 
