@@ -1,12 +1,12 @@
-MAGEUp data/image/SnowmanHeroUp.png
-MAGEDown data/image/SnowmanHeroDown.png
-MAGELeft data/image/SnowmanHeroLeft.png
-MAGERight data/image/SnowmanHeroRight.png
+MAGENORTH data/image/SnowmanHeroUp.png
+MAGESOUTH data/image/SnowmanHeroDown.png
+MAGEWEST data/image/SnowmanHeroLeft.png
+MAGEEAST data/image/SnowmanHeroRight.png
 
-BOMBERUp data/image/SnowmanHeroUp.png
-BOMBERDown data/image/SnowmanHeroDown.png
-BOMBERLeft data/image/SnowmanHeroLeft.png
-BOMBERRight data/image/SnowmanHeroRight.png
+BOMBERNORTH data/image/SnowmanHeroUp.png
+BOMBERSOUTH data/image/SnowmanHeroDown.png
+BOMBERWEST data/image/SnowmanHeroLeft.png
+BOMBEREAST data/image/SnowmanHeroRight.png
 
 BruteUp data/image/SnowmanHeroUp.png
 BruteDown data/image/SnowmanHeroDown.png
@@ -18,15 +18,15 @@ EnforcerDown data/image/SnowmanHeroDown.png
 EnforcerLeft data/image/SnowmanHeroLeft.png
 EnforcerRight data/image/SnowmanHeroRight.png
 
-FIREBALLUp data/image/SnowballUp.png
-FIREBALLDown data/image/SnowballDown.png
-FIREBALLLeft data/image/SnowballLeft.png
-FIREBALLRight data/image/SnowballRight.png
+FIREBALLNORTH data/image/SnowballUp.png
+FIREBALLSOUTH data/image/SnowballDown.png
+FIREBALLWEST data/image/SnowballLeft.png
+FIREBALLEAST data/image/SnowballRight.png
 
-BOMBUp data/image/Bomb.png
-BOMBDown data/image/Bomb.png
-BOMBLeft data/image/Bomb.png
-BOMBRight data/image/Bomb.png
+BOMBNORTH data/image/Bomb.png
+BOMBSOUTH data/image/Bomb.png
+BOMBWEST data/image/Bomb.png
+BOMBEAST data/image/Bomb.png
 
 TOWER data/image/Tower.png
 SOLIDBLOCK data/image/BlockRed.png

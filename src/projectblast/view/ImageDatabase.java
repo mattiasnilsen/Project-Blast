@@ -52,31 +52,31 @@ public class ImageDatabase {
 	
 	public Animation getAnimation(Entity entity){
 		
-		String name = entity.getName().toString();
+		Id name = entity.getName();
 		
 		Animation tmp = null;
 		switch (name){
-			case "MAGE": case "BOMBER":
+			case MAGE: case BOMBER:
 				Hero hero = (Hero) entity;
 				tmp = getHeroAnimation(hero);
 				break;
-			case "TOWER":
+			case TOWER:
 				Tower tower = (Tower) entity;
 				tmp = getTowerImage(tower);
 				break;
-			case "FIREBALL": case "BOMB":
+			case FIREBALL: case BOMB:
 				Explosive explosive = (Explosive) entity;
 				tmp = getExplosiveAnimation(explosive);
 				break;
-			case "SOLIDBLOCK":
+			case SOLIDBLOCK:
 				SolidBlock solidBlock = (SolidBlock) entity;
 				tmp = getSolidBlockImage(solidBlock);
 				break;
-			case "DESTRUCTIBLEBLOCK":
+			case DESTRUCTIBLEBLOCK:
 				DestructibleBlock destructibleBlock = (DestructibleBlock) entity;
 				tmp = getDestructibleBlockImage(destructibleBlock);
 				break;
-			case "EXPLOSION":
+			case EXPLOSION:
 				Explosion explosion = (Explosion) entity;
 				tmp = getExplosionImage(explosion);
 				break;
@@ -125,13 +125,13 @@ public class ImageDatabase {
 		String key = explosive.getName().toString();
 
 		if(direction.equals(Direction.EAST)){
-			key += "Right";
+			key += "EAST";
 		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
-            key += "Up";
+            key += "NORTH";
         }else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
-			key += "Down";
+			key += "SOUTH";
 		}else if(direction.equals(Direction.WEST)){
-			key += "Left";
+			key += "WEST";
 		}
 		Image image = images.get(key);
 		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
@@ -147,13 +147,13 @@ public class ImageDatabase {
 		String key = hero.getName().toString();
 
 		if(direction.equals(Direction.EAST)){
-			key += "Right";
+			key += "EAST";
 		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
-			key += "Up";
-		}else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
-			key += "Down";
+            key += "NORTH";
+        }else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
+			key += "SOUTH";
 		}else if(direction.equals(Direction.WEST)){
-			key += "Left";
+			key += "WEST";
 		}
 		Image image = images.get(key);
 		
