@@ -226,7 +226,7 @@ public class BlastModel implements IBlastModel {
 		return true;
 	}
 	
-	public Entity getBlocker(Rectangle r){
+	public Entity getIntersectingEntity(Rectangle r){
 		for (Entity e: entities){
 	    	if (e.getCollisionBox().intersects(r)){
 	    		return e;
@@ -278,7 +278,7 @@ public class BlastModel implements IBlastModel {
 				check.setX(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE);
 				check.setY(p.getY() + d[i].getY() * dist * Constants.TILE_SIZE);
 				
-				Entity e = getBlocker(check);
+				Entity e = getIntersectingEntity(check);
 				if (e instanceof Destructible){
 					((Destructible) e).destroy();
 					l.add(new Explosion(new Position(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE,p.getY() + d[i].getY() * dist * Constants.TILE_SIZE)));
