@@ -1,5 +1,6 @@
 package projectblast.model.explosive;
 
+import projectblast.model.Entity;
 import projectblast.model.Id;
 import projectblast.model.Position;
 import projectblast.model.hero.Hero;
@@ -27,6 +28,11 @@ public class Fireball extends Explosive {
 
 	public boolean isDestroyed() {
 		return isDestroyed;
+	}
+	
+	@Override
+	public boolean allowPassage(Entity entity){
+		return true;
 	}
 	
 

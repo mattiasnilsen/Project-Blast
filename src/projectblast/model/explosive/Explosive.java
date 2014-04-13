@@ -46,14 +46,5 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	public void setPower(int power) {
 		this.power = power;
 	}
-	
-	public boolean allowPassage(Entity entity){
-		
-		if(owner == entity && owner.getCollisionBox().intersects(getCollisionBox())){
-			return true;
-		}
-		
-		return false;
-	}
 
 }

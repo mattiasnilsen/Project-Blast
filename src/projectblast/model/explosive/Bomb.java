@@ -30,5 +30,14 @@ public class Bomb extends Explosive {
 	public void update(){
 		setLife(getLife()- 1);
 	}
+	
+	public boolean allowPassage(Entity entity){
+		
+		if(getOwner() == entity && getOwner().getCollisionBox().intersects(getCollisionBox())){
+			return true;
+		}
+		
+		return false;
+	}
 
 }

@@ -19,7 +19,6 @@ public class SolidBlock extends Block{
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
