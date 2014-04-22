@@ -2,8 +2,10 @@ package projectblast.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+
 
 
 
@@ -30,6 +32,9 @@ public class BlastModel implements IBlastModel {
 	private List<ExplosionCore> explosions;
 	private List<Tower> towers;
 	
+	private HashMap<String, Entity> entityMap;
+	private List[] entityRows;
+	
 	public BlastModel(){ //Ska bytas ut mot BlastFactory??
 		this(new LinkedList<Player>());
 	}
@@ -41,9 +46,19 @@ public class BlastModel implements IBlastModel {
 		this.explosives = new ArrayList<Explosive>();
 		this.explosions = new ArrayList<ExplosionCore>();
 		this.towers = new ArrayList<Tower>();
+
+	
+		this.entityRows = new ArrayList[22];
+		
+		for(int i = 0; i < entityRows.length; i++){
+			entityRows[i] = new ArrayList<Entity>();
+		}
+		
+		this.entityMap = new HashMap<String, Entity>();
 		
 		try {
 			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
+
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -52,6 +67,7 @@ public class BlastModel implements IBlastModel {
 		
 		for(Player p: players){
 			entities.add(p.getHero());
+
 		}
 		
 		
@@ -59,9 +75,11 @@ public class BlastModel implements IBlastModel {
 		for(Entity e : entities) {
 			if(e.getName().equals("Tower")) {
 				towers.add((Tower)e);
+				
 			}
 			
 		}
+		
 		
 	}
 	
@@ -102,8 +120,9 @@ public class BlastModel implements IBlastModel {
 		//TODO check if hero can use primary
 		Explosive tmp = players.get(playerID-1).getHero().primaryAbility();
 		entities.add(tmp);
+		sortEntities();
 		explosives.add(tmp);
-
+		System.out.println("PrimaryClicked");
 	}
 
 	@Override
@@ -127,10 +146,17 @@ public class BlastModel implements IBlastModel {
 	
 	public void addEntity(Entity e){
 		entities.add(e);
+
 	}
 	
 	public void removeEntity(Entity e){
 		entities.remove(e);
+		for(int i = 0; i < entityRows.length; i++){
+			if(entityRows[i].contains(e)){
+				entityRows[i].remove(e);
+			}
+
+		}
 	}
 	
 	
@@ -139,6 +165,10 @@ public class BlastModel implements IBlastModel {
 		//TODO remove hardcoding
 		
 		//List of entities to throw away later
+		
+		//Perhaps put this sorting elsewhere?
+		sortEntities();
+		
 		List<Entity> trashCan = new LinkedList<Entity>();
 		for(Entity e: entities){
 			e.update();
@@ -149,13 +179,18 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
+			
+		
+		
 		//Throw the destroyed entities away
 		entities.removeAll(trashCan);
+
 		
 		for (ExplosionCore c: explosions){
 			c.tick();
 			if (c.isDead()){
 				entities.removeAll(c.getParts());
+
 			}
 		}
 		List<Explosive> tmp = new ArrayList<Explosive>();
@@ -266,7 +301,6 @@ public class BlastModel implements IBlastModel {
 	
 	public ExplosionCore createExplosion(Position p, int power){
 		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
-		
 		p.setX(snapToGrid(p.getX()));
 		p.setY(snapToGrid(p.getY()));
 		
@@ -308,9 +342,44 @@ public class BlastModel implements IBlastModel {
 		
 		explosions.add(core);
 		entities.addAll(l);
+
 		
 		return core;
 	}
 	
+//This method sorts all entities in the y Position
+	private void sortEntities(){
+		int square;
+		//Go through every row and sorts the entityRows list 
+		for(int i = 0; i < 22; i++){
+			square = (i-1)*32;
+			System.out.println(square);
+			
+			for(Entity e: entities){
+				if(e.getY() > square && e.getY() <= square+32){
+				entityRows[i].add(e);
+				}	
 
+			}
+		}
+		
+		
+	//Removes all entities then adds them in the correct order	
+		entities.removeAll(entities);		
+
+		for(int j = 0; j < 22; j++){
+			
+		for(int i=0;i< entityRows.length; i++){
+		Collections.sort(entityRows[i]);
+		}
+			
+		entities.addAll(entityRows[j]);
+		System.out.println(j);
+		entityRows[j].removeAll(entityRows[j]);
+		}
+			
+	}
+	
+	
+	
 }

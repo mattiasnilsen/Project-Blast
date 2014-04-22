@@ -22,4 +22,9 @@ public class SolidBlock extends Block{
 		return false;
 	}
 
+	@Override
+	public boolean isMovable() {
+		return false;
+	}
+
 }

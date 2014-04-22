@@ -1,10 +1,12 @@
 package projectblast.model;
 
 
+import java.util.Comparator;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
-public abstract class Entity implements Updatable{
+public abstract class Entity implements Updatable, Comparable<Entity>{
 	
 	private final Rectangle collisionBox;
 	
@@ -58,7 +60,7 @@ public abstract class Entity implements Updatable{
 	
 	public abstract boolean allowPassage(Entity entity);
 		
-	
+	public abstract boolean isMovable();
 	
 	public void setName(Id name){
 		this.name = name;
@@ -67,6 +69,11 @@ public abstract class Entity implements Updatable{
 	public Id getName(){
 		return name;
 	}
-
-
+	@Override
+	public int compareTo(Entity otherEntity){
+		if(this.getX() >= otherEntity.getX()){
+			return 1;
+		}
+		return -1;
+	}
 }

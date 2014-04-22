@@ -82,4 +82,9 @@ public class Tower extends Entity {
 			return false;
 		}
 	}
+
+	@Override
+	public boolean isMovable() {
+		return false;
+	}
 }

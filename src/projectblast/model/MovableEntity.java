@@ -99,4 +99,12 @@ public class MovableEntity extends Entity implements Movable {
 		return false;
 	}
 
+
+	@Override
+	public boolean isMovable() {
+		return true;
+	}
+
+
+
 }

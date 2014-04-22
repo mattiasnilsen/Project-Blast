@@ -30,5 +30,11 @@ public class Explosion extends Entity {
 		}
 		return true;
 	}
+
+
+	@Override
+	public boolean isMovable() {
+		return false;
+	}
 	
 }

@@ -78,4 +78,11 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 		return false;
 	}
 
+	@Override
+	public boolean isMovable() {
+		return true;
+	}
+
+	
+
 }
