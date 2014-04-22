@@ -83,7 +83,7 @@ public class ImageDatabase {
 				
 			default:
 			try {
-				tmp = new Animation(new SpriteSheet("data/image/Error.png", 32, 32), 1000);
+				tmp = new Animation(new SpriteSheet("data/image/Error.png", 48, 48), 1000);
 			} catch (SlickException e) {
 				e.printStackTrace();
 			} 
@@ -102,21 +102,21 @@ public class ImageDatabase {
 		String key = explosion.getName().toString();
 		Image image = images.get(key);
 		
-		return new Animation(new SpriteSheet(image, 32, 32), 1000);
+		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 
 	private Animation getSolidBlockImage(SolidBlock solidBlock) {
 		String key = solidBlock.getName().toString();
 		Image image = images.get(key);
 		
-		return new Animation(new SpriteSheet(image, 32, 32), 1000);
+		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 	
 	private Animation getDestructibleBlockImage(DestructibleBlock destructibleBlock) {
 		String key = destructibleBlock.getName().toString();
 		Image image = images.get(key);
 		
-		return new Animation(new SpriteSheet(image, 32, 32), 1000);
+		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 
 	private Animation getExplosiveAnimation(Explosive explosive) {
@@ -136,7 +136,7 @@ public class ImageDatabase {
 		Image image = images.get(key);
 		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
-		return new Animation(new SpriteSheet(image, 32, 32), 1000);
+		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 
 	private Animation getHeroAnimation(Hero hero) {
@@ -164,16 +164,16 @@ public class ImageDatabase {
 		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		//Animation uses an images imageColor when drawing apparently
 		Image[] test = new Image[1];
-		test[0] = image.getSubImage(0, 0, 32, 32);
+		test[0] = image.getSubImage(0, 0, 48, 48);
 		test[0].setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		if(key == "MAGEEAST"){ //testing picture
-			test[1] = image.getSubImage(32, 0, 32, 32);
+			test[1] = image.getSubImage(32, 0, 48, 48);
 			test[1].setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		}
 		
 		 return new Animation(test, 1);
 		// For some reason Animation doesn't use spriteSheets imageColor when drawing
-		//SpriteSheet spriteSheet = new SpriteSheet(image, 32, 32);
+		//SpriteSheet spriteSheet = new SpriteSheet(image, 48, 48);
 		//spriteSheet.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		
 		//return new Animation(spriteSheet, 1000);
@@ -183,6 +183,6 @@ public class ImageDatabase {
 	private Animation getTowerImage(Tower tower) {
 		String key = tower.getName().toString();
 		Image image = images.get(key);
-		return new Animation(new SpriteSheet(image, 32, 32), 1000);
+		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 }
