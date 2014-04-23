@@ -9,9 +9,7 @@ import java.util.List;
 
 
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
@@ -33,7 +31,7 @@ public class BlastModel implements IBlastModel {
 	private List<Tower> towers;
 	
 	private HashMap<String, Entity> entityMap;
-	private List[] entityRows;
+	private List[] entityRows; //Kolla den här koden, använd inte List utan List<Entity>.
 	
 	public BlastModel(){ //Ska bytas ut mot BlastFactory??
 		this(new LinkedList<Player>());
@@ -67,20 +65,13 @@ public class BlastModel implements IBlastModel {
 		
 		for(Player p: players){
 			entities.add(p.getHero());
-
 		}
-		
-		
 		
 		for(Entity e : entities) {
 			if(e.getName().equals("Tower")) {
 				towers.add((Tower)e);
-				
 			}
-			
 		}
-		
-		
 	}
 	
 	
@@ -162,14 +153,12 @@ public class BlastModel implements IBlastModel {
 	
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
-		//TODO remove hardcoding
-		
-		//List of entities to throw away later
-		
 		//Perhaps put this sorting elsewhere?
 		sortEntities();
 		
+		//List of entities to throw away later
 		List<Entity> trashCan = new LinkedList<Entity>();
+		
 		for(Entity e: entities){
 			e.update();
 			if (e instanceof Destructible){
@@ -179,20 +168,18 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
-			
-		
 		
 		//Throw the destroyed entities away
 		entities.removeAll(trashCan);
 
-		
+		//Check for dead explosions and remove them
 		for (ExplosionCore c: explosions){
 			c.tick();
 			if (c.isDead()){
 				entities.removeAll(c.getParts());
-
 			}
 		}
+		
 		List<Explosive> tmp = new ArrayList<Explosive>();
 		
 		
@@ -215,6 +202,7 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	private void handleTowers() {
+		//TODO make this method useful
 		for(Tower tower : towers) {
 			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
 			for(int i = 0; i < directions.length; ++i) {
@@ -238,7 +226,6 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void stop(int playerID) {
-		
 		players.get(playerID-1).getHero().stopMove();
 		
 	}

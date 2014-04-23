@@ -24,11 +24,12 @@ public class BlastView implements IBlastView {
 	
 	private IBlastModel model;
 	private ImageDatabase images;
+	private StatusBar statusBar;
 	
 	public BlastView(IBlastModel model){
-		this.model = model;
+		this.model  = model;
 		this.images = new ImageDatabase();
-		
+		statusBar   = new StatusBar();
 	}
 
 	public void render(Graphics g) {
@@ -37,6 +38,11 @@ public class BlastView implements IBlastView {
 		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
 		    	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
 		 }
+		 
+		 //Draw statusbar
+		 statusBar.render(g,model.getPlayers());
+		 
+		 
 	}
 }
 

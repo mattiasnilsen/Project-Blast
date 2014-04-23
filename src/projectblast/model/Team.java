@@ -36,6 +36,7 @@ public class Team {
 		this(teamName, startingTower, teamColor, player1);
 		playerList.add(player2);
 	}
+	
 	//TODO Change implementation, maybe this is not best way to do it?
 	public static Team getNeutralTeam() {
 		if(neutralTeam == null) {
@@ -67,7 +68,10 @@ public class Team {
 	
 	@Override
 	public String toString(){
+		return teamColor.toString() + " " + teamName + ": " + score;
+	}
+	
+	public String getName(){
 		return teamName;
-		
 	}
 }
