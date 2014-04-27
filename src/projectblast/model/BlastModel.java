@@ -1,10 +1,12 @@
 package projectblast.model;
 
+import java.awt.image.DirectColorModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+
 
 
 
@@ -68,7 +70,7 @@ public class BlastModel implements IBlastModel {
 		}
 		
 		for(Entity e : entities) {
-			if(e.getName().equals("Tower")) {
+			if(e instanceof Tower) {
 				towers.add((Tower)e);
 			}
 		}
@@ -199,22 +201,28 @@ public class BlastModel implements IBlastModel {
 			
 		}
 		explosives.removeAll(tmp);	
+	    handleTowers();
 	}
 	
 	private void handleTowers() {
-		//TODO make this method useful
 		for(Tower tower : towers) {
 			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
 			for(int i = 0; i < directions.length; ++i) {
 				int power = tower.getPower();
-				for(int j = 1; j <= power; ++j) {
-					int x = tower.getX() + (directions[i].getX() * power * Constants.TILE_SIZE);
-					int y = tower.getY() + (directions[i].getY() * power * Constants.TILE_SIZE);
-					Rectangle check = new Rectangle(x, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
-					Entity e = getClosestIntersectingEntity(check);
-					if(e != null && e instanceof Hero) { //TODO instanceof == bad? Maybe change.
-						
-					}
+				int width = directions[i].getX() * (power - directions[i].getX()) * Constants.TILE_SIZE + Constants.TILE_SIZE;
+				int height = directions[i].getY() * (power - directions[i].getY()) * Constants.TILE_SIZE + Constants.TILE_SIZE;
+				int x = tower.getX();
+				int y = tower.getY();
+				if(directions[i].equals(Direction.EAST)) {
+				    x += Constants.TILE_SIZE;
+				} else if(directions[i].equals(Direction.SOUTH)) {
+				    y += Constants.TILE_SIZE;
+				}
+			    //System.out.println("Width: " + width + " Height: " + height);
+				Rectangle check = new Rectangle(x, y, width, height);
+				Entity e = getClosestIntersectingEntity(check);
+				if(e != null && e instanceof Hero) { //TODO instanceof == bad? Maybe change.
+					System.out.println(directions[i].toString() + ": " + e.getName().toString());
 				}
 			}
 		}
@@ -269,12 +277,12 @@ public class BlastModel implements IBlastModel {
 				intersectingEntitys.add(entity);
 			}
 		}
-		double smallestDistance = Double.MAX_VALUE;
+		double smallestDistance = -Double.MAX_VALUE;
 		Entity ent = null;
 		Vector2f rectLocation = rectangle.getLocation();
 		for(Entity entity : intersectingEntitys) {
 			if(smallestDistance > rectLocation.distance(entity.getCollisionBox().getLocation())) {
-				smallestDistance =  rectLocation.distance(entity.getCollisionBox().getLocation());
+				smallestDistance = rectLocation.distance(entity.getCollisionBox().getLocation());
 				ent = entity;
 			}
 		}
@@ -340,7 +348,7 @@ public class BlastModel implements IBlastModel {
 		//Go through every row and sorts the entityRows list 
 		for(int i = 0; i < 22; i++){
 			square = (i-1)*32;
-			System.out.println(square);
+			//System.out.println(square);
 			
 			for(Entity e: entities){
 				if(e.getY() > square && e.getY() <= square+32){
@@ -361,7 +369,7 @@ public class BlastModel implements IBlastModel {
 		}
 			
 		entities.addAll(entityRows[j]);
-		System.out.println(j);
+		//System.out.println(j);
 		entityRows[j].removeAll(entityRows[j]);
 		}
 			
