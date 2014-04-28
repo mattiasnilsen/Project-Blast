@@ -1,0 +1,32 @@
+﻿Meeting Agenda
+
+Date: 2014-04-28
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min)  
+Decide workload for all project members after vacations.
+The graphic style we have chosen should be implemented during the week, that includes correct sorting of every object on the screen to mimic a 3D effect and drawing of correct sprites. Tests should be written.
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+Alex has began work on the sorting of objects to make sure they are drawn in the correct order to get a 3D feeling.
+Axel has began implementation of the GUI, including the statusbar that should display score, team names etc.
+Anton has done some work on the bomb and bomber class, enabling it to explode after a certain time and some work on sprites and animations.
+Mattias has continued to work on the implementation of towers and their ability to attack players that are near them.
+
+3. Discussion items (35 min) 
+How should the sorting of all objects be implemented, it doesn’t always work as intended.
+What components are needed to handle player death and respawn? A starting position, a timer until respawn, the hero should probably be set to a state called dead so other components can check for it?
+
+4. Outcomes and assignments (5 min) 
+
+Mattias should continue with the tower implementation.
+Alex should continue with the sorting implementation.
+Axel should continue with the status bar implementation.
+Anton should write tests and redraw sprites.
+
+5. Wrap up 
+
+Next meeting will be Friday 02/05
