@@ -1,12 +1,12 @@
-MAGENORTH data/image/SnowmanHeroUp.png
-MAGESOUTH data/image/SnowmanHeroDown.png
-MAGEWEST data/image/SnowmanHeroLeft.png
-MAGEEAST data/image/SnowmanHeroRightV2.png
+MAGENORTH data/image/SnowmanHeroUpV3.png
+MAGESOUTH data/image/SnowmanHeroDownV3.png
+MAGEWEST data/image/SnowmanHeroLeftV3.png
+MAGEEAST data/image/SnowmanHeroRightV3.png
 
-BOMBERNORTH data/image/SnowmanHeroUp.png
-BOMBERSOUTH data/image/SnowmanHeroDown.png
-BOMBERWEST data/image/SnowmanHeroLeft.png
-BOMBEREAST data/image/SnowmanHeroRight.png
+BOMBERNORTH data/image/SnowmanHeroUpV3.png
+BOMBERSOUTH data/image/SnowmanHeroDownV3.png
+BOMBERWEST data/image/SnowmanHeroLeftV3.png
+BOMBEREAST data/image/SnowmanHeroRightV3.png
 
 BruteUp data/image/SnowmanHeroUp.png
 BruteDown data/image/SnowmanHeroDown.png
