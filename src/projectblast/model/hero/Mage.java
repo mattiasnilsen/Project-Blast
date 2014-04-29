@@ -25,7 +25,7 @@ public class Mage extends Hero {
 	public Explosive primaryAbility() {
 		
 
-		//TODO remove bombcount?
+		//TODO remove bombcount
 		
 		
 		return new Fireball(new Position(snapToGrid(getX()) + getDirection().getX()*0, snapToGrid(getY()) + getDirection().getY()*0),  4,  getDirection(), this);

@@ -18,6 +18,8 @@ public class Team {
 	private ArrayList<Tower> towerList = new ArrayList<Tower>();
 	private Color teamColor;
 	
+	
+	
 	private static Team neutralTeam = null;
 
 	public Team(String teamName, Color teamColor){
@@ -28,7 +30,7 @@ public class Team {
 	public Team(String teamName, Tower startingTower, Color teamColor,Player player1){
 		this(teamName, teamColor);
 		playerList.add(player1);
-		
+	
 		towerList.add(startingTower);
 	}
 	
@@ -74,4 +76,8 @@ public class Team {
 	public String getName(){
 		return teamName;
 	}
+	
+	
+	
+	
 }

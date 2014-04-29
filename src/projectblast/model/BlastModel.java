@@ -105,6 +105,7 @@ public class BlastModel implements IBlastModel {
 	    	Tower tower = (Tower)entity;
 	    	tower.capture(hero.getTeam());
 	    }
+	    
 	}
 
 
