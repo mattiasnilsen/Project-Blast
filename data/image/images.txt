@@ -28,7 +28,7 @@ BOMBSOUTH data/image/Bomb.png
 BOMBWEST data/image/Bomb.png
 BOMBEAST data/image/Bomb.png
 
-TOWER data/image/Tower.png
+TOWER data/image/TowerV3.png
 SOLIDBLOCK data/image/Cube.png
 DESTRUCTIBLEBLOCK data/image/CubeGreen.png
 EXPLOSION data/image/Explosion.png
