@@ -181,7 +181,7 @@ public class ImageDatabase {
 	
 
 	private Animation getTowerImage(Tower tower) {
-		String key = tower.getName().toString();
+		String key = tower.getName().toString() + tower.getHealth();
 		Image test[] = new Image[1];
 		Image image = images.get(key);
 		test[0] = image;

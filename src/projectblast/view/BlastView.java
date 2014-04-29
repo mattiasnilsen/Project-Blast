@@ -90,12 +90,12 @@ public class BlastView implements IBlastView {
 		 //Draw statusbar
 		 statusBar.render(g,model.getPlayers());
 		 
-		 //Debug drawing of tiles
+		/* //Debug drawing of tiles
 		 for(int x = 0; x < Constants.GAME_WIDTH; x += 32) {
 		     for(int y = 0; y < Constants.GAME_HEIGHT; y += 32) {
 		         g.drawRect(x, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
 		     }
-		 }
+		 }*/
 		 
 		 
 	}
