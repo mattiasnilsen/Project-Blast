@@ -80,6 +80,7 @@ public class BlastModel implements IBlastModel {
 	@Override
 	public void movePlayer(int playerID, Direction dir) {
 		Hero hero = players.get(playerID-1).getHero();
+		System.out.println(hero.getY());
 		int distance = hero.getSpeed();
 		
 		hero.setDirection(dir);
@@ -113,9 +114,10 @@ public class BlastModel implements IBlastModel {
 		//TODO check if hero can use primary
 		Explosive tmp = players.get(playerID-1).getHero().primaryAbility();
 		entities.add(tmp);
-		sortEntities();
+		//sortEntities();
 		explosives.add(tmp);
 		System.out.println("PrimaryClicked");
+		
 	}
 
 	@Override
@@ -156,7 +158,7 @@ public class BlastModel implements IBlastModel {
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
 		//Perhaps put this sorting elsewhere?
-		sortEntities();
+		//sortEntities();
 		
 		//List of entities to throw away later
 		List<Entity> trashCan = new LinkedList<Entity>();
@@ -341,7 +343,7 @@ public class BlastModel implements IBlastModel {
 		
 		return core;
 	}
-	
+/*	
 //This method sorts all entities in the y Position
 	private void sortEntities(){
 		int square;
@@ -374,6 +376,7 @@ public class BlastModel implements IBlastModel {
 		}
 			
 	}
+	*/
 	
 	
 	
