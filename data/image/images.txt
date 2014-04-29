@@ -18,10 +18,10 @@ EnforcerDown data/image/SnowmanHeroDown.png
 EnforcerLeft data/image/SnowmanHeroLeft.png
 EnforcerRight data/image/SnowmanHeroRight.png
 
-FIREBALLNORTH data/image/SnowballUp.png
-FIREBALLSOUTH data/image/SnowballDown.png
-FIREBALLWEST data/image/SnowballLeft.png
-FIREBALLEAST data/image/SnowballRight.png
+FIREBALLNORTH data/image/SnowballUp48.png
+FIREBALLSOUTH data/image/SnowballDown48.png
+FIREBALLWEST data/image/SnowballLeftV2.png
+FIREBALLEAST data/image/SnowballRight48.png
 
 BOMBNORTH data/image/Bomb.png
 BOMBSOUTH data/image/Bomb.png
