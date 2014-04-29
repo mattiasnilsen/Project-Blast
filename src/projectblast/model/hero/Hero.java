@@ -27,7 +27,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	
     public Hero(Position position, int speed, Direction direction,  Team team) {
-        super(position, speed, direction, new Rectangle(position.getX(), position.getY(), 24, 30));
+        super(position, speed, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
         bombPower = 1;
         bombCount = 1;
         this.team = team;
