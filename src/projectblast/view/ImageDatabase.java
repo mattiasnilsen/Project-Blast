@@ -182,7 +182,11 @@ public class ImageDatabase {
 
 	private Animation getTowerImage(Tower tower) {
 		String key = tower.getName().toString();
+		Image test[] = new Image[1];
 		Image image = images.get(key);
-		return new Animation(new SpriteSheet(image, 48, 48), 1000);
+		test[0] = image;
+		Color teamColor = tower.getOwner().getColor();
+		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
+		return new Animation(test, 1);
 	}
 }
