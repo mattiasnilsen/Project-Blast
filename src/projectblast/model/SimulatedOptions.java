@@ -26,8 +26,8 @@ public final class SimulatedOptions {
 	private static List<Player> getSimulatedPlayerList(){
 		List<Player> p = new LinkedList<Player>();
 		
-		p.add(new Player(new Mage(new Position(200, 200), 4, Movable.Direction.EAST, new Team("Terra Team", Color.red))));
-		p.add(new Player(new Bomber(new Position(300, 300), 4, Movable.Direction.WEST,  new Team("Grief Gang", Color.blue))));
+		p.add(new Player(new Mage(new Position(200, 200), 4, Movable.Direction.EAST, new Team("Terra Team", Color.red, Team.Side.LEFT))));
+		p.add(new Player(new Bomber(new Position(300, 300), 4, Movable.Direction.WEST,  new Team("Grief Gang", Color.blue, Team.Side.RIGHT))));
 		
 		
 		return p;

@@ -83,6 +83,12 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 		return true;
 	}
 
+	@Override
+	public void place(Position p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

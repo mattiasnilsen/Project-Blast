@@ -37,6 +37,7 @@ public class BlastModel implements IBlastModel {
 	
 	private int balance;
 	private int scaleFactor;
+	private int tick;
 	
 	public BlastModel(){ //Ska bytas ut mot BlastFactory??
 		this(new LinkedList<Player>());
@@ -162,6 +163,12 @@ public class BlastModel implements IBlastModel {
 	
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
+		tick++;
+		
+		if (tick%60 == 0){
+			shiftBalance(getTowerBalance());
+		}
+		
 		//Perhaps put this sorting elsewhere?
 		//sortEntities();
 		
