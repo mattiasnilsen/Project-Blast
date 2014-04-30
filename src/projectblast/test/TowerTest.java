@@ -8,6 +8,7 @@ import org.newdawn.slick.Color;
 
 import projectblast.model.*;
 import projectblast.model.Team.Side;
+import projectblast.model.hero.*;
 
 public class TowerTest {
 
@@ -42,5 +43,16 @@ public class TowerTest {
 		assertTrue(tower.getOwner() == team1);
 		
 	}
-
+	
+	@Test
+	public void testAllowPassage() {
+		Hero hero = new Mage(new Position(200, 200), 4, Movable.Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT));
+		assertFalse(tower.allowPassage(hero));
+		for(int i = 0; i < Constants.TOWER_STARTING_HEALTH; ++i) {
+			tower.takeDamage();
+		}
+		assertTrue(tower.allowPassage(hero));
+		tower.capture(hero.getTeam());
+		assertTrue(tower.allowPassage(hero));
+	}
 }
