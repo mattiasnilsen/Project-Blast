@@ -8,6 +8,7 @@ public enum Id {
 	FIREBALL,
 	MAGE,
 	SOLIDBLOCK,
-	TOWER,
+	TOWER, 
+	PARALYZER,
 	
 }
