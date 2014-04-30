@@ -57,7 +57,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
     	System.out.println("Hero taking damage");
     	respawnTime = 480;
     	isRespawning = true;
-    	place(startPosOne.getX(), startPosOne.getY());
+    	place(startPosOne);
     }
     
     public boolean isDestroyed(){

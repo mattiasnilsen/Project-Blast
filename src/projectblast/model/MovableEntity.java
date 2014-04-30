@@ -34,6 +34,12 @@ public class MovableEntity extends Entity implements Movable {
 		getCollisionBox().setX(x + Constants.TILE_SIZE/2 - getCollisionBox().getWidth() / 2);
 		getCollisionBox().setY(y + Constants.TILE_SIZE/2 - getCollisionBox().getHeight() / 2);
 	}
+	
+	@Override
+	public void place(Position p) {
+		place(p.getX(),p.getY());
+	}
+	
 	public Direction getDirection() {
 		return direction;
 	}
@@ -104,6 +110,9 @@ public class MovableEntity extends Entity implements Movable {
 	public boolean isMovable() {
 		return true;
 	}
+
+
+	
 
 
 

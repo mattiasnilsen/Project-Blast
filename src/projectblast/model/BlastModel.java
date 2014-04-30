@@ -420,6 +420,24 @@ public class BlastModel implements IBlastModel {
 		this.scaleFactor += add;
 	}
 	
+	public int getTowerBalance(){
+		int out = 0;
+		for (Tower t: towers){
+			switch(t.getOwner().getSide()){
+			case LEFT:
+				out--;
+				break;
+			case RIGHT:
+				out++;
+				break;
+			default:
+				break;
+			}
+		}
+		
+		return out;
+	}
+	
 	
 	
 }
