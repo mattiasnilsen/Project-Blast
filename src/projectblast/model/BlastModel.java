@@ -31,6 +31,7 @@ public class BlastModel implements IBlastModel {
 	private List<Explosive> explosives;
 	private List<ExplosionCore> explosions;
 	private List<Tower> towers;
+	private List<HazardMaker> stunBeams; //should be a secondary interface.
 	
 	private HashMap<String, Entity> entityMap;
 	private List[] entityRows; //Kolla den här koden, använd inte List utan List<Entity>.
@@ -50,6 +51,7 @@ public class BlastModel implements IBlastModel {
 		this.explosives = new ArrayList<Explosive>();
 		this.explosions = new ArrayList<ExplosionCore>();
 		this.towers = new ArrayList<Tower>();
+		this.stunBeams = new ArrayList<HazardMaker>();
 
 	
 		this.entityRows = new ArrayList[22];
@@ -127,9 +129,9 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void secondary(int playerID) {
-		//Entity tmp = players.get(playerID-1).getHero().secondaryAbility();
-		//entities.add(tmp);
-		createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
+		HazardMaker tmp = players.get(playerID-1).getHero().secondaryAbility();
+		stunBeams.add(tmp);
+		//createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
 		System.out.println("SecondaryClicked");
 	}
 
@@ -232,6 +234,26 @@ public class BlastModel implements IBlastModel {
 				createExplosion(ex.getPosition(), ex.getPower());
 				tmp.add(ex);
 			} 
+			
+		}
+		List<HazardMaker> trashCantwo = new LinkedList<HazardMaker>();
+		for(HazardMaker stun: stunBeams){
+			stun.tick();
+			if(stun.isDead()){
+				trashCantwo.add(stun);
+				entities.removeAll(stun.getParts());
+			}
+		}
+		stunBeams.removeAll(trashCantwo);
+		
+		for(HazardMaker stun: stunBeams){
+			while(!stun.isCreated()){
+				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX(), stun.getNextPosition().getX(), 1, 1)))){
+					stun.create();
+				}else {
+					entities.addAll(stun.getParts());
+				}
+			}
 			
 		}
 		explosives.removeAll(tmp);	
@@ -382,10 +404,6 @@ public class BlastModel implements IBlastModel {
 		p.setY(snapToGrid(p.getY()));
 		
 		List<Paralyzer> l = new ArrayList<Paralyzer>();
-
-		
-		
-		
 		
 			int dist = 1;
 			Rectangle check = new Rectangle(p.getX()+2, p.getY()+2, Constants.TILE_SIZE-4,Constants.TILE_SIZE-4);
@@ -404,7 +422,7 @@ public class BlastModel implements IBlastModel {
 				dist++;
 				
 			}
-		StunBeam core = new StunBeam(l,Constants.EXPLOSION_TIME);
+		
 		entities.addAll(l);
 		//return core;
 	}

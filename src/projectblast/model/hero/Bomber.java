@@ -1,6 +1,7 @@
 package projectblast.model.hero;
 
 import projectblast.model.Entity;
+import projectblast.model.HazardMaker;
 import projectblast.model.Id;
 import projectblast.model.Movable;
 import projectblast.model.Position;
@@ -30,7 +31,7 @@ public class Bomber extends Hero {
     }
 
     @Override
-    public Entity secondaryAbility() {
+    public HazardMaker secondaryAbility() {
        	return null;
     }
 

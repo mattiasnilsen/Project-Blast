@@ -26,8 +26,8 @@ public class Mage extends Hero {
 	}
 
 	@Override
-	public Entity secondaryAbility() {
-		return null;
+	public HazardMaker secondaryAbility() {
+		return new StunBeam(180, getDirection(), getPosition());
 	}
 
 }
