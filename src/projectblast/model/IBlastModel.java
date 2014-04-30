@@ -18,7 +18,7 @@ public interface IBlastModel {
 	
 	void update(GameContainer gc, StateBasedGame game, int delta);
 	
-	public ExplosionCore createExplosion(Position p, int power);
+	public void createExplosion(Position p, int power);
 	
 	/**
 	 * @return an unsorted list of entities.

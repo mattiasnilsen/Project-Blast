@@ -127,8 +127,9 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void secondary(int playerID) {
-		Entity tmp = players.get(playerID-1).getHero().secondaryAbility();
-		entities.add(tmp);
+		//Entity tmp = players.get(playerID-1).getHero().secondaryAbility();
+		//entities.add(tmp);
+		createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
 		System.out.println("SecondaryClicked");
 	}
 
@@ -327,7 +328,7 @@ public class BlastModel implements IBlastModel {
 		
 	}
 	
-	public ExplosionCore createExplosion(Position p, int power){
+	public void createExplosion(Position p, int power){
 		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
 		p.setX(snapToGrid(p.getX()));
 		p.setY(snapToGrid(p.getY()));
@@ -372,7 +373,40 @@ public class BlastModel implements IBlastModel {
 		entities.addAll(l);
 
 		
-		return core;
+		//return core;
+	}
+	
+	public void createParalyzer(Position p, Direction d){
+		//Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
+		p.setX(snapToGrid(p.getX()));
+		p.setY(snapToGrid(p.getY()));
+		
+		List<Paralyzer> l = new ArrayList<Paralyzer>();
+
+		
+		
+		
+		
+			int dist = 1;
+			Rectangle check = new Rectangle(p.getX()+2, p.getY()+2, Constants.TILE_SIZE-4,Constants.TILE_SIZE-4);
+			while (true){
+				check.setX(p.getX() + d.getX() * dist * Constants.TILE_SIZE);
+				check.setY(p.getY() + d.getY() * dist * Constants.TILE_SIZE);
+				
+				Entity e = getIntersectingEntity(check);
+				 if (e instanceof Block){
+					break;
+				 }
+				
+				l.add(new Paralyzer(new Position(p.getX() + d.getX() * dist * Constants.TILE_SIZE,p.getY() + d.getY() * dist * Constants.TILE_SIZE)));
+					
+				
+				dist++;
+				
+			}
+		StunBeam core = new StunBeam(l,Constants.EXPLOSION_TIME);
+		entities.addAll(l);
+		//return core;
 	}
 /*	
 //This method sorts all entities in the y Position
