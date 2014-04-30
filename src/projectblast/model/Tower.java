@@ -66,6 +66,9 @@ public class Tower extends Entity {
 		System.out.println("Tower taking damage");
 		if (health > 0){
 			health--;
+			if(health == 0) {
+				owner = Team.getNeutralTeam();
+			}
 		}
 	}
 	
