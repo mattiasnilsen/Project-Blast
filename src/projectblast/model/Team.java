@@ -13,7 +13,6 @@ public class Team {
 	//TODO change colors of heroes and towers
 	
 	private String teamName;
-	private int score;
 	private ArrayList<Player> playerList = new ArrayList<Player>();
 	private ArrayList<Tower> towerList = new ArrayList<Tower>();
 	private Color teamColor;
@@ -49,19 +48,11 @@ public class Team {
 	
 	public void capturedTower(Tower tower){
 		towerList.add(tower);
-		addScore(10);
 	}
 	
 	public void lostTower(Tower tower){
 		towerList.remove(tower);
 		
-	}
-	
-	public void addScore(int score){
-		this.score += score;
-	}
-	public int getScore(){
-		return score;
 	}
 	
 	public Color getColor(){
@@ -70,7 +61,7 @@ public class Team {
 	
 	@Override
 	public String toString(){
-		return teamColor.toString() + " " + teamName + ": " + score;
+		return teamColor.toString() + " " + teamName;
 	}
 	
 	public String getName(){

@@ -108,7 +108,6 @@ public class ImageDatabase {
 	private Animation getSolidBlockImage(SolidBlock solidBlock) {
 		String key = solidBlock.getName().toString();
 		Image image = images.get(key);
-		
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 	

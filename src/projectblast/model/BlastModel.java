@@ -35,6 +35,9 @@ public class BlastModel implements IBlastModel {
 	private HashMap<String, Entity> entityMap;
 	private List[] entityRows; //Kolla den här koden, använd inte List utan List<Entity>.
 	
+	private int balance;
+	private int scaleFactor;
+	
 	public BlastModel(){ //Ska bytas ut mot BlastFactory??
 		this(new LinkedList<Player>());
 	}
@@ -154,6 +157,7 @@ public class BlastModel implements IBlastModel {
 
 		}
 	}
+	
 	
 	
 	
@@ -378,6 +382,43 @@ public class BlastModel implements IBlastModel {
 			
 	}
 	*/
+
+	
+	
+	public int isGameOver(){
+		if (balance <= -500){
+			return -1;
+		} else if (balance >= 500) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+	@Override
+	public int getBalance() {
+		return balance;
+	}
+
+	@Override
+	public void shiftBalance(int factor) {
+		this.balance += factor;
+	}
+
+	@Override
+	public int getScaleFactor() {
+		return scaleFactor;
+	}
+
+	@Override
+	public void setScaleFactor(int scaleFactor) {
+		this.scaleFactor = scaleFactor;
+	}
+	
+	@Override
+	public void increaseScaleFactor(int add) {
+		this.scaleFactor += add;
+	}
 	
 	
 	

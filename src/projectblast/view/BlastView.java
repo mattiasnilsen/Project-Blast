@@ -37,7 +37,7 @@ public class BlastView implements IBlastView {
 	public BlastView(IBlastModel model){
 		this.model  = model;
 		this.images = new ImageDatabase();
-		statusBar   = new StatusBar();
+		statusBar   = new StatusBar(model);
 		this.entities = model.getEntities();
 		this.entityRows = new ArrayList[22];
 		for(int i = 0; i < entityRows.length; i++){

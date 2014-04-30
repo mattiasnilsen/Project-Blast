@@ -26,4 +26,14 @@ public interface IBlastModel {
 	List<Entity> getEntities();
 	List<Player> getPlayers();
 	List<ExplosionCore> getExplosions();
+
+	void increaseScaleFactor(int add);
+
+	void setScaleFactor(int scaleFactor);
+
+	int getScaleFactor();
+
+	void shiftBalance(int factor);
+
+	int getBalance();
 }
