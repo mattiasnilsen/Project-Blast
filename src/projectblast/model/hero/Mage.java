@@ -3,10 +3,7 @@ package projectblast.model.hero;
 
 
 import projectblast.control.GameplayState;
-import projectblast.model.Id;
-import projectblast.model.Movable;
-import projectblast.model.Position;
-import projectblast.model.Team;
+import projectblast.model.*;
 import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.explosive.Fireball;
@@ -29,8 +26,8 @@ public class Mage extends Hero {
 	}
 
 	@Override
-	public void secondaryAbility() {
-		
+	public Entity secondaryAbility() {
+		return null;
 	}
 
 }

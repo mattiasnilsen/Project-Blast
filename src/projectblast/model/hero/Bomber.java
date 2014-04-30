@@ -1,5 +1,6 @@
 package projectblast.model.hero;
 
+import projectblast.model.Entity;
 import projectblast.model.Id;
 import projectblast.model.Movable;
 import projectblast.model.Position;
@@ -25,16 +26,12 @@ public class Bomber extends Hero {
 
     @Override
     public Explosive primaryAbility() {
-  
-		
         return new Bomb(new Position(snapToGrid(getX()) + getDirection().getX()*0, snapToGrid(getY()) + getDirection().getY()*0)  ,0 ,Direction.NORTH ,this);
-
     }
 
     @Override
-    public void secondaryAbility() {
-        // TODO Auto-generated method stub
-
+    public Entity secondaryAbility() {
+       	return null;
     }
 
 }

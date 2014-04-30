@@ -127,7 +127,9 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void secondary(int playerID) {
-		players.get(playerID-1).getHero().secondaryAbility();
+		Entity tmp = players.get(playerID-1).getHero().secondaryAbility();
+		entities.add(tmp);
+		System.out.println("SecondaryClicked");
 	}
 
 	@Override
