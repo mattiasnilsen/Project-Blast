@@ -449,10 +449,10 @@ public class BlastModel implements IBlastModel {
 		for (Tower t: towers){
 			switch(t.getOwner().getSide()){
 			case LEFT:
-				out--;
+				out++;
 				break;
 			case RIGHT:
-				out++;
+				out--;
 				break;
 			default:
 				break;
