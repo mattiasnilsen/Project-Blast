@@ -12,7 +12,7 @@ import projectblast.model.hero.Hero;
  */
 
 public class Tower extends Entity {
-	private static final int STARTING_HEALTH = 3;
+
 	private int health;
 	private int power;
 	private Team owner;
@@ -21,7 +21,7 @@ public class Tower extends Entity {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
 		
 		setName(Id.TOWER);
-		health = STARTING_HEALTH;
+		health = Constants.TOWER_STARTING_HEALTH;
 		owner = Team.getNeutralTeam();
 		power = 4;
 	}
@@ -56,7 +56,7 @@ public class Tower extends Entity {
 		}
 		System.out.println("Tower captured");
 		owner = team;
-		health = STARTING_HEALTH;
+		health = Constants.TOWER_STARTING_HEALTH;
 	}
 	
 	/**
