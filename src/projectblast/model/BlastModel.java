@@ -159,14 +159,31 @@ public class BlastModel implements IBlastModel {
 		}
 	}
 	
-	
-	
-	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
 		tick++;
 		
 		if (tick%60 == 0){
 			shiftBalance(getTowerBalance());
+			switch (isGameOver()){
+			case 0:
+				break;
+			case -1:
+				for (Player p: players){
+					if (p.getHero().getTeam().getSide() == Team.Side.LEFT){
+						endGame(p.getHero().getTeam());
+						return;
+					}
+				}
+				break;
+			case 1:
+				for (Player p: players){
+					if (p.getHero().getTeam().getSide() == Team.Side.RIGHT){
+						endGame(p.getHero().getTeam());
+						return;
+					}
+				}
+				break;
+			}
 		}
 		
 		//Perhaps put this sorting elsewhere?
@@ -445,6 +462,10 @@ public class BlastModel implements IBlastModel {
 		return out;
 	}
 	
+	
+	public void endGame(Team winner){
+		throw new NullPointerException(winner.getName() + " has won!");
+	}
 	
 	
 }

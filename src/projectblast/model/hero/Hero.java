@@ -22,7 +22,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	private int respawnTime;
 	private boolean isRespawning;
-	private Position startPosOne;
+	private Position startPos;
 
 	
 	
@@ -32,7 +32,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
         bombCount = 1;
         this.team = team;
         this.direction = direction;
-        this.startPosOne = new Position(position.getX(), position.getY());
+        this.startPos = new Position(position.getX(), position.getY());
         
     }
 
@@ -54,10 +54,10 @@ public abstract class Hero extends MovableEntity implements Destructible{
     }
     
     public void destroy(){
-    	System.out.println("Hero taking damage");
+    	System.out.println(getTeam().getName() + " just lost a teammate!");
     	respawnTime = 480;
     	isRespawning = true;
-    	place(startPosOne);
+    	place(startPos);
     }
     
     public boolean isDestroyed(){
@@ -75,12 +75,13 @@ public abstract class Hero extends MovableEntity implements Destructible{
     }
     
     public Position getStartPosition(){
-		 return startPosOne;
+		 return startPos;
     }
 	
 	public void setStartPosition(Position startPosOne){
-		this.startPosOne = startPosOne;
+		this.startPos = startPosOne;
 	}
+	
 	public abstract Explosive primaryAbility();
 		
 	public abstract void secondaryAbility();
