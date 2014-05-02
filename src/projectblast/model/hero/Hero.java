@@ -33,11 +33,12 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
     public Hero(Position position, int speed, Direction direction,  Team team) {
         super(position, speed, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
-        bombPower = 1;
-        bombCount = 1;
+        bombPower = 0;
+        bombCount = 0;
         this.team = team;
         this.direction = direction;
         this.startPos = new Position(position.getX(), position.getY());
+        addInitialPowerUps();
         
     }
     
@@ -97,18 +98,18 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	}
 	
 	public void addPowerUp(IPowerUp powerUp) {
-		removeAllPowerUps();
+		reverseAllPowerUps();
 		powerUps.add(powerUp);
-		addAllPowerUps();
+		applyAllPowerUps();
 	}
 	
-	public void removeAllPowerUps() {
+	private void reverseAllPowerUps() {
 		for(IPowerUp powerUp : powerUps) {
 			powerUp.reverse(this);
 		}
 	}
 	
-	public void addAllPowerUps() {
+	private void applyAllPowerUps() {
 		for(IPowerUp powerUp : powerUps) {
 			powerUp.apply(this);
 		}

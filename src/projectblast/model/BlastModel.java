@@ -110,9 +110,10 @@ public class BlastModel implements IBlastModel {
 	public void primary(int playerID) {
 		//TODO check if hero can use primary
 		Explosive tmp = players.get(playerID-1).getHero().primaryAbility();
-		entities.add(tmp);
-		//sortEntities();
-		explosives.add(tmp);
+		if(tmp != null){
+			entities.add(tmp);
+			explosives.add(tmp);
+		}
 		System.out.println("PrimaryClicked");
 		
 	}
@@ -210,7 +211,7 @@ public class BlastModel implements IBlastModel {
 			if(!isFree(ex)){
 				//Checks whether the fireballs CollisionBox will intersect with the Owners.
 				if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox()) || !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
-					ex.setLife(0);
+					ex.destroy();
 				}
 			}
 			if(ex.shouldExplode()){ 

@@ -20,11 +20,7 @@ public class Fireball extends Explosive {
 		
 	}
 
-	@Override
-	public void destroy() {
-		setLife(0);
-		isDestroyed = true;
-	}
+
 
 	public boolean isDestroyed() {
 		return isDestroyed;

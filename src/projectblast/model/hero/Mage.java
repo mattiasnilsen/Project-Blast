@@ -17,13 +17,17 @@ public class Mage extends Hero {
 	public Mage(Position position,  int speed, Direction direction, Team team) {
 		super(position, speed, direction,  team);
 		setName(Id.MAGE);
+		
 	}
 
 	@Override
 	public Explosive primaryAbility() {
-		//TODO remove bombcount
-		return new Fireball(new Position(snapToGrid(getX()), snapToGrid(getY())),  4,  getDirection(), this);
-		
+		if(getAmmo()<= 0){
+			return null;
+		}else{
+			setAmmo(getAmmo()-1);
+			return new Fireball(new Position(snapToGrid(getX()), snapToGrid(getY())),  4,  getDirection(), this);
+		}
 	}
 
 	@Override
@@ -41,8 +45,7 @@ public class Mage extends Hero {
 		addPowerUp(new RangePowerUp());
 		addPowerUp(new AmmoPowerUp());
 
-		
-		
+
 		
 	}
 
