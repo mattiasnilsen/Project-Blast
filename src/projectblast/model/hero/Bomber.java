@@ -6,6 +6,7 @@ import projectblast.model.Position;
 import projectblast.model.Team;
 import projectblast.model.explosive.Bomb;
 import projectblast.model.explosive.Explosive;
+import projectblast.model.powerups.*;
 
 
 
@@ -24,7 +25,12 @@ public class Bomber extends Hero {
 
     @Override
     public Explosive primaryAbility() {
-        return new Bomb(new Position(snapToGrid(getX()) + getDirection().getX()*0, snapToGrid(getY()) + getDirection().getY()*0)  ,0 ,Direction.NORTH ,this);
+    	if(getAmmo()<= 0){
+			return null;
+		}else{
+			setAmmo(getAmmo()-1);
+			return new Bomb(new Position(snapToGrid(getX()) + getDirection().getX()*0, snapToGrid(getY()) + getDirection().getY()*0)  ,0 ,Direction.NORTH ,this);
+		}
     }
 
     @Override
@@ -34,7 +40,13 @@ public class Bomber extends Hero {
 
 	@Override
 	protected void addInitialPowerUps() {
-		// TODO Auto-generated method stub
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new RangePowerUp());
+		addPowerUp(new AmmoPowerUp());
+
 		
 	}
 

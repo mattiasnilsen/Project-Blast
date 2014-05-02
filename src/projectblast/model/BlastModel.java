@@ -104,9 +104,10 @@ public class BlastModel implements IBlastModel {
 	public void primary(int playerID) {
 		//TODO check if hero can use primary
 		Explosive tmp = players.get(playerID-1).getHero().primaryAbility();
-		entities.add(tmp);
-		//sortEntities();
-		explosives.add(tmp);
+		if(tmp != null){
+			entities.add(tmp);
+			explosives.add(tmp);
+		}
 		System.out.println("PrimaryClicked");
 		
 	}
