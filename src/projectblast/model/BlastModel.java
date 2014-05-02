@@ -248,6 +248,14 @@ public class BlastModel implements IBlastModel {
 	
 	private void handleTowers() {
 		for(Tower tower : towers) {
+			if(tower.getPowerupTimer() == 0) {
+				for(Player player : players) {
+					if(player.getHero().getTeam().equals(tower.getOwner())) {
+						player.getHero().addPowerUp(tower.getPowerUp());
+					}
+				}
+			}
+			
 			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
 			for(int i = 0; i < directions.length; ++i) {
 				int power = tower.getPower();

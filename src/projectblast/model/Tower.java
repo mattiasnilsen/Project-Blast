@@ -27,7 +27,7 @@ public class Tower extends Entity {
 		health = Constants.TOWER_STARTING_HEALTH;
 		owner = Team.getNeutralTeam();
 		power = 4;
-		powerUpInterval = 4000;
+		powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
 	}
 	
 	public int getPower() {
@@ -86,7 +86,10 @@ public class Tower extends Entity {
 	
 	@Override
 	public void update() {
-		
+		powerUpInterval--;
+		if(powerUpInterval < 0) {
+			powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
+		}
 	}
 
 	@Override
@@ -111,5 +114,9 @@ public class Tower extends Entity {
 				capture(hero.getTeam());
 			}
 		}
+	}
+
+	public int getPowerupTimer() {
+		return powerUpInterval;
 	}
 }
