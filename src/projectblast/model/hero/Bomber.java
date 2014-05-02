@@ -32,4 +32,10 @@ public class Bomber extends Hero {
        	return null;
     }
 
+	@Override
+	protected void addInitialPowerUps() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

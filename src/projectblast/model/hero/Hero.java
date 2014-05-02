@@ -1,6 +1,9 @@
 package projectblast.model.hero;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Constants;
@@ -10,6 +13,7 @@ import projectblast.model.MovableEntity;
 import projectblast.model.Position;
 import projectblast.model.Team;
 import projectblast.model.explosive.Explosive;
+import projectblast.model.powerups.IPowerUp;
 
 public abstract class Hero extends MovableEntity implements Destructible{
 	
@@ -22,6 +26,8 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	private int respawnTime;
 	private boolean isRespawning;
 	private Position startPos;
+	
+	private List<IPowerUp> powerUps = new ArrayList<IPowerUp>();
 
 	
 	
@@ -34,8 +40,9 @@ public abstract class Hero extends MovableEntity implements Destructible{
         this.startPos = new Position(position.getX(), position.getY());
         
     }
+    
+    protected abstract void addInitialPowerUps();
 
- 
     public int snapToGrid(int coordinate){
     	return (int)Math.round(coordinate/(double)Constants.TILE_SIZE)*Constants.TILE_SIZE;
     }
@@ -79,6 +86,24 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	public void setStartPosition(Position startPosOne){
 		this.startPos = startPosOne;
+	}
+	
+	public void addPowerUp(IPowerUp powerUp) {
+		removeAllPowerUps();
+		powerUps.add(powerUp);
+		addAllPowerUps();
+	}
+	
+	public void removeAllPowerUps() {
+		for(IPowerUp powerUp : powerUps) {
+			powerUp.reverse(this);
+		}
+	}
+	
+	public void addAllPowerUps() {
+		for(IPowerUp powerUp : powerUps) {
+			powerUp.apply(this);
+		}
 	}
 	
 	public abstract Explosive primaryAbility();

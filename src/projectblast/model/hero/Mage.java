@@ -30,4 +30,10 @@ public class Mage extends Hero {
 		return new StunBeam(180, getDirection(), new Position(snapToGrid(getX()), snapToGrid(getY())));
 	}
 
+	@Override
+	protected void addInitialPowerUps() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
