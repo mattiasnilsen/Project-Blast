@@ -61,7 +61,7 @@ public class BlastModel implements IBlastModel {
 			e.printStackTrace();
 		}
 		
-		System.out.println(players.get(0));
+		//System.out.println(players.get(0));
 		
 		for(Player p: players){
 			entities.add(p.getHero());
@@ -81,7 +81,7 @@ public class BlastModel implements IBlastModel {
 	@Override
 	public void movePlayer(int playerID, Direction dir) {
 		Hero hero = players.get(playerID-1).getHero();
-		System.out.println(hero.getY());
+		//System.out.println(hero.getY());
 		int distance = hero.getSpeed();
 		
 		hero.setDirection(dir);
