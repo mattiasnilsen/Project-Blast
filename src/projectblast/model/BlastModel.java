@@ -5,11 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
-
-
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
@@ -20,7 +15,7 @@ import org.newdawn.slick.tiled.TiledMap;
 import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.hero.Hero;
-import projectblast.model.powerups.TowerSpeedPowerUp;
+import projectblast.model.powerups.SpeedPowerUp;
 import projectblast.view.Jukebox;
 
 
@@ -71,7 +66,7 @@ public class BlastModel implements IBlastModel {
 			if(e instanceof Tower) {
 				//TODO Implement proper setting of power ups this is just for testing.
 				Tower tower = (Tower)e;
-				tower.setPowerUp(new TowerSpeedPowerUp());
+				tower.setPowerUp(new SpeedPowerUp());
 				towers.add(tower);
 			}
 		}

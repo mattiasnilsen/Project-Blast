@@ -7,9 +7,9 @@ import projectblast.model.hero.Hero;
  * @author Mattias
  *
  */
-public class TowerSpeedPowerUp implements IPowerUp {
+public class SpeedPowerUp implements IPowerUp {
 
-	private final int SPEED_MODIFIER = 2;
+	private final int SPEED_MODIFIER = 1;
 	
 	@Override
 	public void apply(Hero hero) {
