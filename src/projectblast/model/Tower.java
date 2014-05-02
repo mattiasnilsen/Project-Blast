@@ -105,7 +105,11 @@ public class Tower extends Entity {
 
 	@Override
 	public void collide(Entity entity) {
-		// TODO Auto-generated method stub
-		
+		if(entity instanceof Hero) {
+			Hero hero = (Hero)entity;
+			if(!hero.getTeam().equals(owner)) {
+				capture(hero.getTeam());
+			}
+		}
 	}
 }
