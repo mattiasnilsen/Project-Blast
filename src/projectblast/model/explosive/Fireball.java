@@ -20,8 +20,6 @@ public class Fireball extends Explosive {
 		
 	}
 
-
-
 	public boolean isDestroyed() {
 		return isDestroyed;
 	}
