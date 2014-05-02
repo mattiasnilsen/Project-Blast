@@ -40,10 +40,12 @@ public class ImageDatabase {
 		while(reader.hasNext()){
 			String key = reader.next();
 			Image value = null;
+			String s = "null";
 			try {
-				value = new Image(reader.next());
+				s = reader.next();
+				value = new Image(s);
 			} catch (SlickException e) {
-				e.printStackTrace();
+				throw new NullPointerException(s + " is not a valid image.");
 			}
 			images.put(key, value);
 		}
@@ -80,7 +82,9 @@ public class ImageDatabase {
 				Explosion explosion = (Explosion) entity;
 				tmp = getExplosionImage(explosion);
 				break;
-				
+			case PARALYZER:
+				Paralyzer paralyzer = (Paralyzer) entity;
+				tmp = getParalyzerImage(paralyzer);
 			default:
 			try {
 				tmp = new Animation(new SpriteSheet("data/image/Error.png", 48, 48), 1000);
@@ -187,5 +191,12 @@ public class ImageDatabase {
 		Color teamColor = tower.getOwner().getColor();
 		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		return new Animation(test, 1);
+	}
+	
+	private Animation getParalyzerImage(Paralyzer p) {
+		String key = p.getName().toString();
+		Image image = images.get(key);
+		
+		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 }
