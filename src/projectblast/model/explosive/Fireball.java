@@ -2,6 +2,7 @@ package projectblast.model.explosive;
 
 import projectblast.model.Entity;
 import projectblast.model.Id;
+import projectblast.model.Paralyzer;
 import projectblast.model.Position;
 import projectblast.model.hero.Hero;
 
@@ -27,7 +28,7 @@ public class Fireball extends Explosive {
 	
 	@Override
 	public void collide(Entity entity) {
-		if(entity != getOwner()) {
+		if(entity != getOwner() && !(entity instanceof Paralyzer)) {
 			this.destroy();
 		}
 	}
