@@ -50,7 +50,7 @@ public class BlastModel implements IBlastModel {
 		this.entityMap = new HashMap<String, Entity>();
 		
 		try {
-			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
+			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Hexagon.tmx")));
 
 		} catch (SlickException e) {
 			e.printStackTrace();
