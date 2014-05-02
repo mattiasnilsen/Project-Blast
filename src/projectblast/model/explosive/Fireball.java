@@ -11,17 +11,13 @@ import projectblast.model.hero.Hero;
  *
  */
 public class Fireball extends Explosive {
-	private boolean isDestroyed;
+	
 	
 	public Fireball(Position position,  int speed,  Direction direction, Hero owner) {
 		super(position,  speed, direction,  owner);
 		startMove();
 		setName(Id.FIREBALL);
 		
-	}
-
-	public boolean isDestroyed() {
-		return isDestroyed;
 	}
 	
 	@Override
