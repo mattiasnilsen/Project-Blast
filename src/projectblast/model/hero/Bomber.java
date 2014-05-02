@@ -34,7 +34,13 @@ public class Bomber extends Hero {
 
 	@Override
 	protected void addInitialPowerUps() {
-		// TODO Auto-generated method stub
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new RangePowerUp());
+		addPowerUp(new AmmoPowerUp());
+
 		
 	}
 

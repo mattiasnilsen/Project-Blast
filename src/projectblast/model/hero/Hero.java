@@ -51,8 +51,16 @@ public abstract class Hero extends MovableEntity implements Destructible{
     	return bombPower;
     }
     
-    public int getBombCount(){
+    public void setPower(int power){
+    	bombPower = power;
+    }
+    
+    public int getAmmo(){
     	return bombCount;
+    }
+    
+    public void setAmmo(int ammo){
+    	bombCount = ammo;
     }
     
     public Team getTeam(){

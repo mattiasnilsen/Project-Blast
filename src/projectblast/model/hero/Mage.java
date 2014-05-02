@@ -7,6 +7,7 @@ import projectblast.model.*;
 import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.explosive.Fireball;
+import projectblast.model.powerups.*;
 /**
  * 
  * @author franton
@@ -32,7 +33,16 @@ public class Mage extends Hero {
 
 	@Override
 	protected void addInitialPowerUps() {
-		// TODO Auto-generated method stub
+		
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new SpeedPowerUp());
+		addPowerUp(new RangePowerUp());
+		addPowerUp(new AmmoPowerUp());
+
+		
+		
 		
 	}
 
