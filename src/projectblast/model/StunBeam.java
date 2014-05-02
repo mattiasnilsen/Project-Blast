@@ -48,18 +48,12 @@ public class StunBeam implements HazardMaker{
 	}
 	
 	public void create(){
-		startPos.setX(snapToGrid(startPos.getX()));
-		startPos.setY(snapToGrid(startPos.getY()));
+		
+		int x = getNextPosition().getX();
+		int y = getNextPosition().getY();
 
-		Rectangle check = new Rectangle(startPos.getX()+2, startPos.getY()+2, Constants.TILE_SIZE-4,Constants.TILE_SIZE-4);
-		
-		check.setX(startPos.getX() + direction.getX() * dist * Constants.TILE_SIZE);
-		check.setY(startPos.getY() + direction.getY() * dist * Constants.TILE_SIZE);
-		
-		parts.add(new Paralyzer(new Position(startPos.getX() + direction.getX() * dist * Constants.TILE_SIZE,startPos.getY() + direction.getY() * dist * Constants.TILE_SIZE)));
+		parts.add(new Paralyzer(new Position(x, y)));
 		dist++;	
-		
-
 		
 	}
 	
@@ -67,8 +61,4 @@ public class StunBeam implements HazardMaker{
 		return new Position(startPos.getX() + direction.getX() * dist * Constants.TILE_SIZE, startPos.getY() + direction.getY() * dist * Constants.TILE_SIZE);
 	}
 	
-	private int snapToGrid(int i){
-		return (int)Math.round(i/Constants.TILE_SIZE)*Constants.TILE_SIZE;
-		
-	}
 }

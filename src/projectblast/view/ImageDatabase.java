@@ -83,7 +83,6 @@ public class ImageDatabase {
 				
 			default:
 			try {
-				System.out.println("Creating error animation");
 				tmp = new Animation(new SpriteSheet("data/image/Error.png", 48, 48), 1000);
 			} catch (SlickException e) {
 				e.printStackTrace();

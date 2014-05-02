@@ -236,19 +236,12 @@ public class BlastModel implements IBlastModel {
 			} 
 			
 		}
-		List<HazardMaker> trashCantwo = new LinkedList<HazardMaker>();
-		for(HazardMaker stun: stunBeams){
-			stun.tick();
-			if(stun.isDead()){
-				trashCantwo.add(stun);
-				entities.removeAll(stun.getParts());
-			}
-		}
-		stunBeams.removeAll(trashCantwo);
+		
 		
 		for(HazardMaker stun: stunBeams){
 			while(!stun.isCreated()){
-				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX(), stun.getNextPosition().getX(), 1, 1)))){
+				
+				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX()+2, stun.getNextPosition().getX()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 					stun.create();
 				}else {
 					entities.addAll(stun.getParts());
@@ -256,6 +249,18 @@ public class BlastModel implements IBlastModel {
 			}
 			
 		}
+		
+		List<HazardMaker> trashCantwo = new LinkedList<HazardMaker>();
+		for(HazardMaker stun: stunBeams){
+			if(stun.isCreated()){
+				stun.tick();
+				if(stun.isDead()){
+					trashCantwo.add(stun);
+					entities.removeAll(stun.getParts());
+				}
+			}
+		}
+		stunBeams.removeAll(trashCantwo);
 		explosives.removeAll(tmp);	
 	    handleTowers();
 	}
