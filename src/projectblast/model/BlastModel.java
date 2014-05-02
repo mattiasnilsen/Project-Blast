@@ -344,7 +344,7 @@ public class BlastModel implements IBlastModel {
 		p.setX(snapToGrid(p.getX()));
 		p.setY(snapToGrid(p.getY()));
 		
-		List<Explosion> l = new ArrayList<Explosion>();
+		List<IBurst> l = new ArrayList<IBurst>();
 
 		//Add the center one
 		l.add(new Explosion(p));
@@ -381,7 +381,13 @@ public class BlastModel implements IBlastModel {
 		ExplosionCore core = new ExplosionCore(l,Constants.EXPLOSION_TIME);
 		
 		explosions.add(core);
-		entities.addAll(l);
+		//TODO Make this better
+		for (IBurst ib: l){
+			if (ib instanceof Entity){
+				Entity e = (Entity) ib;
+				entities.add(e);
+			}
+		}
 
 		
 		//return core;
