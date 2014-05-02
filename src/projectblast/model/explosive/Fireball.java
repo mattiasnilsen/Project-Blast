@@ -35,5 +35,11 @@ public class Fireball extends Explosive {
 		return true;
 	}
 	
+	@Override
+	public void collide(Entity entity) {
+		if(entity != getOwner()) {
+			this.destroy();
+		}
+	}
 
 }

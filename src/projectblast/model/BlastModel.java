@@ -97,12 +97,6 @@ public class BlastModel implements IBlastModel {
 		    }
             distance--;
 		}
-	    Entity entity = getIntersectingEntity(hero.getCollisionBox());
-	    if(entity instanceof Tower) {
-	    	Tower tower = (Tower)entity;
-	    	tower.capture(hero.getTeam());
-	    }
-	    
 	}
 
 
@@ -175,6 +169,15 @@ public class BlastModel implements IBlastModel {
 			}
 		}
 		
+		
+		for(Entity entity : entities) {
+			Entity other = getIntersectingEntity(entity);
+			if(other != null) {
+				entity.collide(other);
+			}
+		}
+		
+		
 		//Perhaps put this sorting elsewhere?
 		//sortEntities();
 		
@@ -190,9 +193,6 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
-		
-		//Throw the destroyed entities away
-		entities.removeAll(trashCan);
 
 		//Check for dead explosions and remove them
 		for (ExplosionCore c: explosions){
@@ -204,27 +204,16 @@ public class BlastModel implements IBlastModel {
 		
 		List<Explosive> tmp = new ArrayList<Explosive>();
 		
-		
-		//HARD CODED "fix" for fireball, should make a better code later.
 		for(Explosive ex: explosives){
-			if(!isFree(ex)){
-				//Checks whether the fireballs CollisionBox will intersect with the Owners.
-				if(!ex.getOwner().getCollisionBox().intersects(ex.getCollisionBox()) || !ex.getCollisionBox().intersects(ex.getOwner().getCollisionBox())){
-					ex.setLife(0);
-				}
-			}
-			if(ex.shouldExplode()){ 
+			if(ex.shouldExplode()) {
 				removeEntity(ex);
+				trashCan.add(ex);
 				createExplosion(ex.getPosition(), ex.getPower());
-				tmp.add(ex);
-			} 
-			
+			}
 		}
 		
-		
 		for(ICore stun: ICores){
-			while(!stun.isCreated()){
-				
+			while(!stun.isCreated()){	
 				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX()+2, stun.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 					stun.create();
 				}else {
@@ -249,8 +238,10 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
+		//Throw the destroyed entities away
+		entities.removeAll(trashCan);
 		ICores.removeAll(trashCantwo);
-		explosives.removeAll(tmp);	
+		explosives.removeAll(trashCan);	
 	    handleTowers();
 	}
 	
@@ -310,13 +301,23 @@ public class BlastModel implements IBlastModel {
 		return true;
 	}
 	
-	public Entity getIntersectingEntity(Rectangle r){
+	public Entity getIntersectingEntity(Entity entity){
+		for (Entity e: entities){
+	    	if (e.getCollisionBox().intersects(entity.getCollisionBox()) && e != entity){
+	    		return e;
+	    	}
+	    }
+		return null;
+	}
+	
+	public Entity getIntersectingEntity(Rectangle r) {
 		for (Entity e: entities){
 	    	if (e.getCollisionBox().intersects(r)){
 	    		return e;
 	    	}
 	    }
 		return null;
+
 	}
 	
 	private Entity getClosestIntersectingEntity(Rectangle rectangle) {
