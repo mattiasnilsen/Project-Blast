@@ -3,9 +3,13 @@ package projectblast.model;
 public enum Id {
 	BOMB,
 	BOMBER,
+	BRUTE,
 	DESTRUCTIBLEBLOCK,
+	DRONE,
+	ENFORCER,
 	EXPLOSION,
 	FIREBALL,
+	FIST,
 	MAGE,
 	SOLIDBLOCK,
 	TOWER, 

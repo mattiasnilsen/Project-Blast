@@ -5,11 +5,11 @@ import java.util.List;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-public class ExplosionCore{
-	private List<Explosion> parts;
+public class ExplosionCore implements ICore{
+	private List<IBurst> parts;
 	private int lifetime;
 	
-	public ExplosionCore(List<Explosion> l, int life){
+	public ExplosionCore(List<IBurst> l, int life){
 		parts = l;
 		lifetime = life;
 	}
@@ -22,7 +22,7 @@ public class ExplosionCore{
 		return lifetime < 0;
 	}
 	
-	public List<Explosion> getParts(){
+	public List<IBurst> getParts(){
 		return parts;
 	}
 }
