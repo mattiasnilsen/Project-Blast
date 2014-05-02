@@ -27,4 +27,10 @@ public class SolidBlock extends Block{
 		return false;
 	}
 
+	@Override
+	public void collide(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -112,6 +112,13 @@ public class MovableEntity extends Entity implements Movable {
 	}
 
 
+	@Override
+	public void collide(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 
 

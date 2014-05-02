@@ -18,6 +18,7 @@ public class Tower extends Entity {
 	private int power;
 	private Team owner;
 	private IPowerUp powerUp;
+	private int powerUpInterval;
 	
 	public Tower(Position position) {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
@@ -26,6 +27,7 @@ public class Tower extends Entity {
 		health = Constants.TOWER_STARTING_HEALTH;
 		owner = Team.getNeutralTeam();
 		power = 4;
+		powerUpInterval = 4000;
 	}
 	
 	public int getPower() {
@@ -99,5 +101,11 @@ public class Tower extends Entity {
 	@Override
 	public boolean isMovable() {
 		return false;
+	}
+
+	@Override
+	public void collide(Entity entity) {
+		// TODO Auto-generated method stub
+		
 	}
 }

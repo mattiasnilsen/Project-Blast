@@ -41,4 +41,10 @@ public class Paralyzer extends Entity implements IBurst {
 		
 	}
 
+	@Override
+	public void collide(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

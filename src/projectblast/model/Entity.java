@@ -57,8 +57,10 @@ public abstract class Entity implements Updatable, Comparable<Entity>{
 	public Rectangle getCollisionBox() {
 		return collisionBox;
 	}
-	
+	//Called before another object has collided with this object to determine if it can.
 	public abstract boolean allowPassage(Entity entity);
+	//Called when another object has collided with this object.
+	public abstract void collide(Entity entity);
 		
 	public abstract boolean isMovable();
 	
