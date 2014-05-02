@@ -25,4 +25,28 @@ public class ExplosionCore implements ICore{
 	public List<IBurst> getParts(){
 		return parts;
 	}
+
+	@Override
+	public boolean isCreated() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void create() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean step(Entity intersectingEntity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Position getNextPosition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
