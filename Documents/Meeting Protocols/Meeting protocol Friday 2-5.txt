@@ -1,0 +1,28 @@
+﻿Meeting Agenda
+
+Date: 2/5
+
+Facilitator: Anton Freudenthaler
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+We need to plan what should be prioritized.
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+Mattias is currently testing the tower implementations hes done so far.
+Anton made some tests on movableEntity and has started implementing secondaryAbility.
+Axel has removed some connections between model and view.
+The sorting is working quite good.
+
+3. Discussion items (35 min) 
+We need to start refactoring to clean up our code. BlastModel will soon consume the world, and must be dealt with! Still we have some things we’d really like to implement. Score, powerups, actionpower. We discussed the relation between Player, Hero, Team and Tower. 
+
+
+4. Outcomes and assignments (5 min) 
+We’ll try to make the powerups follow Strategy. We’ll refactor ExplosionCore and StunBeam, they are similar. We decided that Hero and Tower has a team not the other way around. 
+
+
+5. Wrap up 
+
+Next meeting will be Monday 5/5
