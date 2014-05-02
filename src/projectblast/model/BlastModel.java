@@ -116,7 +116,9 @@ public class BlastModel implements IBlastModel {
 	@Override
 	public void secondary(int playerID) {
 		ICore tmp = players.get(playerID-1).getHero().secondaryAbility();
-		ICores.add(tmp);
+		if(tmp != null){
+			ICores.add(tmp);
+		}
 		//createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
 		System.out.println("SecondaryClicked");
 	}
@@ -227,7 +229,6 @@ public class BlastModel implements IBlastModel {
 					}
 				}
 			}
-			
 		}
 		
 		List<ICore> trashCantwo = new LinkedList<ICore>();
