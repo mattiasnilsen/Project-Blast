@@ -7,7 +7,7 @@ import org.newdawn.slick.Sound;
 public class Jukebox {
 	
 	public enum Sounds{
-		EXPLOSION("Boom.ogg"), DEATH("Boom.ogg"), PLACEBOMB("Noise.ogg"), FIREBALL("Noise.ogg");
+		EXPLOSION("Boom.ogg"), DEATH("WarningSiren.ogg"), PLACEBOMB("Noise.ogg"), FIREBALL("Noise.ogg");
 		
 		private final String folder = "data/sound/";
 		private final String soundFile;
