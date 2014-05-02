@@ -5,6 +5,7 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
 import projectblast.model.hero.Hero;
+import projectblast.model.powerups.IPowerUp;
 /**
  * 
  * @author Alex
@@ -16,6 +17,7 @@ public class Tower extends Entity {
 	private int health;
 	private int power;
 	private Team owner;
+	private IPowerUp powerUp;
 	
 	public Tower(Position position) {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
@@ -44,6 +46,14 @@ public class Tower extends Entity {
 	
 	public Team getOwner() {
 		return owner;
+	}
+	
+	public IPowerUp getPowerUp() {
+		return powerUp;
+	}
+	
+	public void setPowerUp(IPowerUp powerUp) {
+		this.powerUp = powerUp;
 	}
 
 	/**
