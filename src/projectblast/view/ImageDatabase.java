@@ -85,6 +85,7 @@ public class ImageDatabase {
 			case PARALYZER:
 				Paralyzer paralyzer = (Paralyzer) entity;
 				tmp = getParalyzerImage(paralyzer);
+				break;
 			default:
 			try {
 				tmp = new Animation(new SpriteSheet("data/image/Error.png", 48, 48), 1000);
