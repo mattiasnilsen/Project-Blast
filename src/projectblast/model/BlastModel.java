@@ -1,8 +1,6 @@
 package projectblast.model;
 
-import java.awt.image.DirectColorModel;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +32,6 @@ public class BlastModel implements IBlastModel {
 	private List<HazardMaker> stunBeams; //should be a secondary interface.
 	
 	private HashMap<String, Entity> entityMap;
-	private List[] entityRows; //Kolla den här koden, använd inte List utan List<Entity>.
 	
 	private int balance;
 	private int scaleFactor;
@@ -52,13 +49,6 @@ public class BlastModel implements IBlastModel {
 		this.explosions = new ArrayList<ExplosionCore>();
 		this.towers = new ArrayList<Tower>();
 		this.stunBeams = new ArrayList<HazardMaker>();
-
-	
-		this.entityRows = new ArrayList[22];
-		
-		for(int i = 0; i < entityRows.length; i++){
-			entityRows[i] = new ArrayList<Entity>();
-		}
 		
 		this.entityMap = new HashMap<String, Entity>();
 		
@@ -156,12 +146,6 @@ public class BlastModel implements IBlastModel {
 	
 	public void removeEntity(Entity e){
 		entities.remove(e);
-		for(int i = 0; i < entityRows.length; i++){
-			if(entityRows[i].contains(e)){
-				entityRows[i].remove(e);
-			}
-
-		}
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
