@@ -241,7 +241,7 @@ public class BlastModel implements IBlastModel {
 		for(HazardMaker stun: stunBeams){
 			while(!stun.isCreated()){
 				
-				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX()+2, stun.getNextPosition().getX()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
+				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX()+2, stun.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 					stun.create();
 				}else {
 					entities.addAll(stun.getParts());
@@ -403,34 +403,6 @@ public class BlastModel implements IBlastModel {
 		//return core;
 	}
 	
-	public void createParalyzer(Position p, Direction d){
-		//Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
-		p.setX(snapToGrid(p.getX()));
-		p.setY(snapToGrid(p.getY()));
-		
-		List<Paralyzer> l = new ArrayList<Paralyzer>();
-		
-			int dist = 1;
-			Rectangle check = new Rectangle(p.getX()+2, p.getY()+2, Constants.TILE_SIZE-4,Constants.TILE_SIZE-4);
-			while (true){
-				check.setX(p.getX() + d.getX() * dist * Constants.TILE_SIZE);
-				check.setY(p.getY() + d.getY() * dist * Constants.TILE_SIZE);
-				
-				Entity e = getIntersectingEntity(check);
-				 if (e instanceof Block){
-					break;
-				 }
-				
-				l.add(new Paralyzer(new Position(p.getX() + d.getX() * dist * Constants.TILE_SIZE,p.getY() + d.getY() * dist * Constants.TILE_SIZE)));
-					
-				
-				dist++;
-				
-			}
-		
-		entities.addAll(l);
-		//return core;
-	}
 /*	
 //This method sorts all entities in the y Position
 	private void sortEntities(){
