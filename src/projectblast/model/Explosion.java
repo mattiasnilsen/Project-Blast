@@ -47,5 +47,12 @@ public class Explosion extends Entity implements IBurst {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public void collide(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

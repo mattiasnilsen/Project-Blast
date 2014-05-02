@@ -89,6 +89,12 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 		
 	}
 
+	@Override
+	public void collide(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }
