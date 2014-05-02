@@ -103,6 +103,7 @@ public class BlastModel implements IBlastModel {
 	@Override
 	public void primary(int playerID) {
 		//TODO check if hero can use primary
+		
 		Explosive tmp = players.get(playerID-1).getHero().primaryAbility();
 		if(tmp != null){
 			entities.add(tmp);
@@ -206,7 +207,7 @@ public class BlastModel implements IBlastModel {
 		List<Explosive> tmp = new ArrayList<Explosive>();
 		
 		for(Explosive ex: explosives){
-			if(ex.shouldExplode()) {
+			if(ex.isDestroyed()) {
 				removeEntity(ex);
 				trashCan.add(ex);
 				createExplosion(ex.getPosition(), ex.getPower());

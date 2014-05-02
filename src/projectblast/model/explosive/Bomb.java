@@ -6,7 +6,7 @@ import projectblast.model.hero.*;
 
 
 public class Bomb extends Explosive {
-	private boolean isDestroyed = false;
+	
 	
 	public Bomb(Position position, int speed, Direction direction,
 			 Hero owner) {
@@ -15,20 +15,15 @@ public class Bomb extends Explosive {
 		setLife(120);
 	}
 
-	@Override
-	public void destroy() {
-		setLife(0);
-		isDestroyed = true;	
-	}
-	
-	public boolean isDestroyed(){
-		return isDestroyed;
-	}
-	
+
 	
 	
 	public void update(){
 		setLife(getLife()- 1);
+		if(getLife()==0){
+			
+			destroy();
+		}
 	}
 	
 	public boolean allowPassage(Entity entity){

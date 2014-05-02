@@ -31,8 +31,7 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 		owner.setAmmo(owner.getAmmo() +1);
 	}
 	
-	
-	public boolean shouldExplode(){
+	public boolean isDestroyed(){
 		return life <= 0;
 	}
 	
