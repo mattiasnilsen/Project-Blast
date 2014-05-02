@@ -5,13 +5,10 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Constants;
 import projectblast.model.Destructible;
-import projectblast.model.Entity;
-import projectblast.model.HazardMaker;
-import projectblast.model.Movable;
+import projectblast.model.ICore;
 import projectblast.model.MovableEntity;
 import projectblast.model.Position;
 import projectblast.model.Team;
-import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
 
 public abstract class Hero extends MovableEntity implements Destructible{
@@ -86,5 +83,5 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	public abstract Explosive primaryAbility();
 		
-	public abstract HazardMaker secondaryAbility();
+	public abstract ICore secondaryAbility();
 }

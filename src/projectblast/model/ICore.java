@@ -2,6 +2,8 @@ package projectblast.model;
 
 import java.util.List;
 
+import org.newdawn.slick.geom.Shape;
+
 public interface ICore {
 	
 	/**
@@ -20,4 +22,12 @@ public interface ICore {
 	 * @return
 	 */
 	public List<IBurst> getParts();
+
+	public boolean isCreated();
+
+	public void create();
+
+	public boolean step(Entity intersectingEntity);
+
+	public Position getNextPosition();
 }

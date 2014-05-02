@@ -26,7 +26,7 @@ public class Mage extends Hero {
 	}
 
 	@Override
-	public HazardMaker secondaryAbility() {
+	public ICore secondaryAbility() {
 		return new StunBeam(180, getDirection(), new Position(snapToGrid(getX()), snapToGrid(getY())));
 	}
 

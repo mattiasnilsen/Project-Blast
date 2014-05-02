@@ -29,7 +29,7 @@ public class BlastModel implements IBlastModel {
 	private List<Explosive> explosives;
 	private List<ExplosionCore> explosions;
 	private List<Tower> towers;
-	private List<HazardMaker> hazardMakers; //should be a secondary interface.
+	private List<ICore> ICores; //should be a secondary interface.
 	
 	private HashMap<String, Entity> entityMap;
 	
@@ -48,7 +48,7 @@ public class BlastModel implements IBlastModel {
 		this.explosives = new ArrayList<Explosive>();
 		this.explosions = new ArrayList<ExplosionCore>();
 		this.towers = new ArrayList<Tower>();
-		this.hazardMakers = new ArrayList<HazardMaker>();
+		this.ICores = new ArrayList<ICore>();
 		
 		this.entityMap = new HashMap<String, Entity>();
 		
@@ -119,8 +119,8 @@ public class BlastModel implements IBlastModel {
 
 	@Override
 	public void secondary(int playerID) {
-		HazardMaker tmp = players.get(playerID-1).getHero().secondaryAbility();
-		hazardMakers.add(tmp);
+		ICore tmp = players.get(playerID-1).getHero().secondaryAbility();
+		ICores.add(tmp);
 		//createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
 		System.out.println("SecondaryClicked");
 	}
@@ -222,20 +222,25 @@ public class BlastModel implements IBlastModel {
 		}
 		
 		
-		for(HazardMaker stun: hazardMakers){
+		for(ICore stun: ICores){
 			while(!stun.isCreated()){
 				
 				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX()+2, stun.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 					stun.create();
 				}else {
-					entities.addAll(stun.getParts());
+					for (IBurst ib : stun.getParts()){
+						if (ib instanceof Entity){
+							Entity e = (Entity)ib;
+							entities.add(e);
+						}
+					}
 				}
 			}
 			
 		}
 		
-		List<HazardMaker> trashCantwo = new LinkedList<HazardMaker>();
-		for(HazardMaker stun: hazardMakers){
+		List<ICore> trashCantwo = new LinkedList<ICore>();
+		for(ICore stun: ICores){
 			if(stun.isCreated()){
 				stun.tick();
 				if(stun.isDead()){
@@ -244,7 +249,7 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
-		hazardMakers.removeAll(trashCantwo);
+		ICores.removeAll(trashCantwo);
 		explosives.removeAll(tmp);	
 	    handleTowers();
 	}

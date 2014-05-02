@@ -1,12 +1,9 @@
 package projectblast.model.hero;
 
-import projectblast.model.Entity;
-import projectblast.model.HazardMaker;
+import projectblast.model.ICore;
 import projectblast.model.Id;
-import projectblast.model.Movable;
 import projectblast.model.Position;
 import projectblast.model.Team;
-import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Bomb;
 import projectblast.model.explosive.Explosive;
 
@@ -31,7 +28,7 @@ public class Bomber extends Hero {
     }
 
     @Override
-    public HazardMaker secondaryAbility() {
+    public ICore secondaryAbility() {
        	return null;
     }
 
