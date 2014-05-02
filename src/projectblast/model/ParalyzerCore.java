@@ -7,7 +7,7 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
 
-public class StunBeam implements ICore{
+public class ParalyzerCore implements ICore{
 	private List<IBurst> parts;
 	private int lifetime;
 	private Direction direction;
@@ -15,7 +15,7 @@ public class StunBeam implements ICore{
 	private Position startPos;
 	private int dist = 1;
 	
-	public StunBeam(int life, Direction dir, Position startPos){
+	public ParalyzerCore(int life, Direction dir, Position startPos){
 		System.out.println("Creating stunbeam");
 		this.parts = new ArrayList<IBurst>();
 		this.lifetime = life;
