@@ -263,7 +263,6 @@ public class BlastModel implements IBlastModel {
 				} else if(directions[i].equals(Direction.SOUTH)) {
 				    y += Constants.TILE_SIZE;
 				}
-			    //System.out.println("Width: " + width + " Height: " + height);
 				Rectangle check = new Rectangle(x, y, width, height);
 				Entity e = getClosestIntersectingEntity(check);
 				if(e != null && e instanceof Hero) { //TODO instanceof == bad? Maybe change.
@@ -388,47 +387,7 @@ public class BlastModel implements IBlastModel {
 				entities.add(e);
 			}
 		}
-
-		
-		//return core;
 	}
-	
-/*	
-//This method sorts all entities in the y Position
-	private void sortEntities(){
-		int square;
-		//Go through every row and sorts the entityRows list 
-		for(int i = 0; i < 22; i++){
-			square = (i-1)*32;
-			//System.out.println(square);
-			
-			for(Entity e: entities){
-				if(e.getY() > square && e.getY() <= square+32){
-				entityRows[i].add(e);
-				}	
-
-			}
-		}
-		
-		
-	//Removes all entities then adds them in the correct order	
-		entities.removeAll(entities);		
-
-		for(int j = 0; j < 22; j++){
-			
-		for(int i=0;i< entityRows.length; i++){
-		Collections.sort(entityRows[i]);
-		}
-			
-		entities.addAll(entityRows[j]);
-		//System.out.println(j);
-		entityRows[j].removeAll(entityRows[j]);
-		}
-			
-	}
-	*/
-
-	
 	
 	public int isGameOver(){
 		if (balance <= -500){
@@ -465,6 +424,7 @@ public class BlastModel implements IBlastModel {
 		this.scaleFactor += add;
 	}
 	
+	@Override
 	public int getTowerBalance(){
 		int out = 0;
 		for (Tower t: towers){
@@ -483,7 +443,7 @@ public class BlastModel implements IBlastModel {
 		return out;
 	}
 	
-	
+	@Override
 	public void endGame(Team winner){
 		throw new NullPointerException(winner.getName() + " has won!");
 	}

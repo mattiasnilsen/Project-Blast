@@ -36,4 +36,8 @@ public interface IBlastModel {
 	void shiftBalance(int factor);
 
 	int getBalance();
+
+	int getTowerBalance();
+
+	void endGame(Team winner);
 }

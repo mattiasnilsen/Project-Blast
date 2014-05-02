@@ -7,8 +7,8 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
 
-public class StunBeam implements HazardMaker{
-	private List<Paralyzer> parts;
+public class StunBeam implements ICore{
+	private List<IBurst> parts;
 	private int lifetime;
 	private Direction direction;
 	private boolean isCreated = false;
@@ -17,7 +17,7 @@ public class StunBeam implements HazardMaker{
 	
 	public StunBeam(int life, Direction dir, Position startPos){
 		System.out.println("Creating stunbeam");
-		this.parts = new ArrayList<Paralyzer>();
+		this.parts = new ArrayList<IBurst>();
 		this.lifetime = life;
 		this.direction = dir;
 		this.startPos = startPos;
@@ -35,7 +35,7 @@ public class StunBeam implements HazardMaker{
 		return isCreated;
 	}
 	
-	public List<Paralyzer> getParts(){
+	public List<IBurst> getParts(){
 		return parts;
 	}
 	
