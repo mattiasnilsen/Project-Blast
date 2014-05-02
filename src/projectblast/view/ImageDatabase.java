@@ -58,7 +58,7 @@ public class ImageDatabase {
 		
 		Animation tmp = null;
 		switch (name){
-			case MAGE: case BOMBER:
+			case MAGE: case BOMBER: case BRUTE: case ENFORCER:
 				Hero hero = (Hero) entity;
 				tmp = getHeroAnimation(hero);
 				break;
@@ -66,7 +66,7 @@ public class ImageDatabase {
 				Tower tower = (Tower) entity;
 				tmp = getTowerImage(tower);
 				break;
-			case FIREBALL: case BOMB:
+			case FIREBALL: case BOMB: case DRONE:
 				Explosive explosive = (Explosive) entity;
 				tmp = getExplosiveAnimation(explosive);
 				break;

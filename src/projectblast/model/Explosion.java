@@ -2,9 +2,11 @@ package projectblast.model;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.hero.Hero;
 
 
-public class Explosion extends Entity {
+
+public class Explosion extends Entity implements IBurst {
 
 	private int life = 60;
 	
@@ -14,10 +16,12 @@ public class Explosion extends Entity {
 	}
 
 	
+	@Override
 	public void update(){
 		life--;
 	}
 	
+	@Override
 	public boolean isDead(){
 		return life <= 0;
 	}
@@ -35,6 +39,13 @@ public class Explosion extends Entity {
 	@Override
 	public boolean isMovable() {
 		return false;
+	}
+
+
+	@Override
+	public void touchEffect(Hero h) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
