@@ -44,6 +44,8 @@ public class Mage extends Hero {
 		addPowerUp(new SpeedPowerUp());
 		addPowerUp(new RangePowerUp());
 		addPowerUp(new AmmoPowerUp());
+		addPowerUp(new AmmoPowerUp());
+		addPowerUp(new AmmoPowerUp());
 
 
 		

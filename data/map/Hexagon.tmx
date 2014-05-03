@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="22" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ColourScheme" tilewidth="32" tileheight="32">
+  <image source="ColourScheme.png" width="128" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="block"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="type" value="box"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="type" value="tower"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="40" height="22">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2W3QqAMAiFj+3937krIWRumkYnSDh4kaj7cj8CQMh1XCTGe9/GJtZqBGI0j5oEaszWsMvf4W1/WX672Ipm/THx03/MzM+yYePn1f75vcuvw7L8ImerjY2w8s49j5/tfZVn5gf8dVqtYr3aHXZnL1Xmrzrjq1nI8ovkjernx8MP5PzwAX5d3J7ih0T+zFtd75QKP2adgM+6B8ANAAA=
+  </data>
+ </layer>
+</map>
