@@ -270,10 +270,11 @@ public class BlastModel implements IBlastModel {
 				    y += Constants.TILE_SIZE;
 				}
 				Rectangle check = new Rectangle(x, y, width, height);
-				Entity e = getClosestIntersectingEntity(check);
-				if(e != null && e instanceof Hero) { //TODO instanceof == bad? Maybe change.
+				List<Entity> entities = getAllIntersectingEntitys(check);
+				Entity e = getClosestEntity(entities, tower.getPosition());
+				if(e != null && e instanceof Hero) {
 					System.out.println(directions[i].toString() + ": " + e.getName().toString());
-				}
+				} 
 			}
 		}
 	}
@@ -330,19 +331,23 @@ public class BlastModel implements IBlastModel {
 
 	}
 	
-	private Entity getClosestIntersectingEntity(Rectangle rectangle) {
+	private List<Entity> getAllIntersectingEntitys(Rectangle rectangle) {
 		List<Entity> intersectingEntitys = new ArrayList<Entity>();
 		for(Entity entity : entities) {
 			if(entity.getCollisionBox().intersects(rectangle)) {
 				intersectingEntitys.add(entity);
 			}
 		}
-		double smallestDistance = -Double.MAX_VALUE;
+		return intersectingEntitys;
+	}
+	
+	private Entity getClosestEntity(List<Entity> entities, Position pos) {
+		double smallestDistance = Double.MAX_VALUE;
 		Entity ent = null;
-		Vector2f rectLocation = rectangle.getLocation();
-		for(Entity entity : intersectingEntitys) {
-			if(smallestDistance > rectLocation.distance(entity.getCollisionBox().getLocation())) {
-				smallestDistance = rectLocation.distance(entity.getCollisionBox().getLocation());
+		for(Entity entity : entities) {
+			Vector2f rectLocation = entity.getCollisionBox().getLocation();
+			if(smallestDistance > rectLocation.distance(new Vector2f(pos.getX(), pos.getY()))) {
+				smallestDistance = rectLocation.distance(new Vector2f(pos.getX(), pos.getY()));
 				ent = entity;
 			}
 		}
@@ -350,7 +355,7 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	private int snapToGrid(int i){
-		return (int)Math.round(i/32.0)*32;
+		return (int)Math.round(i / Constants.TILE_SIZE) * Constants.TILE_SIZE;
 		
 	}
 	
