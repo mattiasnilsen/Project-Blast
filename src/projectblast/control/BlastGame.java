@@ -22,8 +22,11 @@ public class BlastGame extends StateBasedGame{
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
 		gameplayState = new GameplayState();
+		titleState = new TitleState();
+		addState(titleState);
 	    addState(gameplayState);
-	    enterState(gameplayState.getID());
+	    //enterState(gameplayState.getID());
+	    enterState(titleState.getID());
 	}
 
 }
