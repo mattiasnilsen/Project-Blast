@@ -107,5 +107,9 @@ public interface Movable {
 	 * @param y The y coordinate to place this object.
 	 */
 	public void place(int x, int y);
+	/**
+	 * Place this object at location.
+	 * @param p the position to place it at.
+	 */
 	public void place(Position p);
 }
