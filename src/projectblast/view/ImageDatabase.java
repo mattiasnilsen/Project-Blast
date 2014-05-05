@@ -93,7 +93,6 @@ public class ImageDatabase {
 			} 
 				break;
 		}
-
 		return tmp;
 	}
 
@@ -112,7 +111,6 @@ public class ImageDatabase {
 	private Animation getDestructibleBlockImage(DestructibleBlock destructibleBlock) {
 		String key = destructibleBlock.getName().toString();
 		Image image = images.get(key);
-		
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 
@@ -121,7 +119,6 @@ public class ImageDatabase {
 		//Color teamColor = explosive.getOwner().getTeam().getColor();
 		String key = explosive.getName().toString();
 		key += getDirectionState(direction);
-		
 		Image image = images.get(key);
 		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
@@ -130,13 +127,11 @@ public class ImageDatabase {
 
 	private Animation getHeroAnimation(Hero hero) {
 		Direction direction = hero.getDirection();
-		
 		Color teamColor = hero.getTeam().getColor();
+		
 		String key = hero.getName().toString();
-
 		key += getDirectionState(direction);
 		Image image = images.get(key);
-		
 		
 		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		//Animation uses an images imageColor when drawing apparently
@@ -170,7 +165,6 @@ public class ImageDatabase {
 	private Animation getParalyzerImage(Paralyzer p) {
 		String key = p.getName().toString();
 		Image image = images.get(key);
-		
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 	private String getDirectionState(Direction direction){
