@@ -32,7 +32,7 @@ public class Mage extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		return new ParalyzerCore(180, getDirection(), new Position(snapToGrid(getX()), snapToGrid(getY())));
+		return new ParalyzerCore(180, new Position(snapToGrid(getX()), snapToGrid(getY())), getDirection());
 	}
 
 	@Override
