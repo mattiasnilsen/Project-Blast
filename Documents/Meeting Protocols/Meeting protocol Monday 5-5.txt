@@ -1,0 +1,29 @@
+﻿Meeting Agenda
+
+Date: 5/5
+
+Facilitator: Anton Freudenthaler
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+Discuss testing and refactoring and what we still have to implement. 
+2. Reports (15 min) 
+Tower now gives speed to owner. Heroes now gain attributes from powerUps. There’s a simple menu before starting the game.. Heroes have a maximum amount of explosive to use at the same time. Bomber secondary is implemented. We’ve done some refactoring to clean up BlastModel.
+3. Discussion items (35 min) 
+Whether IBurst should be an abstract class or an interface.
+How the menu should look like and how we should implement it.
+Discussed some bugs we currently have in the game.
+
+4. Outcomes and assignments (5 min) 
+Mattias should complete ICore with its children ExplosionCore and ParalyzerCore. 
+Axel will continue with tower testing and implementation.
+Alex will do some testing and make the menu nicer.
+Anton will fix Ammobug and implement Brute Hero.
+
+
+
+
+5. Wrap up 
+
+Next meeting will be Thursday 8/5
