@@ -17,8 +17,6 @@ public class BlastGame extends StateBasedGame{
 		super(name);
 	}
 	
-	
-
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
 		gameplayState = new GameplayState();

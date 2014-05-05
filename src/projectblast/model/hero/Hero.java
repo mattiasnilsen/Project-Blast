@@ -93,8 +93,8 @@ public abstract class Hero extends MovableEntity implements Destructible{
 		 return startPos;
     }
 	
-	public void setStartPosition(Position startPosOne){
-		this.startPos = startPosOne;
+	public void setStartPosition(Position startPos){
+		this.startPos = startPos;
 	}
 	
 	public void addPowerUp(IPowerUp powerUp) {

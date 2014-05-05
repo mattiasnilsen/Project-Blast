@@ -157,6 +157,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		//This is the identifier ID for the gameplay state
 		return 2;
 	}
+	
 	/* TODO Unused code remove if determined to not use
 	public void handleInput(Input i){
 		if (i.isKeyDown(Input.KEY_W)){

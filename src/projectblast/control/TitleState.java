@@ -27,6 +27,7 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	    provider.bindCommand(new KeyControl(Input.KEY_UP), new BasicCommand("UP"));
 	    provider.bindCommand(new KeyControl(Input.KEY_DOWN), new BasicCommand("DOWN"));
 	    provider.bindCommand(new KeyControl(Input.KEY_ENTER), new BasicCommand("ENTER"));
+	    this.game = game;
 	}
 
 	@Override
@@ -42,8 +43,6 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 		gameSettings.draw(100, 200);
 		exitGame.draw(100, 300);
 		arrow.draw(400, (choice+1)*100);
-		this.game = game;
-		
 	}
 
 	@Override
@@ -77,7 +76,7 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	}
 
 	@Override
-	public void controlReleased(Command arg0) {
+	public void controlReleased(Command c) {
 		
 		
 	}
