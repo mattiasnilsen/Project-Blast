@@ -16,21 +16,12 @@ import org.newdawn.slick.state.StateBasedGame;
 public class TitleState extends BasicGameState implements InputProviderListener {
 	
 	InputProvider provider;
-	Image playGame;
-	Image gameSettings;
-	Image exitGame;
-	Image arrow;
 	int choice = 0;
 	StateBasedGame game;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame game)
 			throws SlickException {
-		// TODO get theese pictures from view
-		playGame = new Image("data/image/PlayGame.png");
-		gameSettings = new Image("data/image/GameSettings.png");
-		exitGame = new Image("data/image/ExitGame.png");
-		arrow = new Image("data/image/Arrow.png");
 		provider = new InputProvider(gc.getInput());
 	    provider.addListener(this);
 	    provider.bindCommand(new KeyControl(Input.KEY_UP), new BasicCommand("UP"));
@@ -41,6 +32,11 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	@Override
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
+		//TODO refactor to view
+		Image playGame = new Image("data/image/PlayGame.png");
+		Image gameSettings = new Image("data/image/GameSettings.png");
+		Image exitGame = new Image("data/image/ExitGame.png");
+		Image arrow = new Image("data/image/Arrow.png");
 		g.drawString("Blasting fun!", 100, 50);
 		playGame.draw(100, 100);
 		gameSettings.draw(100, 200);
@@ -63,6 +59,7 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 
 	@Override
 	public void controlPressed(Command c) {
+		//TODO refactor to model
 		BasicCommand b = (BasicCommand) c;
 		if(b.getName().equals("DOWN")){
 			choice = (choice+1) % 3;

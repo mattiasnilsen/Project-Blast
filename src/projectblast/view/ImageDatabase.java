@@ -24,10 +24,10 @@ import projectblast.model.hero.Hero;
  */
 public class ImageDatabase {
 	
-	private Map<String, Image> images;
+	private Map<String, Image> images; //A map for images. The key should include objectname and state.
 	public ImageDatabase(){
 		this.images = new HashMap<String, Image>();
-		init();
+		init(); //Gets image path from a text file and puts it with proper key.
 	}
 	
 	private void init() {
@@ -53,9 +53,7 @@ public class ImageDatabase {
 	}
 	
 	public Animation getAnimation(Entity entity){
-		
 		Id name = entity.getName();
-		
 		Animation tmp = null;
 		switch (name){
 			case MAGE: case BOMBER: case BRUTE: case ENFORCER:
@@ -88,25 +86,19 @@ public class ImageDatabase {
 				break;
 			default:
 			try {
-				tmp = new Animation(new SpriteSheet("data/image/Error.png", 48, 48), 1000);
+				//If entity name is something else than the above, an error image is used. 
+				tmp = new Animation(new SpriteSheet("data/image/Error.png", 48, 48), 1000); 
 			} catch (SlickException e) {
 				e.printStackTrace();
 			} 
 				break;
-
-				
 		}
-		
-		
-		
-		
 		return tmp;
 	}
 
 	private Animation getExplosionImage(Explosion explosion) {
 		String key = explosion.getName().toString();
 		Image image = images.get(key);
-		
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 
@@ -119,7 +111,6 @@ public class ImageDatabase {
 	private Animation getDestructibleBlockImage(DestructibleBlock destructibleBlock) {
 		String key = destructibleBlock.getName().toString();
 		Image image = images.get(key);
-		
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
 
@@ -127,16 +118,7 @@ public class ImageDatabase {
 		Direction direction = explosive.getDirection();
 		//Color teamColor = explosive.getOwner().getTeam().getColor();
 		String key = explosive.getName().toString();
-
-		if(direction.equals(Direction.EAST)){
-			key += "EAST";
-		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
-            key += "NORTH";
-        }else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
-			key += "SOUTH";
-		}else if(direction.equals(Direction.WEST)){
-			key += "WEST";
-		}
+		key += getDirectionState(direction);
 		Image image = images.get(key);
 		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
@@ -145,25 +127,11 @@ public class ImageDatabase {
 
 	private Animation getHeroAnimation(Hero hero) {
 		Direction direction = hero.getDirection();
-		
 		Color teamColor = hero.getTeam().getColor();
-		String key = hero.getName().toString();
-
-		if(direction.equals(Direction.EAST)){
-			key += "EAST";
-		}else if(direction.equals(Direction.NORTH) || direction.equals(Direction.NORTHWEST) || direction.equals(Direction.NORTHEAST)){
-            key += "NORTH";
-        }else if(direction.equals(Direction.SOUTH) || direction.equals(Direction.SOUTHWEST) || direction.equals(Direction.SOUTHEAST)){
-			key += "SOUTH";
-		}else if(direction.equals(Direction.WEST)){
-			key += "WEST";
-		}
-		Image image = images.get(key);
 		
-		if(image == null) {
-		    //TODO fix properly
-		    image = images.get(key + "NORTH");
-		}
+		String key = hero.getName().toString();
+		key += getDirectionState(direction);
+		Image image = images.get(key);
 		
 		image.setImageColor(teamColor.r , teamColor.g, teamColor.b);
 		//Animation uses an images imageColor when drawing apparently
@@ -197,7 +165,29 @@ public class ImageDatabase {
 	private Animation getParalyzerImage(Paralyzer p) {
 		String key = p.getName().toString();
 		Image image = images.get(key);
-		
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
+	private String getDirectionState(Direction direction){
+		String tmp;
+		switch(direction.toString()){
+			case "EAST":
+				tmp = "EAST";
+				break;
+			case "NORTH": case "NORTHWEST": case "NORTHEAST": case "NONE":
+				tmp = "NORTH";
+				break;
+			case "SOUTH": case "SOUTHWEST": case "SOUTHEAST":
+				tmp = "SOUTH";
+				break;
+			case "WEST":
+				tmp = "WEST";
+				break;
+			default:
+				tmp = "ERROR";
+				break;
+		}
+		return tmp; 
+				
+	}
+	
 }
