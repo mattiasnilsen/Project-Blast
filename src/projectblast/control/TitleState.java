@@ -77,7 +77,7 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	}
 
 	@Override
-	public void controlReleased(Command arg0) {
+	public void controlReleased(Command c) {
 		
 		
 	}
