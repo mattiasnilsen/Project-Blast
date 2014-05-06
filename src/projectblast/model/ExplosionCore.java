@@ -16,16 +16,16 @@ public class ExplosionCore extends Core {
 	
 	private boolean stopNextStep;
 	
-	private final Direction[] directionList = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
+	private Direction[] directionList;
 	
 	
-	public ExplosionCore(int life, Position startPos, int power){
+	public ExplosionCore(int life, Position startPos, int power, Direction[] directionList){
 		super(life, startPos);
 		this.power = power;
 		currentDir = -1;
 		distance = 1;
 		stopNextStep = false;
-		System.out.println("Next " + startPos);
+		this.directionList = directionList;
 	}
 	
 	@Override

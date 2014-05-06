@@ -54,7 +54,8 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	}
 	
 	public ICore getCore() {
-		ExplosionCore core = new ExplosionCore(120, BlastModel.snapToGrid(getPosition()), 4);//TODO remove magic number
+		Direction[] directionList = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
+		ExplosionCore core = new ExplosionCore(120, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
 		
 		return core;
 	}

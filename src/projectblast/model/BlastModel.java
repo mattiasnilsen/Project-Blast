@@ -368,57 +368,6 @@ public class BlastModel implements IBlastModel {
 		return new Position(x, y);
 	}
 	
-	public void createExplosion(Position p, int power){
-		Jukebox.Sounds.EXPLOSION.getSound().play((float)(0.5 + Math.random()), 0.05f);
-		p.setX(snapToGrid(p.getX()));
-		p.setY(snapToGrid(p.getY()));
-		
-		List<IBurst> l = new ArrayList<IBurst>();
-
-		//Add the center one
-		l.add(new Explosion(p));
-		
-		Direction[] d = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
-		for (int i = 0; i < 4; i++){
-			int dist = 0;
-			Rectangle check = new Rectangle(p.getX()+2, p.getY()+2, Constants.TILE_SIZE-4,Constants.TILE_SIZE-4);
-			while (dist <= power){
-				check.setX(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE);
-				check.setY(p.getY() + d[i].getY() * dist * Constants.TILE_SIZE);
-				
-				Entity e = getIntersectingEntity(check);
-				if (e instanceof Destructible){
-					((Destructible) e).destroy();
-					l.add(new Explosion(new Position(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE,p.getY() + d[i].getY() * dist * Constants.TILE_SIZE)));
-					break;
-				} else if (e instanceof Block){
-					break;
-				} else if (e instanceof Tower){
-					((Tower) e).takeDamage();
-					break;
-				}
-				
-				l.add(new Explosion(new Position(p.getX() + d[i].getX() * dist * Constants.TILE_SIZE,p.getY() + d[i].getY() * dist * Constants.TILE_SIZE)));
-					
-				
-				dist++;
-				
-			}
-
-		}
-		
-		ExplosionCore core = new ExplosionCore(100, new Position(1, 1), 4);
-		
-		explosions.add(core);
-		//TODO Make this better
-		for (IBurst ib: l){
-			if (ib instanceof Entity){
-				Entity e = (Entity) ib;
-				entities.add(e);
-			}
-		}
-	}
-	
 	public int isGameOver(){
 		if (balance <= -500){
 			return -1;
