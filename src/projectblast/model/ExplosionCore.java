@@ -43,8 +43,6 @@ public class ExplosionCore extends Core {
 				stopNextStep = false;
 				currentDir++;
 				distance = 1;
-			} else {
-				setCreated(true);
 			}
 		}
 		
@@ -57,7 +55,7 @@ public class ExplosionCore extends Core {
 
 	@Override
 	public boolean step(Entity intersectingEntity) {
-		if(currentDir >= directionList.length - 1 && power == distance || isCreated()) {
+		if(currentDir >= directionList.length - 1 && power == distance || stopNextStep) {
 			setCreated(true);
 			return false;
 		} 
