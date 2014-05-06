@@ -16,8 +16,6 @@ public class Bomb extends Explosive {
 	}
 
 
-	
-	
 	public void update(){
 		setLife(getLife()- 1);
 		if(getLife()==0){
