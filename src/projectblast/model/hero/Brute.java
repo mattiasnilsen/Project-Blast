@@ -1,5 +1,6 @@
 package projectblast.model.hero;
 
+import projectblast.model.BlastModel;
 import projectblast.model.Constants;
 import projectblast.model.ICore;
 import projectblast.model.Id;
@@ -37,7 +38,7 @@ public class Brute extends Hero {
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Fist fist = new Fist(new Position(snapToGrid(getX()) + getDirection().getX()*Constants.TILE_SIZE, snapToGrid(getY()) + getDirection().getY()*Constants.TILE_SIZE)  ,0 , getDirection() ,this);
+			Fist fist = new Fist(new Position(BlastModel.snapToGrid(getX()) + getDirection().getX() * Constants.TILE_SIZE, BlastModel.snapToGrid(getY()) + getDirection().getY() * Constants.TILE_SIZE), 0, getDirection(), this);
 			addExplosive(fist);
 			return fist;
 		}

@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
-
-import projectblast.model.Constants;
 import projectblast.model.Destructible;
 import projectblast.model.ICore;
 import projectblast.model.MovableEntity;
@@ -20,7 +18,6 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	private int bombPower;
 	private int bombCount;
-	private Direction direction;
 
 	private Team team;
 	
@@ -38,7 +35,6 @@ public abstract class Hero extends MovableEntity implements Destructible{
         bombPower = 0;
         bombCount = 0;
         this.team = team;
-        this.direction = direction;
         this.startPos = new Position(position.getX(), position.getY());
         addInitialPowerUps();
         
@@ -46,10 +42,6 @@ public abstract class Hero extends MovableEntity implements Destructible{
     
     protected abstract void addInitialPowerUps();
 
-    public int snapToGrid(int coordinate){
-    	return (int)Math.round(coordinate/(double)Constants.TILE_SIZE)*Constants.TILE_SIZE;
-    }
-    
     public int getPower(){
     	return bombPower;
     }

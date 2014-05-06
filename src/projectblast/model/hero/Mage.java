@@ -1,10 +1,6 @@
 package projectblast.model.hero;
 
-
-
-import projectblast.control.GameplayState;
 import projectblast.model.*;
-import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.explosive.Fireball;
 import projectblast.model.powerups.*;
@@ -26,7 +22,7 @@ public class Mage extends Hero {
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Fireball fireball = new Fireball(new Position(snapToGrid(getX()), snapToGrid(getY())),  4,  getDirection(), this);
+			Fireball fireball = new Fireball(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())),  4,  getDirection(), this);
 			addExplosive(fireball);
 			return fireball;
 		}
@@ -34,7 +30,7 @@ public class Mage extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		return new ParalyzerCore(180, new Position(snapToGrid(getX()), snapToGrid(getY())), getDirection());
+		return new ParalyzerCore(180, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), getDirection());
 	}
 
 	@Override
@@ -48,9 +44,5 @@ public class Mage extends Hero {
 		addPowerUp(new AmmoPowerUp());
 		addPowerUp(new AmmoPowerUp());
 		addPowerUp(new AmmoPowerUp());
-
-
-		
 	}
-
 }

@@ -1,9 +1,7 @@
 package projectblast.model.hero;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
+import projectblast.model.BlastModel;
 import projectblast.model.ICore;
 import projectblast.model.Id;
 import projectblast.model.Position;
@@ -11,8 +9,6 @@ import projectblast.model.Team;
 import projectblast.model.explosive.Bomb;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.powerups.*;
-
-
 
 
 /**
@@ -33,7 +29,7 @@ public class Bomber extends Hero {
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Bomb bomb = new Bomb(new Position(snapToGrid(getX()) + getDirection().getX()*0, snapToGrid(getY()) + getDirection().getY()*0)  ,0 ,Direction.NORTH ,this);
+			Bomb bomb = new Bomb(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), 0, Direction.NORTH, this);
 			addExplosive(bomb);
 			return bomb;
 		}
@@ -58,9 +54,6 @@ public class Bomber extends Hero {
 		addPowerUp(new SpeedPowerUp());
 		addPowerUp(new RangePowerUp());
 		addPowerUp(new AmmoPowerUp());
-		addPowerUp(new AmmoPowerUp());
-
-		
+		addPowerUp(new AmmoPowerUp());	
 	}
-	
 }
