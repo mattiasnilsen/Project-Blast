@@ -1,11 +1,6 @@
 package projectblast.model;
 
-import java.awt.Rectangle;
 import java.util.List;
-
-import org.newdawn.slick.Color;
-import org.newdawn.slick.Graphics;
-
 import projectblast.model.Movable.Direction;
 
 public class ExplosionCore extends Core {
@@ -32,18 +27,10 @@ public class ExplosionCore extends Core {
 	public void create() {
 		addPart(new Explosion(new Position(getNextPosition().getX(), getNextPosition().getY())));
 		
-		if(currentDir == -1) {
+		if(currentDir == -1) { //Special case to handle starting position.
 			currentDir++;
 		} else {
 			distance++;
-		}
-		
-		if(distance == power || stopNextStep) {
-			if(currentDir < directionList.size() - 1) {
-				stopNextStep = false;
-				currentDir++;
-				distance = 1;
-			}
 		}
 		
 		if((distance == power || stopNextStep) && currentDir < directionList.size() - 1) {
@@ -61,9 +48,9 @@ public class ExplosionCore extends Core {
 		} 
 		
 		if(intersectingEntity instanceof DestructibleBlock || intersectingEntity instanceof Tower) {
-			stopNextStep = true;
+			stopNextStep = true; //Place an object on the current position but stop after that.
 		} else if(intersectingEntity instanceof Block) {
-			if(currentDir == directionList.size() - 1) {
+			if(currentDir == directionList.size() - 1) { //If we have already looped through all directions then we are created.
 				setCreated(true);
 			} else {
 				currentDir++;
@@ -77,7 +64,7 @@ public class ExplosionCore extends Core {
 
 	@Override
 	public Position getNextPosition() {
-		if(currentDir == -1) {
+		if(currentDir == -1) { //Special case to make sure an explosion is placed at starting position.
 			return new Position(getStartingPosition());
 		} else {
 		
