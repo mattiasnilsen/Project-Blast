@@ -25,7 +25,6 @@ public class BlastModel implements IBlastModel {
 	private List<Entity> entities;
 	private List<Player> players;
 	private List<Explosive> explosives;
-	private List<ExplosionCore> explosions;
 	private List<Tower> towers;
 	private List<ICore> ICores; //should be a secondary interface.
 	
@@ -44,7 +43,6 @@ public class BlastModel implements IBlastModel {
 		this.players = players;  
 		this.entities = new ArrayList<Entity>();
 		this.explosives = new ArrayList<Explosive>();
-		this.explosions = new ArrayList<ExplosionCore>();
 		this.towers = new ArrayList<Tower>();
 		this.ICores = new ArrayList<ICore>();
 		
@@ -134,10 +132,6 @@ public class BlastModel implements IBlastModel {
 		return players;
 	}
 	
-	public List<ExplosionCore> getExplosions() {
-		return explosions;
-	}
-	
 	public void addEntity(Entity e){
 		entities.add(e);
 
@@ -200,15 +194,6 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
-
-		//Check for dead explosions and remove them
-		for (ExplosionCore c: explosions){
-			c.tick();
-			if (c.isDead()){
-				entities.removeAll(c.getParts());
-			}
-		}
-		
 		
 		Iterator<Explosive> explosiveIter = explosives.iterator();
 		while(explosiveIter.hasNext()) {

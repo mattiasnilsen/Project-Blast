@@ -23,7 +23,6 @@ public interface IBlastModel {
 	 */
 	List<Entity> getEntities();
 	List<Player> getPlayers();
-	List<ExplosionCore> getExplosions();
 
 	void increaseScaleFactor(int add);
 
