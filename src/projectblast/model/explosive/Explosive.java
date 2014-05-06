@@ -1,5 +1,8 @@
 package projectblast.model.explosive;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.BlastModel;
@@ -54,7 +57,11 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 	}
 	
 	public ICore getCore() {
-		Direction[] directionList = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
+		List<Direction> directionList = new ArrayList<Direction>();
+		directionList.add(Direction.EAST);
+		directionList.add(Direction.NORTH);
+		directionList.add(Direction.WEST);
+		directionList.add(Direction.SOUTH);
 		ExplosionCore core = new ExplosionCore(120, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
 		
 		return core;

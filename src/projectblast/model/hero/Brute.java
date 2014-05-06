@@ -37,7 +37,7 @@ public class Brute extends Hero {
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Fist fist = new Fist(new Position(snapToGrid(getX()) + getDirection().getX()*Constants.TILE_SIZE, snapToGrid(getY()) + getDirection().getY()*Constants.TILE_SIZE)  ,0 ,Direction.NORTH ,this);
+			Fist fist = new Fist(new Position(snapToGrid(getX()) + getDirection().getX()*Constants.TILE_SIZE, snapToGrid(getY()) + getDirection().getY()*Constants.TILE_SIZE)  ,0 , getDirection() ,this);
 			addExplosive(fist);
 			return fist;
 		}

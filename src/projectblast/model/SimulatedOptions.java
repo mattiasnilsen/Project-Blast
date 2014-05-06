@@ -6,6 +6,7 @@ import java.util.List;
 import org.newdawn.slick.Color;
 
 import projectblast.model.hero.Bomber;
+import projectblast.model.hero.Brute;
 import projectblast.model.hero.Mage;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
@@ -27,7 +28,7 @@ public final class SimulatedOptions {
 		List<Player> p = new LinkedList<Player>();
 		
 		p.add(new Player(new Mage(new Position(32, 635), 0, Movable.Direction.EAST, new Team("Main", new Color(255,0,128), Team.Side.LEFT))));
-		p.add(new Player(new Bomber(new Position(1200, 32), 0, Movable.Direction.WEST,  new Team("Secondary", new Color(0,255,128), Team.Side.RIGHT))));
+		p.add(new Player(new Brute(new Position(1200, 32), 0, Movable.Direction.WEST,  new Team("Secondary", new Color(0,255,128), Team.Side.RIGHT))));
 		
 		
 		return p;

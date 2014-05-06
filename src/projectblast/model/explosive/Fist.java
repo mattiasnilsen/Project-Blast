@@ -1,8 +1,16 @@
 package projectblast.model.explosive;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import projectblast.model.BlastModel;
 import projectblast.model.Entity;
+import projectblast.model.ExplosionCore;
+import projectblast.model.ICore;
 import projectblast.model.Id;
 import projectblast.model.Position;
+import projectblast.model.Movable.Direction;
 import projectblast.model.hero.Hero;
 
 public class Fist extends Explosive {
@@ -23,6 +31,23 @@ public class Fist extends Explosive {
 		if(getLife()==0){
 			destroy();
 		}
+	}
+	
+	public ICore getCore() {
+		List<Direction> directionList = new ArrayList<Direction>();
+		directionList.add(Direction.EAST);
+		directionList.add(Direction.NORTH);
+		directionList.add(Direction.WEST);
+		directionList.add(Direction.SOUTH);
+		Iterator<Direction> iter = directionList.iterator();
+		while(iter.hasNext()){
+			if(iter.next() == getDirection().opposite()){
+				iter.remove();
+			}
+		}
+		ExplosionCore core = new ExplosionCore(120, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
+		
+		return core;
 	}
 
 }
