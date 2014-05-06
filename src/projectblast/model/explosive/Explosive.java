@@ -2,8 +2,11 @@ package projectblast.model.explosive;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.BlastModel;
 import projectblast.model.Destructible;
 import projectblast.model.Entity;
+import projectblast.model.ExplosionCore;
+import projectblast.model.ICore;
 import projectblast.model.Movable;
 import projectblast.model.MovableEntity;
 import projectblast.model.Position;
@@ -49,6 +52,12 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 
 	public void setPower(int power) {
 		this.power = power;
+	}
+	
+	public ICore getCore() {
+		ExplosionCore core = new ExplosionCore(120, BlastModel.snapToGrid(getPosition()), 4);//TODO remove magic number
+		
+		return core;
 	}
 
 }
