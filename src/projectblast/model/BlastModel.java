@@ -50,7 +50,7 @@ public class BlastModel implements IBlastModel {
 		this.entityMap = new HashMap<String, Entity>();
 		
 		try {
-			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Hexagon.tmx")));
+			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
 
 		} catch (SlickException e) {
 			e.printStackTrace();
@@ -212,16 +212,18 @@ public class BlastModel implements IBlastModel {
 			if(ex.isDestroyed()) {
 				removeEntity(ex);
 				trashCan.add(ex);
-				createExplosion(ex.getPosition(), ex.getPower());
+				ICore core = ex.getCore();
+				ICores.add(core);
+				//createExplosion(ex.getPosition(), ex.getPower());
 			}
 		}
 		
-		for(ICore stun: ICores){
-			while(!stun.isCreated()){	
-				if(stun.step(getIntersectingEntity(new Rectangle(stun.getNextPosition().getX()+2, stun.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
-					stun.create();
-				}else {
-					for (IBurst ib : stun.getParts()){
+		for(ICore core: ICores){
+			while(!core.isCreated()){	
+				if(core.step(getIntersectingEntity(new Rectangle(core.getNextPosition().getX()+2, core.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
+					core.create();
+				}else if(core.isCreated()) {
+					for (IBurst ib : core.getParts()){
 						if (ib instanceof Entity){
 							Entity e = (Entity)ib;
 							entities.add(e);
@@ -405,7 +407,7 @@ public class BlastModel implements IBlastModel {
 
 		}
 		
-		ExplosionCore core = new ExplosionCore(l,Constants.EXPLOSION_TIME);
+		ExplosionCore core = new ExplosionCore(100, new Position(1, 1), 4);
 		
 		explosions.add(core);
 		//TODO Make this better

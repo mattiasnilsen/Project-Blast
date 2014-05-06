@@ -12,13 +12,15 @@ import projectblast.model.powerups.IPowerUp;
  * revised by Mattias Nilsen
  */
 
-public class Tower extends Entity {
+public class Tower extends Entity implements Destructible {
 
 	private int health;
 	private int power;
 	private Team owner;
 	private IPowerUp powerUp;
 	private int powerUpInterval;
+	
+	private Explosion lastExplosion = null;
 	
 	public Tower(Position position) {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
@@ -113,10 +115,25 @@ public class Tower extends Entity {
 			if(!hero.getTeam().equals(owner)) {
 				capture(hero.getTeam());
 			}
+		} else if(entity instanceof Explosion) {
+			if(entity != lastExplosion) {
+				takeDamage();
+				lastExplosion = (Explosion)entity;
+			}
 		}
 	}
 
 	public int getPowerupTimer() {
 		return powerUpInterval;
+	}
+
+	@Override
+	public void destroy() {
+		takeDamage();
+	}
+
+	@Override
+	public boolean isDestroyed() {
+		return false;
 	}
 }

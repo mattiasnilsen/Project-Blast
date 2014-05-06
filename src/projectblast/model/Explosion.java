@@ -51,7 +51,10 @@ public class Explosion extends Entity implements IBurst {
 
 	@Override
 	public void collide(Entity entity) {
-		// TODO Auto-generated method stub
+		if(entity instanceof DestructibleBlock) {
+			Destructible dest = (Destructible)entity;
+			dest.destroy();
+		}
 		
 	}
 	
