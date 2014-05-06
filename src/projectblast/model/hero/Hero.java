@@ -2,6 +2,7 @@ package projectblast.model.hero;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
@@ -28,6 +29,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	private Position startPos;
 	
 	private List<IPowerUp> powerUps = new ArrayList<IPowerUp>();
+	private List<Explosive> explosives = new ArrayList<Explosive>();
 
 	
 	
@@ -85,6 +87,14 @@ public abstract class Hero extends MovableEntity implements Destructible{
     	return false; // a hero is never destroyed!
     }
     
+    public void addExplosive(Explosive e){
+    	explosives.add(e);
+    }
+    
+    public List<Explosive> getExplosives(){
+    	return explosives;
+    }
+    
     public boolean isRespawning(){
     	return isRespawning;
     }
@@ -112,6 +122,18 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	private void applyAllPowerUps() {
 		for(IPowerUp powerUp : powerUps) {
 			powerUp.apply(this);
+		}
+	}
+	
+	public void update(){
+		Iterator<Explosive> iter = explosives.iterator();
+		while(iter.hasNext()){
+			if(iter.next().isDestroyed()){
+				iter.remove();
+				setAmmo(getAmmo()+1);
+			}
+			
+			
 		}
 	}
 	

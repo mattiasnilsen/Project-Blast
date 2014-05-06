@@ -18,11 +18,10 @@ import projectblast.model.powerups.*;
 /**
  * 
  * @author Mattias Nilsen
- *
+ *	
  */
 public class Bomber extends Hero {
-	private List<Explosive> bombs = new ArrayList<Explosive>();
-	private List<Explosive> trash = new ArrayList<Explosive>();
+
     public Bomber(Position position,  int speed, Direction direction,  Team team) {
         super(position, speed, direction, team);
         setName(Id.BOMBER);
@@ -35,18 +34,20 @@ public class Bomber extends Hero {
 		}else{
 			setAmmo(getAmmo()-1);
 			Bomb bomb = new Bomb(new Position(snapToGrid(getX()) + getDirection().getX()*0, snapToGrid(getY()) + getDirection().getY()*0)  ,0 ,Direction.NORTH ,this);
-			bombs.add(bomb);
+			addExplosive(bomb);
 			return bomb;
 		}
     }
-
+    /**
+     * Bomber secondaryAbility destroys all of his bombs,
+     * making them explode sooner than expected!
+     */
     @Override
     public ICore secondaryAbility() {
-    	for(Explosive ex: bombs){
-			ex.destroy();
+    	for(Explosive e: getExplosives()){
+			e.destroy();
 		}
     	return null; //No ICore needed
-       	//return new DetonatorCore(bombs);
     }
 
 	@Override
@@ -57,18 +58,9 @@ public class Bomber extends Hero {
 		addPowerUp(new SpeedPowerUp());
 		addPowerUp(new RangePowerUp());
 		addPowerUp(new AmmoPowerUp());
+		addPowerUp(new AmmoPowerUp());
 
 		
 	}
 	
-	public void update(){
-		
-		for(Explosive b : bombs){
-			if(b.isDestroyed()){
-				trash.add(b);
-			}
-		}
-		bombs.removeAll(trash);
-	}
-
 }

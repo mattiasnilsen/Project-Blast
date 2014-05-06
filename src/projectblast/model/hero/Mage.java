@@ -26,7 +26,9 @@ public class Mage extends Hero {
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			return new Fireball(new Position(snapToGrid(getX()), snapToGrid(getY())),  4,  getDirection(), this);
+			Fireball fireball = new Fireball(new Position(snapToGrid(getX()), snapToGrid(getY())),  4,  getDirection(), this);
+			addExplosive(fireball);
+			return fireball;
 		}
 	}
 
