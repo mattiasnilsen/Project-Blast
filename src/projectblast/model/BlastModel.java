@@ -355,9 +355,15 @@ public class BlastModel implements IBlastModel {
 		return ent;
 	}
 	
-	private int snapToGrid(int i){
-		return (int)Math.round(i / Constants.TILE_SIZE) * Constants.TILE_SIZE;
+	public static int snapToGrid(int i){
+		return (int)Math.round(i / (double)Constants.TILE_SIZE) * Constants.TILE_SIZE;
+	}
+	
+	public static Position snapToGrid(Position pos) {
+		int x = snapToGrid(pos.getX());
+		int y = snapToGrid(pos.getY());
 		
+		return new Position(x, y);
 	}
 	
 	public void createExplosion(Position p, int power){
