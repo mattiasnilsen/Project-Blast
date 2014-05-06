@@ -2,6 +2,7 @@ package projectblast.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -188,12 +189,14 @@ public class BlastModel implements IBlastModel {
 		//List of entities to throw away later
 		List<Entity> trashCan = new LinkedList<Entity>();
 		
-		for(Entity e: entities){
-			e.update();
-			if (e instanceof Destructible){
-				Destructible d = (Destructible)e;
-				if (d.isDestroyed()){
-					trashCan.add(e);
+		Iterator<Entity> iterator = entities.iterator();
+		while(iterator.hasNext()) {
+			Entity entity = iterator.next();
+			entity.update();
+			if(entity instanceof Destructible) {
+				Destructible d = (Destructible)entity;
+				if(d.isDestroyed()) {
+					iterator.remove();
 				}
 			}
 		}
@@ -206,47 +209,41 @@ public class BlastModel implements IBlastModel {
 			}
 		}
 		
-		List<Explosive> tmp = new ArrayList<Explosive>();
 		
-		for(Explosive ex: explosives){
-			if(ex.isDestroyed()) {
-				removeEntity(ex);
-				trashCan.add(ex);
-				ICore core = ex.getCore();
-				ICores.add(core);
-				//createExplosion(ex.getPosition(), ex.getPower());
+		Iterator<Explosive> explosiveIter = explosives.iterator();
+		while(explosiveIter.hasNext()) {
+			Explosive explosive = explosiveIter.next();
+			if(explosive.isDestroyed()) {
+				removeEntity(explosive);
+				explosiveIter.remove();
+				ICores.add(explosive.getCore());
 			}
 		}
 		
-		for(ICore core: ICores){
-			while(!core.isCreated()){	
-				if(core.step(getIntersectingEntity(new Rectangle(core.getNextPosition().getX()+2, core.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
-					core.create();
-				}else if(core.isCreated()) {
-					for (IBurst ib : core.getParts()){
-						if (ib instanceof Entity){
-							Entity e = (Entity)ib;
-							entities.add(e);
+		Iterator<ICore> icoreIter = ICores.iterator();
+		while(icoreIter.hasNext()) {
+			ICore core = icoreIter.next();
+			if(core.isCreated()) {
+				core.tick();
+				if(core.isDead()) {
+					icoreIter.remove();
+					entities.removeAll(core.getParts());
+				}
+			} else {
+				while(!core.isCreated()){	
+					if(core.step(getIntersectingEntity(new Rectangle(core.getNextPosition().getX()+2, core.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
+						core.create();
+					}else if(core.isCreated()) {
+						for (IBurst ib : core.getParts()){
+							if (ib instanceof Entity){
+								Entity e = (Entity)ib;
+								entities.add(e);
+							}
 						}
 					}
 				}
 			}
 		}
-		
-		List<ICore> trashCantwo = new LinkedList<ICore>();
-		for(ICore stun: ICores){
-			if(stun.isCreated()){
-				stun.tick();
-				if(stun.isDead()){
-					trashCantwo.add(stun);
-					entities.removeAll(stun.getParts());
-				}
-			}
-		}
-		//Throw the destroyed entities away
-		entities.removeAll(trashCan);
-		ICores.removeAll(trashCantwo);
-		explosives.removeAll(trashCan);	
 	    handleTowers();
 	}
 	
