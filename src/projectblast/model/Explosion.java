@@ -29,9 +29,6 @@ public class Explosion extends Entity implements IBurst {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		if(entity instanceof Destructible){
-			((Destructible) entity).destroy();
-		}
 		return true;
 	}
 
@@ -51,7 +48,7 @@ public class Explosion extends Entity implements IBurst {
 
 	@Override
 	public void collide(Entity entity) {
-		if(entity instanceof DestructibleBlock) {
+		if(entity instanceof DestructibleBlock || entity instanceof Hero) {
 			Destructible dest = (Destructible)entity;
 			dest.destroy();
 		}
