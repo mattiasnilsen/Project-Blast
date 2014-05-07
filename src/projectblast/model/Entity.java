@@ -1,9 +1,5 @@
 package projectblast.model;
 
-
-import java.util.Comparator;
-
-import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
 public abstract class Entity implements Updatable, Comparable<Entity>{

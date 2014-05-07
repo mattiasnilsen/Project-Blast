@@ -124,8 +124,6 @@ public abstract class Hero extends MovableEntity implements Destructible{
 				iter.remove();
 				setAmmo(getAmmo()+1);
 			}
-			
-			
 		}
 	}
 	

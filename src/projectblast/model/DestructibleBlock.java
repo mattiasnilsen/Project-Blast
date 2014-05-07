@@ -1,14 +1,18 @@
 package projectblast.model;
 
+import org.newdawn.slick.geom.Rectangle;
+
+import projectblast.model.hero.Hero;
+
 /**
  *
  * @author Alex Tao
  */
-public class DestructibleBlock extends Block implements Destructible, Movable{
+public class DestructibleBlock extends MovableEntity implements Destructible{
 	private boolean isDestroyed;
 
 	public DestructibleBlock(Position position) {
-		super(position);
+		super(position, 1, Direction.NONE, new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));
 
 		setName(Id.DESTRUCTIBLEBLOCK);
 	}
@@ -16,56 +20,6 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 	@Override
 	public void destroy() {
 		isDestroyed = true;
-	}
-
-	@Override
-	public void move(int dx, int dy) {
-	while(true){
-	this.setX(getX()+dx);
-	this.setY(getY()+dy);	
-	}
-	}
-
-	@Override
-	public void place(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void move(Direction direction) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void startMove(Direction direction) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void stopMove() {
-		// TODO Auto-generated method stub
-		
-	}
-
-    @Override
-    public void startMove() {
-        // TODO Auto-generated method stub
-        
-    }
-
-	@Override
-	public void stopMove(Direction direction) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -77,23 +31,13 @@ public class DestructibleBlock extends Block implements Destructible, Movable{
 	public boolean allowPassage(Entity entity) {
 		return false;
 	}
-
-	@Override
-	public boolean isMovable() {
-		return true;
-	}
-
-	@Override
-	public void place(Position p) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void collide(Entity entity) {
-		// TODO Auto-generated method stub
-		
+		stopMove();
 	}
+
+
 
 	
 
