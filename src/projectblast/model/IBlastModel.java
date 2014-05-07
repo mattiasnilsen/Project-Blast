@@ -23,6 +23,9 @@ public interface IBlastModel {
 	 */
 	List<Entity> getEntities();
 	List<Player> getPlayers();
+	
+	void addEntity(Entity e);
+	void removeEntity(Entity e);
 
 	void increaseScaleFactor(int add);
 
@@ -37,4 +40,6 @@ public interface IBlastModel {
 	int getTowerBalance();
 
 	void endGame(Team winner);
+
+	
 }

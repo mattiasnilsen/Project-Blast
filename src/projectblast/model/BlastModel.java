@@ -49,7 +49,7 @@ public class BlastModel implements IBlastModel {
 		this.entityMap = new HashMap<String, Entity>();
 		
 		try {
-			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
+			entities.addAll(MapReader.createEntities(this,new TiledMap("data/map/Map.tmx")));
 
 		} catch (SlickException e) {
 			e.printStackTrace();
@@ -176,50 +176,38 @@ public class BlastModel implements IBlastModel {
 			}
 		}
 		
-		
-		//Perhaps put this sorting elsewhere?
-		//sortEntities();
-		
 		//List of entities to throw away later
 		List<Entity> trashCan = new LinkedList<Entity>();
 		
-		Iterator<Entity> iterator = entities.iterator();
-		while(iterator.hasNext()) {
-			Entity entity = iterator.next();
-			entity.update();
-			if(entity instanceof Destructible) {
-				Destructible d = (Destructible)entity;
+		for (Entity e: entities){
+			e.update();
+			if(e instanceof Destructible) {
+				Destructible d = (Destructible)e;
 				if(d.isDestroyed()) {
-					iterator.remove();
+					trashCan.add(e);
 				}
 			}
 		}
 		
-		Iterator<Explosive> explosiveIter = explosives.iterator();
-		while(explosiveIter.hasNext()) {
-			Explosive explosive = explosiveIter.next();
-			if(explosive.isDestroyed()) {
-				removeEntity(explosive);
-				explosiveIter.remove();
-				ICores.add(explosive.getCore());
+		for (Explosive e: explosives){
+			if(e.isDestroyed()) {
+				removeEntity(e);
+				ICores.add(e.getCore());
 			}
 		}
 		
-		Iterator<ICore> icoreIter = ICores.iterator();
-		while(icoreIter.hasNext()) {
-			ICore core = icoreIter.next();
-			if(core.isCreated()) {
-				core.tick();
-				if(core.isDead()) {
-					icoreIter.remove();
-					entities.removeAll(core.getParts());
+		for (ICore c: ICores){
+			if (c.isCreated()){
+				c.tick();
+				if (c.isDead()){
+					entities.removeAll(c.getParts());
 				}
 			} else {
-				while(!core.isCreated()){	
-					if(core.step(getIntersectingEntity(new Rectangle(core.getNextPosition().getX()+2, core.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
-						core.create();
-					}else if(core.isCreated()) {
-						for (IBurst ib : core.getParts()){
+				while(!c.isCreated()){	
+					if(c.step(getIntersectingEntity(new Rectangle(c.getNextPosition().getX()+2, c.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
+						c.create();
+					}else if(c.isCreated()) {
+						for (IBurst ib : c.getParts()){
 							if (ib instanceof Entity){
 								Entity e = (Entity)ib;
 								entities.add(e);
@@ -229,6 +217,7 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
+		
 	    handleTowers();
 	}
 	

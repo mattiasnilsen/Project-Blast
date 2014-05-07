@@ -12,7 +12,7 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class MapReader {
 	
-	public static List<Entity> createEntities(TiledMap map){
+	public static List<Entity> createEntities(IBlastModel model, TiledMap map){
 		List<Entity> list = new LinkedList<Entity>();
 		
 		//Step through the map and read property values
@@ -29,7 +29,7 @@ public class MapReader {
 						list.add(new DestructibleBlock(new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
 						break;
 					case "tower":
-						list.add(new Tower(new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
+						list.add(new Tower(model, new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
 						break;
 					}
 				}

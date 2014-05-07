@@ -16,7 +16,7 @@ public class TowerTest {
 	
 	@Before
 	public void before() {
-		tower = new Tower(new Position(1, 1));
+		tower = new Tower(new BlastModel(), new Position(1, 1));
 	}
 	
 	@Test
