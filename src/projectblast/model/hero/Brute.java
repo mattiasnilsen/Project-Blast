@@ -5,6 +5,7 @@ import projectblast.model.Constants;
 import projectblast.model.ICore;
 import projectblast.model.Id;
 import projectblast.model.Position;
+import projectblast.model.ShockwaveCore;
 import projectblast.model.Team;
 import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Bomb;
@@ -46,8 +47,8 @@ public class Brute extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return new ShockwaveCore(20, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), getDirection());
 	}
 
 }
