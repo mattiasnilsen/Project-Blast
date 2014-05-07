@@ -2,6 +2,8 @@ package projectblast.model;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.hero.Hero;
+
 /**
  *
  * @author Alex Tao
@@ -28,6 +30,11 @@ public class DestructibleBlock extends MovableEntity implements Destructible{
 	@Override
 	public boolean allowPassage(Entity entity) {
 		return false;
+	}
+	
+	@Override
+	public void collide(Entity entity) {
+		stopMove();
 	}
 
 
