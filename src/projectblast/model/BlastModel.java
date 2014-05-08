@@ -188,6 +188,9 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
+		
+		entities.removeAll(trashCan);
+		
 		List<Explosive> trash = new ArrayList<Explosive>();
 		for (Explosive e: explosives){
 			if(e.isDestroyed()) {
@@ -248,29 +251,6 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 			
-			
-			//Needed?
-			/*
-			for(int i = 0; i < directions.length; ++i) {
-				int power = tower.getPower();
-				int width = directions[i].getX() * (power - directions[i].getX()) * Constants.TILE_SIZE + Constants.TILE_SIZE;
-				int height = directions[i].getY() * (power - directions[i].getY()) * Constants.TILE_SIZE + Constants.TILE_SIZE;
-				int x = tower.getX();
-				int y = tower.getY();
-				if(directions[i].equals(Direction.EAST)) {
-				    x += Constants.TILE_SIZE;
-				} else if(directions[i].equals(Direction.SOUTH)) {
-				    y += Constants.TILE_SIZE;
-				}
-				Rectangle check = new Rectangle(x, y, width, height);
-				List<Entity> entities = getAllIntersectingEntities(check);
-				Entity e = getClosestEntity(entities, tower.getPosition());
-				if(e != null && e instanceof Hero) {
-					System.out.println(directions[i].toString() + ": " + e.getName().toString());
-					
-				} 
-			}
-			*/
 		}
 	}
 
