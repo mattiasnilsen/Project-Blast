@@ -243,7 +243,7 @@ public class BlastModel implements IBlastModel {
 			
 			Hero closest = tower.getClosestTarget(targets,tower.RANGE);
 			if (closest != null){
-				if (tower.isCannonReady()){
+				if (!tower.isDestroyed() && tower.isCannonReady()){
 					ICores.add( tower.fireCannon(tower.getClosestTargetDirection(targets,tower.RANGE), tower.RANGE) );
 				}
 			}

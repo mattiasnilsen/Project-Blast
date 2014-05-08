@@ -145,7 +145,7 @@ public class Tower extends Entity implements Destructible {
 
 	@Override
 	public boolean isDestroyed() {
-		return false;
+		return health == 0;
 	}
 	
 	public Hero getClosestTarget(List<Hero> targets, int range){
@@ -153,9 +153,9 @@ public class Tower extends Entity implements Destructible {
 		for (int i = 1; i <= range; i++){
 			for (Direction d: dirs){
 				int q = Constants.TILE_SIZE;
-				Rectangle r = new Rectangle(getX() + d.getX() * q,getY() + d.getY() * q, q, q);
+				Rectangle r = new Rectangle(getX() + d.getX() * q * i,getY() + d.getY() * q * i, q, q);
 				for (Hero h: targets){
-					if (r.intersects(h.getCollisionBox())){
+					if (!h.getTeam().equals(owner) && r.intersects(h.getCollisionBox())){
 						return h;
 					}
 				}
@@ -172,7 +172,7 @@ public class Tower extends Entity implements Destructible {
 		for (int i = 1; i <= range; i++){
 			for (Direction d: dirs){
 				int q = Constants.TILE_SIZE;
-				Rectangle r = new Rectangle(getX() + d.getX() * q,getY() + d.getY() * q, q, q);
+				Rectangle r = new Rectangle(getX() + d.getX() * q * i,getY() + d.getY() * q * i, q, q);
 				for (Hero h: targets){
 					if (r.intersects(h.getCollisionBox())){
 						return d;
@@ -191,6 +191,9 @@ public class Tower extends Entity implements Destructible {
 	}
 	
 	public ExplosionCore fireCannon(Direction dir, int range) {
+		if (dir == null){
+			dir = Direction.NONE;
+		}
 		System.out.println("Tower is firing");
 		cannonDelay = 100;
 		Direction[] dirs = {dir};
