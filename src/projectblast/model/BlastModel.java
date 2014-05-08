@@ -235,6 +235,22 @@ public class BlastModel implements IBlastModel {
 			}
 			
 			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
+			
+			List<Hero> targets = new ArrayList<Hero>();
+			for(Player player : players) {
+				targets.add(player.getHero());
+			}
+			
+			Hero closest = tower.getClosestTarget(targets,tower.RANGE);
+			if (closest != null){
+				if (tower.isCannonReady()){
+					ICores.add( tower.fireCannon(tower.getClosestTargetDirection(targets,tower.RANGE), tower.RANGE) );
+				}
+			}
+			
+			
+			//Needed?
+			/*
 			for(int i = 0; i < directions.length; ++i) {
 				int power = tower.getPower();
 				int width = directions[i].getX() * (power - directions[i].getX()) * Constants.TILE_SIZE + Constants.TILE_SIZE;
@@ -247,17 +263,15 @@ public class BlastModel implements IBlastModel {
 				    y += Constants.TILE_SIZE;
 				}
 				Rectangle check = new Rectangle(x, y, width, height);
-				List<Entity> entities = getAllIntersectingEntitys(check);
+				List<Entity> entities = getAllIntersectingEntities(check);
 				Entity e = getClosestEntity(entities, tower.getPosition());
 				if(e != null && e instanceof Hero) {
 					System.out.println(directions[i].toString() + ": " + e.getName().toString());
+					
 				} 
 			}
+			*/
 		}
-	}
-	
-	private void handleTowerFire(Tower tower) {
-		
 	}
 
 	@Override
@@ -308,7 +322,7 @@ public class BlastModel implements IBlastModel {
 
 	}
 	
-	private List<Entity> getAllIntersectingEntitys(Rectangle rectangle) {
+	private List<Entity> getAllIntersectingEntities(Rectangle rectangle) {
 		List<Entity> intersectingEntitys = new ArrayList<Entity>();
 		for(Entity entity : entities) {
 			if(entity.getCollisionBox().intersects(rectangle)) {
