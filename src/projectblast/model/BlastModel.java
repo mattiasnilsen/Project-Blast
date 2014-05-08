@@ -210,7 +210,7 @@ public class BlastModel implements IBlastModel {
 					if(c.step(getIntersectingEntity(new Rectangle(c.getNextPosition().getX()+2, c.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 						c.create();
 					}else if(c.isCreated()) {
-						for (IBurst ib : c.getParts()){
+						for (IHazard ib : c.getParts()){
 							if (ib instanceof Entity){
 								Entity e = (Entity)ib;
 								entities.add(e);

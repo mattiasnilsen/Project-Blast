@@ -22,7 +22,7 @@ public interface ICore {
 	 * Returns all of this cores parts
 	 * @return this cores parts.
 	 */
-	public List<IBurst> getParts();
+	public List<IHazard> getParts();
 	/**
 	 * Are all parts of this core created.
 	 * @return true if all parts are created.

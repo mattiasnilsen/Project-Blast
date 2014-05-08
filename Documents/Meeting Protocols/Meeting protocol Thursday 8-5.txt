@@ -1,0 +1,37 @@
+﻿Meeting Agenda
+
+Date: 2014-05-08
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) Discuss tests, the crashes introduced with the recent commits and if IBurst interface is needed or not.
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ Axel has implemented more tower functionality, they can now shoot at players. However this is a little buggy at the moment and needs more work.
+Alex has implemented some tests on the Mage and Entity classes.
+Anton has implemented functionality for the Brute class.
+Mattias has refactored code to make explosions use the new Core system instead of a method in BlastModel.java
+
+3. Discussion items (35 min) 
+IBurst is not really used, we should rename it to IHazard and remove all its members for now. It can still be used to identify hazards but it doesn’t have any common methods.
+
+
+Tower now takes a pointer to IBlastModel, it’s the only class that does so and it should probably be avoided for the sake of consistency. 
+
+
+We need to write more tests to make sure most of the code is covered. 
+
+4. Outcomes and assignments (5 min) 
+Tower should not have a pointer to model we have to fix tower without that.
+IBurst should be renambed to IHazard and be an enmpty interface.
+Alex and Anton should look at the mage class and determine why the Ammo test is failing.
+
+Axel should continue with the tower implementations
+Alex should continue with test writing.
+Mattias should continue wth refactoring and possibly some test writing if there is time
+Anton should fix bugs and write tests.
+5. Wrap up 
+
+Next meeting will be Monday 12/5

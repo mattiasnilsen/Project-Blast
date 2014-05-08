@@ -8,12 +8,12 @@ public abstract class Core implements ICore {
 	private int lifeTime;
 	private boolean isCreated;
 	private Position startPos;
-	private List<IBurst> parts;
+	private List<IHazard> parts;
 	
 	public Core(int lifeTime, Position startPos) {
 		this.lifeTime = lifeTime;
 		this.startPos = startPos;
-		this.parts = new ArrayList<IBurst>();
+		this.parts = new ArrayList<IHazard>();
 	}
 	
 	@Override
@@ -27,11 +27,11 @@ public abstract class Core implements ICore {
 	}
 
 	@Override
-	public List<IBurst> getParts() {
+	public List<IHazard> getParts() {
 		return parts;
 	}
 	
-	public void addPart(IBurst part) {
+	public void addPart(IHazard part) {
 		parts.add(part);
 	}
 
