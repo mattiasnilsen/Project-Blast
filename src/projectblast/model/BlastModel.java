@@ -28,7 +28,7 @@ public class BlastModel implements IBlastModel {
 	private List<Tower> towers;
 	private List<ICore> ICores; //should be a secondary interface.
 	
-	private List<Entity> collideList; //List of all entities currently colliding with eachother.
+	private HashMap<String, Entity> entityMap;
 	
 	private int balance;
 	private int scaleFactor;
@@ -46,7 +46,7 @@ public class BlastModel implements IBlastModel {
 		this.towers = new ArrayList<Tower>();
 		this.ICores = new ArrayList<ICore>();
 		
-		this.collideList = new ArrayList<Entity>();
+		this.entityMap = new HashMap<String, Entity>();
 		
 		try {
 			entities.addAll(MapReader.createEntities(this,new TiledMap("data/map/Map.tmx")));
@@ -168,6 +168,14 @@ public class BlastModel implements IBlastModel {
 			}
 		}
 		
+		
+		for(Entity entity : entities) {
+			Entity other = getIntersectingEntity(entity);
+			if(other != null) {
+				entity.collide(other);
+			}
+		}
+		
 		//List of entities to throw away later
 		List<Entity> trashCan = new LinkedList<Entity>();
 		
@@ -182,8 +190,6 @@ public class BlastModel implements IBlastModel {
 		}
 		
 		entities.removeAll(trashCan);
-		
-		handleCollisions();
 		
 		List<Explosive> trash = new ArrayList<Explosive>();
 		for (Explosive e: explosives){
@@ -218,26 +224,7 @@ public class BlastModel implements IBlastModel {
 			}
 		}
 		
-	   // handleTowers();
-	}
-	
-	private void handleCollisions() {
-		
-		List<Entity> newCollisions = new ArrayList<Entity>();
-		Iterator<Entity> iter = entities.iterator();
-		while(iter.hasNext()) {
-			Entity entity = iter.next();
-			Entity other = getIntersectingEntity(entity);
-			if(other != null) {
-				if(!collideList.contains(other)) {
-					entity.collide(other);
-					newCollisions.add(other);
-				}
-			} else {
-				collideList.remove(entity);
-			}
-		}
-		collideList.addAll(newCollisions);
+	    handleTowers();
 	}
 	
 	private void handleTowers() {
