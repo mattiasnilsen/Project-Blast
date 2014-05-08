@@ -13,7 +13,8 @@ public class MovableEntity extends Entity implements Movable {
 
 	private int speed;
 	private Direction direction;
-	private boolean moving;
+	private boolean moving = true;
+	private int duration = 0;
 
 	
 	public MovableEntity(Position position, int speed, Direction direction, Rectangle box) {
@@ -29,14 +30,15 @@ public class MovableEntity extends Entity implements Movable {
 	}
 	@Override
 	public void place(int x, int y) {
-		setX(x);
-		setY(y);
-		getCollisionBox().setX(x + Constants.TILE_SIZE/2 - getCollisionBox().getWidth() / 2);
-		getCollisionBox().setY(y + Constants.TILE_SIZE/2 - getCollisionBox().getHeight() / 2);
+			setX(x);
+			setY(y);
+			getCollisionBox().setX(x + Constants.TILE_SIZE/2 - getCollisionBox().getWidth() / 2);
+			getCollisionBox().setY(y + Constants.TILE_SIZE/2 - getCollisionBox().getHeight() / 2);
 	}
 	
 	@Override
 	public void place(Position p) {
+		
 		place(p.getX(),p.getY());
 	}
 	
@@ -58,11 +60,13 @@ public class MovableEntity extends Entity implements Movable {
 
 	@Override
 	public void move(Direction direction) {
+		
 		place(getX() + (direction.getX()), getY() + (direction.getY()));
 	}
 	
 	
 	public void move(Direction direction, int speed) {
+		
 		place(getX() + (speed * direction.getX()), getY() + (speed * direction.getY()));
 	}
 
@@ -92,11 +96,19 @@ public class MovableEntity extends Entity implements Movable {
 	public boolean isMoving() {
 		return moving;
 	}
+	
 	@Override
 	public void update() {
+		if(duration > 0){
+			duration--;
+		}
+		if(duration == 1){
+			startMove();
+		}
 		if(isMoving()) {
 			move(direction,speed);
 		}
+		
 	}
 
 
@@ -116,6 +128,13 @@ public class MovableEntity extends Entity implements Movable {
 	public void collide(Entity entity) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void stopMove(int duration) {
+		stopMove();
+		this.duration += duration;
 	}
 
 

@@ -102,6 +102,11 @@ public interface Movable {
 	 */
 	public void stopMove();
 	/**
+	 * Set this object to stop moving for a duration
+	 * @param duration number of frames. 
+	 */
+	public void stopMove(int duration);
+	/**
 	 * Place this object at location.
 	 * @param x The x coordinate to place this object.
 	 * @param y The y coordinate to place this object.

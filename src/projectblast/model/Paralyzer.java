@@ -29,7 +29,9 @@ public class Paralyzer extends Entity implements IHazard {
 
 	@Override
 	public void collide(Entity entity) {
-		// TODO Auto-generated method stub
+		if(entity instanceof Movable){
+			((Movable)entity).stopMove(1);
+		}
 		
 	}
 }

@@ -30,7 +30,7 @@ public class Mage extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		return new ParalyzerCore(180, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), getDirection());
+		return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), getDirection());
 	}
 
 	@Override

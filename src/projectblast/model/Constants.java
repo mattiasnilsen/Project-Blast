@@ -8,6 +8,7 @@ public final class Constants {
 	
 	//Amount of frames explosions stay on screen
 	public static final int EXPLOSION_TIME = 30;
+	public static final int PARALYZER_TIME = 30;
 	
 	public static final int TOWER_STARTING_HEALTH = 3;
 	public static final int TOWER_POWERUP_INTERVAL = 10 * FRAMERATE;
