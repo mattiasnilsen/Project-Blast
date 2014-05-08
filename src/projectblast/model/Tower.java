@@ -30,7 +30,7 @@ public class Tower extends Entity implements Destructible {
 	
 	private Explosion lastExplosion = null;
 	
-	public Tower(IBlastModel model, Position position) {
+	public Tower(Position position) {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
 		
 		setName(Id.TOWER);
