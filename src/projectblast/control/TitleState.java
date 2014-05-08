@@ -18,6 +18,10 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	InputProvider provider;
 	int choice = 0;
 	StateBasedGame game;
+	Image playGame;
+	Image gameSettings;
+	Image exitGame;
+	Image arrow;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame game)
@@ -27,6 +31,12 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	    provider.bindCommand(new KeyControl(Input.KEY_UP), new BasicCommand("UP"));
 	    provider.bindCommand(new KeyControl(Input.KEY_DOWN), new BasicCommand("DOWN"));
 	    provider.bindCommand(new KeyControl(Input.KEY_ENTER), new BasicCommand("ENTER"));
+	    
+	    playGame = new Image("data/image/PlayGame.png");
+		gameSettings = new Image("data/image/GameSettings.png");
+		exitGame = new Image("data/image/ExitGame.png");
+		arrow = new Image("data/image/Arrow.png");
+		
 	    this.game = game;
 	}
 
@@ -34,10 +44,7 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
 		//TODO refactor to view
-		Image playGame = new Image("data/image/PlayGame.png");
-		Image gameSettings = new Image("data/image/GameSettings.png");
-		Image exitGame = new Image("data/image/ExitGame.png");
-		Image arrow = new Image("data/image/Arrow.png");
+		
 		g.drawString("Blasting fun!", 100, 50);
 		playGame.draw(100, 100);
 		gameSettings.draw(100, 200);

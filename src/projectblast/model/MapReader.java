@@ -29,7 +29,7 @@ public class MapReader {
 						list.add(new DestructibleBlock(new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
 						break;
 					case "tower":
-						list.add(new Tower(model, new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
+						list.add(new Tower(new Position(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE)));
 						break;
 					}
 				}

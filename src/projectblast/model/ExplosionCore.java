@@ -1,5 +1,6 @@
 package projectblast.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import projectblast.model.Movable.Direction;
 
@@ -13,6 +14,10 @@ public class ExplosionCore extends Core {
 	
 	private List<Direction> directionList;
 	
+	
+	public ExplosionCore(){
+		this(0,new Position(0,0),0,new ArrayList<Direction>());
+	}
 	
 	public ExplosionCore(int life, Position startPos, int power, List<Direction> directionList){
 		super(life, startPos);

@@ -117,29 +117,16 @@ public class MovableEntity extends Entity implements Movable {
 		return false;
 	}
 
-
-	@Override
-	public boolean isMovable() {
-		return true;
-	}
-
-
 	@Override
 	public void collide(Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
-
 	@Override
 	public void stopMove(int duration) {
 		stopMove();
 		this.duration += duration;
 	}
-
-
-	
-
-
 
 }

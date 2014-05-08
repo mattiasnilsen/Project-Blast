@@ -11,6 +11,7 @@ public interface Destructible {
 	public void destroy();
 	/**
 	 * Checks if this destructible is destroyed.
+	 * if this returns true it will be permanently removed from the game.
 	 * @return true it is destroyed.
 	 */
 	public boolean isDestroyed();
