@@ -120,6 +120,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	}
 	
 	public void update(){
+		//super.update();
 		Iterator<Explosive> iter = explosives.iterator();
 		while(iter.hasNext()){
 			if(iter.next().isDestroyed()){

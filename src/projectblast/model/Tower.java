@@ -1,6 +1,8 @@
 package projectblast.model;
 
-import org.newdawn.slick.Color;
+import java.util.Arrays;
+import java.util.List;
+
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
@@ -13,12 +15,15 @@ import projectblast.model.powerups.IPowerUp;
  */
 
 public class Tower extends Entity implements Destructible {
+	public final int RANGE = 6;
 
 	private int health;
 	private int power;
 	private Team owner;
 	private IPowerUp powerUp;
 	private int powerUpInterval;
+	
+	private int cannonDelay;
 	
 	private Explosion lastExplosion = null;
 	
@@ -30,6 +35,8 @@ public class Tower extends Entity implements Destructible {
 		owner = Team.getNeutralTeam();
 		power = 4;
 		powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
+		cannonDelay = 0;
+		
 	}
 	
 	public int getPower() {
@@ -92,7 +99,16 @@ public class Tower extends Entity implements Destructible {
 		if(powerUpInterval < 0) {
 			powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
 		}
+		
+		if (cannonDelay > 0){
+			cannonDelay--;
+			if (cannonDelay == 0){
+				
+			}
+		}
 	}
+
+	
 
 	@Override
 	public boolean allowPassage(Entity entity) {
@@ -101,11 +117,6 @@ public class Tower extends Entity implements Destructible {
 		} else {
 			return false;
 		}
-	}
-
-	@Override
-	public boolean isMovable() {
-		return false;
 	}
 
 	@Override
@@ -134,6 +145,67 @@ public class Tower extends Entity implements Destructible {
 
 	@Override
 	public boolean isDestroyed() {
-		return false;
+		return health == 0;
+	}
+	
+	public Hero getClosestTarget(List<Hero> targets, int range){
+		Direction[] dirs = {Direction.EAST,Direction.NORTH,Direction.WEST,Direction.SOUTH};
+		for (int i = 1; i <= range; i++){
+			for (Direction d: dirs){
+				int q = Constants.TILE_SIZE;
+				Rectangle r = new Rectangle(getX() + d.getX() * q * i,getY() + d.getY() * q * i, q, q);
+				for (Hero h: targets){
+					if (!h.getTeam().equals(owner) && r.intersects(h.getCollisionBox())){
+						return h;
+					}
+				}
+			}
+		}
+		
+		//TODO Null is bad...
+		return null;
+	}
+	
+	//TODO This is a duplicate of getClosestTarget except for return type
+	public Direction getClosestTargetDirection(List<Hero> targets, int range){
+		Direction[] dirs = {Direction.EAST,Direction.NORTH,Direction.WEST,Direction.SOUTH};
+		for (int i = 1; i <= range; i++){
+			for (Direction d: dirs){
+				int q = Constants.TILE_SIZE;
+				Rectangle r = new Rectangle(getX() + d.getX() * q * i,getY() + d.getY() * q * i, q, q);
+				for (Hero h: targets){
+					if (r.intersects(h.getCollisionBox())){
+						return d;
+					}
+				}
+			}
+		}
+		
+		//TODO Null is bad...
+		return null;
+	}
+	
+	
+	public boolean isCannonReady(){
+		return cannonDelay <= 0;
+	}
+	
+	public ExplosionCore fireCannon(Direction dir, int range) {
+		if (dir == null){
+			dir = Direction.NONE;
+		}
+		System.out.println("Tower is firing");
+		cannonDelay = 100;
+		Direction[] dirs = {dir};
+		List<Direction> d = Arrays.asList(dirs);
+		
+		Position newPos = new Position(getPosition().getX() + dir.getX()*Constants.TILE_SIZE,
+				getPosition().getY() + dir.getY()*Constants.TILE_SIZE);
+		ExplosionCore c = new ExplosionCore(40, newPos, range,d);
+		c.create();
+		System.out.println("It has " + c.getParts().size() + " parts!");
+		return c;
+		
+		//TODO Play a sound
 	}
 }

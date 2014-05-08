@@ -49,7 +49,7 @@ public class BlastModel implements IBlastModel {
 		this.entityMap = new HashMap<String, Entity>();
 		
 		try {
-			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
+			entities.addAll(MapReader.createEntities(this,new TiledMap("data/map/Map.tmx")));
 
 		} catch (SlickException e) {
 			e.printStackTrace();
@@ -73,14 +73,13 @@ public class BlastModel implements IBlastModel {
 	
 	
 	@Override
-	public void movePlayer(int playerID, Direction dir) {
+	public void setPlayerDirection(int playerID, Direction dir) {
 		Hero hero = players.get(playerID-1).getHero();
 		//System.out.println(hero.getY());
-		int distance = hero.getSpeed();
-		
+		//int distance = hero.getSpeed();
 		hero.setDirection(dir);
 		
-		if(dir.getX() != 0 && dir.getY() != 0) {
+		/*if(dir.getX() != 0 && dir.getY() != 0) {
 		    distance = distance - 1; //TODO fix properly
 		}
 		
@@ -95,7 +94,7 @@ public class BlastModel implements IBlastModel {
                 }
 		    }
             distance--;
-		}
+		}*/
 	}
 
 
@@ -176,50 +175,68 @@ public class BlastModel implements IBlastModel {
 			}
 		}
 		
-		
-		//Perhaps put this sorting elsewhere?
-		//sortEntities();
-		
 		//List of entities to throw away later
 		List<Entity> trashCan = new LinkedList<Entity>();
 		
-		Iterator<Entity> iterator = entities.iterator();
-		while(iterator.hasNext()) {
-			Entity entity = iterator.next();
-			entity.update();
-			if(entity instanceof Destructible) {
-				Destructible d = (Destructible)entity;
+		for (Entity e: entities){
+			if(e instanceof Hero){ //TODO try to make use of MovableEntity update to move Heroes.
+				MovableEntity m = (MovableEntity)e;
+				
+				
+				Direction dir = m.getDirection();
+				int distance = m.getSpeed();
+				if(dir.getX() != 0 && dir.getY() != 0) {
+				    distance = distance - 1; //TODO fix properly
+				}
+				while(distance > 0) {
+					if(isFree(m, dir, 1)) {
+		                m.move(dir); //TODO want to tell hero to start move instead
+		            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
+				        if(isFree(m, Direction.getDirection(dir.getX(), 0), 1)) {
+				            m.move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
+				        } else if(isFree(m, Direction.getDirection(0, dir.getY()), 1)) {
+		                    m.move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
+		                }
+				    }
+					distance--;
+				}
+				
+			}
+			e.update();
+			if(e instanceof Destructible) {
+				Destructible d = (Destructible)e;
 				if(d.isDestroyed()) {
-					iterator.remove();
+					trashCan.add(e);
 				}
 			}
+			
 		}
 		
-		Iterator<Explosive> explosiveIter = explosives.iterator();
-		while(explosiveIter.hasNext()) {
-			Explosive explosive = explosiveIter.next();
-			if(explosive.isDestroyed()) {
-				removeEntity(explosive);
-				explosiveIter.remove();
-				ICores.add(explosive.getCore());
+		entities.removeAll(trashCan);
+		
+		List<Explosive> trash = new ArrayList<Explosive>();
+		for (Explosive e: explosives){
+			if(e.isDestroyed()) {
+				removeEntity(e);
+				ICores.add(e.getCore());
+				trash.add(e);
 			}
 		}
 		
-		Iterator<ICore> icoreIter = ICores.iterator();
-		while(icoreIter.hasNext()) {
-			ICore core = icoreIter.next();
-			if(core.isCreated()) {
-				core.tick();
-				if(core.isDead()) {
-					icoreIter.remove();
-					entities.removeAll(core.getParts());
+		explosives.removeAll(trash);
+		
+		for (ICore c: ICores){
+			if (c.isCreated()){
+				c.tick();
+				if (c.isDead()){
+					entities.removeAll(c.getParts());
 				}
 			} else {
-				while(!core.isCreated()){	
-					if(core.step(getIntersectingEntity(new Rectangle(core.getNextPosition().getX()+2, core.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
-						core.create();
-					}else if(core.isCreated()) {
-						for (IBurst ib : core.getParts()){
+				while(!c.isCreated()){	
+					if(c.step(getIntersectingEntity(new Rectangle(c.getNextPosition().getX()+2, c.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
+						c.create();
+					}else if(c.isCreated()) {
+						for (IHazard ib : c.getParts()){
 							if (ib instanceof Entity){
 								Entity e = (Entity)ib;
 								entities.add(e);
@@ -229,6 +246,7 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
+		
 	    handleTowers();
 	}
 	
@@ -243,29 +261,20 @@ public class BlastModel implements IBlastModel {
 			}
 			
 			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
-			for(int i = 0; i < directions.length; ++i) {
-				int power = tower.getPower();
-				int width = directions[i].getX() * (power - directions[i].getX()) * Constants.TILE_SIZE + Constants.TILE_SIZE;
-				int height = directions[i].getY() * (power - directions[i].getY()) * Constants.TILE_SIZE + Constants.TILE_SIZE;
-				int x = tower.getX();
-				int y = tower.getY();
-				if(directions[i].equals(Direction.EAST)) {
-				    x += Constants.TILE_SIZE;
-				} else if(directions[i].equals(Direction.SOUTH)) {
-				    y += Constants.TILE_SIZE;
-				}
-				Rectangle check = new Rectangle(x, y, width, height);
-				List<Entity> entities = getAllIntersectingEntitys(check);
-				Entity e = getClosestEntity(entities, tower.getPosition());
-				if(e != null && e instanceof Hero) {
-					System.out.println(directions[i].toString() + ": " + e.getName().toString());
-				} 
+			
+			List<Hero> targets = new ArrayList<Hero>();
+			for(Player player : players) {
+				targets.add(player.getHero());
 			}
+			
+			Hero closest = tower.getClosestTarget(targets,tower.RANGE);
+			if (closest != null){
+				if (!tower.isDestroyed() && tower.isCannonReady()){
+					ICores.add( tower.fireCannon(tower.getClosestTargetDirection(targets,tower.RANGE), tower.RANGE) );
+				}
+			}
+			
 		}
-	}
-	
-	private void handleTowerFire(Tower tower) {
-		
 	}
 
 	@Override
@@ -316,7 +325,7 @@ public class BlastModel implements IBlastModel {
 
 	}
 	
-	private List<Entity> getAllIntersectingEntitys(Rectangle rectangle) {
+	private List<Entity> getAllIntersectingEntities(Rectangle rectangle) {
 		List<Entity> intersectingEntitys = new ArrayList<Entity>();
 		for(Entity entity : entities) {
 			if(entity.getCollisionBox().intersects(rectangle)) {

@@ -12,7 +12,7 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class MapReader {
 	
-	public static List<Entity> createEntities(TiledMap map){
+	public static List<Entity> createEntities(IBlastModel model, TiledMap map){
 		List<Entity> list = new LinkedList<Entity>();
 		
 		//Step through the map and read property values
