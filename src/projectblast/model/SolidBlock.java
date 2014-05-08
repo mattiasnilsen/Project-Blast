@@ -23,11 +23,6 @@ public class SolidBlock extends Block{
 	}
 
 	@Override
-	public boolean isMovable() {
-		return false;
-	}
-
-	@Override
 	public void collide(Entity entity) {
 		// TODO Auto-generated method stub
 		

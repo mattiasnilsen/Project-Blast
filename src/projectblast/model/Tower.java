@@ -123,11 +123,6 @@ public class Tower extends Entity implements Destructible {
 	}
 
 	@Override
-	public boolean isMovable() {
-		return false;
-	}
-
-	@Override
 	public void collide(Entity entity) {
 		if(entity instanceof Hero) {
 			Hero hero = (Hero)entity;

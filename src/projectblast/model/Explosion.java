@@ -17,12 +17,6 @@ public class Explosion extends Entity implements IHazard {
 		return true;
 	}
 
-
-	@Override
-	public boolean isMovable() {
-		return false;
-	}
-
 	@Override
 	public void collide(Entity entity) {
 		if(entity instanceof DestructibleBlock || entity instanceof Hero) {
