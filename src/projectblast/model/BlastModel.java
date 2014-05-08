@@ -188,13 +188,16 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
-		
+		List<Explosive> trash = new ArrayList<Explosive>();
 		for (Explosive e: explosives){
 			if(e.isDestroyed()) {
 				removeEntity(e);
 				ICores.add(e.getCore());
+				trash.add(e);
 			}
 		}
+		
+		explosives.removeAll(trash);
 		
 		for (ICore c: ICores){
 			if (c.isCreated()){
