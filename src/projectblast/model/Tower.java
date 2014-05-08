@@ -1,11 +1,8 @@
 package projectblast.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
