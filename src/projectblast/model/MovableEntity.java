@@ -15,12 +15,14 @@ public class MovableEntity extends Entity implements Movable {
 	private Direction direction;
 	private boolean moving = true;
 	private int duration = 0;
+	public Direction facingDirection;
 
 	
 	public MovableEntity(Position position, int speed, Direction direction, Rectangle box) {
 		super(position, box);
 		this.speed = speed;
 		this.direction = direction;
+		this.facingDirection = direction;
 	}
 
 
@@ -48,6 +50,9 @@ public class MovableEntity extends Entity implements Movable {
 	
 	public void setDirection(Direction direction) {
 		this.direction = direction;
+		if(direction != Direction.NONE){
+			this.facingDirection = direction;
+		}
 	}
 
 	public int getSpeed() {
@@ -99,16 +104,9 @@ public class MovableEntity extends Entity implements Movable {
 	
 	@Override
 	public void update() {
-		if(duration > 0){
-			duration--;
-		}
-		if(duration == 1){
-			startMove();
-		}
 		if(isMoving()) {
 			move(direction,speed);
 		}
-		
 	}
 
 

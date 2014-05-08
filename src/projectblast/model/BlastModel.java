@@ -73,14 +73,13 @@ public class BlastModel implements IBlastModel {
 	
 	
 	@Override
-	public void movePlayer(int playerID, Direction dir) {
+	public void setPlayerDirection(int playerID, Direction dir) {
 		Hero hero = players.get(playerID-1).getHero();
 		//System.out.println(hero.getY());
-		int distance = hero.getSpeed();
-		
+		//int distance = hero.getSpeed();
 		hero.setDirection(dir);
 		
-		if(dir.getX() != 0 && dir.getY() != 0) {
+		/*if(dir.getX() != 0 && dir.getY() != 0) {
 		    distance = distance - 1; //TODO fix properly
 		}
 		
@@ -95,7 +94,7 @@ public class BlastModel implements IBlastModel {
                 }
 		    }
             distance--;
-		}
+		}*/
 	}
 
 
@@ -180,6 +179,29 @@ public class BlastModel implements IBlastModel {
 		List<Entity> trashCan = new LinkedList<Entity>();
 		
 		for (Entity e: entities){
+			if(e instanceof Hero){ //TODO try to make use of MovableEntity update to move Heroes.
+				MovableEntity m = (MovableEntity)e;
+				
+				
+				Direction dir = m.getDirection();
+				int distance = m.getSpeed();
+				if(dir.getX() != 0 && dir.getY() != 0) {
+				    distance = distance - 1; //TODO fix properly
+				}
+				while(distance > 0) {
+					if(isFree(m, dir, 1)) {
+		                m.move(dir); //TODO want to tell hero to start move instead
+		            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
+				        if(isFree(m, Direction.getDirection(dir.getX(), 0), 1)) {
+				            m.move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
+				        } else if(isFree(m, Direction.getDirection(0, dir.getY()), 1)) {
+		                    m.move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
+		                }
+				    }
+					distance--;
+				}
+				
+			}
 			e.update();
 			if(e instanceof Destructible) {
 				Destructible d = (Destructible)e;
@@ -187,6 +209,7 @@ public class BlastModel implements IBlastModel {
 					trashCan.add(e);
 				}
 			}
+			
 		}
 		
 		entities.removeAll(trashCan);

@@ -9,7 +9,7 @@ import projectblast.model.Movable.Direction;
 
 public interface IBlastModel {
 	
-	void movePlayer(int playerID, Direction dir);
+	void setPlayerDirection(int playerID, Direction dir);
 	
 	void primary(int playerID);
 	void secondary(int playerID);
