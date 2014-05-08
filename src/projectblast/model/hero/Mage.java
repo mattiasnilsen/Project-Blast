@@ -10,8 +10,8 @@ import projectblast.model.powerups.*;
  *
  */
 public class Mage extends Hero {
-	public Mage(Position position,  int speed, Direction direction, Team team) {
-		super(position, speed, direction,  team);
+	public Mage(Position position, Direction direction, Team team) {
+		super(position, direction,  team);
 		setName(Id.MAGE);
 		
 	}

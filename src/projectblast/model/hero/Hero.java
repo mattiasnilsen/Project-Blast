@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
+
+import projectblast.model.Constants;
 import projectblast.model.Destructible;
 import projectblast.model.ICore;
 import projectblast.model.MovableEntity;
@@ -30,8 +32,8 @@ public abstract class Hero extends MovableEntity implements Destructible{
 
 	
 	
-    public Hero(Position position, int speed, Direction direction,  Team team) {
-        super(position, speed, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
+    public Hero(Position position, Direction direction,  Team team) {
+        super(position, Constants.HERO_START_SPEED, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
         bombPower = 0;
         bombCount = 0;
         this.team = team;
