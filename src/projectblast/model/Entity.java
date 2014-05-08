@@ -57,8 +57,6 @@ public abstract class Entity implements Updatable, Comparable<Entity>{
 	public abstract boolean allowPassage(Entity entity);
 	//Called when another object has collided with this object.
 	public abstract void collide(Entity entity);
-		
-	public abstract boolean isMovable();
 	
 	public void setName(Id name){
 		this.name = name;
