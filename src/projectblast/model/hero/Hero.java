@@ -22,6 +22,8 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	private int bombPower;
 	private int bombCount;
+	
+	private int deathCount;
 
 	private Team team;
 	
@@ -38,6 +40,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
         super(position, Constants.HERO_START_SPEED, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
         bombPower = 0;
         bombCount = 0;
+        setDeathCount(0);
         this.team = team;
         this.startPos = new Position(position.getX(), position.getY());
         addInitialPowerUps();
@@ -68,6 +71,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
     
     public void destroy(){
     	System.out.println(getTeam().getName() + " just lost a teammate!");
+    	setDeathCount(getDeathCount() + 1);
     	respawnTime = 480;
     	isRespawning = true;
     	place(startPos);
@@ -123,6 +127,10 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	public void update(){
 		//super.update();
+		if(getStopDuration() > 0){
+			stopMove();
+			setStopDuration(getStopDuration() - 1);
+		}
 		Iterator<Explosive> iter = explosives.iterator();
 		while(iter.hasNext()){
 			if(iter.next().isDestroyed()){
@@ -138,7 +146,6 @@ public abstract class Hero extends MovableEntity implements Destructible{
 			    distance = distance - 1; //TODO fix properly
 			}
 			while(distance > 0) {
-				System.out.println("Hero update, moving");
 				if(BlastModel.isFree(m, dir, 1)) {
 	                move(dir); //TODO want to tell hero to start move instead
 	            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
@@ -157,4 +164,12 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	public abstract Explosive primaryAbility();
 		
 	public abstract ICore secondaryAbility();
+
+	public int getDeathCount() {
+		return deathCount;
+	}
+
+	public void setDeathCount(int deathCount) {
+		this.deathCount = deathCount;
+	}
 }

@@ -253,22 +253,16 @@ public class BlastModel implements IBlastModel {
 			
 		}
 	}
-
-	@Override
-	public void stop(int playerID) {
-		players.get(playerID-1).getHero().stopMove();
-		
-	}
 	
-	public static boolean isFree(MovableEntity entity){
+	/*public static boolean isFree(MovableEntity entity){
 		return isFree(entity,entity.getDirection(),entity.getSpeed());
-	}
+	}*/
 	
-	public static boolean isFree(Entity entity){
+	/*public static boolean isFree(Entity entity){
 		return isFree(entity,Direction.NONE, 0);
-	}
+	}*/
 	
-	public static boolean isFree(Entity entity, Direction dir, int length){
+	public static boolean isFree(MovableEntity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
 		

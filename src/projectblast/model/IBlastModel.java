@@ -14,7 +14,6 @@ public interface IBlastModel {
 	void primary(int playerID);
 	void secondary(int playerID);
 	
-	void stop(int playerID);
 	
 	void update(GameContainer gc, StateBasedGame game, int delta);
 	
