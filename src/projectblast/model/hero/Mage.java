@@ -18,11 +18,11 @@ public class Mage extends Hero {
 
 	@Override
 	public Explosive primaryAbility() {
-		if(getAmmo()<= 0 || !BlastModel.isFree(this, getDirection(), getSpeed())){
+		Fireball fireball = new Fireball(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())),  4,  getDirection(), this);
+		if(getAmmo()<= 0 || !BlastModel.isFree(fireball, fireball.getDirection(), fireball.getSpeed())){
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Fireball fireball = new Fireball(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())),  4,  getDirection(), this);
 			addExplosive(fireball);
 			return fireball;
 		}

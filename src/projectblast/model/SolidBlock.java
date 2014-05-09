@@ -21,9 +21,9 @@ public class SolidBlock extends Block{
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		if(entity instanceof Fireball){
+		/*if(entity instanceof Fireball){
 			return true;
-		}
+		}*/
 		return false;
 	}
 

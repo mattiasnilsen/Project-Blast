@@ -30,9 +30,9 @@ public class DestructibleBlock extends MovableEntity implements Destructible{
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		if(entity instanceof Fireball){
+		/*if(entity instanceof Fireball){
 			return true;
-		}
+		}*/
 		return false;
 	}
 	

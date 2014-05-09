@@ -115,9 +115,9 @@ public class Tower extends Entity implements Destructible {
 	public boolean allowPassage(Entity entity) {
 		if(entity instanceof Hero && (((Hero)entity).getTeam() == owner) || health == 0 ) {
 			return true;
-		} else if (entity instanceof Fireball) {
+		}/* else if (entity instanceof Fireball) {
 			return true;
-		}else{
+		}*/else{
 			return false;
 		}
 	}

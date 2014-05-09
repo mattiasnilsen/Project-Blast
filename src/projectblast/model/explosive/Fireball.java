@@ -1,5 +1,6 @@
 package projectblast.model.explosive;
 
+import projectblast.model.BlastModel;
 import projectblast.model.Entity;
 import projectblast.model.Id;
 import projectblast.model.Paralyzer;
@@ -35,6 +36,9 @@ public class Fireball extends Explosive {
 	public void update() {
 		startMove();
 		super.update();
+		if(!BlastModel.isFree(this, getDirection(), getSpeed())) {
+			move(getDirection(), getSpeed());
+		}
 	}
 	
 
