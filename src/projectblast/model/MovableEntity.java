@@ -3,6 +3,8 @@ package projectblast.model;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.Movable.Direction;
+
 /**
  * 
  * @author franton
@@ -105,21 +107,43 @@ public class MovableEntity extends Entity implements Movable {
 			setStopDuration(getStopDuration() - 1);
 		}
 		
-		if(isMoving()) {
-			move(direction,speed);
+		/*if(isMoving()) {
+			if(BlastModel.isFree(this, getDirection(), getSpeed())){
+				move(direction,speed);
+			}
+		}*/
+		
+		if(isMoving()){
+			Direction dir = getDirection();
+			int distance = getSpeed();
+			if(dir.getX() != 0 && dir.getY() != 0) {
+			    distance = distance - 1; //TODO fix properly
+			}
+			while(distance > 0) {
+				if(BlastModel.isFree(this, dir, 1)) {
+	                move(dir); //TODO want to tell hero to start move instead
+	            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
+			        if(BlastModel.isFree(this, Direction.getDirection(dir.getX(), 0), 1)) {
+			            move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
+			        } else if(BlastModel.isFree(this, Direction.getDirection(0, dir.getY()), 1)) {
+	                    move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
+	                }
+			    }
+				distance--;
+			}
 		}
-		startMove();
+		
 	}
 
 
 	
 	public boolean allowPassage(Entity entity){
-		return false;
+		return true;
 	}
 
 	@Override
 	public void collide(Entity entity) {
-		// TODO Auto-generated method stub
+		stopMove();
 		
 	}
 

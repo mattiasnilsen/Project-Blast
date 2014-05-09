@@ -126,11 +126,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	}
 	
 	public void update(){
-		//super.update();
-		if(getStopDuration() > 0){
-			stopMove();
-			setStopDuration(getStopDuration() - 1);
-		}
+		super.update();
 		Iterator<Explosive> iter = explosives.iterator();
 		while(iter.hasNext()){
 			if(iter.next().isDestroyed()){
@@ -138,27 +134,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 				setAmmo(getAmmo()+1);
 			}
 		}
-		if(isMoving()){
-			MovableEntity m = (MovableEntity)this;
-			Direction dir = m.getDirection();
-			int distance = m.getSpeed();
-			if(dir.getX() != 0 && dir.getY() != 0) {
-			    distance = distance - 1; //TODO fix properly
-			}
-			while(distance > 0) {
-				if(BlastModel.isFree(m, dir, 1)) {
-	                move(dir); //TODO want to tell hero to start move instead
-	            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
-			        if(BlastModel.isFree(m, Direction.getDirection(dir.getX(), 0), 1)) {
-			            m.move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
-			        } else if(BlastModel.isFree(m, Direction.getDirection(0, dir.getY()), 1)) {
-	                    m.move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
-	                }
-			    }
-				distance--;
-			}
-			stopMove();
-		}
+		
 	}
 	
 	public abstract Explosive primaryAbility();

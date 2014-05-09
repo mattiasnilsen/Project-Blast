@@ -96,6 +96,11 @@ public class BlastModel implements IBlastModel {
             distance--;
 		}*/
 	}
+	
+	public void stopPlayer(int playerID){
+		Hero hero = players.get(playerID-1).getHero();
+		hero.stopMove();
+	}
 
 
 	@Override
@@ -268,12 +273,10 @@ public class BlastModel implements IBlastModel {
 		
 		for (Entity e: entities){
 			//TODO remove this instanceof - It is only here to prevent collision with itself
-	    	if (!(e.getName().equals(entity.getName())) && e.getCollisionBox().intersects(testBox) && !(e.allowPassage(entity)) ){
+	    	if (!(e.equals(entity)) && e.getCollisionBox().intersects(testBox) && !(e.allowPassage(entity)) ){
 	    		return false;
 	    	}
-	    	
 	    }
-		
 		return true;
 	}
 	

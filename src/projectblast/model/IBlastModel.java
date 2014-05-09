@@ -10,6 +10,7 @@ import projectblast.model.Movable.Direction;
 public interface IBlastModel {
 	
 	void movePlayer(int playerID, Direction dir);
+	void stopPlayer(int playerID);
 	
 	void primary(int playerID);
 	void secondary(int playerID);

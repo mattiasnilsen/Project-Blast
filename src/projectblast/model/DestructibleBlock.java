@@ -2,6 +2,7 @@ package projectblast.model;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.explosive.Fireball;
 import projectblast.model.hero.Hero;
 
 /**
@@ -29,12 +30,15 @@ public class DestructibleBlock extends MovableEntity implements Destructible{
 
 	@Override
 	public boolean allowPassage(Entity entity) {
+		if(entity instanceof Fireball){
+			return true;
+		}
 		return false;
 	}
 	
 	@Override
 	public void collide(Entity entity) {
-		stopMove();
+		
 	}
 
 

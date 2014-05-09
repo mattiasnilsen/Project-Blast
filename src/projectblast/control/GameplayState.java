@@ -191,5 +191,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
         }
         
         keysPressed.get(playerID).remove(com);
+        model.stopPlayer(playerID); //TODO is this ok?!
     }
 }
