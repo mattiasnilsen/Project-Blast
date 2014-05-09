@@ -73,7 +73,7 @@ public class BlastModel implements IBlastModel {
 	
 	
 	@Override
-	public void setPlayerDirection(int playerID, Direction dir) {
+	public void movePlayer(int playerID, Direction dir) {
 		Hero hero = players.get(playerID-1).getHero();
 		//System.out.println(hero.getY());
 		//int distance = hero.getSpeed();

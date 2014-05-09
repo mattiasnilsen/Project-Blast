@@ -121,7 +121,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		            totalY += dir.getY();
 		        }
 		        Direction direction = Direction.getDirection(totalX, totalY);
-		        model.setPlayerDirection(playerID, direction);
+		        model.movePlayer(playerID, direction);
 		    //}
 		}
 	}

@@ -46,7 +46,7 @@ public class TowerTest {
 	
 	@Test
 	public void testAllowPassage() {
-		Hero hero = new Mage(new Position(200, 200), 4, Movable.Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT));
+		Hero hero = new Mage(new Position(200, 200), Movable.Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT));
 		assertFalse(tower.allowPassage(hero));
 		for(int i = 0; i < Constants.TOWER_STARTING_HEALTH; ++i) {
 			tower.takeDamage();

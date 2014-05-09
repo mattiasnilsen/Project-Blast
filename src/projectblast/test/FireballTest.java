@@ -17,7 +17,7 @@ public class FireballTest {
 	
 	@Before
 	public void before() {
-		fireball = new Fireball(new Position(5, 5), 4, Direction.NORTH, new Mage(new Position(0,0), 0, null, null));
+		fireball = new Fireball(new Position(5, 5), 4, Direction.NORTH, new Mage(new Position(0,0), null, null));
 	}
 	
 	@Test
