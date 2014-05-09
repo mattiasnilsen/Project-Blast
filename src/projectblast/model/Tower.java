@@ -8,6 +8,7 @@ import org.newdawn.slick.geom.Rectangle;
 import projectblast.model.Movable.Direction;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.IPowerUp;
+import projectblast.model.explosive.*;
 /**
  * 
  * @author Alex
@@ -112,9 +113,11 @@ public class Tower extends Entity implements Destructible {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		if(entity instanceof Hero && (((Hero)entity).getTeam() == owner) || health == 0) {
+		if(entity instanceof Hero && (((Hero)entity).getTeam() == owner) || health == 0 ) {
 			return true;
-		} else {
+		} else if (entity instanceof Fireball) {
+			return true;
+		}else{
 			return false;
 		}
 	}

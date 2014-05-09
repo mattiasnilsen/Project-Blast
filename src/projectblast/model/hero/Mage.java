@@ -18,7 +18,7 @@ public class Mage extends Hero {
 
 	@Override
 	public Explosive primaryAbility() {
-		if(getAmmo()<= 0){
+		if(getAmmo()<= 0 || !BlastModel.isFree(this, getDirection(), getSpeed())){
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);

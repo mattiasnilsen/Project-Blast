@@ -16,7 +16,6 @@ public class Fireball extends Explosive {
 	
 	public Fireball(Position position,  int speed,  Direction direction, Hero owner) {
 		super(position,  speed, direction,  owner);
-		startMove();
 		setName(Id.FIREBALL);
 		
 	}
@@ -32,5 +31,11 @@ public class Fireball extends Explosive {
 			this.destroy();
 		}
 	}
+	
+	public void update() {
+		startMove();
+		super.update();
+	}
+	
 
 }

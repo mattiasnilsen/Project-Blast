@@ -75,26 +75,8 @@ public class BlastModel implements IBlastModel {
 	@Override
 	public void movePlayer(int playerID, Direction dir) {
 		Hero hero = players.get(playerID-1).getHero();
-		//System.out.println(hero.getY());
-		//int distance = hero.getSpeed();
 		hero.setDirection(dir);
 		hero.startMove();
-		/*if(dir.getX() != 0 && dir.getY() != 0) {
-		    distance = distance - 1; //TODO fix properly
-		}
-		
-		while(distance > 0) {
-		    if(isFree(hero, hero.getDirection(), 1)) {
-                hero.move(dir);
-            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
-		        if(isFree(hero, Direction.getDirection(dir.getX(), 0), 1)) {
-		            hero.move(Direction.getDirection(dir.getX(), 0));
-		        } else if(isFree(hero, Direction.getDirection(0, dir.getY()), 1)) {
-                    hero.move(Direction.getDirection(0, dir.getY()));
-                }
-		    }
-            distance--;
-		}*/
 	}
 	
 	public void stopPlayer(int playerID){
