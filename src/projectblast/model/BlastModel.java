@@ -22,7 +22,7 @@ import projectblast.view.Jukebox;
 
 public class BlastModel implements IBlastModel {
 	
-	private List<Entity> entities;
+	private static List<Entity> entities;
 	private List<Player> players;
 	private List<Explosive> explosives;
 	private List<Tower> towers;
@@ -78,7 +78,7 @@ public class BlastModel implements IBlastModel {
 		//System.out.println(hero.getY());
 		//int distance = hero.getSpeed();
 		hero.setDirection(dir);
-		
+		hero.startMove();
 		/*if(dir.getX() != 0 && dir.getY() != 0) {
 		    distance = distance - 1; //TODO fix properly
 		}
@@ -179,29 +179,6 @@ public class BlastModel implements IBlastModel {
 		List<Entity> trashCan = new LinkedList<Entity>();
 		
 		for (Entity e: entities){
-			if(e instanceof Hero){ //TODO try to make use of MovableEntity update to move Heroes.
-				MovableEntity m = (MovableEntity)e;
-				
-				
-				Direction dir = m.getDirection();
-				int distance = m.getSpeed();
-				if(dir.getX() != 0 && dir.getY() != 0) {
-				    distance = distance - 1; //TODO fix properly
-				}
-				while(distance > 0) {
-					if(isFree(m, dir, 1)) {
-		                m.move(dir); //TODO want to tell hero to start move instead
-		            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
-				        if(isFree(m, Direction.getDirection(dir.getX(), 0), 1)) {
-				            m.move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
-				        } else if(isFree(m, Direction.getDirection(0, dir.getY()), 1)) {
-		                    m.move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
-		                }
-				    }
-					distance--;
-				}
-				
-			}
 			e.update();
 			if(e instanceof Destructible) {
 				Destructible d = (Destructible)e;
@@ -283,15 +260,15 @@ public class BlastModel implements IBlastModel {
 		
 	}
 	
-	public boolean isFree(MovableEntity entity){
+	public static boolean isFree(MovableEntity entity){
 		return isFree(entity,entity.getDirection(),entity.getSpeed());
 	}
 	
-	public boolean isFree(Entity entity){
+	public static boolean isFree(Entity entity){
 		return isFree(entity,Direction.NONE, 0);
 	}
 	
-	public boolean isFree(Entity entity, Direction dir, int length){
+	public static boolean isFree(Entity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
 		

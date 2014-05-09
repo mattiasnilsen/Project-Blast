@@ -7,12 +7,14 @@ import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.BlastModel;
 import projectblast.model.Constants;
 import projectblast.model.Destructible;
 import projectblast.model.ICore;
 import projectblast.model.MovableEntity;
 import projectblast.model.Position;
 import projectblast.model.Team;
+import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.powerups.IPowerUp;
 
@@ -127,6 +129,28 @@ public abstract class Hero extends MovableEntity implements Destructible{
 				iter.remove();
 				setAmmo(getAmmo()+1);
 			}
+		}
+		if(isMoving()){
+			MovableEntity m = (MovableEntity)this;
+			Direction dir = m.getDirection();
+			int distance = m.getSpeed();
+			if(dir.getX() != 0 && dir.getY() != 0) {
+			    distance = distance - 1; //TODO fix properly
+			}
+			while(distance > 0) {
+				System.out.println("Hero update, moving");
+				if(BlastModel.isFree(m, dir, 1)) {
+	                move(dir); //TODO want to tell hero to start move instead
+	            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
+			        if(BlastModel.isFree(m, Direction.getDirection(dir.getX(), 0), 1)) {
+			            m.move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
+			        } else if(BlastModel.isFree(m, Direction.getDirection(0, dir.getY()), 1)) {
+	                    m.move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
+	                }
+			    }
+				distance--;
+			}
+			stopMove();
 		}
 	}
 	

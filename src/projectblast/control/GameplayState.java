@@ -111,7 +111,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		
 		for(int playerID = 1; playerID < keysPressed.size(); ++playerID) {
 		    List<String> keys = keysPressed.get(playerID);
-		    //if(!keys.isEmpty()) {
+		    if(!keys.isEmpty()) {
 		        List<Direction> directions = new ArrayList<Direction>();
 		        int totalX = 0;
 		        int totalY = 0;
@@ -122,7 +122,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		        }
 		        Direction direction = Direction.getDirection(totalX, totalY);
 		        model.movePlayer(playerID, direction);
-		    //}
+		    }
 		}
 	}
 	

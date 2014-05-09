@@ -13,7 +13,7 @@ public class MovableEntity extends Entity implements Movable {
 
 	private int speed;
 	private Direction direction;
-	private boolean moving = true;
+	private boolean moving;
 	private int duration = 0;
 	public Direction facingDirection;
 
@@ -107,6 +107,8 @@ public class MovableEntity extends Entity implements Movable {
 		if(isMoving()) {
 			move(direction,speed);
 		}
+		
+		
 	}
 
 
