@@ -148,7 +148,7 @@ public class Tower extends Entity implements Destructible {
 
 	@Override
 	public boolean isDestroyed() {
-		return health == 0;
+		return false; //Tower should never return true
 	}
 	
 	public Hero getClosestTarget(List<Hero> targets, int range){
