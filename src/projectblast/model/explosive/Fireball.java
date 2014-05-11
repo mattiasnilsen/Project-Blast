@@ -34,10 +34,11 @@ public class Fireball extends Explosive {
 	}
 	
 	public void update() {
-		startMove();
-		super.update();
-		if(!BlastModel.isFree(this, getDirection(), getSpeed())) {
-			move(getDirection(), getSpeed());
+		//TODO fix that fireball is an exception to other movables. Fireball want to enter all other entities, and then explode. <--- problem
+		startMove(); //Fireball always try to move
+		super.update(); //Parent decide how to move
+		if(!BlastModel.isFree(this, getDirection(), getSpeed())) { //When I made hero move like the others Fireball became an Exception =(
+			move(getDirection(), getSpeed()); //Fireball is rebellious, doesn't care if parent tells it don't move!
 		}
 	}
 	

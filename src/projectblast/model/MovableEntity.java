@@ -31,6 +31,7 @@ public class MovableEntity extends Entity implements Movable {
 	public void move(int dx, int dy) {
 		place(getX() + dx, getY() + dy);
 	}
+	
 	@Override
 	public void place(int x, int y) {
 			setX(x);
@@ -41,7 +42,6 @@ public class MovableEntity extends Entity implements Movable {
 	
 	@Override
 	public void place(Position p) {
-		
 		place(p.getX(),p.getY());
 	}
 	
@@ -63,23 +63,20 @@ public class MovableEntity extends Entity implements Movable {
 
 	@Override
 	public void move(Direction direction) {
-		
 		place(getX() + (direction.getX()), getY() + (direction.getY()));
 	}
 	
 	
 	public void move(Direction direction, int speed) {
-		
 		place(getX() + (speed * direction.getX()), getY() + (speed * direction.getY()));
 	}
 
 	@Override
 	public void startMove(Direction direction) {
 		this.direction = direction;
-		moving = true;
-		
-		
+		moving = true;	
 	}
+	
 	@Override
 	public void startMove() {
 	    moving = true;
@@ -88,12 +85,6 @@ public class MovableEntity extends Entity implements Movable {
 	@Override
 	public void stopMove() {
 		moving = false;
-	}
-	
-	public void stopMove(Direction direction) {
-		if(this.direction == direction){
-			moving = false;
-		}
 	}
 	
 	public boolean isMoving() {
@@ -107,11 +98,6 @@ public class MovableEntity extends Entity implements Movable {
 			setStopDuration(getStopDuration() - 1);
 		}
 		
-		/*if(isMoving()) {
-			if(BlastModel.isFree(this, getDirection(), getSpeed())){
-				move(direction,speed);
-			}
-		}*/
 		
 		if(isMoving()){
 			Direction dir = getDirection();
@@ -128,11 +114,13 @@ public class MovableEntity extends Entity implements Movable {
 			        } else if(BlastModel.isFree(this, Direction.getDirection(0, dir.getY()), 1)) {
 	                    move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
 	                }
+			    } else {
+			    	stopMove();
 			    }
 				distance--;
 			}
+			
 		}
-		
 	}
 
 
@@ -143,7 +131,7 @@ public class MovableEntity extends Entity implements Movable {
 
 	@Override
 	public void collide(Entity entity) {
-		stopMove();
+		//stopMove();
 		
 	}
 

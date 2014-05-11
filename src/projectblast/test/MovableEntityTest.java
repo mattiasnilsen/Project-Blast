@@ -39,12 +39,21 @@ public class MovableEntityTest {
 		a.setSpeed(2);
 		assertTrue(a.getSpeed() == 2);
 		a.move(Direction.WEST);
+		
 		assertFalse(a.getDirection() == Direction.WEST);
 		assertFalse(a.isMoving());
+		
 		assertTrue(a.getSpeed() == 2);
 		assertTrue(a.getPosition().equals(new Position(1,1)));
+		a.place(50,50);
+		assertTrue(a.getPosition().equals(new Position(50,50)));
 		
-		
+		a.startMove(Direction.NORTH);
+		assertTrue(a.getDirection() == Direction.NORTH);
+		assertTrue(a.getPosition().equals(new Position(50,50)));
+		assertTrue(a.getSpeed() == 2);
+		//a.update();
+		//assertTrue(a.getPosition().equals(new Position(50,48)));
 	}
 
 
