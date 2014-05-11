@@ -17,7 +17,6 @@ public class Paralyzer extends Entity implements IHazard {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

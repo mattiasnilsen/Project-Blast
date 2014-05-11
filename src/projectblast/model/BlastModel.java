@@ -22,7 +22,7 @@ import projectblast.view.Jukebox;
 
 public class BlastModel implements IBlastModel {
 	
-	private static List<Entity> entities;
+	private static List<Entity> entities= new ArrayList<Entity>();
 	private List<Player> players;
 	private List<Explosive> explosives;
 	private List<Tower> towers;
@@ -41,7 +41,6 @@ public class BlastModel implements IBlastModel {
 	
 	public BlastModel(List<Player> players){
 		this.players = players;  
-		this.entities = new ArrayList<Entity>();
 		this.explosives = new ArrayList<Explosive>();
 		this.towers = new ArrayList<Tower>();
 		this.ICores = new ArrayList<ICore>();
