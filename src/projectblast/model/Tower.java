@@ -229,9 +229,6 @@ public class Tower extends Entity implements Destructible {
 		if (dir == null){
 			throw new NullPointerException("Trying to fire cannon in direction null");
 		}
-		System.out.println("Tower is firing");
-		cannonStatus = cannonStatus.next();
-		timer = 100;
 		
 		Direction[] dirs = {dir};
 		List<Direction> d = Arrays.asList(dirs);

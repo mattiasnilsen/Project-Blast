@@ -247,7 +247,7 @@ public class BlastModel implements IBlastModel {
 					tower.cycleStatus(50); //TODO Hardcode
 				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
 					cores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
-					tower.cycleStatus(100); //TODO Hardcode
+					tower.cycleStatus(120); //TODO Hardcode
 				} else if(tower.isCannonReadyToReload()){//Tower is now ready to find new target
 					tower.cycleStatus(0);
 				}
