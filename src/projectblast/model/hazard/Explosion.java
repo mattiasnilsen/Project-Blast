@@ -1,6 +1,12 @@
-package projectblast.model;
+package projectblast.model.hazard;
 
 import org.newdawn.slick.geom.Rectangle;
+
+import projectblast.model.Destructible;
+import projectblast.model.DestructibleBlock;
+import projectblast.model.Entity;
+import projectblast.model.Id;
+import projectblast.model.Position;
 import projectblast.model.hero.Hero;
 
 

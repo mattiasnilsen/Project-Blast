@@ -1,7 +1,10 @@
-package projectblast.model;
+package projectblast.model.core;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import projectblast.model.Position;
+import projectblast.model.hazard.IHazard;
 
 public abstract class Core implements ICore {
 

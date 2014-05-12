@@ -3,8 +3,8 @@ package projectblast.model.explosive;
 import projectblast.model.BlastModel;
 import projectblast.model.Entity;
 import projectblast.model.Id;
-import projectblast.model.Paralyzer;
 import projectblast.model.Position;
+import projectblast.model.hazard.Paralyzer;
 import projectblast.model.hero.Hero;
 
 

@@ -6,9 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import projectblast.model.Movable.Direction;
-import projectblast.model.Paralyzer;
 import projectblast.model.Position;
 import projectblast.model.explosive.Fireball;
+import projectblast.model.hazard.Paralyzer;
 import projectblast.model.hero.Mage;
 
 public class FireballTest {

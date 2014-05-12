@@ -7,11 +7,11 @@ import java.util.List;
 import projectblast.model.BlastModel;
 import projectblast.model.Constants;
 import projectblast.model.Entity;
-import projectblast.model.ExplosionCore;
-import projectblast.model.ICore;
 import projectblast.model.Id;
 import projectblast.model.Position;
 import projectblast.model.Movable.Direction;
+import projectblast.model.core.ExplosionCore;
+import projectblast.model.core.ICore;
 import projectblast.model.hero.Hero;
 
 public class Fist extends Explosive {

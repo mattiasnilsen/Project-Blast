@@ -2,7 +2,6 @@ package projectblast.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,10 +13,11 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
+import projectblast.model.core.ICore;
 import projectblast.model.explosive.Explosive;
+import projectblast.model.hazard.IHazard;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.SpeedPowerUp;
-import projectblast.view.Jukebox;
 
 
 public class BlastModel implements IBlastModel {
@@ -26,9 +26,7 @@ public class BlastModel implements IBlastModel {
 	private List<Player> players;
 	private List<Explosive> explosives;
 	private List<Tower> towers;
-	private List<ICore> ICores; //should be a secondary interface.
-	
-	private HashMap<String, Entity> entityMap;
+	private List<ICore> cores; //should be a secondary interface.
 	
 	private int balance;
 	private int scaleFactor;
@@ -43,9 +41,7 @@ public class BlastModel implements IBlastModel {
 		this.players = players;  
 		this.explosives = new ArrayList<Explosive>();
 		this.towers = new ArrayList<Tower>();
-		this.ICores = new ArrayList<ICore>();
-		
-		this.entityMap = new HashMap<String, Entity>();
+		this.cores = new ArrayList<ICore>();
 		
 		try {
 			entities.addAll(MapReader.createEntities(this,new TiledMap("data/map/Map.tmx")));
@@ -101,7 +97,7 @@ public class BlastModel implements IBlastModel {
 	public void secondary(int playerID) {
 		ICore tmp = players.get(playerID-1).getHero().secondaryAbility();
 		if(tmp != null){
-			ICores.add(tmp);
+			cores.add(tmp);
 		}
 		//createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
 		System.out.println("SecondaryClicked");
@@ -127,75 +123,69 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
+		gameOver();
 		tick++;
-		
-		if (tick%60 == 0){
+		if (tick%Constants.FRAMERATE == 0){
 			shiftBalance(getTowerBalance());
-			switch (isGameOver()){
-			case 0:
-				break;
-			case -1:
-				for (Player p: players){
-					if (p.getHero().getTeam().getSide() == Team.Side.LEFT){
-						endGame(p.getHero().getTeam());
-						return;
-					}
-				}
-				break;
-			case 1:
-				for (Player p: players){
-					if (p.getHero().getTeam().getSide() == Team.Side.RIGHT){
-						endGame(p.getHero().getTeam());
-						return;
-					}
-				}
-				break;
-			}
 		}
 		
 		
-		for(Entity entity : entities) {
-			Entity other = getIntersectingEntity(entity);
-			if(other != null) {
-				entity.collide(other);
-			}
-		}
+		handleEntities();
 		
-		//List of entities to throw away later
-		List<Entity> trashCan = new LinkedList<Entity>();
+		handleExplosives();
 		
-		for (Entity e: entities){
-			e.update();
-			if(e instanceof Destructible) {
-				Destructible d = (Destructible)e;
-				if(d.isDestroyed()) {
-					trashCan.add(e);
-				}
-			}
-			
-		}
+		handleCores();
 		
-		entities.removeAll(trashCan);
-		
+	    handleTowers();
+	}
+
+
+	private void handleExplosives() {
+		//List of explosives to throw away later
 		List<Explosive> trash = new ArrayList<Explosive>();
 		for (Explosive e: explosives){
 			if(e.isDestroyed()) {
 				removeEntity(e);
-				ICores.add(e.getCore());
+				cores.add(e.getCore());
 				trash.add(e);
 			}
 		}
-		
 		explosives.removeAll(trash);
+	}
+
+
+	private void handleEntities() {
+		//List of entities to throw away later
+		List<Entity> trash = new LinkedList<Entity>();
 		
-		for (ICore c: ICores){
-			if (c.isCreated()){
+		for (Entity e: entities){
+			Entity other = getIntersectingEntity(e);
+			if(other != null) {
+				e.collide(other);
+			}
+			e.update();
+			if(e instanceof Destructible) {
+				Destructible d = (Destructible)e;
+				if(d.isDestroyed()) {
+					trash.add(e);
+				}
+			}
+			
+		}
+		entities.removeAll(trash);
+	}
+
+
+	private void handleCores() {
+		for (ICore c: cores){
+			if (c.isCreated()){ //If its created, update it.
 				c.tick();
 				if (c.isDead()){
 					entities.removeAll(c.getParts());
 				}
-			} else {
+			} else { // Create the core if its not created
 				while(!c.isCreated()){	
+					// Let the core decide if it can step to next position.
 					if(c.step(getIntersectingEntity(new Rectangle(c.getNextPosition().getX()+2, c.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 						c.create();
 					}else if(c.isCreated()) {
@@ -209,8 +199,30 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
-		
-	    handleTowers();
+	}
+
+
+	private void gameOver() {
+		switch (isGameOver()){
+		case 0:
+			break;
+		case -1:
+			for (Player p: players){
+				if (p.getHero().getTeam().getSide() == Team.Side.LEFT){
+					endGame(p.getHero().getTeam());
+					return;
+				}
+			}
+			break;
+		case 1:
+			for (Player p: players){
+				if (p.getHero().getTeam().getSide() == Team.Side.RIGHT){
+					endGame(p.getHero().getTeam());
+					return;
+				}
+			}
+			break;
+		}
 	}
 	
 	private void handleTowers() {
@@ -223,17 +235,21 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 			
-			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
-			
 			List<Hero> targets = new ArrayList<Hero>();
 			for(Player player : players) {
 				targets.add(player.getHero());
 			}
 			
 			Hero closest = tower.getClosestTarget(targets,tower.RANGE);
-			if (closest != null){
-				if(tower.getHealth() != 0  && tower.isCannonReady()){
-					ICores.add( tower.fireCannon(tower.getClosestTargetDirection(targets,tower.RANGE), tower.RANGE) );
+			if (tower.getHealth() != 0){
+				if(closest != null && tower.isCannonReadyToSearch()){ //If target is found, make ready to fire
+					tower.setCannonDir(tower.getClosestTargetDirection(targets,tower.RANGE));
+					tower.cycleStatus(50); //TODO Hardcode
+				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
+					cores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
+					tower.cycleStatus(100); //TODO Hardcode
+				} else if(tower.isCannonReadyToReload()){
+					tower.cycleStatus(0);
 				}
 			}
 			

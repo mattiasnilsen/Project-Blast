@@ -1,0 +1,40 @@
+﻿Meeting Agenda
+
+Date: 2014-12-05
+
+Facilitator: Anton Freudenthaler
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min)
+ Decide what to prioritize. 
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+Anton has refactored movement of hero and made some tests for MovableEntity and Core.
+Alex have made tests for BlastModel.
+Mattias have tried fix a bug with the collide method. 
+Axel have continued with tower implementations and done some testing.
+
+3. Discussion items (35 min) 
+Discussed what’s left to do. Things to do:
+RAD, SDD, 75% tested code, remove dependency from model to view, choose hero before game,  some heroes can use their hero power through block, move statusbar away from playingfield, killing a hero should give points, something should happen when the game ends.
+There are a lot of TODO comments in the code, we should probably fix the most important ones. Some of the collision is now static in BlastModel if all of them should be static we should probably move them to a different class. Move related files into new packages. 
+
+
+4. Outcomes and assignments (5 min) 
+Everyone should write on RAD and SDD.
+Axel should:
+Implement that killing a hero gives points.
+Move the statusbar.
+Implement something that show that the game is over.
+Mattias should:
+Look at some of the TODO comments.
+Try to fix the bug where a hero can use its hero power when it shouldn’t.
+Alex should:
+Make more tests.
+Anton should: 
+Make more tests
+Move related files into new packages.
+
+5. Wrap up 
+Next meeting will be Thursday 15/5

@@ -2,12 +2,12 @@ package projectblast.model.hero;
 
 import projectblast.model.BlastModel;
 import projectblast.model.Constants;
-import projectblast.model.ICore;
 import projectblast.model.Id;
 import projectblast.model.Position;
-import projectblast.model.ShockwaveCore;
 import projectblast.model.Team;
 import projectblast.model.Movable.Direction;
+import projectblast.model.core.ICore;
+import projectblast.model.core.ShockwaveCore;
 import projectblast.model.explosive.Bomb;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.explosive.Fist;

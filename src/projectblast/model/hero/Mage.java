@@ -1,6 +1,8 @@
 package projectblast.model.hero;
 
 import projectblast.model.*;
+import projectblast.model.core.ICore;
+import projectblast.model.core.ParalyzerCore;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.explosive.Fireball;
 import projectblast.model.powerups.*;

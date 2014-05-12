@@ -15,6 +15,8 @@ import org.newdawn.slick.SpriteSheet;
 import projectblast.model.*;
 import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
+import projectblast.model.hazard.Explosion;
+import projectblast.model.hazard.Paralyzer;
 import projectblast.model.hero.Hero;
 
 /**

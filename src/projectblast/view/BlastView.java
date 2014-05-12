@@ -16,10 +16,10 @@ import org.newdawn.slick.state.StateBasedGame;
 import projectblast.model.BlastModel;
 import projectblast.model.Constants;
 import projectblast.model.Entity;
-import projectblast.model.Explosion;
-import projectblast.model.ExplosionCore;
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
+import projectblast.model.core.ExplosionCore;
+import projectblast.model.hazard.Explosion;
 
 /**
  * 

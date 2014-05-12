@@ -8,6 +8,7 @@ import org.newdawn.slick.Color;
 
 import projectblast.model.*;
 import projectblast.model.Team.Side;
+import projectblast.model.Tower.CannonStatus;
 import projectblast.model.hero.*;
 
 public class TowerTest {
@@ -54,5 +55,18 @@ public class TowerTest {
 		assertTrue(tower.allowPassage(hero));
 		tower.capture(hero.getTeam());
 		assertTrue(tower.allowPassage(hero));
+	}
+	
+	@Test
+	public void testCycleStatus(){
+		Tower t = new Tower(new Position(33,33));
+		assertTrue(t.getStatus() == CannonStatus.WAITING);
+		t.cycleStatus(20);
+		assertTrue(t.getStatus() == CannonStatus.READYING);
+		t.cycleStatus(20);
+		assertTrue(t.getStatus() == CannonStatus.RELOADING);
+		t.cycleStatus(20);
+		assertTrue(t.getStatus() == CannonStatus.WAITING);
+		
 	}
 }

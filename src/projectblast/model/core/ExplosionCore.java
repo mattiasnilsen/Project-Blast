@@ -1,8 +1,17 @@
-package projectblast.model;
+package projectblast.model.core;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import projectblast.model.Block;
+import projectblast.model.Constants;
+import projectblast.model.DestructibleBlock;
+import projectblast.model.Entity;
+import projectblast.model.Movable;
+import projectblast.model.Position;
+import projectblast.model.Tower;
 import projectblast.model.Movable.Direction;
+import projectblast.model.hazard.Explosion;
 
 public class ExplosionCore extends Core {
 	private int power;
