@@ -2,7 +2,6 @@ package projectblast.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,11 +13,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
-import projectblast.model.Tower.CannonStatus;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.SpeedPowerUp;
-import projectblast.view.Jukebox;
 
 
 public class BlastModel implements IBlastModel {
@@ -27,9 +24,7 @@ public class BlastModel implements IBlastModel {
 	private List<Player> players;
 	private List<Explosive> explosives;
 	private List<Tower> towers;
-	private List<ICore> ICores; //should be a secondary interface.
-	
-	private HashMap<String, Entity> entityMap;
+	private List<ICore> cores; //should be a secondary interface.
 	
 	private int balance;
 	private int scaleFactor;
@@ -44,9 +39,7 @@ public class BlastModel implements IBlastModel {
 		this.players = players;  
 		this.explosives = new ArrayList<Explosive>();
 		this.towers = new ArrayList<Tower>();
-		this.ICores = new ArrayList<ICore>();
-		
-		this.entityMap = new HashMap<String, Entity>();
+		this.cores = new ArrayList<ICore>();
 		
 		try {
 			entities.addAll(MapReader.createEntities(this,new TiledMap("data/map/Map.tmx")));
@@ -102,7 +95,7 @@ public class BlastModel implements IBlastModel {
 	public void secondary(int playerID) {
 		ICore tmp = players.get(playerID-1).getHero().secondaryAbility();
 		if(tmp != null){
-			ICores.add(tmp);
+			cores.add(tmp);
 		}
 		//createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
 		System.out.println("SecondaryClicked");
@@ -182,14 +175,14 @@ public class BlastModel implements IBlastModel {
 		for (Explosive e: explosives){
 			if(e.isDestroyed()) {
 				removeEntity(e);
-				ICores.add(e.getCore());
+				cores.add(e.getCore());
 				trash.add(e);
 			}
 		}
 		
 		explosives.removeAll(trash);
 		
-		for (ICore c: ICores){
+		for (ICore c: cores){
 			if (c.isCreated()){
 				c.tick();
 				if (c.isDead()){
@@ -235,7 +228,7 @@ public class BlastModel implements IBlastModel {
 					tower.setCannonDir(tower.getClosestTargetDirection(targets,tower.RANGE));
 					tower.cycleStatus(50); //TODO Hardcode
 				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
-					ICores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
+					cores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
 					tower.cycleStatus(100); //TODO Hardcode
 				} else if(tower.isCannonReadyToReload()){
 					tower.cycleStatus(0);
