@@ -28,6 +28,12 @@ public class ExplosionCore extends Core {
 		this.directionList = directionList;
 	}
 	
+	public int getCurrentDir(){
+		return currentDir;
+	}
+	public int getDistance(){
+		return distance;
+	}
 	@Override
 	public void create() {
 		addPart(new Explosion(new Position(getNextPosition().getX(), getNextPosition().getY())));
@@ -71,6 +77,9 @@ public class ExplosionCore extends Core {
 	public Position getNextPosition() {
 		if(currentDir == -1) { //Special case to make sure an explosion is placed at starting position.
 			return new Position(getStartingPosition());
+	/*	} else if(currentDir == directionList.size()-1 && (distance*directionList.get(currentDir).getX() == power*directionList.get(currentDir).getX() || distance*directionList.get(currentDir).getY() == power*directionList.get(currentDir).getY())){
+			//Should return null.
+			return new Position(getStartingPosition());*/
 		} else {
 		
 			int x = getStartingPosition().getX() + distance * directionList.get(currentDir).getX() * Constants.TILE_SIZE;
