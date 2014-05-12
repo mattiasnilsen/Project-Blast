@@ -111,10 +111,17 @@ public class BlastModelTest {
 		model.addEntity(block);
 		assertTrue(!model.isFree(brute, Direction.EAST, 100));
 		
-		block.setPosition(new Position(1,101));
+		brute.setPosition(100,1);
+		block.setPosition(1,1);
+		assertTrue(!model.isFree(brute, Direction.WEST, 100));
+		
+		block.setPosition(new Position(1,102));
 		brute.setPosition(1,1);
-		brute.update();
 		assertTrue(!model.isFree(brute, Direction.SOUTH, 100));
+		
+		block.setPosition(1,1);
+		brute.setPosition(1,100);
+		assertTrue(!model.isFree(brute, Direction.NORTH, 100));
 		
 		
 		
