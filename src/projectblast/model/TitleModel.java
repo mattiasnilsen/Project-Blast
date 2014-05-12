@@ -4,8 +4,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class TitleModel implements ITitleModel {
-	private Column selectedColumn = Column.MENU;
-	private MenuItem selectedMenuItem = MenuItem.STARTGAME;
+	private int selectedColumn = 0;
+	private int selectedRow = 0;
 	private Hero player1Hero = Hero.BOMBER;
 	private Hero player2Hero = Hero.MAGE;
 	private Map selectedMap = Map.FirstMap;
@@ -18,12 +18,12 @@ public class TitleModel implements ITitleModel {
 	}
 	
 	@Override
-	public Column getSelectedColumn() {
+	public int getSelectedColumn() {
 		return selectedColumn;
 	}
 	@Override
-	public MenuItem getSelectedMenuItem() {
-		return selectedMenuItem;
+	public int getSelectedRow() {
+		return selectedRow;
 	}
 	@Override
 	public Hero getPlayerHero(int player) {

@@ -3,21 +3,7 @@ package projectblast.model;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
-public interface ITitleModel {
-
-	public enum Column {
-		MENU,
-		PLAYER1HERO,
-		PLAYER2HERO,
-		MAP
-	}
-	
-	public enum MenuItem {
-		STARTGAME,
-		SETTINGS,
-		EXIT,
-	}
-	
+public interface ITitleModel {	
 	public enum Hero {
 		BOMBER,
 		MAGE,
@@ -29,12 +15,12 @@ public interface ITitleModel {
 		SecondMap,
 	}
 	
-	public Column getSelectedColumn();
-	public MenuItem getSelectedMenuItem();
+	public int getSelectedColumn();
+	public int getSelectedRow();
+	public boolean isSelected();
+	
 	public Hero getPlayerHero(int player);
 	public Map getSelectedMap();
-	
-	public boolean isSelected();
 	
 	public void up();
 	public void down();
