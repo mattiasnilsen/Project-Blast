@@ -209,9 +209,19 @@ public class Tower extends Entity implements Destructible {
 	}
 	
 	
-	public boolean isCannonReady(CannonStatus status){
-		return cannonStatus == status && timer == 0;
+	public boolean isCannonReadyToFire(){
+		return cannonStatus == CannonStatus.READYING && timer == 0;
 	}
+	
+	public boolean isCannonReadyToSearch(){
+		return cannonStatus == CannonStatus.WAITING;
+	}
+	
+	public boolean isCannonReadyToReload(){
+		return cannonStatus == CannonStatus.RELOADING && timer == 0;
+	}
+	
+	
 	
 	public ExplosionCore fireCannon(Direction dir, int range) {
 		if (dir == null){
