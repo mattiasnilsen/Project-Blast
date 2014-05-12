@@ -17,14 +17,13 @@ public class Paralyzer extends Entity implements IHazard {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public void collide(Entity entity) {
 		if(entity instanceof Movable){
-			((Movable)entity).stopMove(1);
+			((Movable)entity).stopMove(Constants.STUN_DURATION);
 		}
 		
 	}

@@ -24,6 +24,7 @@ public abstract class Entity implements Updatable, Comparable<Entity>{
 	
 	public void setX(int x) {
 	    position.setX(x);
+		getCollisionBox().setX(x + Constants.TILE_SIZE/2 - getCollisionBox().getWidth() / 2);
 	}
 	
 	public int getX() {
@@ -32,6 +33,7 @@ public abstract class Entity implements Updatable, Comparable<Entity>{
 	
 	public void setY(int y) {
 	    position.setY(y);
+		getCollisionBox().setY(y + Constants.TILE_SIZE/2 - getCollisionBox().getHeight() / 2);
 	}
 	
 	public int getY() {
@@ -44,6 +46,8 @@ public abstract class Entity implements Updatable, Comparable<Entity>{
 	
 	public void setPosition(Position p){
 		setPosition(p.getX(),p.getY());
+		getCollisionBox().setX(p.getX() + Constants.TILE_SIZE/2 - getCollisionBox().getWidth() / 2);
+		getCollisionBox().setY(p.getY() + Constants.TILE_SIZE/2 - getCollisionBox().getHeight() / 2);
 	}
 	
 	public void setPosition(int x, int y){

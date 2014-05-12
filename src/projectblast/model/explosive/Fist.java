@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import projectblast.model.BlastModel;
+import projectblast.model.Constants;
 import projectblast.model.Entity;
 import projectblast.model.ExplosionCore;
 import projectblast.model.ICore;
@@ -23,7 +24,7 @@ public class Fist extends Explosive {
 	
 	@Override
 	public boolean allowPassage(Entity entity){
-		return true;
+		return false;
 	}
 	
 	public void update(){
@@ -45,7 +46,7 @@ public class Fist extends Explosive {
 				iter.remove();
 			}
 		}
-		ExplosionCore core = new ExplosionCore(120, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
+		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
 		
 		return core;
 	}

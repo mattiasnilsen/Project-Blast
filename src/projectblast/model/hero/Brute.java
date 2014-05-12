@@ -17,8 +17,8 @@ import projectblast.model.powerups.SpeedPowerUp;
 
 public class Brute extends Hero {
 
-	public Brute(Position position, int speed, Direction direction, Team team) {
-		super(position, speed, direction, team);
+	public Brute(Position position, Direction direction, Team team) {
+		super(position, direction, team);
 		setName(Id.BRUTE);
 	}
 

@@ -8,6 +8,7 @@ import org.newdawn.slick.geom.Rectangle;
 import projectblast.model.Movable.Direction;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.IPowerUp;
+import projectblast.model.explosive.*;
 /**
  * 
  * @author Alex
@@ -22,10 +23,23 @@ public class Tower extends Entity implements Destructible {
 	private Team owner;
 	private IPowerUp powerUp;
 	private int powerUpInterval;
+	private Direction cannonDir;
 	
-	private int cannonDelay;
+	
+	private CannonStatus cannonStatus;
+	private int timer;
 	
 	private Explosion lastExplosion = null;
+	
+	
+	public enum CannonStatus{
+		WAITING, READYING, RELOADING;
+		
+		public CannonStatus next(){
+			System.out.println("Changed status to " + values()[(ordinal() + 1) % values().length]);
+			return values()[(ordinal() + 1) % values().length];
+		}
+	}
 	
 	public Tower(Position position) {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
@@ -35,12 +49,22 @@ public class Tower extends Entity implements Destructible {
 		owner = Team.getNeutralTeam();
 		power = 4;
 		powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
-		cannonDelay = 0;
+		timer = 0;
+		cannonStatus = CannonStatus.WAITING;
 		
 	}
 	
 	public int getPower() {
 		return power;
+	}
+	
+	public CannonStatus getStatus(){
+		return cannonStatus;
+	}
+	
+	public void cycleStatus(int wait){
+		cannonStatus = cannonStatus.next();
+		timer = wait;
 	}
 	
 	public void setPower(int power) {
@@ -100,11 +124,8 @@ public class Tower extends Entity implements Destructible {
 			powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
 		}
 		
-		if (cannonDelay > 0){
-			cannonDelay--;
-			if (cannonDelay == 0){
-				
-			}
+		if (timer > 0 && cannonStatus != CannonStatus.WAITING){
+			timer--;
 		}
 	}
 
@@ -112,9 +133,11 @@ public class Tower extends Entity implements Destructible {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		if(entity instanceof Hero && (((Hero)entity).getTeam() == owner) || health == 0) {
+		if( health == 0 || entity instanceof Hero && (((Hero)entity).getTeam() == owner) ) {
 			return true;
-		} else {
+		}/* else if (entity instanceof Fireball) {
+			return true;
+		}*/else{
 			return false;
 		}
 	}
@@ -145,7 +168,7 @@ public class Tower extends Entity implements Destructible {
 
 	@Override
 	public boolean isDestroyed() {
-		return health == 0;
+		return false; //Tower should never return true
 	}
 	
 	public Hero getClosestTarget(List<Hero> targets, int range){
@@ -186,16 +209,28 @@ public class Tower extends Entity implements Destructible {
 	}
 	
 	
-	public boolean isCannonReady(){
-		return cannonDelay <= 0;
+	public boolean isCannonReadyToFire(){
+		return cannonStatus == CannonStatus.READYING && timer == 0;
 	}
+	
+	public boolean isCannonReadyToSearch(){
+		return cannonStatus == CannonStatus.WAITING;
+	}
+	
+	public boolean isCannonReadyToReload(){
+		return cannonStatus == CannonStatus.RELOADING && timer == 0;
+	}
+	
+	
 	
 	public ExplosionCore fireCannon(Direction dir, int range) {
 		if (dir == null){
-			dir = Direction.NONE;
+			throw new NullPointerException("Trying to fire cannon in direction null");
 		}
 		System.out.println("Tower is firing");
-		cannonDelay = 100;
+		cannonStatus = cannonStatus.next();
+		timer = 100;
+		
 		Direction[] dirs = {dir};
 		List<Direction> d = Arrays.asList(dirs);
 		
@@ -207,5 +242,13 @@ public class Tower extends Entity implements Destructible {
 		return c;
 		
 		//TODO Play a sound
+	}
+
+	public Direction getCannonDir() {
+		return cannonDir;
+	}
+
+	public void setCannonDir(Direction cannonDir) {
+		this.cannonDir = cannonDir;
 	}
 }

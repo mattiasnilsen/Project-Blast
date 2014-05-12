@@ -23,7 +23,7 @@ public abstract class Core implements ICore {
 
 	@Override
 	public boolean isDead() {
-		return lifeTime < 0;
+		return lifeTime <= 0;
 	}
 
 	@Override

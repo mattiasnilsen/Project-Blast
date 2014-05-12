@@ -6,6 +6,7 @@ import java.util.List;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.BlastModel;
+import projectblast.model.Constants;
 import projectblast.model.Destructible;
 import projectblast.model.Entity;
 import projectblast.model.ExplosionCore;
@@ -62,7 +63,7 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 		directionList.add(Direction.NORTH);
 		directionList.add(Direction.WEST);
 		directionList.add(Direction.SOUTH);
-		ExplosionCore core = new ExplosionCore(120, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
+		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
 		
 		return core;
 	}

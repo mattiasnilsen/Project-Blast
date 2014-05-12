@@ -3,6 +3,8 @@ package projectblast.model;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.Movable.Direction;
+
 /**
  * 
  * @author franton
@@ -13,16 +15,15 @@ public class MovableEntity extends Entity implements Movable {
 
 	private int speed;
 	private Direction direction;
-	private boolean moving = true;
-	private int duration = 0;
-	public Direction facingDirection;
+	private boolean moving;
+	private int stopDuration = 0;
+	
 
 	
 	public MovableEntity(Position position, int speed, Direction direction, Rectangle box) {
 		super(position, box);
 		this.speed = speed;
 		this.direction = direction;
-		this.facingDirection = direction;
 	}
 
 
@@ -30,6 +31,7 @@ public class MovableEntity extends Entity implements Movable {
 	public void move(int dx, int dy) {
 		place(getX() + dx, getY() + dy);
 	}
+	
 	@Override
 	public void place(int x, int y) {
 			setX(x);
@@ -40,7 +42,6 @@ public class MovableEntity extends Entity implements Movable {
 	
 	@Override
 	public void place(Position p) {
-		
 		place(p.getX(),p.getY());
 	}
 	
@@ -50,9 +51,6 @@ public class MovableEntity extends Entity implements Movable {
 	
 	public void setDirection(Direction direction) {
 		this.direction = direction;
-		if(direction != Direction.NONE){
-			this.facingDirection = direction;
-		}
 	}
 
 	public int getSpeed() {
@@ -65,23 +63,20 @@ public class MovableEntity extends Entity implements Movable {
 
 	@Override
 	public void move(Direction direction) {
-		
 		place(getX() + (direction.getX()), getY() + (direction.getY()));
 	}
 	
 	
 	public void move(Direction direction, int speed) {
-		
 		place(getX() + (speed * direction.getX()), getY() + (speed * direction.getY()));
 	}
 
 	@Override
 	public void startMove(Direction direction) {
 		this.direction = direction;
-		moving = true;
-		
-		
+		moving = true;	
 	}
+	
 	@Override
 	public void startMove() {
 	    moving = true;
@@ -92,39 +87,67 @@ public class MovableEntity extends Entity implements Movable {
 		moving = false;
 	}
 	
-	public void stopMove(Direction direction) {
-		if(this.direction == direction){
-			moving = false;
-		}
-	}
-	
 	public boolean isMoving() {
 		return moving;
 	}
 	
 	@Override
 	public void update() {
-		if(isMoving()) {
-			move(direction,speed);
+		if(getStopDuration() > 0){
+			stopMove();
+			setStopDuration(getStopDuration() - 1);
+		}
+		
+		
+		if(isMoving()){
+			Direction dir = getDirection();
+			int distance = getSpeed();
+			if(dir.getX() != 0 && dir.getY() != 0) {
+			    distance = distance - 1; //TODO fix properly
+			}
+			while(distance > 0) {
+				if(BlastModel.isFree(this, dir, 1)) {
+	                move(dir); //TODO want to tell hero to start move instead
+	            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
+			        if(BlastModel.isFree(this, Direction.getDirection(dir.getX(), 0), 1)) {
+			            move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
+			        } else if(BlastModel.isFree(this, Direction.getDirection(0, dir.getY()), 1)) {
+	                    move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
+	                }
+			    } else {
+			    	stopMove();
+			    }
+				distance--;
+			}
+			
 		}
 	}
 
 
 	
 	public boolean allowPassage(Entity entity){
-		return false;
+		return true;
 	}
 
 	@Override
 	public void collide(Entity entity) {
-		// TODO Auto-generated method stub
+		//stopMove();
 		
 	}
 
 	@Override
-	public void stopMove(int duration) {
-		stopMove();
-		this.duration += duration;
+	public void stopMove(int stopDuration) {
+		this.setStopDuration(stopDuration);
+	}
+
+
+	public int getStopDuration() {
+		return stopDuration;
+	}
+
+
+	public void setStopDuration(int stopDuration) {
+		this.stopDuration = stopDuration;
 	}
 
 }

@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
+import projectblast.model.Tower.CannonStatus;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.SpeedPowerUp;
@@ -22,7 +23,7 @@ import projectblast.view.Jukebox;
 
 public class BlastModel implements IBlastModel {
 	
-	private List<Entity> entities;
+	private static List<Entity> entities= new ArrayList<Entity>();
 	private List<Player> players;
 	private List<Explosive> explosives;
 	private List<Tower> towers;
@@ -41,7 +42,6 @@ public class BlastModel implements IBlastModel {
 	
 	public BlastModel(List<Player> players){
 		this.players = players;  
-		this.entities = new ArrayList<Entity>();
 		this.explosives = new ArrayList<Explosive>();
 		this.towers = new ArrayList<Tower>();
 		this.ICores = new ArrayList<ICore>();
@@ -73,28 +73,15 @@ public class BlastModel implements IBlastModel {
 	
 	
 	@Override
-	public void setPlayerDirection(int playerID, Direction dir) {
+	public void movePlayer(int playerID, Direction dir) {
 		Hero hero = players.get(playerID-1).getHero();
-		//System.out.println(hero.getY());
-		//int distance = hero.getSpeed();
 		hero.setDirection(dir);
-		
-		/*if(dir.getX() != 0 && dir.getY() != 0) {
-		    distance = distance - 1; //TODO fix properly
-		}
-		
-		while(distance > 0) {
-		    if(isFree(hero, hero.getDirection(), 1)) {
-                hero.move(dir);
-            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
-		        if(isFree(hero, Direction.getDirection(dir.getX(), 0), 1)) {
-		            hero.move(Direction.getDirection(dir.getX(), 0));
-		        } else if(isFree(hero, Direction.getDirection(0, dir.getY()), 1)) {
-                    hero.move(Direction.getDirection(0, dir.getY()));
-                }
-		    }
-            distance--;
-		}*/
+		hero.startMove();
+	}
+	
+	public void stopPlayer(int playerID){
+		Hero hero = players.get(playerID-1).getHero();
+		hero.stopMove();
 	}
 
 
@@ -179,29 +166,6 @@ public class BlastModel implements IBlastModel {
 		List<Entity> trashCan = new LinkedList<Entity>();
 		
 		for (Entity e: entities){
-			if(e instanceof Hero){ //TODO try to make use of MovableEntity update to move Heroes.
-				MovableEntity m = (MovableEntity)e;
-				
-				
-				Direction dir = m.getDirection();
-				int distance = m.getSpeed();
-				if(dir.getX() != 0 && dir.getY() != 0) {
-				    distance = distance - 1; //TODO fix properly
-				}
-				while(distance > 0) {
-					if(isFree(m, dir, 1)) {
-		                m.move(dir); //TODO want to tell hero to start move instead
-		            } else if(dir.getX() != 0 && dir.getY() != 0) { //Moving diagonally
-				        if(isFree(m, Direction.getDirection(dir.getX(), 0), 1)) {
-				            m.move(Direction.getDirection(dir.getX(), 0));//TODO want to tell hero to start move instead
-				        } else if(isFree(m, Direction.getDirection(0, dir.getY()), 1)) {
-		                    m.move(Direction.getDirection(0, dir.getY()));//TODO want to tell hero to start move instead
-		                }
-				    }
-					distance--;
-				}
-				
-			}
 			e.update();
 			if(e instanceof Destructible) {
 				Destructible d = (Destructible)e;
@@ -260,49 +224,45 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 			
-			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
-			
 			List<Hero> targets = new ArrayList<Hero>();
 			for(Player player : players) {
 				targets.add(player.getHero());
 			}
 			
 			Hero closest = tower.getClosestTarget(targets,tower.RANGE);
-			if (closest != null){
-				if (!tower.isDestroyed() && tower.isCannonReady()){
-					ICores.add( tower.fireCannon(tower.getClosestTargetDirection(targets,tower.RANGE), tower.RANGE) );
+			if (tower.getHealth() != 0){
+				if(closest != null && tower.isCannonReadyToSearch()){ //If target is found, make ready to fire
+					tower.setCannonDir(tower.getClosestTargetDirection(targets,tower.RANGE));
+					tower.cycleStatus(50); //TODO Hardcode
+				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
+					ICores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
+					tower.cycleStatus(100); //TODO Hardcode
+				} else if(tower.isCannonReadyToReload()){
+					tower.cycleStatus(0);
 				}
 			}
 			
 		}
 	}
-
-	@Override
-	public void stop(int playerID) {
-		players.get(playerID-1).getHero().stopMove();
-		
-	}
 	
-	public boolean isFree(MovableEntity entity){
+	/*public static boolean isFree(MovableEntity entity){
 		return isFree(entity,entity.getDirection(),entity.getSpeed());
-	}
+	}*/
 	
-	public boolean isFree(Entity entity){
+	/*public static boolean isFree(Entity entity){
 		return isFree(entity,Direction.NONE, 0);
-	}
+	}*/
 	
-	public boolean isFree(Entity entity, Direction dir, int length){
+	public static boolean isFree(MovableEntity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
 		
 		for (Entity e: entities){
 			//TODO remove this instanceof - It is only here to prevent collision with itself
-	    	if (!(e.getName().equals(entity.getName())) && e.getCollisionBox().intersects(testBox) && !(e.allowPassage(entity)) ){
+	    	if (!(e.equals(entity)) && e.getCollisionBox().intersects(testBox) && !(e.allowPassage(entity)) ){
 	    		return false;
 	    	}
-	    	
 	    }
-		
 		return true;
 	}
 	

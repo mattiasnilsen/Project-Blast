@@ -10,19 +10,19 @@ import projectblast.model.powerups.*;
  *
  */
 public class Mage extends Hero {
-	public Mage(Position position,  int speed, Direction direction, Team team) {
-		super(position, speed, direction,  team);
+	public Mage(Position position, Direction direction, Team team) {
+		super(position, direction,  team);
 		setName(Id.MAGE);
 		
 	}
 
 	@Override
 	public Explosive primaryAbility() {
-		if(getAmmo()<= 0){
+		Fireball fireball = new Fireball(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())),  4,  getDirection(), this);
+		if(getAmmo()<= 0 || !BlastModel.isFree(fireball, fireball.getDirection(), fireball.getSpeed())){
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Fireball fireball = new Fireball(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())),  4,  facingDirection, this);
 			addExplosive(fireball);
 			return fireball;
 		}
@@ -30,7 +30,7 @@ public class Mage extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), facingDirection);
+		return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), getDirection());
 	}
 
 	@Override

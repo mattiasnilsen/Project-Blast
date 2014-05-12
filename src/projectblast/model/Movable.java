@@ -89,11 +89,6 @@ public interface Movable {
 	 */
 	public void startMove(Direction direction);
 	/**
-	 * Set this object to stop moving in a direction.
-	 * @param direction
-	 */
-	public void stopMove(Direction direction);
-	/**
 	 * Set this object to move forward at its speed every tick.
 	 */
 	public void startMove();

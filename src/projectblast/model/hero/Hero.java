@@ -6,11 +6,15 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
+
+import projectblast.model.BlastModel;
+import projectblast.model.Constants;
 import projectblast.model.Destructible;
 import projectblast.model.ICore;
 import projectblast.model.MovableEntity;
 import projectblast.model.Position;
 import projectblast.model.Team;
+import projectblast.model.Movable.Direction;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.powerups.IPowerUp;
 
@@ -18,6 +22,8 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	private int bombPower;
 	private int bombCount;
+	
+	private int deathCount;
 
 	private Team team;
 	
@@ -30,10 +36,11 @@ public abstract class Hero extends MovableEntity implements Destructible{
 
 	
 	
-    public Hero(Position position, int speed, Direction direction,  Team team) {
-        super(position, speed, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
+    public Hero(Position position, Direction direction,  Team team) {
+        super(position, Constants.HERO_START_SPEED, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
         bombPower = 0;
         bombCount = 0;
+        setDeathCount(0);
         this.team = team;
         this.startPos = new Position(position.getX(), position.getY());
         addInitialPowerUps();
@@ -64,6 +71,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
     
     public void destroy(){
     	System.out.println(getTeam().getName() + " just lost a teammate!");
+    	setDeathCount(getDeathCount() + 1);
     	respawnTime = 480;
     	isRespawning = true;
     	place(startPos);
@@ -118,7 +126,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	}
 	
 	public void update(){
-		//super.update();
+		super.update();
 		Iterator<Explosive> iter = explosives.iterator();
 		while(iter.hasNext()){
 			if(iter.next().isDestroyed()){
@@ -126,9 +134,18 @@ public abstract class Hero extends MovableEntity implements Destructible{
 				setAmmo(getAmmo()+1);
 			}
 		}
+		
 	}
 	
 	public abstract Explosive primaryAbility();
 		
 	public abstract ICore secondaryAbility();
+
+	public int getDeathCount() {
+		return deathCount;
+	}
+
+	public void setDeathCount(int deathCount) {
+		this.deathCount = deathCount;
+	}
 }

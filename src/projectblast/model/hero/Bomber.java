@@ -18,8 +18,8 @@ import projectblast.model.powerups.*;
  */
 public class Bomber extends Hero {
 
-    public Bomber(Position position,  int speed, Direction direction,  Team team) {
-        super(position, speed, direction, team);
+    public Bomber(Position position, Direction direction,  Team team) {
+        super(position, direction, team);
         setName(Id.BOMBER);
     }
 

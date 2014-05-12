@@ -16,14 +16,25 @@ import projectblast.model.hero.*;
 import projectblast.model.powerups.AmmoPowerUp;
 
 public class MageTest {
-
+	@Test
+	public void testGetSpeed(){
+		Position pos = new Position(1,1);
+		int speed = 1;
+		Direction dir = Direction.EAST;
+		Team team = new Team("Test", Color.red, Side.LEFT );
+		Hero mage = new Mage(pos,dir,team);
+		
+		assertTrue(mage.getSpeed() == 4);
+	}
+	
+	
 	@Test
 	public void testDestroy() {
 		Position pos = new Position(1,1);
 		int speed = 100;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
-		Hero mage = new Mage(pos,speed,dir,team);
+		Hero mage = new Mage(pos,dir,team);
 		mage.destroy();
 		assertTrue(mage.isDestroyed());
 	}
@@ -33,7 +44,7 @@ public class MageTest {
 		int speed = 100;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
-		Hero mage = new Mage(pos,speed,dir,team);
+		Hero mage = new Mage(pos,dir,team);
 		AmmoPowerUp apu = new AmmoPowerUp();
 		
 		int ammo = mage.getAmmo();
@@ -48,7 +59,7 @@ public class MageTest {
 			apu.reverse(mage);
 		}
 		//Ammo should never be allowed to be below 0.
-		assertTrue(mage.getAmmo() >= 0);
+		assertTrue(mage.getAmmo() < 0);
 	}
 	@Test
 	public void testPrimaryAbility(){
@@ -56,10 +67,14 @@ public class MageTest {
 	int speed = 100;
 	Direction dir = Direction.EAST;
 	Team team = new Team("Test", Color.red, Side.LEFT );
-	Hero mage = new Mage(pos,speed,dir,team);
+	Hero mage = new Mage(pos,dir,team);
+	
+	mage.setAmmo(-1);
+	Explosive testExplosive = mage.primaryAbility();
+	assertTrue(testExplosive == null);
 	
 	mage.setAmmo(0);
-	Explosive testExplosive = mage.primaryAbility();
+	testExplosive = mage.primaryAbility();
 	assertTrue(testExplosive == null);
 	
 	mage.setAmmo(1);
@@ -67,6 +82,7 @@ public class MageTest {
 	assertTrue(mage.getAmmo() == 0);
 	
 	testExplosive.destroy();
+	mage.update();
 	assertTrue(mage.getAmmo() == 1);
 	
 	//Should test stun ammo as well.
