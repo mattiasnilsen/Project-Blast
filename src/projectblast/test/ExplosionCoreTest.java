@@ -1,13 +1,10 @@
 package projectblast.test;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
-import org.newdawn.slick.geom.Rectangle;
-
 import projectblast.model.Movable.*;
+import projectblast.model.core.ExplosionCore;
 import projectblast.model.*;
 
 public class ExplosionCoreTest {
