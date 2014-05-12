@@ -35,23 +35,35 @@ public class TitleModel implements ITitleModel {
 	}
 	@Override
 	public void down() {
-	
+		move(0, 1);
 	}
 	@Override
 	public void up() {
-		
+		move(0, -1);
 	}
 	@Override
 	public void left() {
-		
+		move(-1, 0);
 	}
 	@Override
 	public void right() {
-		
+		move(1, 0);
 	}
 	@Override
 	public void select() {
+		selected = !selected;
+	}
+	
+	private void move(int x, int y) {
 		
+		selectedColumn += x;
+		selectedRow += y;
+		
+		switch(selectedColumn) {
+		case 0:
+			selectedRow = selectedRow % 3;
+			break;
+		}
 	}
 
 	@Override
@@ -66,7 +78,16 @@ public class TitleModel implements ITitleModel {
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta) {
-		
+		if(selected) {
+			switch(selectedRow) {
+			case 0:
+				game.enterState(2);
+				break;
+			case 2:
+				System.exit(0);
+				break;
+			}
+		}
 	}
 	
 }
