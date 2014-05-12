@@ -178,7 +178,7 @@ public class Tower extends Entity implements Destructible {
 		for (int i = 1; i <= range; i++){
 			for (Direction d: dirs){
 				int q = Constants.TILE_SIZE;
-				Rectangle r = new Rectangle(getX() + d.getX() * q * i,getY() + d.getY() * q * i, q, q);
+				Rectangle r = new Rectangle(getX() + d.getX() * q * i + 4,getY() + d.getY() * q * i + 4, q - 8, q - 8);
 				for (Hero h: targets){
 					if (!h.getTeam().equals(owner) && r.intersects(h.getCollisionBox())){
 						return h;
