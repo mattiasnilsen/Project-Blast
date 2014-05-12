@@ -123,56 +123,25 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta){
+		gameOver();
 		tick++;
-		
-		if (tick%60 == 0){
+		if (tick%Constants.FRAMERATE == 0){
 			shiftBalance(getTowerBalance());
-			switch (isGameOver()){
-			case 0:
-				break;
-			case -1:
-				for (Player p: players){
-					if (p.getHero().getTeam().getSide() == Team.Side.LEFT){
-						endGame(p.getHero().getTeam());
-						return;
-					}
-				}
-				break;
-			case 1:
-				for (Player p: players){
-					if (p.getHero().getTeam().getSide() == Team.Side.RIGHT){
-						endGame(p.getHero().getTeam());
-						return;
-					}
-				}
-				break;
-			}
 		}
 		
 		
-		for(Entity entity : entities) {
-			Entity other = getIntersectingEntity(entity);
-			if(other != null) {
-				entity.collide(other);
-			}
-		}
+		handleEntities();
 		
-		//List of entities to throw away later
-		List<Entity> trashCan = new LinkedList<Entity>();
+		handleExplosives();
 		
-		for (Entity e: entities){
-			e.update();
-			if(e instanceof Destructible) {
-				Destructible d = (Destructible)e;
-				if(d.isDestroyed()) {
-					trashCan.add(e);
-				}
-			}
-			
-		}
+		handleCores();
 		
-		entities.removeAll(trashCan);
-		
+	    handleTowers();
+	}
+
+
+	private void handleExplosives() {
+		//List of explosives to throw away later
 		List<Explosive> trash = new ArrayList<Explosive>();
 		for (Explosive e: explosives){
 			if(e.isDestroyed()) {
@@ -181,17 +150,42 @@ public class BlastModel implements IBlastModel {
 				trash.add(e);
 			}
 		}
-		
 		explosives.removeAll(trash);
+	}
+
+
+	private void handleEntities() {
+		//List of entities to throw away later
+		List<Entity> trash = new LinkedList<Entity>();
 		
+		for (Entity e: entities){
+			Entity other = getIntersectingEntity(e);
+			if(other != null) {
+				e.collide(other);
+			}
+			e.update();
+			if(e instanceof Destructible) {
+				Destructible d = (Destructible)e;
+				if(d.isDestroyed()) {
+					trash.add(e);
+				}
+			}
+			
+		}
+		entities.removeAll(trash);
+	}
+
+
+	private void handleCores() {
 		for (ICore c: cores){
-			if (c.isCreated()){
+			if (c.isCreated()){ //If its created, update it.
 				c.tick();
 				if (c.isDead()){
 					entities.removeAll(c.getParts());
 				}
-			} else {
+			} else { // Create the core if its not created
 				while(!c.isCreated()){	
+					// Let the core decide if it can step to next position.
 					if(c.step(getIntersectingEntity(new Rectangle(c.getNextPosition().getX()+2, c.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 						c.create();
 					}else if(c.isCreated()) {
@@ -205,8 +199,30 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 		}
-		
-	    handleTowers();
+	}
+
+
+	private void gameOver() {
+		switch (isGameOver()){
+		case 0:
+			break;
+		case -1:
+			for (Player p: players){
+				if (p.getHero().getTeam().getSide() == Team.Side.LEFT){
+					endGame(p.getHero().getTeam());
+					return;
+				}
+			}
+			break;
+		case 1:
+			for (Player p: players){
+				if (p.getHero().getTeam().getSide() == Team.Side.RIGHT){
+					endGame(p.getHero().getTeam());
+					return;
+				}
+			}
+			break;
+		}
 	}
 	
 	private void handleTowers() {
