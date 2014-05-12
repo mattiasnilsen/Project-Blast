@@ -55,14 +55,22 @@ public class TitleModel implements ITitleModel {
 	}
 	
 	private void move(int x, int y) {
-		
-		selectedColumn += x;
-		selectedRow += y;
-		
-		switch(selectedColumn) {
-		case 0:
-			selectedRow = selectedRow % 3;
-			break;
+		if(!selected) {
+			selectedColumn += x;
+			selectedRow += y;
+			
+			if(selectedColumn < 0) {
+				selectedColumn = 0;
+			}
+			if(selectedRow < 0) {
+				selectedRow = 0;
+			}
+			
+			switch(selectedColumn) {
+			case 0:
+				selectedRow = selectedRow % 3;
+				break;
+			}
 		}
 	}
 
