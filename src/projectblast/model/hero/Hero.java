@@ -10,11 +10,11 @@ import org.newdawn.slick.geom.Rectangle;
 import projectblast.model.BlastModel;
 import projectblast.model.Constants;
 import projectblast.model.Destructible;
-import projectblast.model.ICore;
 import projectblast.model.MovableEntity;
 import projectblast.model.Position;
 import projectblast.model.Team;
 import projectblast.model.Movable.Direction;
+import projectblast.model.core.ICore;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.powerups.IPowerUp;
 

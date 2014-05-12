@@ -1,6 +1,12 @@
-package projectblast.model;
+package projectblast.model.hazard;
 
 import org.newdawn.slick.geom.Rectangle;
+
+import projectblast.model.Constants;
+import projectblast.model.Entity;
+import projectblast.model.Id;
+import projectblast.model.Movable;
+import projectblast.model.Position;
 
 public class Paralyzer extends Entity implements IHazard {
 	

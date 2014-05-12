@@ -6,8 +6,10 @@ import java.util.List;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.Direction;
+import projectblast.model.hazard.Explosion;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.IPowerUp;
+import projectblast.model.core.ExplosionCore;
 import projectblast.model.explosive.*;
 /**
  * 

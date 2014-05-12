@@ -13,7 +13,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
+import projectblast.model.core.ICore;
 import projectblast.model.explosive.Explosive;
+import projectblast.model.hazard.IHazard;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.SpeedPowerUp;
 

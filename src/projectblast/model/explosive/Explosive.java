@@ -9,12 +9,12 @@ import projectblast.model.BlastModel;
 import projectblast.model.Constants;
 import projectblast.model.Destructible;
 import projectblast.model.Entity;
-import projectblast.model.ExplosionCore;
-import projectblast.model.ICore;
 import projectblast.model.Movable;
 import projectblast.model.MovableEntity;
 import projectblast.model.Position;
 import projectblast.model.Movable.Direction;
+import projectblast.model.core.ExplosionCore;
+import projectblast.model.core.ICore;
 import projectblast.model.hero.Hero;
 
 public abstract class Explosive extends MovableEntity implements Destructible {
