@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
+import projectblast.model.Tower.CannonStatus;
 import projectblast.model.explosive.Explosive;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.SpeedPowerUp;
@@ -223,17 +224,24 @@ public class BlastModel implements IBlastModel {
 				}
 			}
 			
-			Direction[] directions = {Direction.EAST, Direction.NORTH, Direction.WEST, Direction.SOUTH};
-			
 			List<Hero> targets = new ArrayList<Hero>();
 			for(Player player : players) {
 				targets.add(player.getHero());
 			}
 			
 			Hero closest = tower.getClosestTarget(targets,tower.RANGE);
-			if (closest != null){
-				if(tower.getHealth() != 0  && tower.isCannonReady()){
-					ICores.add( tower.fireCannon(tower.getClosestTargetDirection(targets,tower.RANGE), tower.RANGE) );
+			if (tower.getHealth() != 0){
+				if(closest != null && tower.isCannonReady(CannonStatus.WAITING)){ //If target is found, make ready to fire
+					tower.setCannonDir(tower.getClosestTargetDirection(targets,tower.RANGE));
+					tower.cycleStatus(50); //TODO Hardcode
+					System.out.println("TAKE COVER!!!!");
+				} else if (tower.isCannonReady(CannonStatus.READYING)){ //Firing the cannon
+					ICores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
+					tower.cycleStatus(100); //TODO Hardcode
+					System.out.println("Firing cannon");
+				} else if(tower.isCannonReady(CannonStatus.RELOADING)){
+					tower.cycleStatus(100);
+					System.out.println("Ready to fire again");
 				}
 			}
 			
