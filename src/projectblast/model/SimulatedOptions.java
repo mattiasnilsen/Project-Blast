@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.newdawn.slick.Color;
 
-import projectblast.model.hero.Bomber;
-import projectblast.model.hero.Brute;
-import projectblast.model.hero.Mage;
+import projectblast.model.entity.hero.Bomber;
+import projectblast.model.entity.hero.Brute;
+import projectblast.model.entity.hero.Mage;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
 

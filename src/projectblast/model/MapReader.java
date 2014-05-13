@@ -5,6 +5,11 @@ import java.util.List;
 
 import org.newdawn.slick.tiled.TiledMap;
 
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.SolidBlock;
+import projectblast.model.entity.Tower;
+
 /**
  * 
  * @author Axel Savén Östebo

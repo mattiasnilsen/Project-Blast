@@ -1,16 +1,22 @@
-package projectblast.model;
+package projectblast.model.entity;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.Constants;
+import projectblast.model.Destructible;
+import projectblast.model.Id;
+import projectblast.model.Movable;
+import projectblast.model.Position;
+import projectblast.model.Team;
 import projectblast.model.Movable.Direction;
-import projectblast.model.hazard.Explosion;
-import projectblast.model.hero.Hero;
 import projectblast.model.powerups.IPowerUp;
 import projectblast.model.core.ExplosionCore;
-import projectblast.model.explosive.*;
+import projectblast.model.entity.explosive.*;
+import projectblast.model.entity.hazard.Explosion;
+import projectblast.model.entity.hero.Hero;
 /**
  * 
  * @author Alex

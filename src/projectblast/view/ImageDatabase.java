@@ -14,10 +14,14 @@ import org.newdawn.slick.SpriteSheet;
 
 import projectblast.model.*;
 import projectblast.model.Movable.Direction;
-import projectblast.model.explosive.Explosive;
-import projectblast.model.hazard.Explosion;
-import projectblast.model.hazard.Paralyzer;
-import projectblast.model.hero.Hero;
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.SolidBlock;
+import projectblast.model.entity.Tower;
+import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.entity.hazard.Explosion;
+import projectblast.model.entity.hazard.Paralyzer;
+import projectblast.model.entity.hero.Hero;
 
 /**
  * 

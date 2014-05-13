@@ -1,4 +1,4 @@
-package projectblast.model.hero;
+package projectblast.model.entity.hero;
 
 import projectblast.model.BlastModel;
 import projectblast.model.Constants;
@@ -8,9 +8,9 @@ import projectblast.model.Team;
 import projectblast.model.Movable.Direction;
 import projectblast.model.core.ICore;
 import projectblast.model.core.ShockwaveCore;
-import projectblast.model.explosive.Bomb;
-import projectblast.model.explosive.Explosive;
-import projectblast.model.explosive.Fist;
+import projectblast.model.entity.explosive.Bomb;
+import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.entity.explosive.Fist;
 import projectblast.model.powerups.AmmoPowerUp;
 import projectblast.model.powerups.RangePowerUp;
 import projectblast.model.powerups.SpeedPowerUp;

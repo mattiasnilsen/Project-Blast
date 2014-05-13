@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.junit.Test;
 import projectblast.model.Movable.*;
 import projectblast.model.core.ExplosionCore;
+import projectblast.model.entity.Block;
+import projectblast.model.entity.SolidBlock;
 import projectblast.model.*;
 
 public class ExplosionCoreTest {

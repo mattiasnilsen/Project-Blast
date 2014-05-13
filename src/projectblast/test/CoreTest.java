@@ -6,18 +6,18 @@ import java.util.List;
 
 import org.junit.Test;
 
-import projectblast.model.DestructibleBlock;
-import projectblast.model.Entity;
 import projectblast.model.Position;
-import projectblast.model.SolidBlock;
 import projectblast.model.Movable.Direction;
 import projectblast.model.core.Core;
 import projectblast.model.core.ParalyzerCore;
 import projectblast.model.core.ShockwaveCore;
-import projectblast.model.explosive.Fireball;
-import projectblast.model.hazard.Hazard;
-import projectblast.model.hazard.Paralyzer;
-import projectblast.model.hero.Mage;
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.SolidBlock;
+import projectblast.model.entity.explosive.Fireball;
+import projectblast.model.entity.hazard.Hazard;
+import projectblast.model.entity.hazard.Paralyzer;
+import projectblast.model.entity.hero.Mage;
 
 public class CoreTest {
 	

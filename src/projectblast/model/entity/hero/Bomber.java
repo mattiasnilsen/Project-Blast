@@ -1,4 +1,4 @@
-package projectblast.model.hero;
+package projectblast.model.entity.hero;
 
 
 import projectblast.model.BlastModel;
@@ -6,8 +6,8 @@ import projectblast.model.Id;
 import projectblast.model.Position;
 import projectblast.model.Team;
 import projectblast.model.core.ICore;
-import projectblast.model.explosive.Bomb;
-import projectblast.model.explosive.Explosive;
+import projectblast.model.entity.explosive.Bomb;
+import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.powerups.*;
 
 

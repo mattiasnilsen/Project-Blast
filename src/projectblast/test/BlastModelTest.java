@@ -12,16 +12,16 @@ import org.newdawn.slick.Color;
 
 
 import projectblast.model.BlastModel;
-import projectblast.model.Block;
 import projectblast.model.Player;
 import projectblast.model.Position;
-import projectblast.model.SolidBlock;
 import projectblast.model.Team;
 import projectblast.model.Movable.Direction;
 import projectblast.model.Team.Side;
-import projectblast.model.hero.Brute;
-import projectblast.model.hero.Hero;
-import projectblast.model.hero.Mage;
+import projectblast.model.entity.Block;
+import projectblast.model.entity.SolidBlock;
+import projectblast.model.entity.hero.Brute;
+import projectblast.model.entity.hero.Hero;
+import projectblast.model.entity.hero.Mage;
 
 public class BlastModelTest {
 

@@ -1,8 +1,12 @@
-package projectblast.model;
+package projectblast.model.entity;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.BlastModel;
+import projectblast.model.Constants;
+import projectblast.model.Movable;
+import projectblast.model.Position;
 import projectblast.model.Movable.Direction;
 
 /**

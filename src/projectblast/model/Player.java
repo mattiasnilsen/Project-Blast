@@ -1,6 +1,6 @@
 package projectblast.model;
 
-import projectblast.model.hero.Hero;
+import projectblast.model.entity.hero.Hero;
 
 /**
  * 

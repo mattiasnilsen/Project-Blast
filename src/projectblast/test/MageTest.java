@@ -11,8 +11,8 @@ import org.newdawn.slick.Color;
 import projectblast.model.*;
 import projectblast.model.Team.Side;
 import projectblast.model.Movable.*;
-import projectblast.model.explosive.Explosive;
-import projectblast.model.hero.*;
+import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.entity.hero.*;
 import projectblast.model.powerups.AmmoPowerUp;
 
 public class MageTest {

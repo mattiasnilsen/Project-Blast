@@ -1,11 +1,11 @@
-package projectblast.model.explosive;
+package projectblast.model.entity.explosive;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Entity;
 import projectblast.model.Id;
 import projectblast.model.Position;
-import projectblast.model.hazard.Paralyzer;
-import projectblast.model.hero.Hero;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.hazard.Paralyzer;
+import projectblast.model.entity.hero.Hero;
 
 
 /**

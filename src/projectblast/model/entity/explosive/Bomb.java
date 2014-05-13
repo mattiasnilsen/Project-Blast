@@ -1,7 +1,8 @@
-package projectblast.model.explosive;
+package projectblast.model.entity.explosive;
 
 import projectblast.model.*;
-import projectblast.model.hero.*;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.hero.*;
 
 
 

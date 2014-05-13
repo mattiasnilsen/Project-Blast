@@ -1,9 +1,13 @@
-package projectblast.model;
+package projectblast.model.entity;
 
 import org.newdawn.slick.geom.Rectangle;
 
-import projectblast.model.explosive.Fireball;
-import projectblast.model.hero.Hero;
+import projectblast.model.Destructible;
+import projectblast.model.Id;
+import projectblast.model.Position;
+import projectblast.model.Movable.Direction;
+import projectblast.model.entity.explosive.Fireball;
+import projectblast.model.entity.hero.Hero;
 
 /**
  *

@@ -14,9 +14,12 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import projectblast.model.Movable.Direction;
 import projectblast.model.core.ICore;
-import projectblast.model.explosive.Explosive;
-import projectblast.model.hazard.Hazard;
-import projectblast.model.hero.Hero;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.MovableEntity;
+import projectblast.model.entity.Tower;
+import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.entity.hazard.Hazard;
+import projectblast.model.entity.hero.Hero;
 import projectblast.model.powerups.SpeedPowerUp;
 
 

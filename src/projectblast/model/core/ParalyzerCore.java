@@ -1,13 +1,13 @@
 package projectblast.model.core;
 
-import projectblast.model.Block;
 import projectblast.model.Constants;
-import projectblast.model.DestructibleBlock;
-import projectblast.model.Entity;
 import projectblast.model.Movable;
 import projectblast.model.Position;
 import projectblast.model.Movable.Direction;
-import projectblast.model.hazard.Paralyzer;
+import projectblast.model.entity.Block;
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.hazard.Paralyzer;
 
 public class ParalyzerCore extends Core {
 	private Direction direction;

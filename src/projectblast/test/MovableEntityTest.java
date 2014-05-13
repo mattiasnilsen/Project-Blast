@@ -7,6 +7,7 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.*;
 import projectblast.model.Movable.Direction;
+import projectblast.model.entity.MovableEntity;
 
 public class MovableEntityTest {
 

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import projectblast.model.Position;
-import projectblast.model.SolidBlock;
+import projectblast.model.entity.SolidBlock;
 
 public class EntityTest {
 

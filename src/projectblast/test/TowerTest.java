@@ -8,8 +8,9 @@ import org.newdawn.slick.Color;
 
 import projectblast.model.*;
 import projectblast.model.Team.Side;
-import projectblast.model.Tower.CannonStatus;
-import projectblast.model.hero.*;
+import projectblast.model.entity.Tower;
+import projectblast.model.entity.Tower.CannonStatus;
+import projectblast.model.entity.hero.*;
 
 public class TowerTest {
 

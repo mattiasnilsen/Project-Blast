@@ -1,6 +1,6 @@
 package projectblast.model.powerups;
 
-import projectblast.model.hero.Hero;
+import projectblast.model.entity.hero.Hero;
 
 /**
  * Interface for all powerups

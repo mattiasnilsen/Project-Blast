@@ -1,6 +1,8 @@
-package projectblast.model;
+package projectblast.model.entity;
 
-import projectblast.model.explosive.Fireball;
+import projectblast.model.Id;
+import projectblast.model.Position;
+import projectblast.model.entity.explosive.Fireball;
 
 /**
  *

@@ -3,15 +3,15 @@ package projectblast.model.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import projectblast.model.Block;
 import projectblast.model.Constants;
-import projectblast.model.DestructibleBlock;
-import projectblast.model.Entity;
 import projectblast.model.Movable;
 import projectblast.model.Position;
-import projectblast.model.Tower;
 import projectblast.model.Movable.Direction;
-import projectblast.model.hazard.Explosion;
+import projectblast.model.entity.Block;
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.Tower;
+import projectblast.model.entity.hazard.Explosion;
 
 public class ExplosionCore extends Core {
 	private int power;

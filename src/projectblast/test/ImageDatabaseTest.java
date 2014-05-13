@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import projectblast.model.DestructibleBlock;
-import projectblast.model.Entity;
 import projectblast.model.Position;
-import projectblast.model.Tower;
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.Tower;
 import projectblast.view.ImageDatabase;
 
 public class ImageDatabaseTest {
