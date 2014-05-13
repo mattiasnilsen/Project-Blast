@@ -2,7 +2,7 @@ package projectblast.model.entity;
 
 import org.newdawn.slick.geom.Rectangle;
 
-import projectblast.model.Position;
+import projectblast.model.helper.Position;
 
 /**
  * @author Axel Savén Östebo

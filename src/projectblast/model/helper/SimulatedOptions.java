@@ -1,10 +1,17 @@
-package projectblast.model;
+package projectblast.model.helper;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import org.newdawn.slick.Color;
 
+import projectblast.model.BlastModel;
+import projectblast.model.IBlastModel;
+import projectblast.model.Movable;
+import projectblast.model.Player;
+import projectblast.model.Team;
+import projectblast.model.Movable.Direction;
+import projectblast.model.Team.Side;
 import projectblast.model.entity.hero.Bomber;
 import projectblast.model.entity.hero.Brute;
 import projectblast.model.entity.hero.Mage;

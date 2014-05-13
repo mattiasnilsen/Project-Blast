@@ -1,4 +1,4 @@
-package projectblast.model;
+package projectblast.model.helper;
 
 public enum Id {
 	BOMB,

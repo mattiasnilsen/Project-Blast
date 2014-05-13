@@ -2,10 +2,10 @@ package projectblast.model.entity;
 
 import org.newdawn.slick.geom.Rectangle;
 
-import projectblast.model.Constants;
-import projectblast.model.Id;
-import projectblast.model.Position;
 import projectblast.model.Updatable;
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.Id;
+import projectblast.model.helper.Position;
 
 public abstract class Entity implements Updatable, Comparable<Entity>{
 	

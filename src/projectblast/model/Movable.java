@@ -1,5 +1,7 @@
 package projectblast.model;
 
+import projectblast.model.helper.Position;
+
 /**
  * @author franton
  * revised by Mattias Nilsen

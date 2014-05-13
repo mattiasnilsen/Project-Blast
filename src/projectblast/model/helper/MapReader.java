@@ -1,4 +1,4 @@
-package projectblast.model;
+package projectblast.model.helper;
 
 import java.util.LinkedList;
 import java.util.List;

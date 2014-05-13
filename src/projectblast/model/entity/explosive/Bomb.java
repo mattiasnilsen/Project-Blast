@@ -3,6 +3,8 @@ package projectblast.model.entity.explosive;
 import projectblast.model.*;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.hero.*;
+import projectblast.model.helper.Id;
+import projectblast.model.helper.Position;
 
 
 

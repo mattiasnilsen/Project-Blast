@@ -1,11 +1,11 @@
 package projectblast.model.core;
 
-import projectblast.model.Constants;
 import projectblast.model.Movable;
-import projectblast.model.Position;
 import projectblast.model.Movable.Direction;
 import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.Entity;
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.Position;
 
 public class ShockwaveCore extends Core implements ICore {
 	

@@ -14,12 +14,12 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Constants;
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.hazard.Explosion;
+import projectblast.model.helper.Constants;
 
 /**
  * 

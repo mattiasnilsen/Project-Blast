@@ -6,10 +6,10 @@ import java.util.List;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
-import projectblast.model.Constants;
 import projectblast.model.IBlastModel;
 import projectblast.model.Team;
 import projectblast.model.Player;
+import projectblast.model.helper.Constants;
 
 
 public class StatusBar {

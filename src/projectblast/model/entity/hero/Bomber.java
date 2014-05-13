@@ -2,12 +2,12 @@ package projectblast.model.entity.hero;
 
 
 import projectblast.model.BlastModel;
-import projectblast.model.Id;
-import projectblast.model.Position;
 import projectblast.model.Team;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.explosive.Bomb;
 import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.helper.Id;
+import projectblast.model.helper.Position;
 import projectblast.model.powerups.*;
 
 

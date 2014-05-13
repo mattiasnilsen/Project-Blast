@@ -13,6 +13,7 @@ import projectblast.model.Team.Side;
 import projectblast.model.Movable.*;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hero.*;
+import projectblast.model.helper.Position;
 import projectblast.model.powerups.AmmoPowerUp;
 
 public class MageTest {

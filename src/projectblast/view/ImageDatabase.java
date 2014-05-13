@@ -22,6 +22,7 @@ import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hazard.Explosion;
 import projectblast.model.entity.hazard.Paralyzer;
 import projectblast.model.entity.hero.Hero;
+import projectblast.model.helper.Id;
 
 /**
  * 
