@@ -2,6 +2,7 @@ package projectblast.model.core;
 
 import projectblast.model.Block;
 import projectblast.model.Constants;
+import projectblast.model.DestructibleBlock;
 import projectblast.model.Entity;
 import projectblast.model.Movable;
 import projectblast.model.Position;
@@ -19,7 +20,7 @@ public class ParalyzerCore extends Core {
 	}
 	
 	public boolean step(Entity entity){
-		if(entity instanceof Block){
+		if(entity instanceof Block || entity instanceof DestructibleBlock){
 			setCreated(true);
 			return false;
 		}
