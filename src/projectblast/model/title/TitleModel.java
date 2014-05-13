@@ -1,7 +1,11 @@
-package projectblast.model;
+package projectblast.model.title;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
+
+import projectblast.model.ITitleModel;
+import projectblast.model.ITitleModel.Hero;
+import projectblast.model.ITitleModel.Map;
 
 public class TitleModel implements ITitleModel {
 	private int selectedColumn = 0;
