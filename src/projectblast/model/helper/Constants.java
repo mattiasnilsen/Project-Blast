@@ -16,4 +16,7 @@ public final class Constants {
 	public static final int TOWER_POWERUP_INTERVAL = 10 * FRAMERATE;
 	
 	public static final int HERO_START_SPEED = 0;
+	
+	
+	public static final String IMAGE_LIST_PATH = "data/image/images.txt";
 }

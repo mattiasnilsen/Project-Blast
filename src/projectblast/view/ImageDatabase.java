@@ -21,6 +21,7 @@ import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hazard.Explosion;
 import projectblast.model.entity.hazard.Paralyzer;
 import projectblast.model.entity.hero.Hero;
+import projectblast.model.helper.Constants;
 import projectblast.model.helper.Id;
 
 /**
@@ -39,23 +40,30 @@ public class ImageDatabase {
 	private void init() {
 		Scanner reader = null;
 		try {
-			reader = new Scanner(new File("data/image/images.txt"));
+			reader = new Scanner(new File(Constants.IMAGE_LIST_PATH));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		while(reader.hasNext()){
-			String key = reader.next();
-			Image value = null;
-			String s = "null";
-			try {
-				s = reader.next();
-				value = new Image(s);
-			} catch (SlickException e) {
-				throw new NullPointerException(s + " is not a valid image.");
+			String row = reader.nextLine();
+			if(row.isEmpty()) { //Ignore empty rows.
+				continue;
 			}
-			images.put(key, value);
+			
+			String[] parts = row.split("\\s+"); //Split the row into a key and a path to an image at one or more whitespace characters.
+
+			String key = parts[0];
+			String imagePath = parts[1];
+			
+			Image image = null;
+			try {
+				image = new Image(imagePath);
+			} catch (SlickException e) {
+				e.printStackTrace();
+			}
+			images.put(key, image);
 		}
-		
+		reader.close();
 	}
 	
 	public Animation getAnimation(Entity entity){
