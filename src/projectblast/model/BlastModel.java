@@ -44,7 +44,7 @@ public class BlastModel implements IBlastModel {
 		this.cores = new ArrayList<ICore>();
 		
 		try {
-			entities.addAll(MapReader.createEntities(this,new TiledMap("data/map/Map.tmx")));
+			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
 
 		} catch (SlickException e) {
 			e.printStackTrace();
@@ -247,22 +247,14 @@ public class BlastModel implements IBlastModel {
 					tower.cycleStatus(50); //TODO Hardcode
 				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
 					cores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
-					tower.cycleStatus(100); //TODO Hardcode
-				} else if(tower.isCannonReadyToReload()){
+					tower.cycleStatus(120); //TODO Hardcode
+				} else if(tower.isCannonReadyToReload()){//Tower is now ready to find new target
 					tower.cycleStatus(0);
 				}
 			}
 			
 		}
 	}
-	
-	/*public static boolean isFree(MovableEntity entity){
-		return isFree(entity,entity.getDirection(),entity.getSpeed());
-	}*/
-	
-	/*public static boolean isFree(Entity entity){
-		return isFree(entity,Direction.NONE, 0);
-	}*/
 	
 	public static boolean isFree(MovableEntity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
@@ -296,6 +288,7 @@ public class BlastModel implements IBlastModel {
 
 	}
 	
+	//TODO Unused Method
 	private List<Entity> getAllIntersectingEntities(Rectangle rectangle) {
 		List<Entity> intersectingEntitys = new ArrayList<Entity>();
 		for(Entity entity : entities) {
@@ -306,6 +299,7 @@ public class BlastModel implements IBlastModel {
 		return intersectingEntitys;
 	}
 	
+	//TODO Unused Method
 	private Entity getClosestEntity(List<Entity> entities, Position pos) {
 		double smallestDistance = Double.MAX_VALUE;
 		Entity ent = null;
