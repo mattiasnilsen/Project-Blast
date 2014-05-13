@@ -1,6 +1,5 @@
 package projectblast.model.entity;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.BlastModel;

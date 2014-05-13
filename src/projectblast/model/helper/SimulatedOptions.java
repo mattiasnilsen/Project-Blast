@@ -10,12 +10,8 @@ import projectblast.model.Direction;
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
 import projectblast.model.Team;
-import projectblast.model.Team.Side;
-import projectblast.model.entity.hero.Bomber;
 import projectblast.model.entity.hero.Brute;
 import projectblast.model.entity.hero.Mage;
-import projectblast.view.BlastView;
-import projectblast.view.IBlastView;
 
 /**
  * @author Axel Savén Östebo

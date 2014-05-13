@@ -144,10 +144,6 @@ public class ImageDatabase {
 		Image[] test = new Image[1];
 		test[0] = image.getSubImage(0, 0, 48, 48);
 		test[0].setImageColor(teamColor.r , teamColor.g, teamColor.b);
-		if(key == "MAGEEAST"){ //testing picture
-			test[1] = image.getSubImage(32, 0, 48, 48);
-			test[1].setImageColor(teamColor.r , teamColor.g, teamColor.b);
-		}
 		
 		 return new Animation(test, 1);
 		// For some reason Animation doesn't use spriteSheets imageColor when drawing

@@ -8,7 +8,6 @@ import projectblast.model.Direction;
 import projectblast.model.Team;
 import projectblast.model.core.ICore;
 import projectblast.model.core.ShockwaveCore;
-import projectblast.model.entity.explosive.Bomb;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.explosive.Fist;
 import projectblast.model.helper.Constants;

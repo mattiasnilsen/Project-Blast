@@ -17,11 +17,9 @@ import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import projectblast.model.BlastModel;
+
 import projectblast.model.Direction;
 import projectblast.model.IBlastModel;
-import projectblast.model.helper.Constants;
-import projectblast.model.helper.Position;
 import projectblast.model.helper.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
@@ -113,7 +111,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		for(int playerID = 1; playerID < keysPressed.size(); ++playerID) {
 		    List<String> keys = keysPressed.get(playerID);
 		    if(!keys.isEmpty()) {
-		        List<Direction> directions = new ArrayList<Direction>();
 		        int totalX = 0;
 		        int totalY = 0;
 		        for(String inputCommand : keys) {

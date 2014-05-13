@@ -28,13 +28,12 @@ public class BlastModelTest {
 	@Test
 	public void testSnapToGrid() {
 		Position pos = new Position(142,193);
-		BlastModel model = new BlastModel();
-		pos = model.snapToGrid(pos);
+		pos = BlastModel.snapToGrid(pos);
 		assertTrue(pos.getX()%32 == 0);
 		assertTrue(pos.getY()%32 == 0);
 		
 		pos = new Position(12,12);
-		pos = model.snapToGrid(pos);
+		pos = BlastModel.snapToGrid(pos);
 		assertTrue(pos.getY()%32 == 0);
 		assertTrue(pos.getY()%32 == 0);
 	}
@@ -46,7 +45,6 @@ public class BlastModelTest {
 	public void testMovePlayer(){
 		List<Player> players = new ArrayList<Player>();
 		Position pos = new Position(1,1);
-		int speed = 1;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(pos,dir,team);
@@ -98,7 +96,6 @@ public class BlastModelTest {
 	public void testIsFree(){
 		List<Player> players = new ArrayList<Player>();
 		Position pos = new Position(1,1);
-		int speed = 1;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(new Position(35,1),dir,team);

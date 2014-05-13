@@ -4,8 +4,6 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Destructible;
 import projectblast.model.Direction;
-import projectblast.model.entity.explosive.Fireball;
-import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Id;
 import projectblast.model.helper.Position;
 

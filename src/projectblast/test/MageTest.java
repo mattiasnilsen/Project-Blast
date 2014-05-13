@@ -10,7 +10,6 @@ import org.newdawn.slick.Color;
 
 import projectblast.model.*;
 import projectblast.model.Team.Side;
-import projectblast.model.Movable.*;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hero.*;
 import projectblast.model.helper.Position;
@@ -21,7 +20,6 @@ public class MageTest {
 	@Test
 	public void testGetSpeed(){
 		Position pos = new Position(1,1);
-		int speed = 1;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(pos,dir,team);
@@ -33,7 +31,6 @@ public class MageTest {
 	@Test
 	public void testDestroy() {
 		Position pos = new Position(1,1);
-		int speed = 100;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(pos,dir,team);
@@ -43,13 +40,11 @@ public class MageTest {
 	@Test
 	public void testAddPowerUp(){
 		Position pos = new Position(1,1);
-		int speed = 100;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(pos,dir,team);
 		AmmoPowerUp apu = new AmmoPowerUp();
 		
-		int ammo = mage.getAmmo();
 		assertTrue(mage.getAmmo() == 3);
 		
 		for (int i = 0; i < 3; i++){
@@ -66,7 +61,6 @@ public class MageTest {
 	@Test
 	public void testPrimaryAbility(){
 	Position pos = new Position(1,1);
-	int speed = 100;
 	Direction dir = Direction.EAST;
 	Team team = new Team("Test", Color.red, Side.LEFT );
 	Hero mage = new Mage(pos,dir,team);

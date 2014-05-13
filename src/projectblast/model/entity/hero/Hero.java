@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
 
-import projectblast.model.BlastModel;
 import projectblast.model.Destructible;
 import projectblast.model.Direction;
 import projectblast.model.Team;

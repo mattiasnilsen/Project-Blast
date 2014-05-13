@@ -3,7 +3,6 @@ package projectblast.test;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import org.junit.Test;
-import projectblast.model.Movable.*;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.Block;
 import projectblast.model.entity.SolidBlock;
@@ -49,8 +48,6 @@ public class ExplosionCoreTest {
 		directionList.add(Direction.NORTH);
 		directionList.add(Direction.SOUTH);
 		SolidBlock sb = new SolidBlock(new Position(32,32));
-		Position pos2;
-		
 		ExplosionCore ec = new ExplosionCore(1, new Position(0,0), 3,directionList);
 		
 		for(int i = 0; i < 13; i++){
@@ -70,7 +67,6 @@ public class ExplosionCoreTest {
 			ec.step(null);
 			ec.create();
 			assertTrue(ec.getParts().size() == i+1);
-			pos2 = ec.getNextPosition();
 
 		}
 		assertTrue(ec.isCreated());

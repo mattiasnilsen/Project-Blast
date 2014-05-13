@@ -9,7 +9,6 @@ import projectblast.model.entity.hero.Hero;
  */
 public class Player {
 
-	private int score;
 	private Hero hero;
 	
 	

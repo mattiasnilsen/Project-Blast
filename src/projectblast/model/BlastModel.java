@@ -1,7 +1,6 @@
 package projectblast.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ import projectblast.model.entity.Entity;
 import projectblast.model.entity.MovableEntity;
 import projectblast.model.entity.Tower;
 import projectblast.model.entity.explosive.Explosive;
-import projectblast.model.entity.hazard.Hazard;
 import projectblast.model.entity.hero.Hero;
 
 import projectblast.model.helper.Constants;

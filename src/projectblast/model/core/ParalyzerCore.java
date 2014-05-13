@@ -3,7 +3,6 @@ package projectblast.model.core;
 import java.util.List;
 
 import projectblast.model.Direction;
-import projectblast.model.Movable;
 import projectblast.model.entity.Block;
 import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.Entity;
