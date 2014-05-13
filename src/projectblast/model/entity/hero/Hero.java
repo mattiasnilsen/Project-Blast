@@ -16,7 +16,7 @@ import projectblast.model.Movable.Direction;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.MovableEntity;
 import projectblast.model.entity.explosive.Explosive;
-import projectblast.model.powerups.IPowerUp;
+import projectblast.model.powerup.IPowerUp;
 
 public abstract class Hero extends MovableEntity implements Destructible{
 	

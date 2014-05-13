@@ -8,7 +8,7 @@ import projectblast.model.Team;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.explosive.Bomb;
 import projectblast.model.entity.explosive.Explosive;
-import projectblast.model.powerups.*;
+import projectblast.model.powerup.*;
 
 
 /**

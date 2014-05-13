@@ -11,9 +11,9 @@ import projectblast.model.core.ShockwaveCore;
 import projectblast.model.entity.explosive.Bomb;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.explosive.Fist;
-import projectblast.model.powerups.AmmoPowerUp;
-import projectblast.model.powerups.RangePowerUp;
-import projectblast.model.powerups.SpeedPowerUp;
+import projectblast.model.powerup.AmmoPowerUp;
+import projectblast.model.powerup.RangePowerUp;
+import projectblast.model.powerup.SpeedPowerUp;
 
 public class Brute extends Hero {
 

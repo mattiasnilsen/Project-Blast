@@ -5,7 +5,7 @@ import projectblast.model.core.ICore;
 import projectblast.model.core.ParalyzerCore;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.explosive.Fireball;
-import projectblast.model.powerups.*;
+import projectblast.model.powerup.*;
 /**
  * 
  * @author franton

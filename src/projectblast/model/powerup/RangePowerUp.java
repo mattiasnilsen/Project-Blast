@@ -1,4 +1,4 @@
-package projectblast.model.powerups;
+package projectblast.model.powerup;
 
 import projectblast.model.entity.hero.Hero;
 /**
