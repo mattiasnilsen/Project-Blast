@@ -15,7 +15,7 @@ import org.newdawn.slick.tiled.TiledMap;
 import projectblast.model.Movable.Direction;
 import projectblast.model.core.ICore;
 import projectblast.model.explosive.Explosive;
-import projectblast.model.hazard.IHazard;
+import projectblast.model.hazard.Hazard;
 import projectblast.model.hero.Hero;
 import projectblast.model.powerups.SpeedPowerUp;
 
@@ -189,12 +189,7 @@ public class BlastModel implements IBlastModel {
 					if(c.step(getIntersectingEntity(new Rectangle(c.getNextPosition().getX()+2, c.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 						c.create();
 					}else if(c.isCreated()) {
-						for (IHazard ib : c.getParts()){
-							if (ib instanceof Entity){
-								Entity e = (Entity)ib;
-								entities.add(e);
-							}
-						}
+						entities.addAll(c.getParts());
 					}
 				}
 			}

@@ -15,7 +15,7 @@ import projectblast.model.core.Core;
 import projectblast.model.core.ParalyzerCore;
 import projectblast.model.core.ShockwaveCore;
 import projectblast.model.explosive.Fireball;
-import projectblast.model.hazard.IHazard;
+import projectblast.model.hazard.Hazard;
 import projectblast.model.hazard.Paralyzer;
 import projectblast.model.hero.Mage;
 
@@ -67,10 +67,10 @@ public class CoreTest {
 		Core c = new ParalyzerCore(20, new Position(1,1), Direction.EAST);
 		c.create();
 		c.create();
-		List<IHazard> l = c.getParts();
+		List<Hazard> l = c.getParts();
 		assertFalse(l.isEmpty());
 		assertTrue(l.size() == 2);
-		IHazard h = l.get(0);
+		Hazard h = l.get(0);
 		Paralyzer p = (Paralyzer) h;
 		assertTrue(p.getPosition().equals(new Position(33,1)));
 		h = l.get(1);

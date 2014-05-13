@@ -8,7 +8,7 @@ import projectblast.model.Id;
 import projectblast.model.Movable;
 import projectblast.model.Position;
 
-public class Paralyzer extends Entity implements IHazard {
+public class Paralyzer extends Hazard {
 	
 	public Paralyzer(Position position) {
 		super(position,  new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));

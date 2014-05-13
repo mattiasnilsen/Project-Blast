@@ -10,7 +10,7 @@ import projectblast.model.Position;
 import projectblast.model.hero.Hero;
 
 
-public class Explosion extends Entity implements IHazard {
+public class Explosion extends Hazard {
 	
 	public Explosion(Position position) {
 		super(position,  new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));

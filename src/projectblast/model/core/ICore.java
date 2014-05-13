@@ -4,7 +4,7 @@ import java.util.List;
 
 import projectblast.model.Entity;
 import projectblast.model.Position;
-import projectblast.model.hazard.IHazard;
+import projectblast.model.hazard.Hazard;
 /**
  * Common interface for all Cores.
  * A core is something that creates a chain of objects in different directions.
@@ -26,7 +26,7 @@ public interface ICore {
 	 * Returns all of this cores parts
 	 * @return this cores parts.
 	 */
-	public List<IHazard> getParts();
+	public List<Hazard> getParts();
 	/**
 	 * Are all parts of this core created.
 	 * @return true if all parts are created.

@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import projectblast.model.Position;
-import projectblast.model.hazard.IHazard;
+import projectblast.model.hazard.Hazard;
 
 public abstract class Core implements ICore {
 
 	private int lifeTime;
 	private boolean isCreated;
 	private Position startPos;
-	private List<IHazard> parts;
+	private List<Hazard> parts;
 	
 	public Core(int lifeTime, Position startPos) {
 		this.lifeTime = lifeTime;
 		this.startPos = startPos;
-		this.parts = new ArrayList<IHazard>();
+		this.parts = new ArrayList<Hazard>();
 	}
 	
 	@Override
@@ -30,11 +30,11 @@ public abstract class Core implements ICore {
 	}
 
 	@Override
-	public List<IHazard> getParts() {
+	public List<Hazard> getParts() {
 		return parts;
 	}
 	
-	public void addPart(IHazard part) {
+	public void addPart(Hazard part) {
 		parts.add(part);
 	}
 
