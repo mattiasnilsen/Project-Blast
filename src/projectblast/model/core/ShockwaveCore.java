@@ -7,7 +7,7 @@ import projectblast.model.entity.Entity;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Position;
 
-public class ShockwaveCore extends Core implements ICore {
+public class ShockwaveCore extends Core{
 	
 	private Direction direction;
 	private int distance;
