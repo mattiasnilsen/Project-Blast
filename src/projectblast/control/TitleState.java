@@ -15,7 +15,6 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.ITitleModel;
 import projectblast.model.TitleModel;
-import projectblast.model.Movable.Direction;
 import projectblast.view.TitleView;
 
 public class TitleState extends BasicGameState implements InputProviderListener {

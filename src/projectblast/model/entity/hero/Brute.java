@@ -1,8 +1,11 @@
 package projectblast.model.entity.hero;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import projectblast.model.BlastModel;
+import projectblast.model.Direction;
 import projectblast.model.Team;
-import projectblast.model.Movable.Direction;
 import projectblast.model.core.ICore;
 import projectblast.model.core.ShockwaveCore;
 import projectblast.model.entity.explosive.Bomb;
@@ -48,8 +51,9 @@ public class Brute extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		
-		return new ShockwaveCore(20, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), getDirection());
+		List<Direction> tmp = new ArrayList<Direction>();
+		tmp.add(getDirection());
+		return new ShockwaveCore(20, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), tmp);
 	}
 
 }

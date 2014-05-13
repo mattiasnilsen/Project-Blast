@@ -12,9 +12,9 @@ import org.newdawn.slick.Color;
 
 
 import projectblast.model.BlastModel;
+import projectblast.model.Direction;
 import projectblast.model.Player;
 import projectblast.model.Team;
-import projectblast.model.Movable.Direction;
 import projectblast.model.Team.Side;
 import projectblast.model.entity.Block;
 import projectblast.model.entity.SolidBlock;

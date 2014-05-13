@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Movable.Direction;
+import projectblast.model.Direction;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.Entity;

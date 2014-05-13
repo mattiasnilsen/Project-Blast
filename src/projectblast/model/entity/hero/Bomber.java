@@ -2,6 +2,7 @@ package projectblast.model.entity.hero;
 
 
 import projectblast.model.BlastModel;
+import projectblast.model.Direction;
 import projectblast.model.Team;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.explosive.Bomb;
