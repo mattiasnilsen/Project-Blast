@@ -12,9 +12,7 @@ import org.newdawn.slick.command.InputProviderListener;
 import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
 import projectblast.model.ITitleModel;
-import projectblast.model.Movable.Direction;
 import projectblast.model.title.TitleModel;
 import projectblast.view.TitleView;
 

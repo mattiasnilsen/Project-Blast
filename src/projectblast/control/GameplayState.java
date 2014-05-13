@@ -18,8 +18,8 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.BlastModel;
+import projectblast.model.Direction;
 import projectblast.model.IBlastModel;
-import projectblast.model.Movable.Direction;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Position;
 import projectblast.model.helper.SimulatedOptions;

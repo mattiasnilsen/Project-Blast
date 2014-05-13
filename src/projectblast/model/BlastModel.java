@@ -12,7 +12,6 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-import projectblast.model.Movable.Direction;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.MovableEntity;

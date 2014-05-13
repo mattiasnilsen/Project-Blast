@@ -1,6 +1,7 @@
 package projectblast.model.entity.explosive;
 
 import projectblast.model.BlastModel;
+import projectblast.model.Direction;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.hazard.Paralyzer;
 import projectblast.model.entity.hero.Hero;

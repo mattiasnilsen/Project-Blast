@@ -7,8 +7,8 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.BlastModel;
 import projectblast.model.Destructible;
+import projectblast.model.Direction;
 import projectblast.model.Movable;
-import projectblast.model.Movable.Direction;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.Entity;

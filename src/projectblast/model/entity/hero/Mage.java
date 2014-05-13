@@ -1,5 +1,8 @@
 package projectblast.model.entity.hero;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import projectblast.model.*;
 import projectblast.model.core.ICore;
 import projectblast.model.core.ParalyzerCore;
@@ -36,7 +39,9 @@ public class Mage extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), getDirection());
+		List<Direction> tmp = new ArrayList<Direction>();
+		tmp.add(getDirection());
+		return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), tmp);
 	}
 
 	@Override
