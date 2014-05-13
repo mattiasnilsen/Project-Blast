@@ -8,7 +8,8 @@ import projectblast.model.entity.explosive.Fireball;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Id;
 import projectblast.model.helper.Position;
-import projectblast.model.powerups.*;
+import projectblast.model.powerup.*;
+
 /**
  * 
  * @author franton

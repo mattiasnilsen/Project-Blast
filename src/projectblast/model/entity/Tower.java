@@ -9,7 +9,7 @@ import projectblast.model.Destructible;
 import projectblast.model.Movable;
 import projectblast.model.Team;
 import projectblast.model.Movable.Direction;
-import projectblast.model.powerups.IPowerUp;
+import projectblast.model.powerup.IPowerUp;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.explosive.*;
 import projectblast.model.entity.hazard.Explosion;

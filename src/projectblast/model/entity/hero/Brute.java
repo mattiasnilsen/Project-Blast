@@ -11,9 +11,10 @@ import projectblast.model.entity.explosive.Fist;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Id;
 import projectblast.model.helper.Position;
-import projectblast.model.powerups.AmmoPowerUp;
-import projectblast.model.powerups.RangePowerUp;
-import projectblast.model.powerups.SpeedPowerUp;
+import projectblast.model.powerup.AmmoPowerUp;
+import projectblast.model.powerup.RangePowerUp;
+import projectblast.model.powerup.SpeedPowerUp;
+
 
 public class Brute extends Hero {
 
