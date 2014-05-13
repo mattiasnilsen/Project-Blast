@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="projectblast.model.entity.DestructibleBlock" project="tda367" 
     file="/tda367/src/projectblast/model/entity/DestructibleBlock.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1745" y="159"/>    
+    <position height="-1" width="-1" x="1725" y="157"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="projectblast.model.entity.SolidBlock" project="tda367" 
     file="/tda367/src/projectblast/model/entity/SolidBlock.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1584" y="146"/>    
+    <position height="-1" width="-1" x="1592" y="161"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="projectblast.model.entity.Block" project="tda367" 
     file="/tda367/src/projectblast/model/entity/Block.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="50" width="102" x="1418" y="122"/>    
+    <position height="50" width="102" x="1420" y="137"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="projectblast.model.entity.hero.Mage" project="tda367" 
     file="/tda367/src/projectblast/model/entity/hero/Mage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1681" y="468"/>    
+    <position height="-1" width="-1" x="1480" y="384"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="projectblast.model.entity.hero.Hero" project="tda367" 
     file="/tda367/src/projectblast/model/entity/hero/Hero.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1687" y="315"/>    
+    <position height="-1" width="-1" x="1567" y="314"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="projectblast.model.entity.hero.Brute" project="tda367" 
     file="/tda367/src/projectblast/model/entity/hero/Brute.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1758" y="411"/>    
+    <position height="-1" width="-1" x="1625" y="381"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="projectblast.model.entity.hero.Bomber" project="tda367" 
     file="/tda367/src/projectblast/model/entity/hero/Bomber.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1602" y="411"/>    
+    <position height="-1" width="-1" x="1540" y="442"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="projectblast.model.entity.hazard.Paralyzer" project="tda367" 
     file="/tda367/src/projectblast/model/entity/hazard/Paralyzer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1256" y="327"/>    
+    <position height="-1" width="-1" x="1141" y="361"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="projectblast.model.entity.explosive.Explosive" project="tda367" 
     file="/tda367/src/projectblast/model/entity/explosive/Explosive.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="49" width="195" x="1844" y="296"/>    
+    <position height="49" width="195" x="1724" y="292"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="projectblast.model.entity.explosive.Fireball" project="tda367" 
     file="/tda367/src/projectblast/model/entity/explosive/Fireball.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1961" y="406"/>    
+    <position height="-1" width="-1" x="1818" y="442"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="projectblast.model.entity.explosive.Fist" project="tda367" 
     file="/tda367/src/projectblast/model/entity/explosive/Fist.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1958" y="526"/>    
+    <position height="-1" width="-1" x="1910" y="387"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="projectblast.model.entity.explosive.Bomb" project="tda367" 
     file="/tda367/src/projectblast/model/entity/explosive/Bomb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1961" y="466"/>    
+    <position height="-1" width="-1" x="1764" y="387"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="projectblast.model.entity.hazard.Explosion" project="tda367" 
     file="/tda367/src/projectblast/model/entity/hazard/Explosion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1120" y="328"/>    
+    <position height="-1" width="-1" x="1140" y="304"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -156,7 +156,7 @@
   </class>  
   <class id="18" language="java" name="projectblast.model.Player" project="tda367" 
     file="/tda367/src/projectblast/model/Player.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1913" y="85"/>    
+    <position height="-1" width="-1" x="1800" y="67"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -165,7 +165,7 @@
   </class>  
   <class id="19" language="java" name="projectblast.model.core.ParalyzerCore" project="tda367" 
     file="/tda367/src/projectblast/model/core/ParalyzerCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="953" y="399"/>    
+    <position height="-1" width="-1" x="995" y="297"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -174,7 +174,7 @@
   </class>  
   <class id="20" language="java" name="projectblast.model.core.Core" project="tda367" 
     file="/tda367/src/projectblast/model/core/Core.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1005" y="216"/>    
+    <position height="-1" width="-1" x="959" y="216"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -183,7 +183,7 @@
   </class>  
   <interface id="21" language="java" name="projectblast.model.core.ICore" project="tda367" 
     file="/tda367/src/projectblast/model/core/ICore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1007" y="138"/>    
+    <position height="-1" width="-1" x="960" y="139"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -192,7 +192,7 @@
   </interface>  
   <class id="22" language="java" name="projectblast.model.core.ShockwaveCore" project="tda367" 
     file="/tda367/src/projectblast/model/core/ShockwaveCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="953" y="286"/>    
+    <position height="-1" width="-1" x="868" y="294"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -201,7 +201,7 @@
   </class>  
   <class id="23" language="java" name="projectblast.model.core.ExplosionCore" project="tda367" 
     file="/tda367/src/projectblast/model/core/ExplosionCore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="953" y="343"/>    
+    <position height="-1" width="-1" x="900" y="355"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -210,7 +210,7 @@
   </class>  
   <interface id="24" language="java" name="projectblast.model.powerup.IPowerUp" project="tda367" 
     file="/tda367/src/projectblast/model/powerup/IPowerUp.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1368" y="407"/>    
+    <position height="-1" width="-1" x="1274" y="514"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -219,7 +219,7 @@
   </interface>  
   <class id="25" language="java" name="projectblast.model.powerup.SpeedPowerUp" project="tda367" 
     file="/tda367/src/projectblast/model/powerup/SpeedPowerUp.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1359" y="473"/>    
+    <position height="-1" width="-1" x="1275" y="586"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -228,7 +228,7 @@
   </class>  
   <class id="26" language="java" name="projectblast.model.powerup.AmmoPowerUp" project="tda367" 
     file="/tda367/src/projectblast/model/powerup/AmmoPowerUp.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1235" y="476"/>    
+    <position height="-1" width="-1" x="1146" y="585"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -237,7 +237,7 @@
   </class>  
   <class id="27" language="java" name="projectblast.model.powerup.RangePowerUp" project="tda367" 
     file="/tda367/src/projectblast/model/powerup/RangePowerUp.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1485" y="471"/>    
+    <position height="-1" width="-1" x="1403" y="585"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -264,7 +264,7 @@
   </interface>  
   <class id="30" language="java" name="projectblast.model.Team" project="tda367" 
     file="/tda367/src/projectblast/model/Team.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1477" y="308"/>    
+    <position height="-1" width="-1" x="1551" y="587"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -291,7 +291,7 @@
   </enumeration>  
   <interface id="33" language="java" name="projectblast.model.Destructible" project="tda367" 
     file="/tda367/src/projectblast/model/Destructible.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1992" y="194"/>    
+    <position height="-1" width="-1" x="1917" y="70"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -307,257 +307,294 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <realization id="35">    
+  <enumeration id="35" language="java" name="projectblast.model.Direction" project="tda367" 
+    file="/tda367/src/projectblast/model/Direction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="959" y="515"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </enumeration>  
+  <realization id="36">    
     <end type="SOURCE" refId="28"/>    
     <end type="TARGET" refId="34"/>  
   </realization>  
-  <realization id="36">    
+  <realization id="37">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="33"/>  
   </realization>  
-  <association id="37">    
+  <association id="38">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="38" name="explosives"/>      
-      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
+      <attribute id="39" name="explosives"/>      
+      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="40">    
+  <association id="41">    
+    <bendpoint x="1345" y="405"/>    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="41" name="team"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
+      <attribute id="42" name="team"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="30" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="43">    
+  <generalization id="44">    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="11"/>  
   </generalization>  
-  <generalization id="44">    
+  <generalization id="45">    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="45">    
+  <generalization id="46">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <generalization id="46">    
+  <association id="47">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="48" name="directionList"/>      
+      <multiplicity id="49" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="50">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <generalization id="47">    
+  <generalization id="51">    
     <end type="SOURCE" refId="22"/>    
     <end type="TARGET" refId="20"/>  
   </generalization>  
-  <generalization id="48">    
+  <generalization id="52">    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="11"/>  
   </generalization>  
-  <realization id="49">    
+  <realization id="53">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="29"/>  
   </realization>  
-  <generalization id="50">    
+  <generalization id="54">    
     <end type="SOURCE" refId="19"/>    
     <end type="TARGET" refId="20"/>  
   </generalization>  
-  <association id="51">    
+  <association id="55">    
     <end type="SOURCE" refId="30" navigable="false">      
-      <attribute id="52" name="neutralTeam">        
-        <position height="16" width="65" x="1464" y="342"/>      
+      <attribute id="56" name="neutralTeam">        
+        <position height="16" width="65" x="1538" y="621"/>      
       </attribute>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
+      <multiplicity id="57" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="30" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="54">    
+  <generalization id="58">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <realization id="55">    
+  <realization id="59">    
     <end type="SOURCE" refId="27"/>    
     <end type="TARGET" refId="24"/>  
   </realization>  
-  <association id="56">    
-    <bendpoint x="1802" y="346"/>    
+  <association id="60">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="57" name="owner">        
-        <position height="16" width="35" x="1803" y="346"/>      
+      <attribute id="61" name="owner">        
+        <position height="16" width="35" x="1684" y="339"/>      
       </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
+      <multiplicity id="62" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="59">    
-    <bendpoint x="1854" y="215"/>    
+  <association id="63">    
+    <bendpoint x="1900" y="233"/>    
     <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="60" name="hero"/>      
-      <multiplicity id="61" minimum="0" maximum="1"/>    
+      <attribute id="64" name="hero"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="62">    
+  <generalization id="66">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <generalization id="63">    
+  <generalization id="67">    
     <end type="SOURCE" refId="23"/>    
     <end type="TARGET" refId="20"/>  
   </generalization>  
-  <realization id="64">    
+  <realization id="68">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="31"/>  
   </realization>  
-  <association id="65">    
-    <bendpoint x="1893" y="126"/>    
+  <association id="69">    
+    <bendpoint x="1807" y="135"/>    
     <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="66" name="explosives"/>      
-      <multiplicity id="67" minimum="0" maximum="2147483647"/>    
+      <attribute id="70" name="explosives"/>      
+      <multiplicity id="71" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="68">    
+  <realization id="72">    
     <end type="SOURCE" refId="25"/>    
     <end type="TARGET" refId="24"/>  
   </realization>  
-  <realization id="69">    
+  <realization id="73">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="33"/>  
   </realization>  
-  <association id="70">    
+  <association id="74">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="71" name="lastExplosion"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
+      <attribute id="75" name="lastExplosion"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="73">    
+  <association id="77">    
+    <bendpoint x="1340" y="390"/>    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="74" name="powerUps"/>      
-      <multiplicity id="75" minimum="0" maximum="2147483647"/>    
+      <attribute id="78" name="powerUps"/>      
+      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="76">    
+  <association id="80">    
     <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="77" name="entities"/>      
-      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+      <attribute id="81" name="entities"/>      
+      <multiplicity id="82" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="79">    
+  <generalization id="83">    
     <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="80">    
+  <generalization id="84">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <generalization id="81">    
+  <generalization id="85">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
-  <realization id="82">    
+  <realization id="86">    
     <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="33"/>  
   </realization>  
-  <generalization id="83">    
+  <generalization id="87">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <generalization id="84">    
+  <generalization id="88">    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="85">    
+  <generalization id="89">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
-  <association id="86">    
+  <association id="90">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="87" name="powerUp"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
+      <attribute id="91" name="powerUp"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="89">    
+  <generalization id="93">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
-  <realization id="90">    
+  <association id="94">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="95" name="direction"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="97">    
+    <bendpoint x="1926" y="249"/>    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="33"/>  
   </realization>  
-  <association id="91">    
+  <association id="98">    
     <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="92" name="players"/>      
-      <multiplicity id="93" minimum="0" maximum="2147483647"/>    
+      <attribute id="99" name="players"/>      
+      <multiplicity id="100" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="94">    
+  <association id="101">    
     <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="95" name="towers"/>      
-      <multiplicity id="96" minimum="0" maximum="2147483647"/>    
+      <attribute id="102" name="towers"/>      
+      <multiplicity id="103" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="97">    
+  <association id="104">    
     <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="98" name="parts"/>      
-      <multiplicity id="99" minimum="0" maximum="2147483647"/>    
+      <attribute id="105" name="parts"/>      
+      <multiplicity id="106" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="100">    
+  <generalization id="107">    
     <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <realization id="101">    
+  <realization id="108">    
     <end type="SOURCE" refId="20"/>    
     <end type="TARGET" refId="21"/>  
   </realization>  
-  <realization id="102">    
+  <association id="109">    
+    <bendpoint x="1365" y="334"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="110" name="cannonDir"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="112">    
     <end type="SOURCE" refId="26"/>    
     <end type="TARGET" refId="24"/>  
   </realization>  
-  <generalization id="103">    
+  <generalization id="113">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <association id="104">    
+  <association id="114">    
+    <bendpoint x="1412" y="442"/>    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="105" name="owner"/>      
-      <multiplicity id="106" minimum="0" maximum="1"/>    
+      <attribute id="115" name="owner"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="30" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="107">    
+  <association id="117">    
     <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="108" name="cores"/>      
-      <multiplicity id="109" minimum="0" maximum="2147483647"/>    
+      <attribute id="118" name="cores"/>      
+      <multiplicity id="119" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="110">    
+  <association id="120">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="111" name="name"/>      
-      <multiplicity id="112" minimum="0" maximum="1"/>    
+      <attribute id="121" name="name"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="32" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

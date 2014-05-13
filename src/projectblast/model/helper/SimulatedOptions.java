@@ -24,7 +24,7 @@ import projectblast.view.IBlastView;
  */
 public final class SimulatedOptions {
 	private static IBlastModel model = null;
-	private static IBlastView view = null;
+	//private static IBlastView view = null;
 
 	/**
 	 * Returns a simulated list of players. This will later be done by the users before matches.
@@ -53,11 +53,11 @@ public final class SimulatedOptions {
 	 * Returns a simulated view as a temporary source
 	 * @return View
 	 */
-	public static IBlastView getSimulatedView(){
+	/*public static IBlastView getSimulatedView(){
 		if (view == null){
 			view = new BlastView(getSimulatedModel());
 		}
 		return view;
-	}
+	}*/
 
 }

@@ -52,7 +52,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     public GameplayState()  {
     	//TODO Remove simulation when options menu is complete
     	model = SimulatedOptions.getSimulatedModel();
-    	view  = SimulatedOptions.getSimulatedView();
+    	view  = new BlastView(model);
+    	//SimulatedOptions.getSimulatedView();
     	
     	keysPressed = new ArrayList<List<String>>();
     	for(int i = 0; i < 3; ++i) {//TODO Change 3 to number of players + 1.
