@@ -1,4 +1,4 @@
-package projectblast.model;
+package projectblast.model.title;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;

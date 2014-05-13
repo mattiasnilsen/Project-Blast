@@ -13,8 +13,8 @@ import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import projectblast.model.ITitleModel;
-import projectblast.model.TitleModel;
+import projectblast.model.title.ITitleModel;
+import projectblast.model.title.TitleModel;
 import projectblast.view.TitleView;
 
 public class TitleState extends BasicGameState implements InputProviderListener {

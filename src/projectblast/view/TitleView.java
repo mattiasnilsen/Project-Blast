@@ -4,7 +4,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import projectblast.model.ITitleModel;
+import projectblast.model.title.ITitleModel;
 
 public class TitleView {
 
