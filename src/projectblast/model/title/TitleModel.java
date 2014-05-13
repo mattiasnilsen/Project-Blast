@@ -6,8 +6,6 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
-import projectblast.model.ITitleModel;
-
 public class TitleModel implements ITitleModel {
 	private int selectedColumn = 0;
 	private int selectedRow = 0;
