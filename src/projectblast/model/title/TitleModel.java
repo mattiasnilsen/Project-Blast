@@ -1,11 +1,12 @@
 package projectblast.model.title;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.ITitleModel;
-import projectblast.model.ITitleModel.Hero;
-import projectblast.model.ITitleModel.Map;
 
 public class TitleModel implements ITitleModel {
 	private int selectedColumn = 0;
@@ -14,10 +15,18 @@ public class TitleModel implements ITitleModel {
 	private Hero player2Hero = Hero.MAGE;
 	private Map selectedMap = Map.FirstMap;
 	
+	private List<Column> columns = new ArrayList<Column>();
 	
 	private boolean selected;
 	
 	public TitleModel() {
+		Column menuColumn = new Column("Menu");
+		menuColumn.addItem(new Item("StartGame"));
+		menuColumn.addItem(new Item("Settings"));
+		menuColumn.addItem(new Item("ExitGame"));
+		
+		columns.add(menuColumn);
+		
 		selected = false;
 	}
 	
@@ -56,6 +65,7 @@ public class TitleModel implements ITitleModel {
 	@Override
 	public void select() {
 		selected = !selected;
+		getColumn(selectedColumn).selectItem(selectedRow);
 	}
 	
 	private void move(int x, int y) {
@@ -63,19 +73,18 @@ public class TitleModel implements ITitleModel {
 			selectedColumn += x;
 			selectedRow += y;
 			
-			if(selectedColumn < 0) {
-				selectedColumn = 0;
-			}
-			if(selectedRow < 0) {
-				selectedRow = 0;
-			}
-			
-			switch(selectedColumn) {
-			case 0:
-				selectedRow = selectedRow % 3;
-				break;
-			}
+			Column column = getColumn(selectedColumn);
+			selectedRow = column.getRowPosition(selectedRow);
 		}
+	}
+	
+	private Column getColumn(int position) {
+		if(position < 0) {
+			position = columns.size() - position + 1;
+		}
+		
+		position = position % columns.size();
+		return columns.get(position);
 	}
 
 	@Override
@@ -87,19 +96,32 @@ public class TitleModel implements ITitleModel {
 	public boolean isSelected() {
 		return selected;
 	}
+	
+	public Item getSelectedItem() {
+		for(Column column : columns) {
+			for(Item item : column.getItems()) {
+				if(item.isSelected()) {
+					return item;
+				}
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta) {
-		if(selected) {
-			switch(selectedRow) {
-			case 0:
-				game.enterState(2);
-				break;
-			case 2:
-				System.exit(0);
-				break;
-			}
+		Item selectedItem = getSelectedItem();
+		if(selectedItem == null) {
+			return;
+		}
+		
+		switch(selectedItem.getName()) {
+		case "StartGame":
+			game.enterState(2);
+			break;
+		case "ExitGame":
+			System.exit(0);
+			break;
 		}
 	}
-	
 }
