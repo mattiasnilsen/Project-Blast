@@ -13,6 +13,7 @@ import projectblast.model.powerup.IPowerUp;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.explosive.*;
 import projectblast.model.entity.hazard.Explosion;
+import projectblast.model.entity.hazard.Hazard;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Id;
@@ -37,7 +38,7 @@ public class Tower extends Entity implements Destructible {
 	private CannonStatus cannonStatus;
 	private int timer;
 	
-	private Explosion lastExplosion = null;
+	private Hazard lastExplosion = null;
 	
 	
 	public enum CannonStatus{
