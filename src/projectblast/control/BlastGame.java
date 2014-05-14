@@ -23,7 +23,6 @@ public class BlastGame extends StateBasedGame{
 		titleState = new TitleState();
 		addState(titleState);
 	    addState(gameplayState);
-	    //enterState(gameplayState.getID());
 	    enterState(titleState.getID());
 	}
 

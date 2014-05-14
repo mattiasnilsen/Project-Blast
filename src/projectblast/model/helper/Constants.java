@@ -13,6 +13,8 @@ public final class Constants {
 	public static final int EXPLOSION_TIME = 30;
 	public static final int PARALYZER_TIME = 30;
 	
+	public static final int FIST_TIME = 20;
+	
 	public static final int STUN_DURATION = 60;
 	
 	public static final int TOWER_STARTING_HEALTH = 3;
@@ -22,4 +24,7 @@ public final class Constants {
 	
 	
 	public static final String IMAGE_LIST_PATH = "data/image/images.txt";
+	
+	public static final int TITLE_STATE_ID = 1;
+	public static final int GAME_STATE_ID = 2;
 }
