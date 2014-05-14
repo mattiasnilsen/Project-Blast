@@ -88,7 +88,7 @@ public class BlastModel implements IBlastModel {
 		if(explosive != null){
 			entities.add(explosive);
 		}
-		System.out.println("PrimaryClicked");
+		System.out.println("Player " + playerID + ": PrimaryClicked");
 		
 	}
 
@@ -99,7 +99,7 @@ public class BlastModel implements IBlastModel {
 			cores.add(tmp);
 		}
 		//createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
-		System.out.println("SecondaryClicked");
+		System.out.println("Player " + playerID + ": SecondaryClicked");
 	}
 
 	@Override
@@ -124,8 +124,13 @@ public class BlastModel implements IBlastModel {
 	public void update(GameContainer gc, StateBasedGame game, int delta){
 		gameOver();
 		tick++;
-		if (tick%Constants.FRAMERATE == 0){
+		if (tick % Constants.FRAMERATE == 0){
 			shiftBalance(getTowerBalance());
+		}
+		if (tick % 4 == 0){
+			for (Player p: players){
+				p.getHero().increaseMana(1);
+			}
 		}
 		
 		handleEntities();

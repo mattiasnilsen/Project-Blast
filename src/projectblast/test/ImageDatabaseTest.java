@@ -8,6 +8,7 @@ import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.Tower;
 import projectblast.model.helper.Position;
+import projectblast.model.powerup.SpeedPowerUp;
 import projectblast.view.ImageDatabase;
 
 public class ImageDatabaseTest {
@@ -21,7 +22,7 @@ public class ImageDatabaseTest {
 	public void testGetAnimation(){
 		ImageDatabase i = new ImageDatabase();
 		Entity d = new DestructibleBlock(new Position(13,37));
-		Entity t = new Tower(new Position(11,11));
+		Entity t = new Tower(new SpeedPowerUp(),new Position(11,11));
 		
 		assertFalse( i.getAnimation(d).equals(i.getAnimation(t)) );
 		

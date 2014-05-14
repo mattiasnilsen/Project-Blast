@@ -13,6 +13,7 @@ import projectblast.model.entity.Tower.CannonStatus;
 import projectblast.model.entity.hero.*;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Position;
+import projectblast.model.powerup.SpeedPowerUp;
 
 public class TowerTest {
 
@@ -20,7 +21,7 @@ public class TowerTest {
 	
 	@Before
 	public void before() {
-		tower = new Tower(new Position(1, 1));
+		tower = new Tower(new SpeedPowerUp(), new Position(1, 1));
 	}
 	
 	@Test
@@ -62,7 +63,7 @@ public class TowerTest {
 	
 	@Test
 	public void testCycleStatus(){
-		Tower t = new Tower(new Position(33,33));
+		Tower t = new Tower(new SpeedPowerUp(), new Position(33,33));
 		assertTrue(t.getStatus() == CannonStatus.WAITING);
 		t.cycleStatus(20);
 		assertTrue(t.getStatus() == CannonStatus.READYING);

@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import projectblast.model.IBlastModel;
+import projectblast.model.Player;
 import projectblast.model.entity.Entity;
+import projectblast.model.entity.hero.Hero;
+import projectblast.model.helper.Constants;
 
 
 /**
@@ -68,24 +72,40 @@ public class BlastView implements IBlastView {
 	
 
 	public void render(Graphics g) {
-		//Draw all entities
+		
+		//Sort entities
 		sortEntities();
-		 for (Entity e: entities){
-		    	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
-		    	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
-		 }
+		
+		//Draw all entities
+		for (Entity e: entities){
+		   	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
+		   	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
+		}
+		
+		//Draw mana bars if necessary
+		List<Hero> heroes = new ArrayList<Hero>();
+		for (Player p: model.getPlayers()){
+			heroes.add(p.getHero());
+		}
+		for(Hero h: heroes){
+			if (h.getMana() < 100){
+				g.setColor(Color.black);
+				g.fillRect(h.getX(),h.getY()+Constants.TILE_SIZE,Constants.TILE_SIZE,8);
+				g.setColor(h.getTeam().getColor());
+				g.fillRect(h.getX(),h.getY()+Constants.TILE_SIZE,(Constants.TILE_SIZE * (h.getMana()/100f)),8);
+			}
+		}
+	
 		 
-		 //Draw statusbar
-		 statusBar.render(g,model.getPlayers());
+		//Draw statusbar
+		statusBar.render(g,model.getPlayers());
 		 
 		/* //Debug drawing of tiles
-		 for(int x = 0; x < Constants.GAME_WIDTH; x += 32) {
-		     for(int y = 0; y < Constants.GAME_HEIGHT; y += 32) {
-		         g.drawRect(x, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
-		     }
-		 }*/
-		 
-		 
+		for(int x = 0; x < Constants.GAME_WIDTH; x += 32) {
+		    for(int y = 0; y < Constants.GAME_HEIGHT; y += 32) {
+		        g.drawRect(x, y, Constants.TILE_SIZE, Constants.TILE_SIZE);
+		    }
+		}*/ 
 	}
 }
 

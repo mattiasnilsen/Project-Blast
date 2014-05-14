@@ -22,6 +22,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	private int bombPower;
 	private int bombCount;
+	private int mana;
 	
 	private int deathCount;
 
@@ -40,6 +41,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
         super(position, Constants.HERO_START_SPEED, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
         bombPower = 0;
         bombCount = 0;
+        mana      = 100;
         setDeathCount(0);
         this.team = team;
         this.startPos = new Position(position.getX(), position.getY());
@@ -135,6 +137,27 @@ public abstract class Hero extends MovableEntity implements Destructible{
 			}
 		}
 		
+	}
+	
+	public boolean hasEnoughMana(int i){
+		return mana >= i;
+	}
+	
+	public int getMana(){
+		return mana;
+	}
+	
+	public void increaseMana(int amount){
+		if (amount > 0){
+			mana = Math.min(mana + amount,100);
+		} else {
+			mana = Math.max(mana + amount,0);
+		}
+		
+	}
+	
+	public void decreaseMana(int amount){
+		increaseMana(amount * -1);
 	}
 	
 	public abstract Explosive primaryAbility();
