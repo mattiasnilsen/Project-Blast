@@ -34,7 +34,7 @@ TOWER2 data/image/TowerV3H2.png
 TOWER1 data/image/TowerV3H1.png
 TOWER0 data/image/TowerV3H0.png
 SOLIDBLOCK data/image/Cube.png
-DESTRUCTIBLEBLOCK data/image/CubeGreen.png
+DESTRUCTIBLEBLOCK data/image/Box.png
 EXPLOSION data/image/Explosion3D.png
 
 PARALYZER data/image/Paralyzer.png
