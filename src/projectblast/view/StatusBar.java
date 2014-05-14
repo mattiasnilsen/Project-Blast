@@ -39,7 +39,7 @@ public class StatusBar {
 		
 		
 		g.setColor(Color.orange);
-		g.fillRect(0, 0, Constants.GAME_WIDTH, 64);
+		g.fillRect(0, 0, Constants.GAME_WIDTH, Constants.MAP_YOFFSET);
 		
 		//Left team
 		g.setColor(left.get(0).getHero().getTeam().getColor());
