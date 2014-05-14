@@ -19,7 +19,7 @@ public class Fist extends Explosive {
 	public Fist(Position position, int speed, Direction direction, Hero owner) {
 		super(position, speed, direction, owner);
 		setName(Id.FIST);
-		setLife(20);
+		setLife(Constants.FIST_TIME);
 	}
 	
 	@Override
@@ -46,7 +46,7 @@ public class Fist extends Explosive {
 				iter.remove();
 			}
 		}
-		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, BlastModel.snapToGrid(getPosition()), 4, directionList);//TODO remove magic number
+		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, BlastModel.snapToGrid(getPosition()), getOwner().getPower(), directionList);
 		
 		return core;
 	}
