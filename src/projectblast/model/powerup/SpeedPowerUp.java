@@ -20,4 +20,9 @@ public class SpeedPowerUp implements IPowerUp {
 	public void reverse(Hero hero) {
 		hero.setSpeed(hero.getSpeed() - SPEED_MODIFIER);
 	}
+	
+	@Override
+	public String toString(){
+		return "Speed";
+	}
 }

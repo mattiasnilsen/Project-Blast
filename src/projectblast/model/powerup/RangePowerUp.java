@@ -22,4 +22,9 @@ public class RangePowerUp implements IPowerUp {
 		
 	}
 	
+	@Override
+	public String toString(){
+		return "Range";
+	}
+	
 }

@@ -9,6 +9,7 @@ import org.newdawn.slick.Graphics;
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
 import projectblast.model.entity.Entity;
+import projectblast.model.entity.Tower;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
 
@@ -83,11 +84,8 @@ public class BlastView implements IBlastView {
 		}
 		
 		//Draw mana bars if necessary
-		List<Hero> heroes = new ArrayList<Hero>();
-		for (Player p: model.getPlayers()){
-			heroes.add(p.getHero());
-		}
-		for(Hero h: heroes){
+		for(Player p: model.getPlayers()){
+			Hero h = p.getHero();
 			if (h.getMana() < 100){
 				g.setColor(Color.black);
 				g.fillRect(h.getX(),h.getY()+Constants.TILE_SIZE,Constants.TILE_SIZE,8);
@@ -96,6 +94,14 @@ public class BlastView implements IBlastView {
 			}
 		}
 	
+		for (Entity e: entities){
+			if (e instanceof Tower){
+				Tower t = (Tower)e;
+				String s;
+				g.setColor(Color.cyan);
+				g.drawString(t.getPowerUp().toString(), t.getX(), t.getY() + Constants.TILE_SIZE * 1.5f);
+			}
+		}
 		 
 		//Draw statusbar
 		statusBar.render(g,model.getPlayers());

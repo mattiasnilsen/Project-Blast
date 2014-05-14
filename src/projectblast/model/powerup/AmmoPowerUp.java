@@ -23,4 +23,9 @@ public class AmmoPowerUp implements IPowerUp {
 		
 	}
 	
+	@Override
+	public String toString(){
+		return "Ammo";
+	}
+	
 }
