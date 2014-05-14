@@ -24,12 +24,10 @@ import projectblast.model.helper.Position;
 import projectblast.model.powerup.SpeedPowerUp;
 
 
-
 public class BlastModel implements IBlastModel {
 	
 	private static List<Entity> entities= new ArrayList<Entity>();
 	private List<Player> players;
-	private List<Explosive> explosives;
 	private List<Tower> towers;
 	private List<ICore> cores; //should be a secondary interface.
 	
@@ -44,7 +42,6 @@ public class BlastModel implements IBlastModel {
 	
 	public BlastModel(List<Player> players){
 		this.players = players;  
-		this.explosives = new ArrayList<Explosive>();
 		this.towers = new ArrayList<Tower>();
 		this.cores = new ArrayList<ICore>();
 		
@@ -89,10 +86,9 @@ public class BlastModel implements IBlastModel {
 	public void primary(int playerID) {
 		//TODO check if hero can use primary
 		
-		Explosive tmp = players.get(playerID-1).getHero().primaryAbility();
-		if(tmp != null){
-			entities.add(tmp);
-			explosives.add(tmp);
+		Explosive explosive = players.get(playerID-1).getHero().primaryAbility();
+		if(explosive != null){
+			entities.add(explosive);
 		}
 		System.out.println("PrimaryClicked");
 		
@@ -134,28 +130,11 @@ public class BlastModel implements IBlastModel {
 			shiftBalance(getTowerBalance());
 		}
 		
-		
 		handleEntities();
-		
-		handleExplosives();
 		
 		handleCores();
 		
 	    handleTowers();
-	}
-
-
-	private void handleExplosives() {
-		//List of explosives to throw away later
-		List<Explosive> trash = new ArrayList<Explosive>();
-		for (Explosive e: explosives){
-			if(e.isDestroyed()) {
-				removeEntity(e);
-				cores.add(e.getCore());
-				trash.add(e);
-			}
-		}
-		explosives.removeAll(trash);
 	}
 
 
@@ -168,11 +147,17 @@ public class BlastModel implements IBlastModel {
 			if(other != null) {
 				e.collide(other);
 			}
+			
 			e.update();
+			
 			if(e instanceof Destructible) {
 				Destructible d = (Destructible)e;
 				if(d.isDestroyed()) {
 					trash.add(e);
+					if(e instanceof Explosive) { //If this is an explosive we need to get its core before it is destroyed.
+						Explosive ex = (Explosive)e;
+						cores.add(ex.getCore());
+					}
 				}
 			}
 			
@@ -261,7 +246,6 @@ public class BlastModel implements IBlastModel {
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
 		
 		for (Entity e: entities){
-			//TODO remove this instanceof - It is only here to prevent collision with itself
 	    	if (!(e.equals(entity)) && e.getCollisionBox().intersects(testBox) && !(e.allowPassage(entity)) ){
 	    		return false;
 	    	}
