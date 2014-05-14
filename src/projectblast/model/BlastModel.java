@@ -61,12 +61,9 @@ public class BlastModel implements IBlastModel {
 			entities.add(p.getHero());
 		}
 		
-		for(Entity e : entities) {
-			if(e instanceof Tower) {
-				//TODO Implement proper setting of power ups this is just for testing.
-				Tower tower = (Tower)e;
-				tower.setPowerUp(new SpeedPowerUp());
-				towers.add(tower);
+		for(Entity entity : entities) {
+			if(entity instanceof Tower) {
+				towers.add((Tower)entity);
 			}
 		}
 	}
