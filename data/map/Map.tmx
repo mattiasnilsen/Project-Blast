@@ -52,7 +52,7 @@
  </tileset>
  <layer name="TheLayer" width="40" height="22">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+2W0QrAIAhFK/awl9X//+1eQ7xpaK5gF8RFIgcrXUq/LMoHmFWFMQ9589Fvqyjfo4jnPOUp3f7sWdUBnySJr5G1Vd58iayl+l2BfBH3TxPPefR+rb3ilP7C5Z+17JyvOOdbyWfVLvMD3ffR++D8Kj4k1F9W890gnqsf5Y3g0wrNt2i+r+tXUaAgz/nW/0Od0l92theUXFMXwA0AAA==
+   H4sIAAAAAAAAA+2WUQuAIAyEp/TQS/b//21PgRxb07amQgeHSUM+ph4mIkqT26rM2EPefPhtFfIdDfXciDy5+t+7V+WBT5PGd8LcKm8+grnWvy2QL+L8tdRzo3R/rVmxSr5w689gLz5uH3++8V7lfvTWY15IfFIefcUnqWaK5NuFeq5/yBvB16qbB98H0Xyj+1ekQkXS+Xuj+g26Sr7M7AtwUKl/wA0AAA==
   </data>
  </layer>
 </map>
