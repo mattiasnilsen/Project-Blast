@@ -52,8 +52,6 @@ public class BlastModel implements IBlastModel {
 			e.printStackTrace();
 		}
 		
-		//System.out.println(players.get(0));
-		
 		for(Player p: players){
 			entities.add(p.getHero());
 		}
