@@ -28,39 +28,7 @@ public class MageTest {
 	}
 	
 	
-	@Test
-	public void testDestroy() {
-		Position pos = new Position(1,1);
-		int speed = 100;
-		Direction dir = Direction.EAST;
-		Team team = new Team("Test", Color.red, Side.LEFT );
-		Hero mage = new Mage(pos,dir,team);
-		mage.destroy();
-		assertTrue(mage.isDestroyed());
-	}
-	@Test
-	public void testAddPowerUp(){
-		Position pos = new Position(1,1);
-		int speed = 100;
-		Direction dir = Direction.EAST;
-		Team team = new Team("Test", Color.red, Side.LEFT );
-		Hero mage = new Mage(pos,dir,team);
-		AmmoPowerUp apu = new AmmoPowerUp();
-		
-		int ammo = mage.getAmmo();
-		assertTrue(mage.getAmmo() == 3);
-		
-		for (int i = 0; i < 3; i++){
-			mage.addPowerUp(apu);
-		}	
-		assertTrue(mage.getAmmo() == 6);
-		
-		for (int i = 0; i < 10; i++){
-			apu.reverse(mage);
-		}
-		//Ammo should never be allowed to be below 0.
-		assertTrue(mage.getAmmo() < 0);
-	}
+	
 	@Test
 	public void testPrimaryAbility(){
 	Position pos = new Position(1,1);
@@ -81,9 +49,6 @@ public class MageTest {
 	testExplosive = mage.primaryAbility();
 	assertTrue(mage.getAmmo() == 0);
 	
-	testExplosive.destroy();
-	mage.update();
-	assertTrue(mage.getAmmo() == 1);
 	
 	//Should test stun ammo as well.
 	}

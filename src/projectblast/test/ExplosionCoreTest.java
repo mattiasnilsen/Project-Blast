@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.Movable.*;
+import projectblast.model.core.ExplosionCore;
 import projectblast.model.*;
 
 public class ExplosionCoreTest {
