@@ -4,7 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
 public interface ITitleModel {	
-	public enum Hero {
+	public enum HeroChoice {
 		BOMBER,
 		MAGE,
 		BRUTE,
@@ -19,7 +19,7 @@ public interface ITitleModel {
 	public int getSelectedRow();
 	public boolean isSelected();
 	
-	public Hero getPlayerHero(int player);
+	public HeroChoice getPlayerHero(int player);
 	public Map getSelectedMap();
 	
 	public void up();
