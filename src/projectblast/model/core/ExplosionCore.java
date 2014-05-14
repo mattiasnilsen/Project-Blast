@@ -3,15 +3,14 @@ package projectblast.model.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import projectblast.model.Block;
-import projectblast.model.Constants;
-import projectblast.model.DestructibleBlock;
-import projectblast.model.Entity;
-import projectblast.model.Movable;
-import projectblast.model.Position;
-import projectblast.model.Tower;
-import projectblast.model.Movable.Direction;
-import projectblast.model.hazard.Explosion;
+import projectblast.model.Direction;
+import projectblast.model.entity.Block;
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.Tower;
+import projectblast.model.entity.hazard.Explosion;
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.Position;
 
 public class ExplosionCore extends Core {
 	private int power;
@@ -21,7 +20,6 @@ public class ExplosionCore extends Core {
 	
 	private boolean stopNextStep;
 	
-	private List<Direction> directionList;
 	
 	
 	public ExplosionCore(){
@@ -29,12 +27,11 @@ public class ExplosionCore extends Core {
 	}
 	
 	public ExplosionCore(int life, Position startPos, int power, List<Direction> directionList){
-		super(life, startPos);
+		super(life, startPos, directionList);
 		this.power = power;
 		currentDir = -1;
 		distance = 1;
 		stopNextStep = false;
-		this.directionList = directionList;
 	}
 	
 	public int getCurrentDir(){
@@ -53,7 +50,7 @@ public class ExplosionCore extends Core {
 			distance++;
 		}
 		
-		if((distance == power || stopNextStep) && currentDir < directionList.size() - 1) {
+		if((distance == power || stopNextStep) && currentDir < getDirectionList().size() - 1) {
 			stopNextStep = false;
 			currentDir++;
 			distance = 1;
@@ -62,7 +59,7 @@ public class ExplosionCore extends Core {
 
 	@Override
 	public boolean step(Entity intersectingEntity) {
-		if(currentDir >= directionList.size() - 1 && power == distance || stopNextStep) {
+		if(currentDir >= getDirectionList().size() - 1 && power == distance || stopNextStep) {
 			setCreated(true);
 			return false;
 		} 
@@ -70,7 +67,7 @@ public class ExplosionCore extends Core {
 		if(intersectingEntity instanceof DestructibleBlock || intersectingEntity instanceof Tower) {
 			stopNextStep = true; //Place an object on the current position but stop after that.
 		} else if(intersectingEntity instanceof Block) {
-			if(currentDir == directionList.size() - 1) { //If we have already looped through all directions then we are created.
+			if(currentDir == getDirectionList().size() - 1) { //If we have already looped through all directions then we are created.
 				setCreated(true);
 			} else {
 				currentDir++;
@@ -91,8 +88,8 @@ public class ExplosionCore extends Core {
 			return new Position(getStartingPosition());*/
 		} else {
 		
-			int x = getStartingPosition().getX() + distance * directionList.get(currentDir).getX() * Constants.TILE_SIZE;
-			int y = getStartingPosition().getY() + distance * directionList.get(currentDir).getY() * Constants.TILE_SIZE;
+			int x = getStartingPosition().getX() + distance * getDirectionList().get(currentDir).getX() * Constants.TILE_SIZE;
+			int y = getStartingPosition().getY() + distance * getDirectionList().get(currentDir).getY() * Constants.TILE_SIZE;
 
 			return new Position(x, y);
 		}

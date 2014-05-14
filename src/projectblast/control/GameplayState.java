@@ -17,12 +17,10 @@ import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import projectblast.model.BlastModel;
-import projectblast.model.Constants;
+
+import projectblast.model.Direction;
 import projectblast.model.IBlastModel;
-import projectblast.model.Movable.Direction;
-import projectblast.model.Position;
-import projectblast.model.SimulatedOptions;
+import projectblast.model.helper.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
 
@@ -52,7 +50,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
     public GameplayState()  {
     	//TODO Remove simulation when options menu is complete
     	model = SimulatedOptions.getSimulatedModel();
-    	view  = SimulatedOptions.getSimulatedView();
+    	view  = new BlastView(model);
+    	//SimulatedOptions.getSimulatedView();
     	
     	keysPressed = new ArrayList<List<String>>();
     	for(int i = 0; i < 3; ++i) {//TODO Change 3 to number of players + 1.
@@ -112,7 +111,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		for(int playerID = 1; playerID < keysPressed.size(); ++playerID) {
 		    List<String> keys = keysPressed.get(playerID);
 		    if(!keys.isEmpty()) {
-		        List<Direction> directions = new ArrayList<Direction>();
 		        int totalX = 0;
 		        int totalY = 0;
 		        for(String inputCommand : keys) {

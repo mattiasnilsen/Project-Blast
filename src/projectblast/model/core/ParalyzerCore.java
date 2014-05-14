@@ -1,25 +1,26 @@
 package projectblast.model.core;
 
-import projectblast.model.Block;
-import projectblast.model.Constants;
-import projectblast.model.Entity;
-import projectblast.model.Movable;
-import projectblast.model.Position;
-import projectblast.model.Movable.Direction;
-import projectblast.model.hazard.Paralyzer;
+import java.util.List;
+
+import projectblast.model.Direction;
+import projectblast.model.entity.Block;
+import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.hazard.Paralyzer;
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.Position;
 
 public class ParalyzerCore extends Core {
-	private Direction direction;
+
 	private int dist = 1;
 	
-	public ParalyzerCore(int life, Position startPos, Direction dir){
-		super(life, startPos);
+	public ParalyzerCore(int life, Position startPos, List<Direction> dir){
+		super(life, startPos, dir );
 		System.out.println("Creating stunbeam");
-		this.direction = dir;
 	}
 	
 	public boolean step(Entity entity){
-		if(entity instanceof Block){
+		if(entity instanceof Block || entity instanceof DestructibleBlock){
 			setCreated(true);
 			return false;
 		}
@@ -37,7 +38,7 @@ public class ParalyzerCore extends Core {
 	}
 	
 	public Position getNextPosition(){
-		return new Position(getStartingPosition().getX() + direction.getX() * dist * Constants.TILE_SIZE, getStartingPosition().getY() + direction.getY() * dist * Constants.TILE_SIZE);
+		return new Position(getStartingPosition().getX() + getDirectionList().get(0).getX() * dist * Constants.TILE_SIZE, getStartingPosition().getY() + getDirectionList().get(0).getY() * dist * Constants.TILE_SIZE);
 	}
 	
 }

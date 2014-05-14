@@ -8,8 +8,12 @@ import org.newdawn.slick.Color;
 
 import projectblast.model.*;
 import projectblast.model.Team.Side;
-import projectblast.model.Tower.CannonStatus;
-import projectblast.model.hero.*;
+import projectblast.model.entity.Tower;
+import projectblast.model.entity.Tower.CannonStatus;
+import projectblast.model.entity.hero.*;
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.Position;
+import projectblast.model.powerup.SpeedPowerUp;
 
 public class TowerTest {
 
@@ -17,7 +21,7 @@ public class TowerTest {
 	
 	@Before
 	public void before() {
-		tower = new Tower(new Position(1, 1));
+		tower = new Tower(new SpeedPowerUp(), new Position(1, 1));
 	}
 	
 	@Test
@@ -47,7 +51,7 @@ public class TowerTest {
 	
 	@Test
 	public void testAllowPassage() {
-		Hero hero = new Mage(new Position(200, 200), Movable.Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT));
+		Hero hero = new Mage(new Position(200, 200), Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT));
 		assertFalse(tower.allowPassage(hero));
 		for(int i = 0; i < Constants.TOWER_STARTING_HEALTH; ++i) {
 			tower.takeDamage();
@@ -59,7 +63,7 @@ public class TowerTest {
 	
 	@Test
 	public void testCycleStatus(){
-		Tower t = new Tower(new Position(33,33));
+		Tower t = new Tower(new SpeedPowerUp(), new Position(33,33));
 		assertTrue(t.getStatus() == CannonStatus.WAITING);
 		t.cycleStatus(20);
 		assertTrue(t.getStatus() == CannonStatus.READYING);

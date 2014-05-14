@@ -1,7 +1,6 @@
 package projectblast.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,19 +11,23 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-import projectblast.model.Movable.Direction;
 import projectblast.model.core.ICore;
-import projectblast.model.explosive.Explosive;
-import projectblast.model.hazard.IHazard;
-import projectblast.model.hero.Hero;
-import projectblast.model.powerups.SpeedPowerUp;
+import projectblast.model.entity.Entity;
+import projectblast.model.entity.MovableEntity;
+import projectblast.model.entity.Tower;
+import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.entity.hero.Hero;
+
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.MapReader;
+import projectblast.model.helper.Position;
+import projectblast.model.powerup.SpeedPowerUp;
 
 
 public class BlastModel implements IBlastModel {
 	
 	private static List<Entity> entities= new ArrayList<Entity>();
 	private List<Player> players;
-	private List<Explosive> explosives;
 	private List<Tower> towers;
 	private List<ICore> cores; //should be a secondary interface.
 	
@@ -39,18 +42,15 @@ public class BlastModel implements IBlastModel {
 	
 	public BlastModel(List<Player> players){
 		this.players = players;  
-		this.explosives = new ArrayList<Explosive>();
 		this.towers = new ArrayList<Tower>();
 		this.cores = new ArrayList<ICore>();
 		
 		try {
-			entities.addAll(MapReader.createEntities(this,new TiledMap("data/map/Map.tmx")));
+			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
 
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		
-		//System.out.println(players.get(0));
 		
 		for(Player p: players){
 			entities.add(p.getHero());
@@ -84,12 +84,11 @@ public class BlastModel implements IBlastModel {
 	public void primary(int playerID) {
 		//TODO check if hero can use primary
 		
-		Explosive tmp = players.get(playerID-1).getHero().primaryAbility();
-		if(tmp != null){
-			entities.add(tmp);
-			explosives.add(tmp);
+		Explosive explosive = players.get(playerID-1).getHero().primaryAbility();
+		if(explosive != null){
+			entities.add(explosive);
 		}
-		System.out.println("PrimaryClicked");
+		System.out.println("Player " + playerID + ": PrimaryClicked");
 		
 	}
 
@@ -100,7 +99,7 @@ public class BlastModel implements IBlastModel {
 			cores.add(tmp);
 		}
 		//createParalyzer(players.get(playerID-1).getHero().getPosition(), players.get(playerID-1).getHero().getDirection());
-		System.out.println("SecondaryClicked");
+		System.out.println("Player " + playerID + ": SecondaryClicked");
 	}
 
 	@Override
@@ -125,32 +124,20 @@ public class BlastModel implements IBlastModel {
 	public void update(GameContainer gc, StateBasedGame game, int delta){
 		gameOver();
 		tick++;
-		if (tick%Constants.FRAMERATE == 0){
+		if (tick % Constants.FRAMERATE == 0){
 			shiftBalance(getTowerBalance());
 		}
-		
+		if (tick % 4 == 0){
+			for (Player p: players){
+				p.getHero().increaseMana(1);
+			}
+		}
 		
 		handleEntities();
-		
-		handleExplosives();
 		
 		handleCores();
 		
 	    handleTowers();
-	}
-
-
-	private void handleExplosives() {
-		//List of explosives to throw away later
-		List<Explosive> trash = new ArrayList<Explosive>();
-		for (Explosive e: explosives){
-			if(e.isDestroyed()) {
-				removeEntity(e);
-				cores.add(e.getCore());
-				trash.add(e);
-			}
-		}
-		explosives.removeAll(trash);
 	}
 
 
@@ -163,11 +150,17 @@ public class BlastModel implements IBlastModel {
 			if(other != null) {
 				e.collide(other);
 			}
+			
 			e.update();
+			
 			if(e instanceof Destructible) {
 				Destructible d = (Destructible)e;
 				if(d.isDestroyed()) {
 					trash.add(e);
+					if(e instanceof Explosive) { //If this is an explosive we need to get its core before it is destroyed.
+						Explosive ex = (Explosive)e;
+						cores.add(ex.getCore());
+					}
 				}
 			}
 			
@@ -189,12 +182,7 @@ public class BlastModel implements IBlastModel {
 					if(c.step(getIntersectingEntity(new Rectangle(c.getNextPosition().getX()+2, c.getNextPosition().getY()+2, Constants.TILE_SIZE-4, Constants.TILE_SIZE-4)))){
 						c.create();
 					}else if(c.isCreated()) {
-						for (IHazard ib : c.getParts()){
-							if (ib instanceof Entity){
-								Entity e = (Entity)ib;
-								entities.add(e);
-							}
-						}
+						entities.addAll(c.getParts());
 					}
 				}
 			}
@@ -247,8 +235,8 @@ public class BlastModel implements IBlastModel {
 					tower.cycleStatus(50); //TODO Hardcode
 				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
 					cores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE) );
-					tower.cycleStatus(100); //TODO Hardcode
-				} else if(tower.isCannonReadyToReload()){
+					tower.cycleStatus(120); //TODO Hardcode
+				} else if(tower.isCannonReadyToReload()){//Tower is now ready to find new target
 					tower.cycleStatus(0);
 				}
 			}
@@ -256,20 +244,11 @@ public class BlastModel implements IBlastModel {
 		}
 	}
 	
-	/*public static boolean isFree(MovableEntity entity){
-		return isFree(entity,entity.getDirection(),entity.getSpeed());
-	}*/
-	
-	/*public static boolean isFree(Entity entity){
-		return isFree(entity,Direction.NONE, 0);
-	}*/
-	
 	public static boolean isFree(MovableEntity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
 		
 		for (Entity e: entities){
-			//TODO remove this instanceof - It is only here to prevent collision with itself
 	    	if (!(e.equals(entity)) && e.getCollisionBox().intersects(testBox) && !(e.allowPassage(entity)) ){
 	    		return false;
 	    	}
@@ -296,6 +275,7 @@ public class BlastModel implements IBlastModel {
 
 	}
 	
+	//TODO Unused Method
 	private List<Entity> getAllIntersectingEntities(Rectangle rectangle) {
 		List<Entity> intersectingEntitys = new ArrayList<Entity>();
 		for(Entity entity : entities) {
@@ -306,6 +286,7 @@ public class BlastModel implements IBlastModel {
 		return intersectingEntitys;
 	}
 	
+	//TODO Unused Method
 	private Entity getClosestEntity(List<Entity> entities, Position pos) {
 		double smallestDistance = Double.MAX_VALUE;
 		Entity ent = null;

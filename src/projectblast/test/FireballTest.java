@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import projectblast.model.Movable.Direction;
-import projectblast.model.Position;
-import projectblast.model.explosive.Fireball;
-import projectblast.model.hazard.Paralyzer;
-import projectblast.model.hero.Mage;
+import projectblast.model.Direction;
+import projectblast.model.entity.explosive.Fireball;
+import projectblast.model.entity.hazard.Paralyzer;
+import projectblast.model.entity.hero.Mage;
+import projectblast.model.helper.Position;
 
 public class FireballTest {
 	

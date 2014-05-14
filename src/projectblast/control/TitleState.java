@@ -2,7 +2,6 @@ package projectblast.control;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.command.BasicCommand;
@@ -13,15 +12,18 @@ import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import projectblast.model.title.ITitleModel;
+import projectblast.model.title.TitleModel;
+import projectblast.view.TitleView;
+
 public class TitleState extends BasicGameState implements InputProviderListener {
 	
+	TitleView view;
+	ITitleModel model;
 	InputProvider provider;
 	int choice = 0;
 	StateBasedGame game;
-	Image playGame;
-	Image gameSettings;
-	Image exitGame;
-	Image arrow;
+
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame game)
@@ -30,32 +32,24 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	    provider.addListener(this);
 	    provider.bindCommand(new KeyControl(Input.KEY_UP), new BasicCommand("UP"));
 	    provider.bindCommand(new KeyControl(Input.KEY_DOWN), new BasicCommand("DOWN"));
+	    provider.bindCommand(new KeyControl(Input.KEY_RIGHT), new BasicCommand("RIGHT"));
+	    provider.bindCommand(new KeyControl(Input.KEY_LEFT), new BasicCommand("LEFT"));
 	    provider.bindCommand(new KeyControl(Input.KEY_ENTER), new BasicCommand("ENTER"));
-	    
-	    playGame = new Image("data/image/PlayGame.png");
-		gameSettings = new Image("data/image/GameSettings.png");
-		exitGame = new Image("data/image/ExitGame.png");
-		arrow = new Image("data/image/Arrow.png");
-		
+	    this.model = new TitleModel();
+	    this.view = new TitleView(model);
 	    this.game = game;
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame game, Graphics g)
 			throws SlickException {
-		//TODO refactor to view
-		
-		g.drawString("Blasting fun!", 100, 50);
-		playGame.draw(100, 100);
-		gameSettings.draw(100, 200);
-		exitGame.draw(100, 300);
-		arrow.draw(400, (choice+1)*100);
+		view.render(g);
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta)
 			throws SlickException {
-		
+		model.update(gc, game, delta);
 	}
 
 	@Override
@@ -65,21 +59,27 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 
 	@Override
 	public void controlPressed(Command c) {
-		//TODO refactor to model
 		BasicCommand b = (BasicCommand) c;
-		if(b.getName().equals("DOWN")){
-			choice = (choice+1) % 3;
-		}
-		if(b.getName().equals("UP")){
-			choice = (choice+2) % 3;
-		}
-		if(b.getName().equals("ENTER")){
-			if(choice == 0){
-				game.enterState(2);
-			} else if(choice == 2){
-				System.exit(0);
-			}
-		}
+		switch(b.getName()) {
+	    case "UP":
+	    	model.up();
+	    	break;
+	    case "DOWN":
+	    	model.down();
+	    	break;
+	    case "LEFT":
+	    	model.left();
+	        break;
+	    case "RIGHT":
+	    	model.right();
+	    	break;
+	    case "ENTER":
+	    	model.select();
+	    	break;
+	    default:
+	    	
+	    	break;
+	    }
 	}
 
 	@Override

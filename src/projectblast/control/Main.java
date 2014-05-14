@@ -3,7 +3,7 @@ package projectblast.control;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
-import projectblast.model.Constants;
+import projectblast.model.helper.Constants;
 
 public class Main {
 	

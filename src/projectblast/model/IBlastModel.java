@@ -5,7 +5,7 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
-import projectblast.model.Movable.Direction;
+import projectblast.model.entity.Entity;
 
 public interface IBlastModel {
 	

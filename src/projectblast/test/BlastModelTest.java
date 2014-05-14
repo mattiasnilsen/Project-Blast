@@ -12,29 +12,28 @@ import org.newdawn.slick.Color;
 
 
 import projectblast.model.BlastModel;
-import projectblast.model.Block;
+import projectblast.model.Direction;
 import projectblast.model.Player;
-import projectblast.model.Position;
-import projectblast.model.SolidBlock;
 import projectblast.model.Team;
-import projectblast.model.Movable.Direction;
 import projectblast.model.Team.Side;
-import projectblast.model.hero.Brute;
-import projectblast.model.hero.Hero;
-import projectblast.model.hero.Mage;
+import projectblast.model.entity.Block;
+import projectblast.model.entity.SolidBlock;
+import projectblast.model.entity.hero.Brute;
+import projectblast.model.entity.hero.Hero;
+import projectblast.model.entity.hero.Mage;
+import projectblast.model.helper.Position;
 
 public class BlastModelTest {
 
 	@Test
 	public void testSnapToGrid() {
 		Position pos = new Position(142,193);
-		BlastModel model = new BlastModel();
-		pos = model.snapToGrid(pos);
+		pos = BlastModel.snapToGrid(pos);
 		assertTrue(pos.getX()%32 == 0);
 		assertTrue(pos.getY()%32 == 0);
 		
 		pos = new Position(12,12);
-		pos = model.snapToGrid(pos);
+		pos = BlastModel.snapToGrid(pos);
 		assertTrue(pos.getY()%32 == 0);
 		assertTrue(pos.getY()%32 == 0);
 	}
@@ -46,7 +45,6 @@ public class BlastModelTest {
 	public void testMovePlayer(){
 		List<Player> players = new ArrayList<Player>();
 		Position pos = new Position(1,1);
-		int speed = 1;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(pos,dir,team);
@@ -98,7 +96,6 @@ public class BlastModelTest {
 	public void testIsFree(){
 		List<Player> players = new ArrayList<Player>();
 		Position pos = new Position(1,1);
-		int speed = 1;
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(new Position(35,1),dir,team);
