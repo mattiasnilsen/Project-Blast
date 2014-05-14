@@ -47,15 +47,12 @@ public class ExplosionCoreTest {
 		SolidBlock sb = new SolidBlock(new Position(32,32));
 		ExplosionCore ec = new ExplosionCore(1, new Position(0,0), 3,directionList);
 		
-		for(int i = 0; i < 15; i++){
+		for(int i = 0; i < 14; i++){
 			ec.step(null);
 			ec.create();
 		}
 		assertTrue(ec.isCreated());
-		
-		//Should not work
-		ec.step(null);
-		ec.create();
+
 		
 		ec = new ExplosionCore(1, new Position(0,0), 3,directionList);
 		
@@ -114,22 +111,20 @@ public class ExplosionCoreTest {
 		
 		pos = ec.getNextPosition();
 		assertTrue(ec.getNextPosition().equals(new Position(0,-32)));
-		
-		//posY is -64? Why? Should be -32
+
 		if(ec.step(null)){
 			ec.create();
 		}
 		pos = ec.getNextPosition();
 		assertTrue(ec.getNextPosition().equals(new Position(0,-64)));
 		
-		//Not working as intended?
+
 		if(ec.step(null)){
 			ec.create();
 		}
 		pos = ec.getNextPosition();
 		assertTrue(ec.getNextPosition().equals(new Position(0,-96)));
 		
-		//Not working as intended?
 		if(ec.step(null)){
 			ec.create();
 		}
