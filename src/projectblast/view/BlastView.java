@@ -25,16 +25,16 @@ public class BlastView implements IBlastView {
 	private ImageDatabase images;
 	private StatusBar statusBar;
 	private List<Entity> entities;
-	private List[] entityRows;
+	private List<List<Entity>> entityRows;
 	
 	public BlastView(IBlastModel model){
 		this.model  = model;
 		this.images = ImageDatabase.getImageDatabase();
 		statusBar   = new StatusBar(model);
 		this.entities = model.getEntities();
-		this.entityRows = new ArrayList[30];
-		for(int i = 0; i < entityRows.length; i++){
-			entityRows[i] = new ArrayList<Entity>();
+		this.entityRows = new ArrayList<List<Entity>>();
+		for(int i = 0; i < Constants.TILE_AMOUNT_Y; i++){
+			entityRows.add(new ArrayList<Entity>());
 		}
 		
 	}
@@ -43,12 +43,12 @@ public class BlastView implements IBlastView {
 		private void sortEntities(){
 			int square;
 			//Go through every row and sorts the entityRows list 
-			for(int i = 0; i < 30; i++){
+			for(int i = 0; i < Constants.TILE_AMOUNT_Y; i++){
 				square = (i)*32;
 				
 				for(Entity e: entities){
 					if(e.getY() >= square && e.getY() < square+32){
-					entityRows[i].add(e);
+					entityRows.get(i).add(e);
 					}	
 
 				}
@@ -58,15 +58,15 @@ public class BlastView implements IBlastView {
 		//Removes all entities then adds them in the correct order	
 			entities.removeAll(entities);		
 
-			for(int j = 0; j < 30; j++){
+			for(int j = 0; j < Constants.TILE_AMOUNT_Y; j++){
 				
-			for(int i=0;i< entityRows.length; i++){
-			Collections.sort(entityRows[i]);
+			for(int i=0;i< entityRows.size(); i++){
+			Collections.sort(entityRows.get(i));
 			
 			}
-			entities.addAll(entityRows[j]);
+			entities.addAll(entityRows.get(j));
 			
-			entityRows[j].removeAll(entityRows[j]);
+			entityRows.get(j).removeAll(entityRows.get(j));
 			}
 				
 		}
