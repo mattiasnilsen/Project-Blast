@@ -31,18 +31,18 @@ public class BlastView implements IBlastView {
 		this.images = new ImageDatabase();
 		statusBar   = new StatusBar(model);
 		this.entities = model.getEntities();
-		this.entityRows = new ArrayList[22];
+		this.entityRows = new ArrayList[30];
 		for(int i = 0; i < entityRows.length; i++){
 			entityRows[i] = new ArrayList<Entity>();
 		}
 		
 	}
-	
+	//TODO Magic numbers
 	//This method sorts all entities in the y Position
 		private void sortEntities(){
 			int square;
 			//Go through every row and sorts the entityRows list 
-			for(int i = 0; i < 22; i++){
+			for(int i = 0; i < 30; i++){
 				square = (i)*32;
 				
 				for(Entity e: entities){
@@ -57,7 +57,7 @@ public class BlastView implements IBlastView {
 		//Removes all entities then adds them in the correct order	
 			entities.removeAll(entities);		
 
-			for(int j = 0; j < 22; j++){
+			for(int j = 0; j < 30; j++){
 				
 			for(int i=0;i< entityRows.length; i++){
 			Collections.sort(entityRows[i]);
