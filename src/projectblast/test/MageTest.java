@@ -28,6 +28,7 @@ public class MageTest {
 	}
 	
 	
+
 	@Test
 	public void testDestroy() {
 		Position pos = new Position(1,1);
@@ -77,9 +78,6 @@ public class MageTest {
 	testExplosive = mage.primaryAbility();
 	assertTrue(mage.getAmmo() == 0);
 	
-	testExplosive.destroy();
-	mage.update();
-	assertTrue(mage.getAmmo() == 1);
 	
 	//Should test stun ammo as well.
 	}
