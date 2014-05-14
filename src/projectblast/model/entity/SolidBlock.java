@@ -16,8 +16,6 @@ public class SolidBlock extends Block{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -30,8 +28,6 @@ public class SolidBlock extends Block{
 
 	@Override
 	public void collide(Entity entity) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

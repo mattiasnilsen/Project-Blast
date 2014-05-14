@@ -34,8 +34,6 @@ public class Explosion extends Hazard {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

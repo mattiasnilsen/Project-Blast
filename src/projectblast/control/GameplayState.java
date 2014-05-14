@@ -90,9 +90,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
         playerKeys.add(keys);
         
 	    setKeyBindings(playerKeys);
-	    
-	    //TODO remove test key in release version.
-	    provider.bindCommand(new KeyControl(Input.KEY_T), new BasicCommand("TEST"));
 	}
 
 	@Override
