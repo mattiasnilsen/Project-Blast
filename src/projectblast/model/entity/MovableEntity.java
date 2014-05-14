@@ -106,7 +106,9 @@ public class MovableEntity extends Entity implements Movable {
 			Direction dir = getDirection();
 			int distance = getSpeed();
 			if(dir.getX() != 0 && dir.getY() != 0) {
-			    distance = distance - 1; //TODO fix properly
+				double dist = distance;
+				dist = dist / Math.sqrt(2);
+				distance = (int)Math.round(dist);
 			}
 			while(distance > 0) {
 				if(BlastModel.isFree(this, dir, 1)) {
