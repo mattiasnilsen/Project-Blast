@@ -9,8 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class TitleModel implements ITitleModel {
 	private int selectedColumn = 0;
 	private int selectedRow = 0;
-	private Hero player1Hero = Hero.BOMBER;
-	private Hero player2Hero = Hero.MAGE;
+	private HeroChoice player1Hero = HeroChoice.BOMBER;
+	private HeroChoice player2Hero = HeroChoice.MAGE;
 	private Map selectedMap = Map.FirstMap;
 	
 	private List<Column> columns = new ArrayList<Column>();
@@ -23,7 +23,14 @@ public class TitleModel implements ITitleModel {
 		menuColumn.addItem(new Item("Settings"));
 		menuColumn.addItem(new Item("ExitGame"));
 		
+		HeroColumn heroColumn1 = new HeroColumn("HeroColumn1");
+		heroColumn1.addItem(new Item("ChooseHero"));
+		HeroColumn heroColumn2 = new HeroColumn("HeroColumn2");
+		heroColumn2.addItem(new Item("ChooseHero"));
+		
 		columns.add(menuColumn);
+		columns.add(heroColumn1);
+		columns.add(heroColumn2);
 		
 		selected = false;
 	}
@@ -37,7 +44,7 @@ public class TitleModel implements ITitleModel {
 		return selectedRow;
 	}
 	@Override
-	public Hero getPlayerHero(int player) {
+	public HeroChoice getPlayerHero(int player) {
 		if(player == 1) {
 			return player1Hero;
 		} else {
@@ -73,6 +80,21 @@ public class TitleModel implements ITitleModel {
 			
 			Column column = getColumn(selectedColumn);
 			selectedRow = column.getRowPosition(selectedRow);
+		} else {
+			Column column = getColumn(selectedColumn);
+			if(column instanceof HeroColumn) {
+				HeroColumn heroCol = (HeroColumn)column;
+				if(x > 0) {
+					heroCol.nextHero();
+				} else if(x < 0) {
+					heroCol.previousHero();
+				}
+				if(heroCol.getName().equals("HeroColumn1")) {
+					player1Hero = heroCol.getSelectedHero();
+				} else if(heroCol.getName().equals("HeroColumn2")) {
+					player2Hero = heroCol.getSelectedHero();
+				}
+			}
 		}
 	}
 	
