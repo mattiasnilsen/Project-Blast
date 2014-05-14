@@ -19,9 +19,15 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 
+
+
+
+import projectblast.model.BlastModel;
 import projectblast.model.Direction;
 import projectblast.model.IBlastModel;
+import projectblast.model.Player;
 import projectblast.model.helper.Constants;
+import projectblast.model.helper.Options;
 import projectblast.model.helper.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
@@ -50,13 +56,9 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	InputProvider provider;
 	
     public GameplayState()  {
-    	//TODO Remove simulation when options menu is complete
-    	model = SimulatedOptions.getSimulatedModel();
-    	view  = new BlastView(model);
-    	//SimulatedOptions.getSimulatedView();
     	
     	keysPressed = new ArrayList<List<String>>();
-    	for(int i = 0; i < 3; ++i) {//TODO Change 3 to number of players + 1.
+    	for(int i = 0; i < Options.getOptions().getNumberOfPlayers() + 1; ++i) {
     	    keysPressed.add(new ArrayList<String>());
     	}
     }
@@ -68,7 +70,6 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 		
 	    //Bind keys to commands
 	    provider = new InputProvider(gc.getInput());
-	    provider.addListener(this);
 	    
 	    //TODO get this input from options set by the players.
 	    List<Map<Keys, Integer>> playerKeys = new ArrayList<Map<Keys, Integer>>();
@@ -92,6 +93,22 @@ public class GameplayState extends BasicGameState implements InputProviderListen
         playerKeys.add(keys);
         
 	    setKeyBindings(playerKeys);
+	}
+	
+	@Override
+	public void enter(GameContainer container, StateBasedGame game) {
+    	List<Player> playerList = new ArrayList<Player>();
+    	playerList.add(new Player(Options.getOptions().getPlayer1Hero()));
+    	playerList.add(new Player(Options.getOptions().getPlayer2Hero()));
+    	model = new BlastModel(playerList);
+    	view  = new BlastView(model);
+    	//Start listening for input.
+    	provider.addListener(this);
+	}
+	
+	@Override
+	public void leave(GameContainer container, StateBasedGame game) {
+		provider.removeListener(this);
 	}
 
 	@Override

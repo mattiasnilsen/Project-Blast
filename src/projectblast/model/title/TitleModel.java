@@ -6,6 +6,9 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.Options;
+
 public class TitleModel implements ITitleModel {
 	private int selectedColumn = 0;
 	private int selectedRow = 0;
@@ -137,7 +140,9 @@ public class TitleModel implements ITitleModel {
 		
 		switch(selectedItem.getName()) {
 		case "StartGame":
-			game.enterState(2);
+			Options.getOptions().setPlayer1Hero(player1Hero);
+			Options.getOptions().setPlayer2Hero(player2Hero);
+			game.enterState(Constants.GAME_STATE_ID);
 			break;
 		case "ExitGame":
 			System.exit(0);
