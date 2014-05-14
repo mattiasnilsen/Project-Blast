@@ -30,11 +30,19 @@ import projectblast.model.helper.Id;
  *
  */
 public class ImageDatabase {
-	
+	private static ImageDatabase imageDatabase;
 	private Map<String, Image> images; //A map for images. The key should include objectname and state.
-	public ImageDatabase(){
+	
+	private ImageDatabase(){
 		this.images = new HashMap<String, Image>();
 		init(); //Gets image path from a text file and puts it with proper key.
+	}
+	
+	public static ImageDatabase getImageDatabase(){
+		if(imageDatabase == null){
+			imageDatabase = new ImageDatabase();
+		}
+		return imageDatabase;
 	}
 	
 	private void init() {

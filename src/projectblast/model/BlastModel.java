@@ -46,7 +46,12 @@ public class BlastModel implements IBlastModel {
 		this.cores = new ArrayList<ICore>();
 		
 		try {
-			entities.addAll(MapReader.createEntities(new TiledMap("data/map/Map.tmx")));
+			TiledMap map = new TiledMap("data/map/Map.tmx");
+			entities.addAll(MapReader.createEntities(map));
+			for (int i = 0; i < players.size(); i++){
+				players.get(i).getHero().setSpawnPoint(MapReader.getSpawnPoint(map, i + 1));
+				players.get(i).getHero().place(players.get(i).getHero().getSpawnPoint());
+			}
 
 		} catch (SlickException e) {
 			e.printStackTrace();
