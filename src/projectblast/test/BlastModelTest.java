@@ -106,19 +106,20 @@ public class BlastModelTest {
 		
 		Block block = new SolidBlock(new Position(100,1));
 		model.addEntity(block);
-		assertTrue(!model.isFree(brute, Direction.EAST, 100));
-		
-		brute.setPosition(100,1);
-		block.setPosition(1,1);
-		assertTrue(!model.isFree(brute, Direction.WEST, 100));
+		assertFalse(model.isFree(brute, Direction.EAST, 100));
+
 		
 		block.setPosition(new Position(1,102));
 		brute.setPosition(1,1);
-		assertTrue(!model.isFree(brute, Direction.SOUTH, 100));
+		assertFalse(model.isFree(brute, Direction.SOUTH, 100));
 		
+		brute.setPosition(100,1);
+		block.setPosition(1,1);
+		assertFalse(model.isFree(brute, Direction.WEST, 100));
+
 		block.setPosition(1,1);
 		brute.setPosition(1,100);
-		assertTrue(!model.isFree(brute, Direction.NORTH, 100));
+		assertFalse(model.isFree(brute, Direction.NORTH, 100));
 		
 		
 		
