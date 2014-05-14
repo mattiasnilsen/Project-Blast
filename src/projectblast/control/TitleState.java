@@ -12,6 +12,7 @@ import org.newdawn.slick.command.KeyControl;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import projectblast.model.helper.Constants;
 import projectblast.model.title.ITitleModel;
 import projectblast.model.title.TitleModel;
 import projectblast.view.TitleView;
@@ -21,7 +22,6 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 	TitleView view;
 	ITitleModel model;
 	InputProvider provider;
-	int choice = 0;
 	StateBasedGame game;
 
 	
@@ -54,7 +54,7 @@ public class TitleState extends BasicGameState implements InputProviderListener 
 
 	@Override
 	public int getID() {
-		return 0;
+		return Constants.TITLE_STATE_ID;
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public final class SimulatedOptions {
 		List<Player> p = new LinkedList<Player>();
 		
 		p.add(new Player(new Mage(new Position(32, 635), Direction.NONE, new Team("Main", new Color(255,0,128), Team.Side.LEFT))));
-		p.add(new Player(new Brute(new Position(1200, 32), Direction.NONE,  new Team("Secondary", new Color(0,255,128), Team.Side.RIGHT))));
+		p.add(new Player(new Brute(new Position(1200, 96), Direction.NONE,  new Team("Secondary", new Color(0,255,128), Team.Side.RIGHT))));
 		
 		
 		return p;

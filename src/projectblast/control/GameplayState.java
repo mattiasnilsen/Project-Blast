@@ -18,8 +18,10 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 
+
 import projectblast.model.Direction;
 import projectblast.model.IBlastModel;
+import projectblast.model.helper.Constants;
 import projectblast.model.helper.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
@@ -149,8 +151,7 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	
 	@Override
 	public int getID() {
-		//This is the identifier ID for the gameplay state
-		return 2;
+		return Constants.GAME_STATE_ID;
 	}
 	
     @Override

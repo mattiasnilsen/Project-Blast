@@ -20,6 +20,7 @@ public class TitleView {
 	
 	public TitleView(ITitleModel model) {
 		this.model = model;
+		
 	    try {
 			playGame = new Image("data/image/PlayGame.png");
 			gameSettings = new Image("data/image/GameSettings.png");
@@ -41,6 +42,7 @@ public class TitleView {
 		playGame.draw(100, 100);
 		gameSettings.draw(100, 200);
 		exitGame.draw(100, 300);
+		
 		
 		if(model.getPlayerHero(1).name().equals("MAGE")){
 			mage.draw(700, 100);
