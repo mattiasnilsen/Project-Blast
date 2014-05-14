@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="40" height="22" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="ColourScheme" tilewidth="32" tileheight="32">
+  <properties>
+   <property name="powerup" value="range"/>
+   <property name="type" value="tower"/>
+  </properties>
   <image source="ColourScheme.png" width="128" height="128"/>
   <tile id="0">
    <properties>
@@ -17,10 +21,38 @@
     <property name="type" value="tower"/>
    </properties>
   </tile>
+  <tile id="3">
+   <properties>
+    <property name="spawn" value="1"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="spawn" value="2"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="powerup" value="speed"/>
+    <property name="type" value="tower"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="powerup" value="range"/>
+    <property name="type" value="tower"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="powerup" value="ammo"/>
+    <property name="type" value="tower"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Tile Layer 1" width="40" height="22">
+ <layer name="TheLayer" width="40" height="22">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA81WWwoEIQyrev8779eyJSR9qMNOQCo42pg+nGFm4+Wji1kYN/DlN+3Hc5B5dJch5ov48AP34dnDOL8nwPgxHmyf0g/3KR2Vb6ZrppNa8/y6OeX5Me44ML5RTSC/k3qpaKPii/4zvbuIuDGe+B3LRzbf5Ye6KIu8Ov0P7bIa/P19Dlf4ZTmu6rcDVh8n/KJY74DlD4s38105G/ntvE3Zu1LZw/JJ9b8usvr1fDrxuqUf68/qzr6WMl8n/Hw8sr5S6T2q52F8d4C5H/XDqGYQyHUm1oTN9nm7o59f3wHTj9lsDXFLv6pdxe+i/4M3ofNG/2t8AN077i/ADQAA
+   H4sIAAAAAAAAA+2W0QrAIAhFK/awl9X//+1eQ7xpaK5gF8RFIgcrXUq/LMoHmFWFMQ9589Fvqyjfo4jnPOUp3f7sWdUBnySJr5G1Vd58iayl+l2BfBH3TxPPefR+rb3ilP7C5Z+17JyvOOdbyWfVLvMD3ffR++D8Kj4k1F9W890gnqsf5Y3g0wrNt2i+r+tXUaAgz/nW/0Od0l92theUXFMXwA0AAA==
   </data>
  </layer>
 </map>

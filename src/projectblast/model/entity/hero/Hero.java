@@ -30,7 +30,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	private int respawnTime;
 	private boolean isRespawning;
-	private Position startPos;
+	private Position spawnPoint;
 	
 	private List<IPowerUp> powerUps = new ArrayList<IPowerUp>();
 	private List<Explosive> explosives = new ArrayList<Explosive>();
@@ -44,7 +44,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
         mana      = 100;
         setDeathCount(0);
         this.team = team;
-        this.startPos = new Position(position.getX(), position.getY());
+        this.spawnPoint = new Position(position.getX(), position.getY());
         addInitialPowerUps();
         
     }
@@ -76,7 +76,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
     	setDeathCount(getDeathCount() + 1);
     	respawnTime = 480;
     	isRespawning = true;
-    	place(startPos);
+    	place(spawnPoint);
     }
     
     public boolean isDestroyed(){
@@ -101,12 +101,12 @@ public abstract class Hero extends MovableEntity implements Destructible{
     	return isRespawning;
     }
     
-    public Position getStartPosition(){
-		 return startPos;
+    public Position getSpawnPoint(){
+		 return spawnPoint;
     }
 	
-	public void setStartPosition(Position startPos){
-		this.startPos = startPos;
+	public void setSpawnPoint(Position spawn){
+		this.spawnPoint = spawn;
 	}
 	
 	public void addPowerUp(IPowerUp powerUp) {
@@ -139,14 +139,23 @@ public abstract class Hero extends MovableEntity implements Destructible{
 		
 	}
 	
-	public boolean hasEnoughMana(int i){
-		return mana >= i;
+	/**
+	 * Returns whether this hero has enough mana to perform a spell with the cost cost.
+	 * @param cost - Cost of spell
+	 * @return true if spell can be casted, false otherwise
+	 */
+	public boolean hasEnoughMana(int cost){
+		return mana >= cost;
 	}
 	
 	public int getMana(){
 		return mana;
 	}
 	
+	/**
+	 * Mana is increased by amount. It can't go over 100.
+	 * @param amount - how much to change mana
+	 */
 	public void increaseMana(int amount){
 		if (amount > 0){
 			mana = Math.min(mana + amount,100);
@@ -156,6 +165,10 @@ public abstract class Hero extends MovableEntity implements Destructible{
 		
 	}
 	
+	/**
+	 * Mana is decreased by amount. It can't go below 0.
+	 * @param amount - how much to change mana
+	 */
 	public void decreaseMana(int amount){
 		increaseMana(amount * -1);
 	}
