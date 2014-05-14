@@ -48,7 +48,7 @@ public class Tower extends Entity implements Destructible {
 		}
 	}
 	
-	public Tower(Position position) {
+	public Tower(IPowerUp powerUp, Position position) {
 		super(position, new Rectangle(position.getX() + 1, position.getY() + 1, 24, 30));
 		
 		setName(Id.TOWER);
@@ -58,6 +58,7 @@ public class Tower extends Entity implements Destructible {
 		powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
 		timer = 0;
 		cannonStatus = CannonStatus.WAITING;
+		this.powerUp = powerUp;
 		
 	}
 	
