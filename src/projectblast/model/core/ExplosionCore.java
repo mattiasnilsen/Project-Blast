@@ -30,7 +30,7 @@ public class ExplosionCore extends Core {
 		super(life, startPos, directionList);
 		this.power = power;
 		currentDir = -1;
-		distance = 1;
+		distance = 0;
 		stopNextStep = false;
 	}
 	
@@ -53,7 +53,7 @@ public class ExplosionCore extends Core {
 		if((distance == power || stopNextStep) && currentDir < getDirectionList().size() - 1) {
 			stopNextStep = false;
 			currentDir++;
-			distance = 1;
+			distance = 0;
 		}
 	}
 
@@ -71,7 +71,7 @@ public class ExplosionCore extends Core {
 				setCreated(true);
 			} else {
 				currentDir++;
-				distance = 1;
+				distance = 0;
 			}
 			return false;
 		}
@@ -83,13 +83,10 @@ public class ExplosionCore extends Core {
 	public Position getNextPosition() {
 		if(currentDir == -1) { //Special case to make sure an explosion is placed at starting position.
 			return new Position(getStartingPosition());
-	/*	} else if(currentDir == directionList.size()-1 && (distance*directionList.get(currentDir).getX() == power*directionList.get(currentDir).getX() || distance*directionList.get(currentDir).getY() == power*directionList.get(currentDir).getY())){
-			//Should return null.
-			return new Position(getStartingPosition());*/
 		} else {
 		
-			int x = getStartingPosition().getX() + distance * getDirectionList().get(currentDir).getX() * Constants.TILE_SIZE;
-			int y = getStartingPosition().getY() + distance * getDirectionList().get(currentDir).getY() * Constants.TILE_SIZE;
+			int x = getStartingPosition().getX() + (distance + 1) * getDirectionList().get(currentDir).getX() * Constants.TILE_SIZE;
+			int y = getStartingPosition().getY() + (distance + 1) * getDirectionList().get(currentDir).getY() * Constants.TILE_SIZE;
 
 			return new Position(x, y);
 		}
