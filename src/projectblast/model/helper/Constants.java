@@ -21,4 +21,7 @@ public final class Constants {
 	
 	
 	public static final String IMAGE_LIST_PATH = "data/image/images.txt";
+	
+	public static final int TITLE_STATE_ID = 1;
+	public static final int GAME_STATE_ID = 2;
 }
