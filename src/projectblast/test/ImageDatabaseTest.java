@@ -20,7 +20,7 @@ public class ImageDatabaseTest {
 	
 	@Test
 	public void testGetAnimation(){
-		ImageDatabase i = new ImageDatabase();
+		ImageDatabase i = ImageDatabase.getImageDatabase();
 		Entity d = new DestructibleBlock(new Position(13,37));
 		Entity t = new Tower(new SpeedPowerUp(),new Position(11,11));
 		
