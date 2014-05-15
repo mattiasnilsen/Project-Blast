@@ -141,11 +141,9 @@ public class Tower extends Entity implements Destructible {
 
 	@Override
 	public boolean allowPassage(Entity entity) {
-		if( health == 0 || entity instanceof Hero && (((Hero)entity).getTeam() == owner) ) {
+		if(health == 0 || entity instanceof Hero && (((Hero)entity).getTeam() == owner)) {
 			return true;
-		}/* else if (entity instanceof Fireball) {
-			return true;
-		}*/else{
+		} else {
 			return false;
 		}
 	}
@@ -192,31 +190,9 @@ public class Tower extends Entity implements Destructible {
 				}
 			}
 		}
-		
-		//TODO Null is bad...
 		return null;
 	}
-	
-	//TODO This is a duplicate of getClosestTarget except for return type
-	public Direction getClosestTargetDirection(List<Hero> targets, int range){
-		Direction[] dirs = {Direction.EAST,Direction.NORTH,Direction.WEST,Direction.SOUTH};
-		for (int i = 1; i <= range; i++){
-			for (Direction d: dirs){
-				int q = Constants.TILE_SIZE;
-				Rectangle r = new Rectangle(getX() + d.getX() * q * i,getY() + d.getY() * q * i, q, q);
-				for (Hero h: targets){
-					if (r.intersects(h.getCollisionBox())){
-						return d;
-					}
-				}
-			}
-		}
-		
-		//TODO Null is bad...
-		return null;
-	}
-	
-	
+
 	public boolean isCannonReadyToFire(){
 		return cannonStatus == CannonStatus.READYING && timer == 0;
 	}
