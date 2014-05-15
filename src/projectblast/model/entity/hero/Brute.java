@@ -30,7 +30,6 @@ public class Brute extends Hero {
 		addPowerUp(new SpeedPowerUp());
 		addPowerUp(new SpeedPowerUp());
 		addPowerUp(new SpeedPowerUp());
-		addPowerUp(new SpeedPowerUp());
 		addPowerUp(new RangePowerUp());
 		addPowerUp(new AmmoPowerUp());
 		
@@ -38,7 +37,7 @@ public class Brute extends Hero {
 
 	@Override
 	public Explosive primaryAbility() {
-		if(getAmmo()<= 0){
+		if(getAmmo() <= 0){
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
@@ -52,7 +51,8 @@ public class Brute extends Hero {
 	public ICore secondaryAbility() {
 		List<Direction> tmp = new ArrayList<Direction>();
 		tmp.add(getDirection());
-		return new ShockwaveCore(20, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), tmp);
+		return new ShockwaveCore(20, new Position(BlastModel.snapToGrid(getX() + (getDirection().getX()/2 - 1)),
+				BlastModel.snapToGrid(getY() + (getDirection().getY()/2 - 1))), tmp);
 	}
 
 }

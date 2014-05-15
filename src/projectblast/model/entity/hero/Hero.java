@@ -29,7 +29,6 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	private Team team;
 	
 	private int respawnTime;
-	private boolean isRespawning;
 	private Position spawnPoint;
 	
 	private List<IPowerUp> powerUps = new ArrayList<IPowerUp>();
@@ -71,21 +70,20 @@ public abstract class Hero extends MovableEntity implements Destructible{
     	return team;
     }
     
+    public int getRespawnTime(){
+    	return respawnTime;
+    }
+    
     public void destroy(){
-    	System.out.println(getTeam().getName() + " just lost a teammate!");
-    	setDeathCount(getDeathCount() + 1);
-    	respawnTime = 480;
-    	isRespawning = true;
-    	place(spawnPoint);
+    	if (respawnTime == 0){
+    		System.out.println(getTeam().getName() + " just lost a teammate!");
+        	setDeathCount(getDeathCount() + 1);
+        	respawnTime = 60;
+        	place(spawnPoint);
+    	}
     }
     
     public boolean isDestroyed(){
-    	if(respawnTime > 0){
-    		//System.out.println("Hero respawning");
-    		respawnTime--;
-    	} else {
-    		isRespawning = false;
-    	}
     	return false; // a hero is never destroyed!
     }
     
@@ -98,7 +96,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
     }
     
     public boolean isRespawning(){
-    	return isRespawning;
+    	return respawnTime > 0;
     }
     
     public Position getSpawnPoint(){
@@ -129,6 +127,12 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	
 	public void update(){
 		super.update();
+		
+		if(respawnTime > 0){
+    		respawnTime--;
+    	}
+		
+		
 		Iterator<Explosive> iter = explosives.iterator();
 		while(iter.hasNext()){
 			if(iter.next().isDestroyed()){

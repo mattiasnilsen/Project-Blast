@@ -13,6 +13,9 @@ public enum Id {
 	MAGE,
 	SOLIDBLOCK,
 	TOWER, 
-	PARALYZER,
+	PARALYZER;
 	
+	public String getName(){
+		return this.toString().charAt(0) + this.toString().substring(1).toLowerCase();
+	}
 }
