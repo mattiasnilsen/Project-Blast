@@ -13,10 +13,10 @@ BRUTESOUTH data/image/KnowmanHeroDown.png
 BRUTEWEST  data/image/KnowmanHeroLeft.png
 BRUTEEAST  data/image/KnowmanHeroRight.png
 
-ENFORCERNORTH data/image/KnowmanHeroUp.png
-ENFORCERSOUTH data/image/KnowmanHeroDown.png
-ENFORCERWEST  data/image/KnowmanHeroLeft.png
-ENFORCEREAST  data/image/KnowmanHeroRight.png
+ENFORCERNORTH data/image/ShinowmanHeroUp.png
+ENFORCERSOUTH data/image/ShinowmanHeroDown.png
+ENFORCERWEST  data/image/ShinowmanHeroLeft.png
+ENFORCEREAST  data/image/ShinowmanHeroRight.png
 
 FIREBALLNORTH data/image/SnowballUp48.png
 FIREBALLSOUTH data/image/SnowballDown48.png
