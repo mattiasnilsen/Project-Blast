@@ -1,4 +1,4 @@
-package projectblast.test;
+package projectblast.test.title;
 
 import static org.junit.Assert.*;
 
