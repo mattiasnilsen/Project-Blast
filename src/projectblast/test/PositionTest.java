@@ -7,12 +7,6 @@ import org.junit.Test;
 import projectblast.model.helper.Position;
 
 public class PositionTest {
-
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 	
 	@Test
 	public void testEquals(){
@@ -33,6 +27,12 @@ public class PositionTest {
 		
 		assertTrue(p1.hashCode() == p3.hashCode());
 		assertFalse(p1.hashCode() == p2.hashCode());
+	}
+	
+	@Test
+	public void testToString() {
+		Position pos = new Position(100, 200);
+		assertTrue(pos.toString().equals("x: " + 100 + " y: " + 200));
 	}
 
 }
