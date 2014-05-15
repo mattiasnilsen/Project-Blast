@@ -12,8 +12,8 @@ import projectblast.model.helper.Options;
 public class TitleModel implements ITitleModel {
 	private int selectedColumn = 0;
 	private int selectedRow = 0;
-	private HeroChoice player1Hero = HeroChoice.BOMBER;
-	private HeroChoice player2Hero = HeroChoice.MAGE;
+	private HeroChoice player1Hero = Constants.PLAYER_1_DEFAULT_HERO;
+	private HeroChoice player2Hero = Constants.PLAYER_2_DEFAULT_HERO;
 	private Map selectedMap = Map.FirstMap;
 	
 	private List<Column> columns = new ArrayList<Column>();

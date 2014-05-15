@@ -1,5 +1,7 @@
 package projectblast.model.helper;
 
+import projectblast.model.title.ITitleModel.HeroChoice;
+
 public final class Constants {
 	public static final int GAME_WIDTH     	= 1280;
 	public static final int GAME_HEIGHT    	= 720 + 64;
@@ -38,4 +40,7 @@ public final class Constants {
 	
 	public static final int TITLE_STATE_ID = 1;
 	public static final int GAME_STATE_ID = 2;
+	
+	public static final HeroChoice PLAYER_1_DEFAULT_HERO = HeroChoice.MAGE;
+	public static final HeroChoice PLAYER_2_DEFAULT_HERO = HeroChoice.BRUTE;
 }
