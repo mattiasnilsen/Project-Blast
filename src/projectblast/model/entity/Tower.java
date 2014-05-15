@@ -23,7 +23,6 @@ import projectblast.model.helper.Position;
  */
 
 public class Tower extends Entity implements Destructible {
-	public final int RANGE = 6;
 
 	private int health;
 	private int power;
@@ -54,7 +53,7 @@ public class Tower extends Entity implements Destructible {
 		setName(Id.TOWER);
 		health = Constants.TOWER_STARTING_HEALTH;
 		owner = Team.getNeutralTeam();
-		power = 4;
+		power = Constants.TOWER_FIRING_RANGE;
 		powerUpInterval = Constants.TOWER_POWERUP_INTERVAL;
 		timer = 0;
 		cannonStatus = CannonStatus.WAITING;
@@ -177,9 +176,9 @@ public class Tower extends Entity implements Destructible {
 		return false; //Tower should never return true
 	}
 	
-	public Hero getClosestTarget(List<Hero> targets, int range){
+	public Hero getClosestTarget(List<Hero> targets){
 		Direction[] dirs = {Direction.EAST,Direction.NORTH,Direction.WEST,Direction.SOUTH};
-		for (int i = 1; i <= range; i++){
+		for (int i = 1; i <= power; i++){
 			for (Direction d: dirs){
 				int q = Constants.TILE_SIZE;
 				Rectangle r = new Rectangle(getX() + d.getX() * q * i + 4,getY() + d.getY() * q * i + 4, q - 8, q - 8);
@@ -207,22 +206,19 @@ public class Tower extends Entity implements Destructible {
 	
 	
 	
-	public ExplosionCore fireCannon(Direction dir, int range) {
+	public ExplosionCore fireCannon(Direction dir) {
 		if (dir == null){
 			throw new NullPointerException("Trying to fire cannon in direction null");
 		}
 		
 		Direction[] dirs = {dir};
-		List<Direction> d = Arrays.asList(dirs);
+		List<Direction> directions = Arrays.asList(dirs);
 		
 		Position newPos = new Position(getPosition().getX() + dir.getX()*Constants.TILE_SIZE,
-				getPosition().getY() + dir.getY()*Constants.TILE_SIZE);
-		ExplosionCore c = new ExplosionCore(40, newPos, range,d);
-		c.create();
-		System.out.println("It has " + c.getParts().size() + " parts!");
-		return c;
+		getPosition().getY() + dir.getY()*Constants.TILE_SIZE);
+		ExplosionCore c = new ExplosionCore(Constants.EXPLOSION_TIME, newPos, power, directions);
 		
-		//TODO Play a sound
+		return c;
 	}
 
 	public Direction getCannonDir() {
