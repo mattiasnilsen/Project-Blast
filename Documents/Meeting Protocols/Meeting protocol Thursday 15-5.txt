@@ -1,0 +1,49 @@
+﻿Meeting Agenda
+
+Date: 2014-05-15
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min)  Discuss which tests should be prioritized.
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+Some tests have been written.
+Dependency from model to view has been removed.
+A lot of cleanup has been made, TODO comments have been removed and some bugs found by the FindBugs program.
+All external dependencies have been included in the git repo it’s now possible to compile the project with Eclipse out of the box.
+A new menu system has been implemented, it is now possible to choose which hero to use before playing.
+
+
+3. Discussion items (35 min) 
+How should scorebalance change when a hero dies?
+Which tests are most important to do?
+
+
+
+4. Outcomes and assignments (5 min) 
+We’ve decided what to test.
+Who should write which tests?
+Mattias:
+Everything in the title package
+the direction class.
+The tower class.
+Options
+Anton:
+Explosive package 
+TitleView
+ImageDatabase
+BlastView
+Axel:
+JukeBox
+Statusbar
+Controller
+Alex:
+Hero
+Hazard
+
+
+5. Wrap up 
+
+Next meeting Monday 19/5.
