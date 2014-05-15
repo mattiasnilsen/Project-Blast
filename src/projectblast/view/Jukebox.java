@@ -4,7 +4,8 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
-public class Jukebox {
+public abstract class Jukebox {
+	
 	
 	public enum Sounds{
 		EXPLOSION("Boom.ogg"), DEATH("WarningSiren.ogg"), PLACEBOMB("Noise.ogg"), FIREBALL("Noise.ogg");
