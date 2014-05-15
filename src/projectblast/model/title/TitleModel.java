@@ -81,6 +81,7 @@ public class TitleModel implements ITitleModel {
 			selectedColumn += x;
 			selectedRow += y;
 			
+			selectedColumn = getColumnPosition(selectedColumn);
 			Column column = getColumn(selectedColumn);
 			selectedRow = column.getRowPosition(selectedRow);
 		} else {
@@ -102,12 +103,18 @@ public class TitleModel implements ITitleModel {
 	}
 	
 	private Column getColumn(int position) {
-		if(position < 0) {
-			position = columns.size() - position + 1;
-		}
+		position = getColumnPosition(position);
 		
-		position = position % columns.size();
 		return columns.get(position);
+	}
+	
+	private int getColumnPosition(int position) {
+	    if(position < 0) {
+            position = columns.size() - position + 1;
+        }
+	    
+	    position = position % columns.size();
+	    return position;
 	}
 
 	@Override
