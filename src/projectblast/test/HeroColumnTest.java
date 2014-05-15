@@ -11,28 +11,29 @@ import projectblast.model.title.ITitleModel.HeroChoice;
 public class HeroColumnTest {
 
     private HeroColumn heroColumn = null;
+    private final HeroChoice HERO_CHOICE = HeroChoice.BOMBER;
     
     @Before
     public void before() {
-        heroColumn = new HeroColumn("test");
+        heroColumn = new HeroColumn("test", HERO_CHOICE);
     }
     
     @Test
     public void testNextHero() {
-        HeroChoice hero = heroColumn.getSelectedHero();
+        assertTrue(heroColumn.getSelectedHero() == HERO_CHOICE);
         heroColumn.nextHero();
-        assertTrue(hero != heroColumn.getSelectedHero());
+        assertTrue(HERO_CHOICE != heroColumn.getSelectedHero());
         heroColumn.previousHero();
-        assertTrue(hero == heroColumn.getSelectedHero());
+        assertTrue(HERO_CHOICE == heroColumn.getSelectedHero());
     }
 
     @Test
     public void testPreviousHero() {
-        HeroChoice hero = heroColumn.getSelectedHero();
+        assertTrue(heroColumn.getSelectedHero() == HERO_CHOICE);
         heroColumn.previousHero();
-        assertTrue(hero != heroColumn.getSelectedHero());
+        assertTrue(HERO_CHOICE != heroColumn.getSelectedHero());
         heroColumn.nextHero();
-        assertTrue(hero == heroColumn.getSelectedHero());
+        assertTrue(HERO_CHOICE == heroColumn.getSelectedHero());
     }
 
 }

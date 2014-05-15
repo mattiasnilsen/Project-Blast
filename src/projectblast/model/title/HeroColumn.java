@@ -6,14 +6,16 @@ import projectblast.model.title.ITitleModel.HeroChoice;
 
 public class HeroColumn extends Column{
 
-	private HeroChoice selectedHero = HeroChoice.BOMBER;
+	private HeroChoice selectedHero;
 	
-	public HeroColumn(String name) {
+	public HeroColumn(String name, HeroChoice selectedHero) {
 		super(name);
+		this.selectedHero = selectedHero;
 	}
 	
-	public HeroColumn(String name, List<Item> items) {
+	public HeroColumn(String name, List<Item> items, HeroChoice selectedHero) {
 		super(name, items);
+		this.selectedHero = selectedHero;
 	}
 	
 	public HeroChoice getSelectedHero() {

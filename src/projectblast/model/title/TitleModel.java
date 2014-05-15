@@ -26,9 +26,9 @@ public class TitleModel implements ITitleModel {
 		menuColumn.addItem(new Item("Settings"));
 		menuColumn.addItem(new Item("ExitGame"));
 		
-		HeroColumn heroColumn1 = new HeroColumn("HeroColumn1");
+		HeroColumn heroColumn1 = new HeroColumn("HeroColumn1", Constants.PLAYER_1_DEFAULT_HERO);
 		heroColumn1.addItem(new Item("ChooseHero"));
-		HeroColumn heroColumn2 = new HeroColumn("HeroColumn2");
+		HeroColumn heroColumn2 = new HeroColumn("HeroColumn2", Constants.PLAYER_2_DEFAULT_HERO);
 		heroColumn2.addItem(new Item("ChooseHero"));
 		
 		columns.add(menuColumn);
