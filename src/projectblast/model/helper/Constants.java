@@ -20,6 +20,7 @@ public final class Constants {
 	
 	public static final int STUN_DURATION = 60;
 	
+	public static final int BOMB_LIFE = 120;
 	public static final int TOWER_STARTING_HEALTH = 3;
 	public static final int TOWER_POWERUP_INTERVAL = 10 * FRAMERATE;
 	

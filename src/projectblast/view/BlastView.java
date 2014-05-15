@@ -80,7 +80,7 @@ public class BlastView implements IBlastView {
 		//Draw all entities
 		for (Entity e: entities){
 		   	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
-		   //	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
+		   //g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
 		}
 		
 		//Draw mana bars if necessary
