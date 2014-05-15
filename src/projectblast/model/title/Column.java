@@ -28,13 +28,13 @@ public class Column {
 		
 	}
 	
-	Item getItem(int row) {
+	public Item getItem(int row) {
 		row = getRowPosition(row);
 		
 		return items.get(row);
 	}
 	
-	List<Item> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
 	
