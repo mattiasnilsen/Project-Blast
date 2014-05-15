@@ -229,13 +229,13 @@ public class BlastModel implements IBlastModel {
 				targets.add(player.getHero());
 			}
 			
-			Hero closest = tower.getClosestTarget(targets,tower.RANGE);
+			Hero closest = tower.getClosestTarget(targets);
 			if (tower.getHealth() != 0){
 				if(closest != null && tower.isCannonReadyToSearch()){ //If target is found, make ready to fire
 					tower.setCannonDir(Direction.getRelativeDirection(tower.getPosition(), closest.getPosition()));
 					tower.cycleStatus(Constants.TOWER_FIRING_DELAY);
 				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
-					cores.add( tower.fireCannon(tower.getCannonDir(), tower.RANGE));
+					cores.add( tower.fireCannon(tower.getCannonDir()));
 					tower.cycleStatus(Constants.TOWER_RELOAD_DELAY);
 				} else if(tower.isCannonReadyToReload()){//Tower is now ready to find new target
 					tower.cycleStatus(Constants.TOWER_SEARCH_DELAY);
