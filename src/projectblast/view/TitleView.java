@@ -46,18 +46,24 @@ public class TitleView {
 		
 		if(model.getPlayerHero(1).name().equals("MAGE")){
 			mage.draw(700, 100);
+			g.drawString("Mage", 715, 150);
 		} else if(model.getPlayerHero(1).name().equals("BRUTE")){
 			brute.draw(700,100);
+			g.drawString("Brute", 715, 150);
 		} else if(model.getPlayerHero(1).name().equals("BOMBER")){
 			bomber.draw(700,100);
+			g.drawString("Bomber", 715, 150);
 		}
 
 		if(model.getPlayerHero(2).name().equals("MAGE")){
 			mage.draw(1100, 100);
+			g.drawString("Mage", 1115, 150);
 		} else if(model.getPlayerHero(2).name().equals("BRUTE")){
 			brute.draw(1100, 100);
+			g.drawString("Brute", 1115, 150);
 		} else if(model.getPlayerHero(2).name().equals("BOMBER")){
 			bomber.draw(1100, 100);
+			g.drawString("Bomber", 1115, 150);
 		}
 		
 		if(model.isSelected()){
