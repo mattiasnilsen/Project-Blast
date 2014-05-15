@@ -6,16 +6,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import projectblast.model.Direction;
+import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.explosive.Bomb;
+import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hero.Bomber;
-
-import projectblast.model.helper.Constants;
 import projectblast.model.helper.Id;
 import projectblast.model.helper.Position;
 
-public class BombTest {
+public class ExplosiveTest {
 
-	private Bomb bomb;
+	private Explosive bomb;
 	private Bomber bomber; 
 	
 	@Before
@@ -25,35 +25,23 @@ public class BombTest {
 	}
 	
 	@Test
-	public void testBomb() {
+	public void testExplosive() {
 		assertTrue(bomb.getName().equals(Id.BOMB));
 		assertFalse(bomb.getDirection() == Direction.NONE);
 		assertFalse(bomb.isMoving());
 		assertFalse(bomb.isDestroyed());
 		assertTrue(bomb.isOnGrid());
 		assertFalse(bomb.getLife()<=0);
-	}
-	
-	@Test
-	public void testAllowPassage() {
-		assertTrue(bomb.allowPassage(bomber));
-		bomber.move(100,100);
-		assertFalse(bomb.allowPassage(bomber));
-	}
-	
-	
-	@Test
-	public void testUpdate() {
-		assertTrue(bomb.getLife() == Constants.BOMB_LIFE);
-		bomb.update();
-		assertFalse(bomb.isMoving());
-		assertFalse(bomb.getLife() == Constants.BOMB_LIFE);
-		for(int i = 0; i < Constants.BOMB_LIFE-1; i++){
-			bomb.update();
-		}
+		bomb.setPower(42);
+		assertTrue(bomb.getPower() == 42);
+		bomb.destroy();
 		assertTrue(bomb.isDestroyed());
 	}
 	
-
+	@Test
+	public void testGetCore(){
+		assertTrue(bomb.getCore() instanceof ExplosionCore);
+	}
+	
 
 }

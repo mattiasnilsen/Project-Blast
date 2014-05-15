@@ -24,7 +24,7 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 		super(position,  speed, direction, new Rectangle(position.getX(), position.getY(), 28, 28));
 		this.owner = owner;
 		power = owner.getPower();
-		System.out.println(power);
+		setPosition(BlastModel.snapToGrid(getPosition()));
 	
 	}
 	
