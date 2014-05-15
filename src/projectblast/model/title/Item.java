@@ -13,7 +13,7 @@ public class Item {
 	}
 	
 	public Item(Item other) {
-		if(name == null) {
+		if(other == null) {
 			throw new NullPointerException("projectblast.model.title.item: other cannot be null");
 		}
 		this.name = new String(other.getName());
