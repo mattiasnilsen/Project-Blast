@@ -21,10 +21,18 @@ import projectblast.model.entity.SolidBlock;
 import projectblast.model.entity.hero.Brute;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.entity.hero.Mage;
+import projectblast.model.helper.Options;
 import projectblast.model.helper.Position;
 
 public class BlastModelTest {
-
+	
+	
+	@Test
+	public void testModel(){
+		
+	
+	}
+	
 	@Test
 	public void testSnapToGrid() {
 		Position pos = new Position(142,193);
@@ -48,9 +56,20 @@ public class BlastModelTest {
 		Direction dir = Direction.EAST;
 		Team team = new Team("Test", Color.red, Side.LEFT );
 		Hero mage = new Mage(pos,dir,team);
-		players.add(new Player(mage));
+		Player player = new Player(mage);
+		players.add(player);
 		
 		BlastModel model = new BlastModel(players);
+		assertTrue(player.getHero().getTeam().getColor().equals(Color.red));
+		assertTrue(player.getHero().getTeam().getSide().equals(Side.LEFT));
+		assertTrue(player.getHero().getTeam().toString().equals(player.getHero().getTeam().getColor().toString() + " "+ "Test"));
+		assertFalse(player.getHero().isMoving());
+		model.movePlayer(1, Direction.NONE);
+		assertTrue(player.getHero().isMoving());
+		model.stopPlayer(1);
+		assertFalse(player.getHero().isMoving());
+		
+		
 		
 		int xPos = mage.getX();
 		model.movePlayer(1, Direction.EAST);
