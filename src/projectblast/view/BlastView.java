@@ -81,12 +81,8 @@ public class BlastView implements IBlastView {
 		//Draw all entities
 		for (Entity e: entities){
 		   
-			if (e instanceof Hero && ((Hero)e).isRespawning()){
-				color = new Color(255,255,255,(((Hero)e).getRespawnTime()%10)/10f);
-			} else {
-				color = Color.white;
-			}
-		   	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY(), color); 
+			
+		   	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
 		   //	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
 
 		}

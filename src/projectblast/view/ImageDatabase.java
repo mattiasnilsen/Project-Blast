@@ -19,6 +19,7 @@ import projectblast.model.entity.SolidBlock;
 import projectblast.model.entity.Tower;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hazard.Explosion;
+import projectblast.model.entity.hazard.Hazard;
 import projectblast.model.entity.hazard.Paralyzer;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
@@ -77,6 +78,7 @@ public class ImageDatabase {
 	public Animation getAnimation(Entity entity){
 		Id name = entity.getName();
 		Animation tmp = null;
+		//Call different getter depending on entity ID
 		switch (name){
 			case MAGE: case BOMBER: case BRUTE: case ENFORCER:
 				Hero hero = (Hero) entity;
@@ -98,13 +100,9 @@ public class ImageDatabase {
 				DestructibleBlock destructibleBlock = (DestructibleBlock) entity;
 				tmp = getDestructibleBlockImage(destructibleBlock);
 				break;
-			case EXPLOSION:
-				Explosion explosion = (Explosion) entity;
-				tmp = getExplosionImage(explosion);
-				break;
-			case PARALYZER:
-				Paralyzer paralyzer = (Paralyzer) entity;
-				tmp = getParalyzerImage(paralyzer);
+			case EXPLOSION: case PARALYZER:
+				Hazard hazard = (Hazard) entity;
+				tmp = getHazardImage(hazard);
 				break;
 			default:
 			try {
@@ -118,8 +116,8 @@ public class ImageDatabase {
 		return tmp;
 	}
 
-	private Animation getExplosionImage(Explosion explosion) {
-		String key = explosion.getName().toString();
+	private Animation getHazardImage(Hazard hazard) {
+		String key = hazard.getName().toString();
 		Image image = images.get(key);
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
@@ -138,11 +136,9 @@ public class ImageDatabase {
 
 	private Animation getExplosiveAnimation(Explosive explosive) {
 		Direction direction = explosive.getDirection();
-		//Color teamColor = explosive.getOwner().getTeam().getColor();
 		String key = explosive.getName().toString();
 		key += getDirectionState(direction);
 		Image image = images.get(key);
-		//image.setImageColor(teamColor.r, tTeamColor.g, teamColor.b);
 		 
 		return new Animation(new SpriteSheet(image, 48, 48), 1000);
 	}
@@ -159,14 +155,9 @@ public class ImageDatabase {
 		//Animation uses an images imageColor when drawing apparently
 		Image[] test = new Image[1];
 		test[0] = image.getSubImage(0, 0, 48, 48);
-		test[0].setImageColor(teamColor.r , teamColor.g, teamColor.b,((hero.getRespawnTime()+19)%20)/20f);
+		test[0].setImageColor(teamColor.r , teamColor.g, teamColor.b,((hero.getRespawnTime()+19)%20)/20f); //Makes the hero blink when respawning
 		
 		 return new Animation(test, 1);
-		// For some reason Animation doesn't use spriteSheets imageColor when drawing
-		//SpriteSheet spriteSheet = new SpriteSheet(image, 48, 48);
-		//spriteSheet.setImageColor(teamColor.r , teamColor.g, teamColor.b);
-		
-		//return new Animation(spriteSheet, 1000);
 	}
 	
 
@@ -180,11 +171,6 @@ public class ImageDatabase {
 		return new Animation(test, 1);
 	}
 	
-	private Animation getParalyzerImage(Paralyzer p) {
-		String key = p.getName().toString();
-		Image image = images.get(key);
-		return new Animation(new SpriteSheet(image, 48, 48), 1000);
-	}
 	private String getDirectionState(Direction direction){
 		String tmp;
 		switch(direction.toString()){
