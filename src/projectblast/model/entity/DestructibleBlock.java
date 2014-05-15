@@ -18,6 +18,7 @@ public class DestructibleBlock extends MovableEntity implements Destructible{
 		super(position, 1, Direction.NONE, new Rectangle(position.getX() + 1, position.getY() + 1, 30, 30));
 
 		setName(Id.DESTRUCTIBLEBLOCK);
+		setSpeed(4);
 	}
 
 	@Override
