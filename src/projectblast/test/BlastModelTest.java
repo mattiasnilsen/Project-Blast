@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.newdawn.slick.Color;
 
@@ -18,6 +19,10 @@ import projectblast.model.Team;
 import projectblast.model.Team.Side;
 import projectblast.model.entity.Block;
 import projectblast.model.entity.SolidBlock;
+import projectblast.model.entity.explosive.Bomb;
+import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.entity.hazard.Hazard;
+import projectblast.model.entity.hero.Bomber;
 import projectblast.model.entity.hero.Brute;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.entity.hero.Mage;
@@ -26,12 +31,24 @@ import projectblast.model.helper.Position;
 
 public class BlastModelTest {
 	
+	Team team;
+	Hero mage;
+	Player player;
+	BlastModel model;
+	List<Player> players;
 	
-	@Test
-	public void testModel(){
-		
-	
+	@Before
+	public void before() {
+		players = new ArrayList<Player>();
+		Position pos = new Position(1,1);
+		Direction dir = Direction.EAST;
+		team = new Team("Test", Color.red, Side.LEFT );
+		mage = new Mage(pos,dir,team);
+		player = new Player(mage);
+		players.add(player);
+		model = new BlastModel(players);
 	}
+
 	
 	@Test
 	public void testSnapToGrid() {
@@ -47,19 +64,27 @@ public class BlastModelTest {
 	}
 	@Test
 	public void testPrimary(){
-		
+
+		model.primary(1);
+		assertTrue(model.getEntities().get(model.getEntities().size()-1) instanceof Explosive);
+		SolidBlock b = new SolidBlock(new Position(1,1));
+		model.addEntity(b);
+		assertFalse(model.getEntities().get(model.getEntities().size()-1) instanceof Explosive);
+		model.removeEntity(b);
+		assertTrue(model.getEntities().get(model.getEntities().size()-1) instanceof Explosive);
+	}
+	
+	@Test
+	public void testSecondary(){
+
+		model.secondary(1);
+		//model.update(null,null,1);
+		assertTrue(model.getEntities().get(model.getEntities().size()-1) instanceof Hazard);
+	
 	}
 	@Test
 	public void testMovePlayer(){
-		List<Player> players = new ArrayList<Player>();
-		Position pos = new Position(1,1);
-		Direction dir = Direction.EAST;
-		Team team = new Team("Test", Color.red, Side.LEFT );
-		Hero mage = new Mage(pos,dir,team);
-		Player player = new Player(mage);
-		players.add(player);
 		
-		BlastModel model = new BlastModel(players);
 		assertTrue(player.getHero().getTeam().getColor().equals(Color.red));
 		assertTrue(player.getHero().getTeam().getSide().equals(Side.LEFT));
 		assertTrue(player.getHero().getTeam().toString().equals(player.getHero().getTeam().getColor().toString() + " "+ "Test"));
@@ -97,7 +122,7 @@ public class BlastModelTest {
 		xPos = mage.getX();
 		yPos = mage.getY();
 		Position magePos = new Position(xPos, yPos);
-		Hero brute = new Brute(magePos,dir,team);
+		Hero brute = new Brute(magePos,Direction.EAST,team);
 		players.add(new Player(brute));
 		assertTrue(mage.getPosition().equals(brute.getPosition()));
 		
