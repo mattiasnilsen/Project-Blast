@@ -1,7 +1,7 @@
 /**
  * 
  */
-package projectblast.control;
+package projectblast.test;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
+
+import projectblast.control.BlastGame;
 
 /**
  * @author osaxel
