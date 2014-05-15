@@ -2,6 +2,7 @@ package projectblast.model.entity;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.BlastModel;
 import projectblast.model.Destructible;
 import projectblast.model.Direction;
 import projectblast.model.helper.Id;
@@ -29,6 +30,13 @@ public class DestructibleBlock extends MovableEntity implements Destructible{
 	@Override
 	public boolean isDestroyed() {
 		return isDestroyed;
+	}
+	
+	@Override
+	public void stopMove() {
+		super.stopMove();
+		setX(BlastModel.snapToGrid(getX()));
+		setY(BlastModel.snapToGrid(getY()));
 	}
 
 	@Override
