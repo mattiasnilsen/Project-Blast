@@ -30,7 +30,7 @@ import projectblast.model.helper.Id;
  *
  */
 public class ImageDatabase {
-	private static ImageDatabase imageDatabase;
+	private static ImageDatabase imageDatabase = null;
 	private Map<String, Image> images; //A map for images. The key should include objectname and state.
 	
 	private ImageDatabase(){
