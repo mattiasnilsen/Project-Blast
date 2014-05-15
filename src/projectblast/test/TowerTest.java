@@ -2,6 +2,9 @@ package projectblast.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.newdawn.slick.Color;
@@ -10,6 +13,7 @@ import projectblast.model.*;
 import projectblast.model.Team.Side;
 import projectblast.model.entity.Tower;
 import projectblast.model.entity.Tower.CannonStatus;
+import projectblast.model.entity.hazard.Explosion;
 import projectblast.model.entity.hero.*;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Position;
@@ -50,6 +54,29 @@ public class TowerTest {
 	}
 	
 	@Test
+	public void testCollide() {
+		Team team1 = new Team("Test", Color.black, Side.LEFT);
+		Hero hero = new Mage(new Position(0, 0), Direction.NORTH, team1);
+		Explosion explosion = new Explosion(new Position(0, 0));
+		
+		assertTrue(tower.getHealth() == Constants.TOWER_STARTING_HEALTH);
+		tower.collide(explosion);
+		assertTrue(tower.getHealth() == Constants.TOWER_STARTING_HEALTH - 1);
+		//A tower should only take damage the first time an explosion hits it.
+		tower.collide(explosion);
+		assertTrue(tower.getHealth() == Constants.TOWER_STARTING_HEALTH - 1);
+		
+		while(tower.getHealth() > 0) {
+			tower.takeDamage();
+		}
+		
+		assertTrue(tower.getHealth() == 0);
+		assertTrue(tower.getOwner() == Team.getNeutralTeam());
+		tower.collide(hero);
+		assertTrue(tower.getOwner() == team1);
+	}
+	
+	@Test
 	public void testAllowPassage() {
 		Hero hero = new Mage(new Position(200, 200), Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT));
 		assertFalse(tower.allowPassage(hero));
@@ -63,14 +90,25 @@ public class TowerTest {
 	
 	@Test
 	public void testCycleStatus(){
-		Tower t = new Tower(new SpeedPowerUp(), new Position(33,33));
-		assertTrue(t.getStatus() == CannonStatus.WAITING);
-		t.cycleStatus(20);
-		assertTrue(t.getStatus() == CannonStatus.READYING);
-		t.cycleStatus(20);
-		assertTrue(t.getStatus() == CannonStatus.RELOADING);
-		t.cycleStatus(20);
-		assertTrue(t.getStatus() == CannonStatus.WAITING);
+		assertTrue(tower.getStatus() == CannonStatus.WAITING);
+		tower.cycleStatus(20);
+		assertTrue(tower.getStatus() == CannonStatus.READYING);
+		tower.cycleStatus(20);
+		assertTrue(tower.getStatus() == CannonStatus.RELOADING);
+		tower.cycleStatus(20);
+		assertTrue(tower.getStatus() == CannonStatus.WAITING);
 		
 	}
+	
+	@Test 
+	public void testGetClosestTarget() {
+		List<Hero> targets = new ArrayList<Hero>();
+		targets.add(new Mage(new Position(32, 32), Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT)));
+		targets.add(new Mage(new Position(32, 64), Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT)));
+		targets.add(new Mage(new Position(32, 96), Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT)));
+		tower.setPosition(new Position(32, 130));
+		assertTrue(targets.get(2) == tower.getClosestTarget(targets, 5));
+		
+	}
+	
 }

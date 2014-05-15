@@ -77,15 +77,25 @@ public class BlastView implements IBlastView {
 		//Sort entities
 		sortEntities();
 		
+		Color color;
 		//Draw all entities
 		for (Entity e: entities){
-		   	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
-		   //g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
+		   
+			if (e instanceof Hero && ((Hero)e).isRespawning()){
+				color = new Color(255,255,255,(((Hero)e).getRespawnTime()%10)/10f);
+			} else {
+				color = Color.white;
+			}
+		   	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY(), color); 
+		   //	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
+
 		}
 		
 		//Draw mana bars if necessary
 		for(Player p: model.getPlayers()){
 			Hero h = p.getHero();
+			
+			
 			if (h.getMana() < 100){
 				g.setColor(Color.black);
 				g.fillRect(h.getX(),h.getY()+Constants.TILE_SIZE,Constants.TILE_SIZE,8);

@@ -24,6 +24,10 @@ public final class Constants {
 	public static final int TOWER_STARTING_HEALTH = 3;
 	public static final int TOWER_POWERUP_INTERVAL = 10 * FRAMERATE;
 	
+	public static final int TOWER_FIRING_DELAY = 50;
+	public static final int TOWER_RELOAD_DELAY = 120;
+	public static final int TOWER_SEARCH_DELAY = 0;
+	
 	public static final int HERO_START_SPEED = 0;
 	
 	
