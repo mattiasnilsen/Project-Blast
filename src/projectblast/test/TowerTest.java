@@ -11,6 +11,7 @@ import org.newdawn.slick.Color;
 
 import projectblast.model.*;
 import projectblast.model.Team.Side;
+import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.Tower;
 import projectblast.model.entity.Tower.CannonStatus;
 import projectblast.model.entity.hazard.Explosion;
@@ -48,6 +49,10 @@ public class TowerTest {
 		tower.takeDamage();
 		tower.capture(team1);
 		
+		assertTrue(tower.getHealth() == Constants.TOWER_STARTING_HEALTH);
+		assertTrue(tower.getOwner() == team1);
+		
+		tower.capture(team1); //If same team captures it again nothing should change.
 		assertTrue(tower.getHealth() == Constants.TOWER_STARTING_HEALTH);
 		assertTrue(tower.getOwner() == team1);
 		
@@ -100,6 +105,21 @@ public class TowerTest {
 		
 	}
 	
+	@Test
+	public void testCannonStatus() {
+		for(int i = 0; i < Tower.CannonStatus.values().length; ++i) {
+			if(tower.getStatus() == CannonStatus.READYING) {
+				assertTrue(tower.isCannonReadyToFire());
+			} else if(tower.getStatus() == CannonStatus.WAITING) {
+				assertTrue(tower.isCannonReadyToSearch());
+			} else if(tower.getStatus() == CannonStatus.RELOADING) {
+				assertTrue(tower.isCannonReadyToReload());
+			}
+			tower.cycleStatus(0);
+		}
+		
+	}
+	
 	@Test 
 	public void testGetClosestTarget() {
 		List<Hero> targets = new ArrayList<Hero>();
@@ -107,8 +127,52 @@ public class TowerTest {
 		targets.add(new Mage(new Position(32, 64), Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT)));
 		targets.add(new Mage(new Position(32, 96), Direction.EAST, new Team("Test Team", Color.red, Team.Side.LEFT)));
 		tower.setPosition(new Position(32, 130));
-		assertTrue(targets.get(2) == tower.getClosestTarget(targets, 5));
+		assertTrue(targets.get(2) == tower.getClosestTarget(targets));
 		
+		assertTrue(tower.getClosestTarget(new ArrayList<Hero>()) == null);
+		
+	}
+	
+	@Test
+	public void testUpdate() {
+		assertTrue(tower.getPowerupTimer() == Constants.TOWER_POWERUP_INTERVAL);
+		while(tower.getPowerupTimer() > 0) {
+			tower.update();
+		}
+		assertTrue(tower.getPowerupTimer() == 0);
+		tower.update();
+		assertTrue(tower.getPowerupTimer() == Constants.TOWER_POWERUP_INTERVAL);
+	}
+	
+	@Test
+	public void testDestroy() {
+		tower.setHealth(Constants.TOWER_STARTING_HEALTH);
+		assertTrue(tower.getHealth() == Constants.TOWER_STARTING_HEALTH);
+		tower.destroy();
+		assertTrue(tower.getHealth() == Constants.TOWER_STARTING_HEALTH - 1);
+	}
+	
+	@Test
+	public void testIsDestroyed() {
+		tower.destroy();
+		assertFalse(tower.isDestroyed());
+	}
+	
+	@Test
+	public void testFireCannon() {
+		boolean caughtException = false;
+		try {
+			tower.fireCannon(null);
+		} catch(NullPointerException ex) {
+			caughtException = true;
+		}
+		
+		assertTrue(caughtException);
+		tower.setCannonDir(Direction.NORTH);
+		ExplosionCore core = tower.fireCannon(tower.getCannonDir());
+		assertFalse(core == null);
+		assertFalse(core.isCreated());
+		assertFalse(core.isDead());
 	}
 	
 }
