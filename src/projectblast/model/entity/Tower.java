@@ -42,7 +42,6 @@ public class Tower extends Entity implements Destructible {
 		WAITING, READYING, RELOADING;
 		
 		public CannonStatus next(){
-			System.out.println("Changed status to " + values()[(ordinal() + 1) % values().length]);
 			return values()[(ordinal() + 1) % values().length];
 		}
 	}
@@ -106,7 +105,6 @@ public class Tower extends Entity implements Destructible {
 		if(owner == team) {
 			return;
 		}
-		System.out.println("Tower captured");
 		owner = team;
 		health = Constants.TOWER_STARTING_HEALTH;
 	}
@@ -115,7 +113,6 @@ public class Tower extends Entity implements Destructible {
 	 * Make tower defences take damage
 	 */
 	public void takeDamage(){
-		System.out.println("Tower taking damage");
 		if (health > 0){
 			health--;
 			if(health == 0) {
