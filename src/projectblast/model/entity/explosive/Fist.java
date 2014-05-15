@@ -20,6 +20,7 @@ public class Fist extends Explosive {
 		super(position, speed, direction, owner);
 		setName(Id.FIST);
 		setLife(Constants.FIST_TIME);
+		setPosition(BlastModel.snapToGrid(getPosition()));
 	}
 	
 	@Override
