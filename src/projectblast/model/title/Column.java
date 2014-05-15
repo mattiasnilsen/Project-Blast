@@ -16,6 +16,10 @@ public class Column {
 	
 	public Column(String name, List<Item> items) {
 		this(name);
+
+		if(items == null) {
+			throw new NullPointerException("projectblast.model.title.Column: items cannot be null");
+		}
 		
 		for(Item item : items) { //Make a deep copy of all the items.
 			Item newItem = new Item(item);
@@ -24,13 +28,13 @@ public class Column {
 		
 	}
 	
-	Item getItem(int row) {
+	public Item getItem(int row) {
 		row = getRowPosition(row);
 		
 		return items.get(row);
 	}
 	
-	List<Item> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
 	
