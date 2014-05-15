@@ -28,6 +28,11 @@ BOMBSOUTH data/image/Bomb.png
 BOMBWEST  data/image/Bomb.png
 BOMBEAST  data/image/Bomb.png
 
+DRONENORTH data/image/Drone.png
+DRONESOUTH data/image/Drone.png
+DRONEWEST data/image/Drone.png
+DRONEEAST data/image/Drone.png
+
 TOWER  data/image/TowerV3.png
 TOWER3 data/image/TowerV3.png
 TOWER2 data/image/TowerV3H2.png
