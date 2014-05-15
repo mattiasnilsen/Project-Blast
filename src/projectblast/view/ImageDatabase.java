@@ -159,7 +159,7 @@ public class ImageDatabase {
 		//Animation uses an images imageColor when drawing apparently
 		Image[] test = new Image[1];
 		test[0] = image.getSubImage(0, 0, 48, 48);
-		test[0].setImageColor(teamColor.r , teamColor.g, teamColor.b);
+		test[0].setImageColor(teamColor.r , teamColor.g, teamColor.b,((hero.getRespawnTime()+19)%20)/20f);
 		
 		 return new Animation(test, 1);
 		// For some reason Animation doesn't use spriteSheets imageColor when drawing

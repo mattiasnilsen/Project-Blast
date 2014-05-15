@@ -21,7 +21,6 @@ import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.MapReader;
 import projectblast.model.helper.Position;
-import projectblast.model.powerup.SpeedPowerUp;
 
 
 public class BlastModel implements IBlastModel {
