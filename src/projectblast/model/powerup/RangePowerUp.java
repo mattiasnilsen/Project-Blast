@@ -1,6 +1,7 @@
 package projectblast.model.powerup;
 
 import projectblast.model.entity.hero.Hero;
+import projectblast.model.helper.Constants;
 /**
  * A powerUp which changes the Heroes range.
  * @author franton
@@ -8,17 +9,15 @@ import projectblast.model.entity.hero.Hero;
  */
 public class RangePowerUp implements IPowerUp {
 	
-	private final int RANGE_MODIFIER = 1;
-	
 	@Override
 	public void apply(Hero hero) {
-		hero.setPower(hero.getPower() + RANGE_MODIFIER);
+		hero.setPower(hero.getPower() + Constants.RANGE_POWERUP_MODIFIER);
 		
 	}
 
 	@Override
 	public void reverse(Hero hero) {
-		hero.setPower(hero.getPower() - RANGE_MODIFIER);
+		hero.setPower(hero.getPower() - Constants.RANGE_POWERUP_MODIFIER);
 		
 	}
 	

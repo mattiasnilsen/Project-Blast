@@ -43,4 +43,9 @@ public final class Constants {
 	
 	public static final HeroChoice PLAYER_1_DEFAULT_HERO = HeroChoice.MAGE;
 	public static final HeroChoice PLAYER_2_DEFAULT_HERO = HeroChoice.BRUTE;
+	
+	//Powerup
+	public static final int AMMO_POWERUP_MODIFIER = 1;
+	public static final int RANGE_POWERUP_MODIFIER = 1;
+	public static final int SPEED_POWERUP_MODIFIER = 1;
 }
