@@ -1,4 +1,4 @@
-package projectblast.test.powerup;
+package projectblast.test;
 
 import static org.junit.Assert.*;
 
@@ -10,9 +10,9 @@ import projectblast.model.entity.hero.*;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Position;
 import projectblast.model.powerup.IPowerUp;
-import projectblast.model.powerup.RangePowerUp;
+import projectblast.model.powerup.AmmoPowerUp;
 
-public class RangePowerUpTest {
+public class AmmoPowerUpTest {
 
     private Hero testHero = null;
     private IPowerUp powerUp = null;
@@ -20,26 +20,26 @@ public class RangePowerUpTest {
     @Before
     public void before() {
         testHero = new Mage(new Position(0, 0), Direction.NORTH, null);
-        powerUp = new RangePowerUp();
+        powerUp = new AmmoPowerUp();
     }
     
     @Test
     public void testApply() {
-        int heroRange = testHero.getPower();
+        int heroAmmo = testHero.getAmmo();
         powerUp.apply(testHero);
-        assertTrue(testHero.getPower() == heroRange + Constants.RANGE_POWERUP_MODIFIER);
+        assertTrue(testHero.getAmmo() == heroAmmo + Constants.AMMO_POWERUP_MODIFIER);
     }
 
     @Test
     public void testReverse() {
-        int heroRange = testHero.getPower();
+        int heroAmmo = testHero.getAmmo();
         powerUp.reverse(testHero);
-        assertTrue(testHero.getPower() == heroRange - Constants.RANGE_POWERUP_MODIFIER);
+        assertTrue(testHero.getAmmo() == heroAmmo - Constants.AMMO_POWERUP_MODIFIER);
     }
 
     @Test
     public void testToString() {
-        assertTrue(powerUp.toString().equals("Range"));
+        assertTrue(powerUp.toString().equals("Ammo"));
     }
 
 }
