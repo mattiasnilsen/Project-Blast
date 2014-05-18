@@ -88,7 +88,7 @@ public class ImageDatabase {
 				Tower tower = (Tower) entity;
 				tmp = getTowerImage(tower);
 				break;
-			case FIREBALL: case BOMB: case DRONE:
+			case FIREBALL: case BOMB: case DRONE: case FIST:
 				Explosive explosive = (Explosive) entity;
 				tmp = getExplosiveAnimation(explosive);
 				break;

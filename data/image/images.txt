@@ -44,4 +44,8 @@ EXPLOSION data/image/Explosion3D.png
 
 PARALYZER data/image/Paralyzer3D.png
 
+FISTNORTH data/image/Fist.png
+FISTSOUTH data/image/Fist.png
+FISTWEST  data/image/Fist.png
+FISTEAST  data/image/Fist.png
 
