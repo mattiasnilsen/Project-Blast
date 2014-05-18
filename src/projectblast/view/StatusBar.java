@@ -28,6 +28,7 @@ public class StatusBar {
 		//Split players into teams
 		for (Player p: players){
 			if (p.getHero().getTeam().equals(players.get(0).getHero().getTeam())){
+				
 				left.add(p);
 			} else {
 				right.add(p);
@@ -38,17 +39,17 @@ public class StatusBar {
 		}
 		
 		
-		g.setColor(Color.orange);
+		g.setColor(Color.gray);
 		g.fillRect(0, 0, Constants.GAME_WIDTH, Constants.MAP_YOFFSET);
 		
 		//Left team
 		g.setColor(left.get(0).getHero().getTeam().getColor());
 		g.drawString(left.get(0).getHero().getTeam().getName(), 0, 0);
-		
+		g.drawString("Deaths: " + left.get(0).getHero().getDeathCount(), 0, 30);
 		//Right team
 		g.setColor(right.get(0).getHero().getTeam().getColor());
 		g.drawString(right.get(0).getHero().getTeam().getName(), Constants.GAME_WIDTH - 128, 0);
-		
+		g.drawString("Deaths: " + right.get(0).getHero().getDeathCount(), Constants.GAME_WIDTH - 128, 30);
 		//Tug of War
 		g.setColor(right.get(0).getHero().getTeam().getColor());
 		g.fillRect(Constants.GAME_WIDTH/2 - 500, 16, 1000, 32);
