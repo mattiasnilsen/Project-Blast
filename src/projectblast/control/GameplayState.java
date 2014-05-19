@@ -28,7 +28,6 @@ import projectblast.model.IBlastModel;
 import projectblast.model.Player;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Options;
-import projectblast.model.helper.SimulatedOptions;
 import projectblast.view.BlastView;
 import projectblast.view.IBlastView;
 
