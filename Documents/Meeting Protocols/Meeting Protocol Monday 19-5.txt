@@ -1,0 +1,50 @@
+﻿Meeting Agenda
+
+Date: 2014-05-19
+
+Facilitator: Anton Freudenthaler
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min) 
+Discuss which tests to complete and if we should implement the last hero.
+Try to outline the core of the presentation.
+
+2. Reports (15 min)
+We have done more tests. We have about 65% tested code at the moment.
+
+3. Discussion items (35 min)
+What are our priorities?
+How should we structure the presentation?
+Where should we put the demo, how much should be focused around it?
+
+Deadlines.
+
+4. Outcomes and assignments (5 min)
+
+
+Priorities:
+The presentation should be prioritized before all.
+The tests are right after that.
+Enforcer/Drone will be implemented if the two above are done.
+
+
+Dealines:
+The drone and enforce classes should be worked on.
+The tests for the hero and explosive packages should also be written
+
+
+Alex will finish the Enforcer/Drone class and write tests for it. He will take care of the introduction part of the presentation.
+
+
+Mattias & Anton should plan the details of the presentation, use cases and the demo.
+
+
+Axel should work on the powerup system to make it more visual.
+
+Everyone should work on the presentation, the report, the RAD and the SDD.
+
+
+
+ 5.Wrap up
+ Next meeting will be Thursday  22/5
