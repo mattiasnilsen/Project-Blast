@@ -11,14 +11,18 @@ public class RangePowerUp implements IPowerUp {
 	
 	@Override
 	public void apply(Hero hero) {
-		hero.setPower(hero.getPower() + Constants.RANGE_POWERUP_MODIFIER);
-		
+		int i = hero.getPower() + Constants.RANGE_POWERUP_MODIFIER;
+		if (i < Constants.RANGE_MAX){
+			hero.setPower(i);
+		}
 	}
 
 	@Override
 	public void reverse(Hero hero) {
-		hero.setPower(hero.getPower() - Constants.RANGE_POWERUP_MODIFIER);
-		
+		int i = hero.getPower() - Constants.RANGE_POWERUP_MODIFIER;
+		if (i > 0){
+			hero.setPower(i);
+		}
 	}
 	
 	@Override

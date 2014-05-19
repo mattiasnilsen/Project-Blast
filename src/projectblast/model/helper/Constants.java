@@ -46,6 +46,9 @@ public final class Constants {
 	
 	//Powerup
 	public static final int AMMO_POWERUP_MODIFIER = 1;
+	public static final int AMMO_MAX = 5;
 	public static final int RANGE_POWERUP_MODIFIER = 1;
+	public static final int RANGE_MAX = 5;
 	public static final int SPEED_POWERUP_MODIFIER = 1;
+	public static final int SPEED_MAX = 5;
 }

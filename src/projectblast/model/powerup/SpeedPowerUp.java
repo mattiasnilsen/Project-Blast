@@ -12,12 +12,18 @@ public class SpeedPowerUp implements IPowerUp {
 	
 	@Override
 	public void apply(Hero hero) {
-		hero.setSpeed(hero.getSpeed() + Constants.SPEED_POWERUP_MODIFIER);
+		int i = hero.getSpeed() + Constants.SPEED_POWERUP_MODIFIER;
+		if (i < Constants.SPEED_MAX){
+			hero.setSpeed(i);
+		}
 	}
 
 	@Override
 	public void reverse(Hero hero) {
-		hero.setSpeed(hero.getSpeed() - Constants.SPEED_POWERUP_MODIFIER);
+		int i = hero.getSpeed() - Constants.SPEED_POWERUP_MODIFIER;
+		if (i > 0){
+			hero.setSpeed(i);
+		}
 	}
 	
 	@Override

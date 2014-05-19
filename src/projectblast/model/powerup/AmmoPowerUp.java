@@ -12,14 +12,18 @@ public class AmmoPowerUp implements IPowerUp {
 	
 	@Override
 	public void apply(Hero hero) {
-		hero.setAmmo(hero.getAmmo() + Constants.AMMO_POWERUP_MODIFIER);
-		
+		int i = hero.getAmmo() + Constants.AMMO_POWERUP_MODIFIER;
+		if (i <= Constants.AMMO_MAX){
+			hero.setAmmo(i);
+		}
 	}
 
 	@Override
 	public void reverse(Hero hero) {
-		hero.setAmmo(hero.getAmmo() - Constants.AMMO_POWERUP_MODIFIER);
-		
+		int i = hero.getAmmo() - Constants.AMMO_POWERUP_MODIFIER;
+		if (i > 0){
+			hero.setAmmo(i);
+		}
 	}
 	
 	@Override
