@@ -32,18 +32,16 @@ public class Drone extends Explosive{
 	
 	public void findTarget(List<Hero> heroes, List<Tower> towers){
 		if(target == null){
-		outerloop:	
 		for(Hero hero:heroes){
 			if(targetIsInRange(hero)){
 				target = hero;
-				break outerloop;
+				break;
 			}
 		}
-		outerloop2:
 		for(Tower tower:towers){
 			if(targetIsInRange(tower)){
 				target = tower;
-				break outerloop2;
+				break;
 			}
 		}
 		}
@@ -86,7 +84,7 @@ public class Drone extends Explosive{
 		return null;
 	}
 	
-	public Boolean targetIsInRange(Entity target){
+	public boolean targetIsInRange(Entity target){
 		if(target != getOwner()){
 			if(Math.abs(target.getX()-getX()) <= range* Constants.TILE_SIZE){
 				return true;

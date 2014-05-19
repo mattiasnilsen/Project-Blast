@@ -50,8 +50,9 @@ public enum Direction {
             return NORTHWEST;
         }  else if (this.equals(NORTHWEST)){
             return NORTH;
-        } 
-		return this;
+        } else {
+        	return NONE;
+        }
 	}
 	
 	public Direction opposite(){
