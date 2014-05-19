@@ -336,6 +336,11 @@ public class BlastModel implements IBlastModel {
 	public int getScaleFactor() {
 		return scaleFactor;
 	}
+	
+	//This exists just for testing
+	public int getTick(){
+		return tick;
+	}
 
 	@Override
 	public void setScaleFactor(int scaleFactor) {

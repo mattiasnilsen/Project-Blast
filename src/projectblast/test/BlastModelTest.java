@@ -168,4 +168,15 @@ public class BlastModelTest {
 		
 		
 	}
+	
+	@Test
+	public void testUpdate(){
+		int before = model.getTick();
+		model.update(null,null,1);
+		int after = model.getTick();
+		
+		assertFalse(before == after);
+		assertTrue(before == after - 1);
+		
+	}
 }
