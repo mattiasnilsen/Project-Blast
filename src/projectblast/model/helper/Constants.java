@@ -63,5 +63,5 @@ public final class Constants {
 	public static final int RANGE_POWERUP_MODIFIER = 1;
 	public static final int RANGE_MAX = 5;
 	public static final int SPEED_POWERUP_MODIFIER = 1;
-	public static final int SPEED_MAX = 5;
+	public static final int SPEED_MAX = 10;
 }
