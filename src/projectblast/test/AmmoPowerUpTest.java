@@ -32,6 +32,7 @@ public class AmmoPowerUpTest {
 
     @Test
     public void testReverse() {
+    	powerUp.apply(testHero);
         int heroAmmo = testHero.getAmmo();
         powerUp.reverse(testHero);
         assertTrue(testHero.getAmmo() == heroAmmo - Constants.AMMO_POWERUP_MODIFIER);
