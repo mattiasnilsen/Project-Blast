@@ -18,15 +18,17 @@ public final class Constants {
 	public static final int GAME_SCORE_LIMIT = 500;
 	
 	
-	//Amount of frames explosions stay on screen
+	//Explosions
 	public static final int EXPLOSION_TIME = 30;
 	public static final int PARALYZER_TIME = 30;
 	
 	public static final int FIST_TIME = 20;
+	public static final int FIST_SPEED = 0;
 	
-	public static final int STUN_DURATION = 60;
+	public static final int STUN_TIME = 60;
 	
-	public static final int BOMB_LIFE = 120;
+	public static final int BOMB_TIME = 120;
+	public static final int BOMB_SPEED = 0;
 	
 	//Tower
 	public static final int TOWER_STARTING_HEALTH = 3;
@@ -37,8 +39,15 @@ public final class Constants {
 	public static final int TOWER_SEARCH_DELAY = 0;
 	public static final int TOWER_FIRING_RANGE = 4;
 	
+	//Hero
 	public static final int HERO_START_SPEED = 0;
+	public static final int HERO_RESPAWN_TIME = 60;
+	public static final int HERO_MANA_REGEN_INTERVAL = 15;
+	public static final int HERO_MANA_REGEN_VALUE = 1;
+	public static final int HERO_MANA_MAX_VALUE = 100;
+	public static final int HERO_MANA_MIN_VALUE = 0;
 	
+	public static final int PARALYZER_MANA_COST = 30;
 	
 	public static final String IMAGE_LIST_PATH = "data/image/images.txt";
 	
@@ -47,9 +56,6 @@ public final class Constants {
 	
 	public static final HeroChoice PLAYER_1_DEFAULT_HERO = HeroChoice.MAGE;
 	public static final HeroChoice PLAYER_2_DEFAULT_HERO = HeroChoice.BRUTE;
-	
-	public static final int PLAYER_MANA_REGEN_INTERVAL = 15;
-	public static final int PLAYER_MANA_REGEN_VALUE = 1;
 	
 	//Powerup
 	public static final int AMMO_POWERUP_MODIFIER = 1;

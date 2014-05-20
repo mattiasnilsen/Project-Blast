@@ -7,11 +7,10 @@ import projectblast.model.Team;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.explosive.Bomb;
 import projectblast.model.entity.explosive.Explosive;
+import projectblast.model.helper.Constants;
 import projectblast.model.helper.Id;
 import projectblast.model.helper.Position;
 import projectblast.model.powerup.*;
-
-
 
 /**
  * 
@@ -31,7 +30,7 @@ public class Bomber extends Hero {
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Bomb bomb = new Bomb(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), 0, Direction.NORTH, this);
+			Bomb bomb = new Bomb(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), Constants.BOMB_SPEED, getDirection(), this);
 			addExplosive(bomb);
 			return bomb;
 		}

@@ -44,11 +44,11 @@ public class BombTest {
 	
 	@Test
 	public void testUpdate() {
-		assertTrue(bomb.getLife() == Constants.BOMB_LIFE);
+		assertTrue(bomb.getLife() == Constants.BOMB_TIME);
 		bomb.update();
 		assertFalse(bomb.isMoving());
-		assertFalse(bomb.getLife() == Constants.BOMB_LIFE);
-		for(int i = 0; i < Constants.BOMB_LIFE-1; i++){
+		assertFalse(bomb.getLife() == Constants.BOMB_TIME);
+		for(int i = 0; i < Constants.BOMB_TIME-1; i++){
 			bomb.update();
 		}
 		assertTrue(bomb.isDestroyed());

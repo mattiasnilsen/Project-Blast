@@ -128,9 +128,9 @@ public class BlastModel implements IBlastModel {
 		if (tick % Constants.FRAMERATE == 0){
 			shiftBalance(getTowerBalance());
 		}
-		if (tick % Constants.PLAYER_MANA_REGEN_INTERVAL == 0){
+		if (tick % Constants.HERO_MANA_REGEN_INTERVAL == 0){
 			for (Player p: players){
-				p.getHero().increaseMana(Constants.PLAYER_MANA_REGEN_VALUE);
+				p.getHero().increaseMana(Constants.HERO_MANA_REGEN_VALUE);
 			}
 		}
 		

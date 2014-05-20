@@ -39,12 +39,11 @@ public class Mage extends Hero {
 
 	@Override
 	public ICore secondaryAbility() {
-		List<Direction> tmp = new ArrayList<Direction>();
-		tmp.add(getDirection());
-		final int COST = 30;
-		if (hasEnoughMana(COST)){
-			decreaseMana(COST);
-			return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), tmp);
+		List<Direction> directionList = new ArrayList<Direction>();
+		directionList.add(getDirection());
+		if (hasEnoughMana(Constants.PARALYZER_MANA_COST)){
+			decreaseMana(Constants.PARALYZER_MANA_COST);
+			return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), directionList);
 		} else {
 			return null;
 		}

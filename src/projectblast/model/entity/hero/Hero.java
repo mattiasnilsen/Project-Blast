@@ -41,7 +41,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
         super(position, Constants.HERO_START_SPEED, direction, new Rectangle(position.getX(), position.getY(), 32, 32));
         bombPower = 0;
         bombCount = 0;
-        mana      = 100;
+        mana      = Constants.HERO_MANA_MAX_VALUE;
         setDeathCount(0);
         this.team = team;
         this.spawnPoint = new Position(position.getX(), position.getY());
@@ -79,7 +79,7 @@ public abstract class Hero extends MovableEntity implements Destructible{
     	if (respawnTime == 0){
     		System.out.println(getTeam().getName() + " just lost a teammate!");
         	setDeathCount(getDeathCount() + 1);
-        	respawnTime = 60;
+        	respawnTime = Constants.HERO_RESPAWN_TIME;
         	place(spawnPoint);
     	}
     }
@@ -162,10 +162,10 @@ public abstract class Hero extends MovableEntity implements Destructible{
 	 * @param amount - how much to change mana
 	 */
 	public void increaseMana(int amount){
-		if (amount > 0){
-			mana = Math.min(mana + amount,100);
+		if (amount > Constants.HERO_MANA_MIN_VALUE){
+			mana = Math.min(mana + amount, Constants.HERO_MANA_MAX_VALUE);
 		} else {
-			mana = Math.max(mana + amount,0);
+			mana = Math.max(mana + amount, Constants.HERO_MANA_MIN_VALUE);
 		}
 		
 	}

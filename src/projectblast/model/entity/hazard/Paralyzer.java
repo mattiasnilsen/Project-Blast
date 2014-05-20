@@ -27,7 +27,7 @@ public class Paralyzer extends Hazard {
 	@Override
 	public void collide(Entity entity) {
 		if(entity instanceof Movable){
-			((Movable)entity).stopMove(Constants.STUN_DURATION);
+			((Movable)entity).stopMove(Constants.STUN_TIME);
 		}
 		
 	}

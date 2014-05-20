@@ -16,7 +16,7 @@ public class Bomb extends Explosive {
 			 Hero owner) {
 		super(position, speed, direction, owner);
 		setName(Id.BOMB);
-		setLife(Constants.BOMB_LIFE);
+		setLife(Constants.BOMB_TIME);
 		setPosition(BlastModel.snapToGrid(getPosition()));
 	}
 
