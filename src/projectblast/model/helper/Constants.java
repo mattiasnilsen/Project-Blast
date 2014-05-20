@@ -15,6 +15,7 @@ public final class Constants {
 	public static final int TILE_AMOUNT_Y	= GAME_HEIGHT/TILE_SIZE;
 	
 	
+	public static final int GAME_SCORE_LIMIT = 500;
 	
 	
 	//Amount of frames explosions stay on screen
@@ -46,6 +47,9 @@ public final class Constants {
 	
 	public static final HeroChoice PLAYER_1_DEFAULT_HERO = HeroChoice.MAGE;
 	public static final HeroChoice PLAYER_2_DEFAULT_HERO = HeroChoice.BRUTE;
+	
+	public static final int PLAYER_MANA_REGEN_INTERVAL = 15;
+	public static final int PLAYER_MANA_REGEN_VALUE = 1;
 	
 	//Powerup
 	public static final int AMMO_POWERUP_MODIFIER = 1;

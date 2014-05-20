@@ -128,9 +128,9 @@ public class BlastModel implements IBlastModel {
 		if (tick % Constants.FRAMERATE == 0){
 			shiftBalance(getTowerBalance());
 		}
-		if (tick % 15 == 0){
+		if (tick % Constants.PLAYER_MANA_REGEN_INTERVAL == 0){
 			for (Player p: players){
-				p.getHero().increaseMana(1);
+				p.getHero().increaseMana(Constants.PLAYER_MANA_REGEN_VALUE);
 			}
 		}
 		
@@ -313,9 +313,9 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	public int isGameOver(){
-		if (balance <= -500){
+		if (balance <= -Constants.GAME_SCORE_LIMIT){
 			return -1;
-		} else if (balance >= 500) {
+		} else if (balance >= Constants.GAME_SCORE_LIMIT) {
 			return 1;
 		} else {
 			return 0;
