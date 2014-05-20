@@ -77,8 +77,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
 	    keys.put(Keys.DOWN, Input.KEY_S);
 	    keys.put(Keys.LEFT, Input.KEY_A);
 	    keys.put(Keys.RIGHT, Input.KEY_D);
-	    keys.put(Keys.PRIMARY, Input.KEY_Q);
-	    keys.put(Keys.SECONDARY, Input.KEY_E);
+	    keys.put(Keys.PRIMARY, Input.KEY_F);
+	    keys.put(Keys.SECONDARY, Input.KEY_G);
 	    
 	    playerKeys.add(keys);
 	    keys = new HashMap<Keys, Integer>();
@@ -87,8 +87,8 @@ public class GameplayState extends BasicGameState implements InputProviderListen
         keys.put(Keys.DOWN, Input.KEY_DOWN);
         keys.put(Keys.LEFT, Input.KEY_LEFT);
         keys.put(Keys.RIGHT, Input.KEY_RIGHT);
-        keys.put(Keys.PRIMARY, Input.KEY_1);
-        keys.put(Keys.SECONDARY, Input.KEY_2);
+        keys.put(Keys.PRIMARY, Input.KEY_COMMA);
+        keys.put(Keys.SECONDARY, Input.KEY_PERIOD);
         playerKeys.add(keys);
         
 	    setKeyBindings(playerKeys);
