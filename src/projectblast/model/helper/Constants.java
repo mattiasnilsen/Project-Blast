@@ -3,6 +3,10 @@ package projectblast.model.helper;
 import projectblast.model.title.ITitleModel.HeroChoice;
 
 public final class Constants {
+	public static final int MAP_XOFFSET		= 0;
+	public static final int MAP_YOFFSET 	= 64;
+	
+	
 	public static final int GAME_WIDTH     	= 1280;
 	public static final int GAME_HEIGHT    	= 720 + 64;
 	public static final int TILE_SIZE      	= 32;
@@ -10,8 +14,7 @@ public final class Constants {
 	public static final int TILE_AMOUNT_X  	= GAME_WIDTH/TILE_SIZE;
 	public static final int TILE_AMOUNT_Y	= GAME_HEIGHT/TILE_SIZE;
 	
-	public static final int MAP_XOFFSET		= 0;
-	public static final int MAP_YOFFSET 	= 64;
+	
 	
 	
 	//Amount of frames explosions stay on screen

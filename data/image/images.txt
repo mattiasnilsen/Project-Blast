@@ -1,7 +1,7 @@
-MAGENORTH data/image/SnowmanHeroUpV3.png
-MAGESOUTH data/image/SnowmanHeroDownV3.png
-MAGEWEST  data/image/SnowmanHeroLeftV3.png
-MAGEEAST  data/image/SnowmanHeroRightV3.png
+MAGENORTH data/image/ShinowmanHeroUp.png
+MAGESOUTH data/image/ShinowmanHeroDown.png
+MAGEWEST  data/image/ShinowmanHeroLeft.png
+MAGEEAST  data/image/ShinowmanHeroRight.png
 
 BOMBERNORTH data/image/SnowmanHeroUpV3.png
 BOMBERSOUTH data/image/SnowmanHeroDownV3.png
