@@ -27,7 +27,7 @@ public class Mage extends Hero {
 
 	@Override
 	public Explosive primaryAbility() {
-		Fireball fireball = new Fireball(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())),  getSpeed() + 1,  getDirection(), this);
+		Fireball fireball = new Fireball(snapPosition(getPosition()),  getSpeed() + 1,  getDirection(), this);
 		if(getAmmo()<= 0 || !BlastModel.isFree(fireball, fireball.getDirection(), fireball.getSpeed())){
 			return null;
 		}else{
@@ -43,7 +43,7 @@ public class Mage extends Hero {
 		directionList.add(getDirection());
 		if (hasEnoughMana(Constants.PARALYZER_MANA_COST)){
 			decreaseMana(Constants.PARALYZER_MANA_COST);
-			return new ParalyzerCore(Constants.PARALYZER_TIME, new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), directionList);
+			return new ParalyzerCore(Constants.PARALYZER_TIME, snapPosition(getPosition()), directionList);
 		} else {
 			return null;
 		}

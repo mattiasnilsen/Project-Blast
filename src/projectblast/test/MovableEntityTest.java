@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.*;
+import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.MovableEntity;
 import projectblast.model.helper.Id;
 import projectblast.model.helper.Position;
@@ -15,7 +16,7 @@ public class MovableEntityTest {
 	@Test
 	public void testMovableEntity() {
 		
-		MovableEntity a = new MovableEntity(new Position(1,1), 1, Direction.EAST, new Rectangle(1,1,1,1));
+		MovableEntity a = new DestructibleBlock(new Position(1,1), 1, Direction.EAST, new Rectangle(1,1,1,1));
 		assertTrue(a.getDirection() == Direction.EAST);
 		assertTrue(a.getPosition() != new Position(1,1));
 		assertTrue(a.getPosition().equals(new Position(1,1)));
@@ -28,7 +29,7 @@ public class MovableEntityTest {
 	@Test
 	public void testName() {
 		
-		MovableEntity a = new MovableEntity(new Position(1,1), 1, Direction.EAST, new Rectangle(1,1,1,1));
+		MovableEntity a = new DestructibleBlock(new Position(1,1), 1, Direction.EAST, new Rectangle(1,1,1,1));
 		assertTrue(a.getName() == null);
 		a.setName(Id.TOWER);
 		assertTrue(a.getName() == Id.TOWER);
@@ -37,7 +38,7 @@ public class MovableEntityTest {
 	@Test
 	public void testMovement() {
 		
-		MovableEntity a = new MovableEntity(new Position(2,1), 1, Direction.EAST, new Rectangle(1,1,1,1));
+		MovableEntity a = new DestructibleBlock(new Position(2,1), 1, Direction.EAST, new Rectangle(1,1,1,1));
 		a.setSpeed(2);
 		assertTrue(a.getSpeed() == 2);
 		a.move(Direction.WEST);

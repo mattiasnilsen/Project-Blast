@@ -25,6 +25,7 @@ import projectblast.model.helper.Position;
 
 public class BlastModel implements IBlastModel {
 	
+	//TODO This list should not be static.
 	private static List<Entity> entities= new ArrayList<Entity>();
 	private List<Player> players;
 	private List<Tower> towers;
@@ -245,6 +246,7 @@ public class BlastModel implements IBlastModel {
 		}
 	}
 	
+	
 	public static boolean isFree(MovableEntity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
@@ -301,16 +303,6 @@ public class BlastModel implements IBlastModel {
 		return ent;
 	}
 	
-	public static int snapToGrid(int i){
-		return (int)Math.round(i / (double)Constants.TILE_SIZE) * Constants.TILE_SIZE;
-	}
-	
-	public static Position snapToGrid(Position pos) {
-		int x = snapToGrid(pos.getX());
-		int y = snapToGrid(pos.getY());
-		
-		return new Position(x, y);
-	}
 	
 	public int isGameOver(){
 		if (balance <= -Constants.GAME_SCORE_LIMIT){

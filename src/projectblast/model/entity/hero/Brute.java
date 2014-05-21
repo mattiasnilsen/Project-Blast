@@ -42,7 +42,7 @@ public class Brute extends Hero {
 		}else{
 			setAmmo(getAmmo()-1);
 			Position position = new Position(getX() + getDirection().getX() * Constants.TILE_SIZE, getY() + getDirection().getY() * Constants.TILE_SIZE);
-			position = BlastModel.snapToGrid(position);
+			position = snapPosition(position);
 			Fist fist = new Fist(position, Constants.FIST_SPEED, getDirection(), this);
 			addExplosive(fist);
 			return fist;
@@ -53,8 +53,8 @@ public class Brute extends Hero {
 	public ICore secondaryAbility() {
 		List<Direction> tmp = new ArrayList<Direction>();
 		tmp.add(getDirection());
-		return new ShockwaveCore(Constants.FIST_TIME, new Position(BlastModel.snapToGrid(getX() + (getDirection().getX()/2 - 1)),
-				BlastModel.snapToGrid(getY() + (getDirection().getY()/2 - 1))), tmp);
+		return new ShockwaveCore( Constants.FIST_TIME, snapPosition(new Position(getX() + getDirection().getX()/2 - 1,
+						getY() + (getDirection().getY()/2 - 1))), tmp );
 	}
 
 }

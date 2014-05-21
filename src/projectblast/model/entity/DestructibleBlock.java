@@ -21,6 +21,10 @@ public class DestructibleBlock extends MovableEntity implements Destructible{
 		setName(Id.DESTRUCTIBLEBLOCK);
 		setSpeed(4);
 	}
+	
+	public DestructibleBlock(Position p, int speed, Direction dir, Rectangle rect){
+		super(p,speed,dir,rect);
+	}
 
 	@Override
 	public void destroy() {
@@ -35,8 +39,7 @@ public class DestructibleBlock extends MovableEntity implements Destructible{
 	@Override
 	public void stopMove() {
 		super.stopMove();
-		setX(BlastModel.snapToGrid(getX()));
-		setY(BlastModel.snapToGrid(getY()));
+		snapToGrid();
 	}
 
 	@Override

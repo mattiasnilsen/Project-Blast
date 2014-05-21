@@ -30,7 +30,7 @@ public class Bomber extends Hero {
 			return null;
 		}else{
 			setAmmo(getAmmo()-1);
-			Bomb bomb = new Bomb(new Position(BlastModel.snapToGrid(getX()), BlastModel.snapToGrid(getY())), Constants.BOMB_SPEED, getDirection(), this);
+			Bomb bomb = new Bomb(snapPosition(getPosition()), Constants.BOMB_SPEED, getDirection(), this);
 			addExplosive(bomb);
 			return bomb;
 		}

@@ -50,18 +50,7 @@ public class BlastModelTest {
 	}
 
 	
-	@Test
-	public void testSnapToGrid() {
-		Position pos = new Position(142,193);
-		pos = BlastModel.snapToGrid(pos);
-		assertTrue(pos.getX()%32 == 0);
-		assertTrue(pos.getY()%32 == 0);
-		
-		pos = new Position(12,12);
-		pos = BlastModel.snapToGrid(pos);
-		assertTrue(pos.getY()%32 == 0);
-		assertTrue(pos.getY()%32 == 0);
-	}
+
 	@Test
 	public void testPrimary(){
 

@@ -14,7 +14,7 @@ import projectblast.model.helper.Position;
  * revised by Mattias Nilsen
  */
 
-public class MovableEntity extends Entity implements Movable {
+public abstract class MovableEntity extends Entity implements Movable {
 
 	private int speed;
 	private Direction direction;
@@ -154,5 +154,25 @@ public class MovableEntity extends Entity implements Movable {
 	public void setStopDuration(int stopDuration) {
 		this.stopDuration = stopDuration;
 	}
+	
+	public void snapXToGrid(){
+		setX((int)Math.round(getX() / (double)Constants.TILE_SIZE) * Constants.TILE_SIZE);
+	}
+	
+	public void snapYToGrid(){
+		setY((int)Math.round(getY() / (double)Constants.TILE_SIZE) * Constants.TILE_SIZE);
+	}
+	
+	public void snapToGrid(){
+		snapXToGrid();
+		snapYToGrid();
+	}
+	
+	public Position snapPosition(Position p){
+		return new Position((int)Math.round(p.getX() / (double)Constants.TILE_SIZE) * Constants.TILE_SIZE,
+				(int)Math.round(p.getY() / (double)Constants.TILE_SIZE) * Constants.TILE_SIZE);
+	}
+	
+	
 
 }

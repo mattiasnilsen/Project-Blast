@@ -20,7 +20,7 @@ public class Fist extends Explosive {
 		super(position, speed, direction, owner);
 		setName(Id.FIST);
 		setLife(Constants.FIST_TIME);
-		setPosition(BlastModel.snapToGrid(getPosition()));
+		setPosition(snapPosition(getPosition()));
 	}
 	
 	@Override
@@ -47,7 +47,7 @@ public class Fist extends Explosive {
 				iter.remove();
 			}
 		}
-		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, BlastModel.snapToGrid(getPosition()), getOwner().getPower(), directionList);
+		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, snapPosition(getPosition()), getOwner().getPower(), directionList);
 		
 		return core;
 	}

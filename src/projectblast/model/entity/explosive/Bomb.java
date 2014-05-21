@@ -17,7 +17,7 @@ public class Bomb extends Explosive {
 		super(position, speed, direction, owner);
 		setName(Id.BOMB);
 		setLife(Constants.BOMB_TIME);
-		setPosition(BlastModel.snapToGrid(getPosition()));
+		setPosition(snapPosition(getPosition()));
 	}
 
 

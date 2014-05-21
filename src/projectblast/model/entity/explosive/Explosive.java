@@ -24,7 +24,7 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 		super(position,  speed, direction, new Rectangle(position.getX(), position.getY(), 28, 28));
 		this.owner = owner;
 		power = owner.getPower();
-		setPosition(BlastModel.snapToGrid(getPosition()));
+		setPosition(snapPosition(getPosition()));
 	
 	}
 	
@@ -62,7 +62,7 @@ public abstract class Explosive extends MovableEntity implements Destructible {
 		directionList.add(Direction.NORTH);
 		directionList.add(Direction.WEST);
 		directionList.add(Direction.SOUTH);
-		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, BlastModel.snapToGrid(getPosition()), owner.getPower(), directionList);
+		ExplosionCore core = new ExplosionCore(Constants.EXPLOSION_TIME, snapPosition(getPosition()), owner.getPower(), directionList);
 		
 		return core;
 	}
