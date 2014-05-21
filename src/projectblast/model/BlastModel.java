@@ -26,7 +26,7 @@ import projectblast.model.helper.Position;
 public class BlastModel implements IBlastModel {
 	
 	//TODO This list should not be static.
-	private static List<Entity> entities= new ArrayList<Entity>();
+	private static List<Entity> entities = new ArrayList<Entity>();
 	private List<Player> players;
 	private List<Tower> towers;
 	private List<ICore> cores; //should be a secondary interface.

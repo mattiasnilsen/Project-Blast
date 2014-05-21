@@ -205,7 +205,8 @@ public class Tower extends Entity implements Destructible {
 	
 	public ExplosionCore fireCannon(Direction dir) {
 		if (dir == null || dir == Direction.NONE){
-			throw new NullPointerException("Trying to fire cannon in direction null or NONE");
+			cannonStatus = CannonStatus.WAITING;
+			System.out.println("ERROR! Cannon tried to fire in no direction!");
 		}
 		
 		Direction[] dirs = {dir};
