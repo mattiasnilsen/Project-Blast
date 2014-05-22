@@ -34,6 +34,7 @@ public class BlastModel implements IBlastModel {
 	private int balance;
 	private int scaleFactor;
 	private int tick;
+	private Team winner;
 	
 	public BlastModel(){ //Ska bytas ut mot BlastFactory??
 		this(new LinkedList<Player>());
@@ -44,6 +45,7 @@ public class BlastModel implements IBlastModel {
 		this.players = players;  
 		this.towers = new ArrayList<Tower>();
 		this.cores = new ArrayList<ICore>();
+		this.winner = Team.getNeutralTeam();
 		
 		try {
 			TiledMap map = new TiledMap("data/map/Map.tmx");
@@ -75,7 +77,7 @@ public class BlastModel implements IBlastModel {
 		hero.setDirection(dir);
 		hero.startMove();
 	}
-	
+	@Override
 	public void stopPlayer(int playerID){
 		Hero hero = players.get(playerID-1).getHero();
 		hero.stopMove();
@@ -113,16 +115,16 @@ public class BlastModel implements IBlastModel {
 	public List<Player> getPlayers() {
 		return players;
 	}
-	
+	@Override
 	public void addEntity(Entity e){
 		entities.add(e);
 
 	}
-	
+	@Override
 	public void removeEntity(Entity e){
 		entities.remove(e);
 	}
-	
+	@Override
 	public void update(GameContainer gc, StateBasedGame game, int delta){
 		gameOver();
 		tick++;
@@ -142,7 +144,7 @@ public class BlastModel implements IBlastModel {
 	    handleTowers();
 	}
 
-
+	
 	private void handleEntities() {
 		//List of entities to throw away later
 		List<Entity> trash = new LinkedList<Entity>();
@@ -170,7 +172,6 @@ public class BlastModel implements IBlastModel {
 		entities.removeAll(trash);
 	}
 
-
 	private void handleCores() {
 		for (ICore c: cores){
 			if (c.isCreated()){ //If its created, update it.
@@ -190,8 +191,7 @@ public class BlastModel implements IBlastModel {
 			}
 		}
 	}
-
-
+	
 	private void gameOver() {
 		switch (isGameOver()){
 		case 0:
@@ -213,6 +213,11 @@ public class BlastModel implements IBlastModel {
 			}
 			break;
 		}
+	}
+	
+	@Override
+	public void endGame(Team winner){
+		this.winner = winner;
 	}
 	
 	private void handleTowers() {
@@ -246,7 +251,6 @@ public class BlastModel implements IBlastModel {
 		}
 	}
 	
-	
 	public static boolean isFree(MovableEntity entity, Direction dir, int length){
 		Rectangle c = entity.getCollisionBox();
 		Rectangle testBox = new Rectangle (c.getX() + dir.getX() * length, c.getY() + dir.getY() * length, c.getWidth(),c.getHeight());
@@ -259,6 +263,7 @@ public class BlastModel implements IBlastModel {
 		return true;
 	}
 	
+	@Override
 	public Entity getIntersectingEntity(Entity entity){
 		for (Entity e: entities){
 	    	if (e.getCollisionBox().intersects(entity.getCollisionBox()) && e != entity){
@@ -268,6 +273,7 @@ public class BlastModel implements IBlastModel {
 		return null;
 	}
 	
+	@Override
 	public Entity getIntersectingEntity(Rectangle r) {
 		for (Entity e: entities){
 	    	if (e.getCollisionBox().intersects(r)){
@@ -304,6 +310,7 @@ public class BlastModel implements IBlastModel {
 	}
 	
 	
+	@Override
 	public int isGameOver(){
 		if (balance <= -Constants.GAME_SCORE_LIMIT){
 			return -1;
@@ -362,11 +369,11 @@ public class BlastModel implements IBlastModel {
 		
 		return out;
 	}
-	
+
+
 	@Override
-	public void endGame(Team winner){
-		throw new NullPointerException(winner.getName() + " has won!");
+	public Team getWinner() {
+		return winner;
 	}
-	
 	
 }

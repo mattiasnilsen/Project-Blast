@@ -51,10 +51,16 @@ public class StatusBar {
 		g.drawString(right.get(0).getHero().getTeam().getName(), Constants.GAME_WIDTH - 128, 0);
 		g.drawString("Deaths: " + right.get(0).getHero().getDeathCount(), Constants.GAME_WIDTH - 128, 30);
 		//Tug of War
-		g.setColor(right.get(0).getHero().getTeam().getColor());
-		g.fillRect(Constants.GAME_WIDTH/2 - 500, 16, 1000, 32);
-		g.setColor(left.get(0).getHero().getTeam().getColor());
-		g.fillRect(Constants.GAME_WIDTH/2 - 500, 16, model.getBalance() + 500, 32);
+		if (model.isGameOver() == 0){
+			g.setColor(right.get(0).getHero().getTeam().getColor());
+			g.fillRect(Constants.GAME_WIDTH/2 - 500, 16, 1000, 32);
+			g.setColor(left.get(0).getHero().getTeam().getColor());
+			g.fillRect(Constants.GAME_WIDTH/2 - 500, 16, model.getBalance() + 500, 32);
+		} else {
+			g.setColor(model.getWinner().getColor());
+			g.drawString("A winner is " + model.getWinner().getName() + "!", Constants.GAME_WIDTH/2 - 96, Constants.MAP_YOFFSET/2);
+		}
+		
 	}
 
 }

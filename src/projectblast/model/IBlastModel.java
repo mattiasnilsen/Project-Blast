@@ -3,43 +3,54 @@ package projectblast.model;
 import java.util.List;
 
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
 import projectblast.model.entity.Entity;
+import projectblast.model.entity.MovableEntity;
 
 public interface IBlastModel {
 	
-	void movePlayer(int playerID, Direction dir);
-	void stopPlayer(int playerID);
+	public void movePlayer(int playerID, Direction dir);
+	public void stopPlayer(int playerID);
 	
-	void primary(int playerID);
-	void secondary(int playerID);
+	public void primary(int playerID);
+	public void secondary(int playerID);
 	
-	
-	void update(GameContainer gc, StateBasedGame game, int delta);
+	public void update(GameContainer gc, StateBasedGame game, int delta);
 	
 	/**
 	 * @return an unsorted list of entities.
 	 */
-	List<Entity> getEntities();
-	List<Player> getPlayers();
+	public List<Entity> getEntities();
+	public List<Player> getPlayers();
 	
-	void addEntity(Entity e);
-	void removeEntity(Entity e);
+	public void addEntity(Entity e);
+	public void removeEntity(Entity e);
 
-	void increaseScaleFactor(int add);
+	public void increaseScaleFactor(int add);
 
-	void setScaleFactor(int scaleFactor);
+	public void setScaleFactor(int scaleFactor);
 
-	int getScaleFactor();
+	public int getScaleFactor();
 
-	void shiftBalance(int factor);
+	public void shiftBalance(int factor);
 
-	int getBalance();
+	public int getBalance();
 
-	int getTowerBalance();
+	public int getTowerBalance();
 
-	void endGame(Team winner);
+	
+	public void endGame(Team winner);
+	
+	public int isGameOver();
+	
+	public Entity getIntersectingEntity(Entity entity);
+	
+	public Entity getIntersectingEntity(Rectangle r);
+	
+	public Team getWinner();
+	
 
 	
 }
