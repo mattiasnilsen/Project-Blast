@@ -19,6 +19,8 @@ public final class Constants {
 	public static final int TILE_AMOUNT_X  	= GAME_WIDTH/TILE_SIZE;
 	public static final int TILE_AMOUNT_Y	= GAME_HEIGHT/TILE_SIZE;
 	
+	public static final boolean DISPLAY_FPS = false;
+	
 	
 	public static final int GAME_SCORE_LIMIT = 500;
 	
