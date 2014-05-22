@@ -1,11 +1,15 @@
 package projectblast.view;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
 import projectblast.model.entity.Entity;
@@ -74,14 +78,26 @@ public class BlastView implements IBlastView {
 
 	public void render(Graphics g) {
 		
+		//Draw background
+		Image im = null;
+		try {
+			im = new Image("data/image/Pebbles.png");
+		} catch (SlickException e1) {
+			throw new NullPointerException("Pebbles.png does not exist!");
+		}
+		for (int x = 0; x < Constants.GAME_WIDTH; x += im.getWidth()){
+			for (int y = 0; y < Constants.GAME_HEIGHT; y += im.getHeight()){
+				im.draw(x, y);
+			}
+		}
+		
+		
 		//Sort entities
 		sortEntities();
 		
 		Color color;
 		//Draw all entities
 		for (Entity e: entities){
-		   
-			
 		   	g.drawAnimation(images.getAnimation(e), e.getX(), e.getY()); 
 		   //	g.drawRect(e.getCollisionBox().getX(), e.getCollisionBox().getY(), e.getCollisionBox().getWidth(), e.getCollisionBox().getHeight());
 

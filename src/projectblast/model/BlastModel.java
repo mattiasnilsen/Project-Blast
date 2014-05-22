@@ -242,7 +242,7 @@ public class BlastModel implements IBlastModel {
 					tower.setCannonDir(Direction.getRelativeDirection(tower.getPosition(), closest.getPosition()));
 					tower.cycleStatus(Constants.TOWER_FIRING_DELAY);
 				} else if (tower.isCannonReadyToFire()){ //Firing the cannon
-					cores.add( tower.fireCannon(tower.getCannonDir()));
+					cores.add( ((ICore)tower.fireCannon(tower.getCannonDir())) );
 					tower.cycleStatus(Constants.TOWER_RELOAD_DELAY);
 				} else if(tower.isCannonReadyToReload()){//Tower is now ready to find new target
 					tower.cycleStatus(Constants.TOWER_SEARCH_DELAY);
@@ -314,9 +314,9 @@ public class BlastModel implements IBlastModel {
 	@Override
 	public int isGameOver(){
 		if (balance <= -Constants.GAME_SCORE_LIMIT){
-			return -1;
-		} else if (balance >= Constants.GAME_SCORE_LIMIT) {
 			return 1;
+		} else if (balance >= Constants.GAME_SCORE_LIMIT) {
+			return -1;
 		} else {
 			return 0;
 		}
