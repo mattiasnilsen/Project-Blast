@@ -16,7 +16,6 @@ import projectblast.model.entity.Id;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.explosive.Fireball;
 import projectblast.model.helper.Constants;
-import projectblast.model.powerup.*;
 
 /**
  * 

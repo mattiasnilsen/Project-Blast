@@ -1,7 +1,6 @@
 package projectblast.model.entity.hero;
 
 
-import projectblast.model.BlastModel;
 import projectblast.model.attribute.Direction;
 import projectblast.model.attribute.Position;
 import projectblast.model.attribute.Team;
@@ -13,7 +12,6 @@ import projectblast.model.entity.Id;
 import projectblast.model.entity.explosive.Bomb;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.helper.Constants;
-import projectblast.model.powerup.*;
 
 /**
  * 
