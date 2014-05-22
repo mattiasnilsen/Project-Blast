@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import projectblast.model.Direction;
-import projectblast.model.helper.Position;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 
 public class DirectionTest {
 

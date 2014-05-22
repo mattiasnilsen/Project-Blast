@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import projectblast.model.helper.Id;
+import projectblast.model.entity.Id;
 
 public class IdTest {
 

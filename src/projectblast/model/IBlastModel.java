@@ -6,6 +6,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Team;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.MovableEntity;
 

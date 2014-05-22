@@ -1,6 +1,7 @@
-package projectblast.model;
+package projectblast.model.entity;
 
-import projectblast.model.helper.Position;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 
 /**
  * @author franton

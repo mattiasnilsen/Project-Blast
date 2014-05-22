@@ -2,13 +2,14 @@ package projectblast.model.helper;
 
 import org.newdawn.slick.Color;
 
-import projectblast.model.Direction;
-import projectblast.model.Team;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
 import projectblast.model.entity.hero.Bomber;
 import projectblast.model.entity.hero.Brute;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.entity.hero.Mage;
-import projectblast.model.title.ITitleModel.HeroChoice;
+import projectblast.model.helper.Constants.HeroChoice;
 
 public class Options {
 	private Hero player1Hero;
@@ -38,13 +39,13 @@ public class Options {
 	public Hero getPlayer2Hero() {
 		return player2Hero;
 	}
-	public void setPlayer2Hero(HeroChoice choice) {
+	public void setPlayer2Hero(Constants.HeroChoice choice) {
 		this.player2Hero = getHero(choice, startPosition2, team2);
 	}
 	public Hero getPlayer1Hero() {
 		return player1Hero;
 	}
-	public void setPlayer1Hero(HeroChoice choice) {
+	public void setPlayer1Hero(Constants.HeroChoice choice) {
 		this.player1Hero = getHero(choice, startPosition1, team1);
 	}
 	
@@ -52,7 +53,7 @@ public class Options {
 		return NUMBER_OF_PLAYERS;
 	}
 	
-	private Hero getHero(HeroChoice heroChoice, Position pos, Team team) {
+	private Hero getHero(Constants.HeroChoice heroChoice, Position pos, Team team) {
 		switch(heroChoice) {
 		case BOMBER:
 			return new Bomber(pos, Direction.NONE, team);

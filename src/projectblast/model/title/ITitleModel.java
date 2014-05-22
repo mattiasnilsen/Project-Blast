@@ -3,13 +3,9 @@ package projectblast.model.title;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 
+import projectblast.model.helper.Constants;
+
 public interface ITitleModel {	
-	public enum HeroChoice {
-		BOMBER,
-		MAGE,
-		BRUTE,
-	}
-	
 	public enum Map {
 		FirstMap,
 		SecondMap,
@@ -19,7 +15,7 @@ public interface ITitleModel {
 	public int getSelectedRow();
 	public boolean isSelected();
 	
-	public HeroChoice getPlayerHero(int player);
+	public Constants.HeroChoice getPlayerHero(int player);
 	public Map getSelectedMap();
 	
 	public void up();

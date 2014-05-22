@@ -3,10 +3,8 @@ package projectblast.model.entity;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Destructible;
-import projectblast.model.Direction;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 
 /**
  *

@@ -13,8 +13,10 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 import projectblast.model.*;
+import projectblast.model.attribute.Direction;
 import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.Entity;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.SolidBlock;
 import projectblast.model.entity.Tower;
 import projectblast.model.entity.explosive.Explosive;
@@ -23,7 +25,6 @@ import projectblast.model.entity.hazard.Hazard;
 import projectblast.model.entity.hazard.Paralyzer;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Id;
 
 /**
  * 

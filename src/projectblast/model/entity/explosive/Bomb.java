@@ -1,11 +1,12 @@
 package projectblast.model.entity.explosive;
 
 import projectblast.model.*;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.entity.Entity;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.hero.*;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 
 
 

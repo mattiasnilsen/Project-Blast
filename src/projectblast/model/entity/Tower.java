@@ -5,17 +5,15 @@ import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
 
-import projectblast.model.Destructible;
-import projectblast.model.Direction;
-import projectblast.model.Team;
-import projectblast.model.powerup.IPowerUp;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
+import projectblast.model.attribute.powerup.IPowerUp;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.hazard.Explosion;
 import projectblast.model.entity.hazard.Hazard;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 /**
  * 
  * @author Alex

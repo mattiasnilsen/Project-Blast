@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import projectblast.model.helper.Position;
+import projectblast.model.attribute.Position;
 
 public class PositionTest {
 	

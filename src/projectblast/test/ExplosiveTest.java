@@ -5,13 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import projectblast.model.Direction;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.core.ExplosionCore;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.explosive.Bomb;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hero.Bomber;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 
 public class ExplosiveTest {
 

@@ -5,13 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.newdawn.slick.Color;
 
-import projectblast.model.helper.Position;
-import projectblast.model.Team;
-import projectblast.model.Direction;
-import projectblast.model.Team.Side;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
+import projectblast.model.attribute.Team.Side;
+import projectblast.model.attribute.powerup.AmmoPowerUp;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hero.*;
-import projectblast.model.powerup.AmmoPowerUp;
 
 public class HeroTest {
 

@@ -6,14 +6,14 @@ import java.util.List;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Destructible;
-import projectblast.model.Direction;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.core.ICore;
+import projectblast.model.entity.Destructible;
 import projectblast.model.entity.MovableEntity;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Position;
 
 public abstract class Explosive extends MovableEntity implements Destructible {
 	private Hero owner;

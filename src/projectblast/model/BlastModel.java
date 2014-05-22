@@ -11,16 +11,17 @@ import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
 import projectblast.model.core.ICore;
+import projectblast.model.entity.Destructible;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.MovableEntity;
 import projectblast.model.entity.Tower;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.hero.Hero;
-
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.MapReader;
-import projectblast.model.helper.Position;
 
 
 public class BlastModel implements IBlastModel {

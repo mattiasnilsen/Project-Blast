@@ -1,4 +1,4 @@
-package projectblast.model.helper;
+package projectblast.model.attribute;
 
 public class Position {
 	private int x;

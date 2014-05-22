@@ -2,9 +2,9 @@ package projectblast.model.core;
 
 import java.util.List;
 
+import projectblast.model.attribute.Position;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.hazard.Hazard;
-import projectblast.model.helper.Position;
 /**
  * Common interface for all Cores.
  * A core is something that creates a chain of objects in different directions.

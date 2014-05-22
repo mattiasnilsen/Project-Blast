@@ -10,15 +10,17 @@ import org.junit.Test;
 import org.newdawn.slick.Color;
 
 import projectblast.model.*;
-import projectblast.model.Team.Side;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
+import projectblast.model.attribute.Team.Side;
+import projectblast.model.attribute.powerup.SpeedPowerUp;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.Tower;
 import projectblast.model.entity.Tower.CannonStatus;
 import projectblast.model.entity.hazard.Explosion;
 import projectblast.model.entity.hero.*;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Position;
-import projectblast.model.powerup.SpeedPowerUp;
 
 public class TowerTest {
 

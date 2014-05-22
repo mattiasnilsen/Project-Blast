@@ -2,7 +2,7 @@ package projectblast.view;
 
 import org.newdawn.slick.Color;
 
-import projectblast.model.helper.Position;
+import projectblast.model.attribute.Position;
 
 public class Label {
 	private Position position;

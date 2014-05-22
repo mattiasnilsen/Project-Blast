@@ -7,16 +7,16 @@ import java.util.List;
 
 import org.newdawn.slick.geom.Rectangle;
 
-import projectblast.model.Destructible;
-import projectblast.model.Direction;
-import projectblast.model.Team;
-import projectblast.model.Team.Side;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
+import projectblast.model.attribute.Team.Side;
+import projectblast.model.attribute.powerup.IPowerUp;
 import projectblast.model.core.ICore;
+import projectblast.model.entity.Destructible;
 import projectblast.model.entity.MovableEntity;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Position;
-import projectblast.model.powerup.IPowerUp;
 
 
 public abstract class Hero extends MovableEntity implements Destructible{

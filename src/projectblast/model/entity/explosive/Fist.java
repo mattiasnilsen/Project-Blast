@@ -5,14 +5,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Direction;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.core.ICore;
 import projectblast.model.entity.Entity;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 
 public class Fist extends Explosive {
 

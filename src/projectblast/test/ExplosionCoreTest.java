@@ -1,13 +1,16 @@
 package projectblast.test;
 
 import static org.junit.Assert.*;
+
 import java.util.ArrayList;
+
 import org.junit.Test;
 
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.entity.Block;
 import projectblast.model.entity.SolidBlock;
-import projectblast.model.helper.Position;
 import projectblast.model.*;
 
 public class ExplosionCoreTest {

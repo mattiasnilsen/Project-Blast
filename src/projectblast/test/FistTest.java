@@ -5,15 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import projectblast.model.Direction;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.core.ExplosionCore;
 import projectblast.model.core.ShockwaveCore;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.SolidBlock;
 import projectblast.model.entity.explosive.Fist;
 import projectblast.model.entity.hero.Brute;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 
 public class FistTest {
 

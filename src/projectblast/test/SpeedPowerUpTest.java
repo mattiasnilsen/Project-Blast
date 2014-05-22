@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import projectblast.model.Direction;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.powerup.IPowerUp;
+import projectblast.model.attribute.powerup.SpeedPowerUp;
 import projectblast.model.entity.hero.*;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Position;
-import projectblast.model.powerup.IPowerUp;
-import projectblast.model.powerup.SpeedPowerUp;
 
 public class SpeedPowerUpTest {
 

@@ -3,9 +3,9 @@ package projectblast.model.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import projectblast.model.Direction;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.entity.hazard.Hazard;
-import projectblast.model.helper.Position;
 
 public abstract class Core implements ICore {
 

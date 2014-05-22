@@ -22,10 +22,12 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 
+
+
 import projectblast.model.BlastModel;
-import projectblast.model.Direction;
 import projectblast.model.IBlastModel;
 import projectblast.model.Player;
+import projectblast.model.attribute.Direction;
 import projectblast.model.helper.Constants;
 import projectblast.model.helper.Options;
 import projectblast.view.BlastView;

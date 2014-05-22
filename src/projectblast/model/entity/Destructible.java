@@ -1,4 +1,4 @@
-package projectblast.model;
+package projectblast.model.entity;
 /**
  * 
  * @author Alex Tao

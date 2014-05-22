@@ -2,8 +2,8 @@ package projectblast.model.entity.hazard;
 
 import org.newdawn.slick.geom.Rectangle;
 
+import projectblast.model.attribute.Position;
 import projectblast.model.entity.Entity;
-import projectblast.model.helper.Position;
 
 public abstract class Hazard extends Entity{
 

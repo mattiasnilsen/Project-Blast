@@ -1,4 +1,4 @@
-package projectblast.model;
+package projectblast.model.attribute;
 
 import org.newdawn.slick.Color;
 /**
