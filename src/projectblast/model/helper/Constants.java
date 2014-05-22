@@ -1,13 +1,15 @@
 package projectblast.model.helper;
 
-import projectblast.model.helper.Constants.HeroChoice;
 
 public final class Constants {
 	public static enum HeroChoice {
 		BOMBER,
 		MAGE,
 		BRUTE,
+		ENFORCER;
 	}
+	
+	//How much the map should be offset from the top left corner
 	public static final int MAP_XOFFSET		= 0;
 	public static final int MAP_YOFFSET 	= 64;
 	
@@ -19,6 +21,7 @@ public final class Constants {
 	public static final int TILE_AMOUNT_X  	= GAME_WIDTH/TILE_SIZE;
 	public static final int TILE_AMOUNT_Y	= GAME_HEIGHT/TILE_SIZE;
 	
+	//Whether or not to display FPS in the top left corner
 	public static final boolean DISPLAY_FPS = false;
 	
 	
@@ -62,7 +65,7 @@ public final class Constants {
 	public static final int GAME_STATE_ID = 2;
 	
 	public static final Constants.HeroChoice PLAYER_1_DEFAULT_HERO = Constants.HeroChoice.MAGE;
-	public static final Constants.HeroChoice PLAYER_2_DEFAULT_HERO = Constants.HeroChoice.BRUTE;
+	public static final Constants.HeroChoice PLAYER_2_DEFAULT_HERO = Constants.HeroChoice.BOMBER;
 	
 	//Powerup
 	public static final int AMMO_POWERUP_MODIFIER = 1;

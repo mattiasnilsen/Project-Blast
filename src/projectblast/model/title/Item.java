@@ -16,7 +16,7 @@ public class Item {
 		if(other == null) {
 			throw new NullPointerException("projectblast.model.title.item: other cannot be null");
 		}
-		this.name = new String(other.getName());
+		this.name = other.getName();
 	}
 	
 	public String getName() {
