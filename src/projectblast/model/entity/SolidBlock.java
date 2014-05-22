@@ -1,7 +1,6 @@
 package projectblast.model.entity;
 
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
+import projectblast.model.attribute.Position;
 
 /**
  *

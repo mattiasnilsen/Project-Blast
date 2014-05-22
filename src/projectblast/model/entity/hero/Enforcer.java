@@ -1,11 +1,11 @@
 package projectblast.model.entity.hero;
 
-import projectblast.model.Direction;
-import projectblast.model.Team;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
 import projectblast.model.core.ICore;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.explosive.Explosive;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 
 public class Enforcer extends Hero{
 

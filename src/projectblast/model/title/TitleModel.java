@@ -12,8 +12,8 @@ import projectblast.model.helper.Options;
 public class TitleModel implements ITitleModel {
 	private int selectedColumn = 0;
 	private int selectedRow = 0;
-	private HeroChoice player1Hero = Constants.PLAYER_1_DEFAULT_HERO;
-	private HeroChoice player2Hero = Constants.PLAYER_2_DEFAULT_HERO;
+	private Constants.HeroChoice player1Hero = Constants.PLAYER_1_DEFAULT_HERO;
+	private Constants.HeroChoice player2Hero = Constants.PLAYER_2_DEFAULT_HERO;
 	private Map selectedMap = Map.FirstMap;
 	
 	private List<Column> columns = new ArrayList<Column>();
@@ -47,7 +47,7 @@ public class TitleModel implements ITitleModel {
 		return selectedRow;
 	}
 	@Override
-	public HeroChoice getPlayerHero(int player) {
+	public Constants.HeroChoice getPlayerHero(int player) {
 		if(player == 1) {
 			return player1Hero;
 		} else {

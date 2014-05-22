@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import projectblast.model.title.ITitleModel.HeroChoice;
 import projectblast.model.title.TitleModel;
 import projectblast.model.helper.Constants;
+import projectblast.model.helper.Constants.HeroChoice;
 
 public class TitleModelTest {
 

@@ -1,18 +1,20 @@
-package projectblast.model.helper;
+package projectblast.model;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import org.newdawn.slick.tiled.TiledMap;
 
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.powerup.AmmoPowerUp;
+import projectblast.model.attribute.powerup.IPowerUp;
+import projectblast.model.attribute.powerup.RangePowerUp;
+import projectblast.model.attribute.powerup.SpeedPowerUp;
 import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.SolidBlock;
 import projectblast.model.entity.Tower;
-import projectblast.model.powerup.AmmoPowerUp;
-import projectblast.model.powerup.IPowerUp;
-import projectblast.model.powerup.RangePowerUp;
-import projectblast.model.powerup.SpeedPowerUp;
+import projectblast.model.helper.Constants;
 
 /**
  * 

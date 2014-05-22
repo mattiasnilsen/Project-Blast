@@ -1,7 +1,6 @@
-package projectblast.model;
+package projectblast.model.attribute;
 
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Position;
 
 /**
  * Possible directions an object can be moved.

@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Direction;
-import projectblast.model.Team;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
+import projectblast.model.attribute.Team;
+import projectblast.model.attribute.powerup.AmmoPowerUp;
+import projectblast.model.attribute.powerup.RangePowerUp;
+import projectblast.model.attribute.powerup.SpeedPowerUp;
 import projectblast.model.core.ICore;
 import projectblast.model.core.ShockwaveCore;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.explosive.Explosive;
 import projectblast.model.entity.explosive.Fist;
 import projectblast.model.helper.Constants;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
-import projectblast.model.powerup.AmmoPowerUp;
-import projectblast.model.powerup.RangePowerUp;
-import projectblast.model.powerup.SpeedPowerUp;
 
 
 public class Brute extends Hero {

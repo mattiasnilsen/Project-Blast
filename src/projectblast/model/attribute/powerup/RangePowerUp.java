@@ -1,4 +1,4 @@
-package projectblast.model.powerup;
+package projectblast.model.attribute.powerup;
 
 import projectblast.model.entity.hero.Hero;
 import projectblast.model.helper.Constants;

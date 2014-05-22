@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import projectblast.model.BlastModel;
-import projectblast.model.Direction;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.entity.SolidBlock;
 import projectblast.model.entity.explosive.Fireball;
 import projectblast.model.entity.hazard.Paralyzer;
 import projectblast.model.entity.hero.Mage;
-import projectblast.model.helper.Position;
 
 public class FireballTest {
 	

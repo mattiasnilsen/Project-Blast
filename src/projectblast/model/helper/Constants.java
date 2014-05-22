@@ -1,8 +1,13 @@
 package projectblast.model.helper;
 
-import projectblast.model.title.ITitleModel.HeroChoice;
+import projectblast.model.helper.Constants.HeroChoice;
 
 public final class Constants {
+	public static enum HeroChoice {
+		BOMBER,
+		MAGE,
+		BRUTE,
+	}
 	public static final int MAP_XOFFSET		= 0;
 	public static final int MAP_YOFFSET 	= 64;
 	
@@ -54,8 +59,8 @@ public final class Constants {
 	public static final int TITLE_STATE_ID = 1;
 	public static final int GAME_STATE_ID = 2;
 	
-	public static final HeroChoice PLAYER_1_DEFAULT_HERO = HeroChoice.MAGE;
-	public static final HeroChoice PLAYER_2_DEFAULT_HERO = HeroChoice.BRUTE;
+	public static final Constants.HeroChoice PLAYER_1_DEFAULT_HERO = Constants.HeroChoice.MAGE;
+	public static final Constants.HeroChoice PLAYER_2_DEFAULT_HERO = Constants.HeroChoice.BRUTE;
 	
 	//Powerup
 	public static final int AMMO_POWERUP_MODIFIER = 1;

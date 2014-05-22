@@ -6,10 +6,11 @@ import org.junit.Test;
 import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.*;
+import projectblast.model.attribute.Direction;
+import projectblast.model.attribute.Position;
 import projectblast.model.entity.DestructibleBlock;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.MovableEntity;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 
 public class MovableEntityTest {
 

@@ -5,13 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import projectblast.model.helper.Constants;
+import projectblast.model.helper.Constants.HeroChoice;
 import projectblast.model.title.HeroColumn;
-import projectblast.model.title.ITitleModel.HeroChoice;
 
 public class HeroColumnTest {
 
     private HeroColumn heroColumn = null;
-    private final HeroChoice HERO_CHOICE = HeroChoice.BOMBER;
+    private final Constants.HeroChoice HERO_CHOICE = Constants.HeroChoice.BOMBER;
     
     @Before
     public void before() {

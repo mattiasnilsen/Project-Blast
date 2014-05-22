@@ -2,12 +2,12 @@ package projectblast.model.entity.hazard;
 
 import org.newdawn.slick.geom.Rectangle;
 
-import projectblast.model.Destructible;
+import projectblast.model.attribute.Position;
+import projectblast.model.entity.Destructible;
 import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.Entity;
+import projectblast.model.entity.Id;
 import projectblast.model.entity.hero.Hero;
-import projectblast.model.helper.Id;
-import projectblast.model.helper.Position;
 
 
 public class Explosion extends Hazard {
