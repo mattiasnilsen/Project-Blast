@@ -1,0 +1,33 @@
+﻿Meeting Agenda
+
+Date: 2014-05-22
+
+Facilitator: Mattias Nilsen
+
+Participants: Anton Freudenthaler, Alex Tao, Axel Savén Östebo & Mattias Nilsen
+
+1. Objectives (5 min)  
+Talk about the presentation.
+2. Reports (15 min) 
+Worked on the presentation
+Restructured some of the packages in the project.
+Some small bugfixes and polishing.
+You can now win the game properly.
+Some work has been done on the Enforcer and Drone but nothing has been commited to the repo yet.
+
+
+3. Discussion items (35 min) 
+How to structure the presentation. We have each selected our different parts and now we just need to put them in a good order.
+We have discussed the goal of the presentation and what to focus on.
+
+4. Outcomes and assignments (5 min) 
+We should all work on our parts on the presentation.
+The presentation should be focused around the application itself and its use cases.
+At friday we should try to string them together and then practice.
+Monday practice as well.
+There are also little work to be done on the RAD and SDD.
+
+5. Wrap-up 
+
+The presentation / examination is on Tuesday.
+This is the last official meeting.

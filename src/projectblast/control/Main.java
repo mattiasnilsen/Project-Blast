@@ -12,6 +12,7 @@ public class Main {
             AppGameContainer container = new AppGameContainer(new BlastGame("Project Blast!"));
             container.setDisplayMode(Constants.GAME_WIDTH, Constants.GAME_HEIGHT, false);
             container.setTargetFrameRate(Constants.FRAMERATE);
+            container.setShowFPS(Constants.DISPLAY_FPS);
             container.start();
         } catch (SlickException e) { //TODO Proper exception handling. 
             e.printStackTrace();
