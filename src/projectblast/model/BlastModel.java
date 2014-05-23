@@ -199,7 +199,7 @@ public class BlastModel implements IBlastModel {
 			break;
 		case -1:
 			for (Player p: players){
-				if (p.getHero().getTeam().getSide() == Team.Side.LEFT){
+				if (p.getHero().getTeam().getSide() == Team.Side.RIGHT){
 					endGame(p.getHero().getTeam());
 					return;
 				}
@@ -207,7 +207,7 @@ public class BlastModel implements IBlastModel {
 			break;
 		case 1:
 			for (Player p: players){
-				if (p.getHero().getTeam().getSide() == Team.Side.RIGHT){
+				if (p.getHero().getTeam().getSide() == Team.Side.LEFT){
 					endGame(p.getHero().getTeam());
 					return;
 				}
