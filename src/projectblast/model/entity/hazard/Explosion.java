@@ -4,10 +4,9 @@ import org.newdawn.slick.geom.Rectangle;
 
 import projectblast.model.attribute.Position;
 import projectblast.model.entity.Destructible;
-import projectblast.model.entity.DestructibleBlock;
 import projectblast.model.entity.Entity;
 import projectblast.model.entity.Id;
-import projectblast.model.entity.hero.Hero;
+import projectblast.model.entity.Tower;
 
 
 public class Explosion extends Hazard {
@@ -25,7 +24,7 @@ public class Explosion extends Hazard {
 
 	@Override
 	public void collide(Entity entity) {
-		if(entity instanceof DestructibleBlock || entity instanceof Hero) {
+		if(entity instanceof Destructible && !(entity instanceof Tower)) {
 			Destructible dest = (Destructible)entity;
 			dest.destroy();
 		}
